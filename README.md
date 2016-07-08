@@ -106,7 +106,7 @@ malware samples.
 
    Usage:
    ```
-   $./avclass_labeler.py -lb dataset.json > dataset.labels 2> dataset.stderr
+   $./avclass_labeler.py -lb datasets/mal_dataset.json > dataset.labels 2> dataset.stderr
    ```
 
    Extra options:
