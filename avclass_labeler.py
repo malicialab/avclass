@@ -258,11 +258,11 @@ if __name__=='__main__':
 
     argparser.add_argument('-alias',
         help='file with aliases. Default: manual.aliases',
-        default = 'lists/default.aliases')
+        default = 'data/default.aliases')
 
     argparser.add_argument('-gen',
         help='file with generic tokens. Default: manual.generics',
-        default = 'lists/default.generics')
+        default = 'data/default.generics')
 
     argparser.add_argument('-av',
         help='file with list of AVs to use')
