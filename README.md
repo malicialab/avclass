@@ -1,171 +1,257 @@
 # AVClass
 
-AVClass is an automatic labeling tool that given the AV labels for a,
-potentially massive, number of samples outputs the most likely family names
-for each sample. It can also be used for clustering malware when a 
-state-of-the-art clustering system is not available.
+[AVClass](https://github.com/malicialab/avclass) 
+is a malware labeling tool.
 
-AVClass comprises two phases: preparation (optional) and labeling.
-During the preparation phase, an analyst runs the generic token detection and
-alias detection modules on the AV labels of a large number of samples to produce
-lists of generic tokens and aliases, which become inputs to the labeling phase.
-The preparation phase is optional since AVClass includes default lists of
-generic tokens and aliases obtained from 8.9M samples included in 10 datasets.
+You give it as input the AV labels for a large number of 
+malware samples (e.g., VirusTotal JSON reports) and it outputs the most 
+likely family name for each sample that it can extract from the AV labels. 
+It can also output a ranking of all alternative names it found for each sample.
 
-The labeling phase is the core of AVClass and implements the label 
-normalization process. It takes as input the AV labels of a large number of
-samples to be labeled, a list of generic tokens, a list of aliases, and 
-optionally a list of AV engines to use. By default, AVClass uses all AV engines
-in the set of AV labels for a sample. For each sample to be labeled, it outputs
-a ranking of its most likely family names.
+The design and evaluation of AVClass is detailed in our RAID 2016 paper:
 
-Detailed analysis of each module along with the evaluation of the AVClass tool
-can be found in our RAID2016 paper [1].
-
-
-AVClass includes:
-    
-    avclass_generic_detect.py: (optional) Given a set of AV labels and the family
-                                  names of the samples it generates a list of generic tokens.
-
-    avclass_alias_detect.py:   (optional) Given a collection of AV labels it generates
-                                  a list of alias pairs.
-
-    avclass_labeler.py:        Given a collection of AV labels it generates the family
-                               names of the samples.
-
-######AV Labels format:
-
-All modules included in AVClass require as input the AV labels for a collection
-of samples. Input file can be either:
-```
-   a) A file where each line is a JSON of a VirusTotal report 
-      as fetched by the VirusTotal API (-vt)
-    
-   b) A file where each line is a JSON with at least the following 
-     fields {md5, sha1, sha256,scan_date,av_labels} (-lb)
-```
-See samples/ directory for examples of both formats.
-
-*Note: It is recommended for large datasets to use option b) that significantly
-improves the performance of the tool.*
-
-
-### Preparation Phase (optional)
-
-Preparation phase in optional. AVClass uses by default our own generic tokens and aliases extracted from 8.9M 
-malware samples.
-
-
-1) **Generic token detection**
-
-   AV labels typically contain multiple generic tokens that are not specific to 
-   a family (e.g., Win32, Adware, Trojan etc.).
-   This module is used to automatically build a list of generic tokens.
-   When AVClass tries to select a label for a sample, any token included in the
-   generic tokens list is ignored since it's not family-specific.
-   Generic token detection requires the family names for the samples (-gt).
-
-   Usage:
-   ```
-   $./avclass_generic_detect.py -vt dataset.json -gt dataset_gt.csv > dataset.gen 
-   ```
-   
-  *Note: Generic token detection uses a threshold (-tgen) for the 
-        minimum number of families that a token appears. Any token appearing
-        more families than Tgen is considered generic. Defaul value: 8.*
-
-
-2) **Alias detection**
-
-   Different vendors may assign different names (i.e., aliases) for the same
-   family. For example, some vendors may use zeus and other zbot as aliases for
-   the same malware family. This module is used to automatically build a list
-   of aliases. The module requires as input the generic token list.
-   When AVClass tries to select a label for a sample tokens that are included
-   in the aliases list are replaced by their most prevalent name.
-
-   Usage:
-   ```
-   $./avclass_alias_detect.py -vt dataset.json -gen dataset.gen > dataset.aliases
-   ```
-  *Note: Alias detection module uses two thresholds, the Nalias (-nalias)
-        and the Talias (-talias). Nalias is the minimum number of times
-        the pair of tokens have been seen and Talias is the minimum percentage
-        of times the pair of tokens appear together. Default values are:
-        Nalias=20 and Talias=0.94.*
-
-
-
-### Labeling Phase
-   
-   The labeling phase is the core of AVClass and implements the label normalization process.
-   The labeler takes as input the AV labels of a large dataset of 
-   malware (-vt or -lb) along with a list of generic tokens 
-   and a list of aliases and generates a family name for each sample.
-
-   Usage:
-   ```
-   $./avclass_labeler.py -lb datasets/mal_dataset.json > dataset.labels 2> dataset.stderr
-   ```
-
-   Extra options:
-
-     - Verbose parameter (-v) outputs an extra file (dataset.verbose) that all labels per sample
-     - The -eval parameter can be used for evaluating the clustering accuracy of AVClass
-       against an already clustered dataset (provided using the -gt parameter).
-
-### Why use AVClass?
-
-AVClass combines some interesting features:
-
-1. **Automatic.** 
-  AVClass removes manual analysis limitations on the size of the input dataset.
-
-2. **Vendor-agnostic.**
-  AVclass operates on the labels of any available set of AV engines, which can vary from sample to sample.
-
-3. **Cross-platform.**
-  AVclass can be used for any platforms supported by AV engines.
-
-4. **Does not require executables.** 
-  AV labels can be obtained from online services like VirusTotal using a sample's hash, even when the executable is not available.
-
-
-### Limitations
-Before using AVClass you should be aware of its limitations:
-
-1. AVClass can be as good as the AV labels are. AVClass cannot identify a family
-   if it's not contained in an AV label. It cannot label samples if at least
-   2 AV engines do not agree on a non-generic family name. Results on the largest
-   dataset we used in our evaluation shows that AVClass cannot label 19% of the samples,
-   typically because those labels contain only generic tokens.
-
-2. Clustering accuracy. AVClass was designed as a malware labeling tool. While
-   it can be used for clustering malware, its evaluated precision is 87.2%-95.3%.
-   Thus, AVClass should only be used for clustering when a state-of-the-art
-   clustering system is not available and implementing one is not worth the 
-   effort (despite improved accuracy).
-
-### Dependencies
-
-AVClass requires Python2.7
-
-### Contributors
-
-Marcos Sebastián
-
-Richard Rivera
-
-Platon Kotzias
-
-Juan Caballero
-
-
-
-
-### Further Reading
-
-1. M.Sebastián, R. Rivera, P. Kotzias, and J. Caballero. AVClass: A tool for
+> M.Sebastián, R. Rivera, P. Kotzias, and J. Caballero. AVClass: A tool for
 Massive Malware Labeling. In International Symposium on Research in Attacks,
 Intrusions and Defenses, September 2016.
+
+In a nutshell, AVClass comprises two phases: 
+preparation (optional) and labeling.
+Code for both is included, 
+but most users will be only interested in the labeling, which outputs the 
+family name for the samples. 
+The preparation produces a list of aliases and generic tokens 
+used by the labeling. 
+If you use our default aliases and generic tokens lists, 
+you do not need to run the preparation.
+
+**Why is AVClass useful?**
+
+Because a lot of times security researchers want to extract family information 
+from AV labels, but this process is not as simple as it looks, 
+especially if you need to do it for large numbers (e.g., millions) of 
+samples. Some advantages of AVClass are:
+
+1. *Automatic.* 
+  AVClass removes manual analysis limitations on the size of the input dataset.
+
+2. *Vendor-agnostic.*
+  AVclass operates on the labels of any available set of AV engines, which can vary from sample to sample.
+
+3. *Cross-platform.*
+  AVclass can be used for any platforms supported by AV engines, 
+  e.g., Windows or Android malware.
+
+4. *Does not require executables.*
+  AV labels can be obtained from online services like VirusTotal using a sample's hash, even when the executable is not available.
+
+5. *Quantified accuracy.* 
+  We have evaluated AVClass on 5 publicly available malware datasets with 
+  ground truth. Details are in the above RAID 2016 paper. 
+
+6. *Open source.*
+  The code is available and we are happy to incorporate suggestions and 
+  improvements so that the security community benefits from AVClass.
+
+**Limitations**
+
+The main limitation of AVClass is that its output depends on the input 
+AV labels. 
+It tries to compensate for the noise on those labels, but 
+cannot identify the family of a sample if AV engines do not provide 
+non-generic family names to that sample. 
+In particular, it cannot label samples if at least 2 AV engines 
+do not agree on a non-generic family name. 
+Results on 8 million samples showed that AVClass could label 81% of the 
+samples. 
+In other words, it could not label 19% of the 
+samples because their labels contained only generic tokens.
+
+Still, there are many samples that AVClass can label and thus we believe 
+you will find it a useful tool. 
+We recommend you to read the discussion section in our RAID 2016 paper for 
+more details.
+
+## Labeling 
+   
+  The labeler takes as input 
+  a JSON file with the AV labels of malware samples (-vt or -lb switches), 
+  a file with generic tokens (-gen switch), 
+  and a file with aliases (-alias switch). 
+  It outputs the most likely family name for each sample.
+  If you do not provide alias or generic tokens files, 
+  the default ones in the *data* folder are used.
+
+  ```
+  $./avclass_labeler.py -lb data/samples.json -v > samples.labels
+  ```
+  
+  The above command labels the samples whose AV labels are in the 
+  *data/samples.json* file.
+  It prints the results to stdout, 
+  which we redirect to the *samples.labels* file.
+  The output looks like this:
+
+  ```
+  1fa3cfb35de9e82111fd45ad14de75d9  loadmoney
+  1fa3ccb218ee40e970234b04d4c9a8fd  vobfus
+  ```
+
+  which means sample 1fa3cfb35de9e82111fd45ad14de75d9 is most likely from the 
+  *loadmoney* family and 
+  1fa3ccb218ee40e970234b04d4c9a8fd from the *vobfus* family.
+
+  The verbose (-v) switch makes it output an extra *samples.verbose* file
+  with all families extracted for each sample ranked by the number of AV 
+  engines that use that family.
+  The file looks like this:
+
+  ```
+  1fa3cfb35de9e82111fd45ad14de75d9        [(u'loadmoney', 7), (u'hype', 2), (u'badur', 2)]
+  1fa3ccb218ee40e970234b04d4c9a8fd        [('vobfus', 16)]
+  ```
+
+  which means that for sample 1fa3cfb35de9e82111fd45ad14de75d9 
+  there are 7 AV engines assigning *loadmoney* as the family, 
+  another 2 assigning *hype*, and another 2 assigning *badur*.
+  Thus, *loadmoney* is the most likely family.
+  On the other hand, for 1fa3ccb218ee40e970234b04d4c9a8fd there are 16 AV 
+  engines assigning *vobfus* as family, and no other family candiate was found.
+
+  Note that the sum of the number of AV engines may not equal the number of 
+  AV engines with a label in the input file for that sample 
+  because the labels of some AV engines may only include generic tokens 
+  that are removed by AVClass.
+
+
+## Input JSON format
+
+AVClass supports two input JSON formats: 
+
+1. VirusTotal JSON reports (*-vt file*), 
+where each line in *file* should be the full JSON of a 
+VirusTotal report as fetched through the VirusTotal API.
+
+2. Simplified JSON (*-lb file*),
+where each line in *file* should be a JSON 
+with (at least) these fields:
+{md5, sha1, sha256, scan_date, av_labels}. 
+There is an example of such input file in *data/samples.json*
+
+**Why have 2 different input formats?**
+
+We believe most users will get the AV labels using VirusTotal. 
+However, AVClass is IO-bound and a VirusTotal report 
+in addition to the AV labels and hashes includes 
+much other data that AVClass does not need. 
+Thus, when applying AVClass to millions of samples,
+reducing the input file size by removing unnnecessary data 
+significantly improves efficiency. 
+Furthermore, users could obtain AV labels from other sources and 
+the simpler the input JSON format, 
+the easier to convert those AV labels into an input file.
+
+At this point you have read the most important information on how to use 
+AVClass. 
+The following sections describe steps that most users will not need.
+
+## Preparation: Generic Token Detection
+
+The labeling takes as input a file with generic tokens that should be 
+ignored in the AV labels, e.g., trojan, virus, generic, linux.
+By default, the labeling uses the *data/default.generics* generic tokens file.
+You can edit that file to add additional generic tokens you feel we are missing.
+
+In our RAID 2016 paper we describe an automatic approach to identify generic 
+tokens, which requires ground truth, 
+i.e., it requires knowing the true family for each input sample.
+That is why we expect most users will skip this step and simply use our 
+provided default file.
+But, if you want to test it you can do:
+
+   ```
+   $./avclass_generic_detect.py -vt data/samples.json -gt ground.truth -tgen 10 > samples.gen 
+   ```
+  
+  Each line in the *ground.truth* file should have the format:
+
+  ```
+  1fa3cfb35de9e82111fd45ad14de75d9  loadmoney
+  ```
+
+  which indicates that sample 1fa3cfb35de9e82111fd45ad14de75d9 is known to be
+  of the *loadmoney* family.
+
+  The *-tgen 10* switch is a threshold for the minimum number of families 
+  where a token has to be observed to be considered generic. 
+  If the switch is ommitted, the default threshold of 8 is used.
+
+  For more details on this threshold, you can refer to our RAID 2016 paper.
+
+## Preparation: Alias Detection
+
+Different vendors may assign different names (i.e., aliases) for the same
+family. For example, some vendors may use *zeus* and others *zbot* 
+as aliases for the same malware family. 
+The labeling takes as input a file with aliases that should be merged.
+By default, the labeling uses the *data/default.aliases* aliases file.
+You can edit that file to add additional aliases you feel we are missing.
+
+In our RAID 2016 paper we describe an automatic approach to identify aliases.
+We expect most users will skip this step and simply use our 
+provided default file.
+But, if you want to test it you can do:
+
+   ```
+   $./avclass_alias_detect.py -vt data/samples.json -nalias 100 -talias 0.98 > samples.aliases
+   ```
+
+  The -nalias threshold provides the minimum number of samples two tokens 
+  need to be observed in to be considered aliases. 
+  If the switch is not provided the default is 20.
+
+  The -talias threshold provides the minimum fraction of times that 
+  the samples appear together.
+  If the switch is not provided the default is 0.94 (94%).
+
+  For more details on these thresholds, you can refer to our RAID 2016 paper.
+
+
+## Ground truth evaluation
+
+If you have ground truth for some malware samples, 
+i.e., you know the true family for those samples, you can evaluate the accuracy of the labeling output by AVClass on those samples with respect to that 
+ground truth.
+The evaluation metrics used are precision, recall, and F1 measure.
+See our RAID 2016 paper above for their definition.
+
+  ```
+  $./avclass_labeler.py -lb data/samples.json -v -gt ground.truth -eval > samples.labels
+  ```
+
+  Each line in the *ground.truth* file should have the format:
+
+  ```
+  1fa3cfb35de9e82111fd45ad14de75d9  loadmoney 
+  ```
+
+  which indicates that sample 1fa3cfb35de9e82111fd45ad14de75d9 is known to be 
+  of the *loadmoney* family.
+  Note that the particular label assigned to each family does not matter. 
+  What is important is that all samples in the same family are assigned the 
+  same label (i.e., the same string in the second column) 
+  
+  The ground truth can be obtained from publicly available malware datasets 
+  such as 
+  [Malheur](http://www.mlsec.org/malheur/), 
+  [Drebin](https://www.sec.cs.tu-bs.de/~danarp/drebin/), or 
+  [Malicia](http://malicia-project.com/dataset.html).
+
+
+
+## Contributors
+
+Several members of the MaliciaLab at the 
+[IMDEA Software Institute](http://software.imdea.org) 
+have contributed code to AVClass including:
+Marcos Sebastián, Richard Rivera, Platon Kotzias, Srdjan Matic, and Juan Caballero.
+
