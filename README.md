@@ -8,7 +8,8 @@ malware samples (e.g., VirusTotal JSON reports) and it outputs the most
 likely family name for each sample that it can extract from the AV labels. 
 It can also output a ranking of all alternative names it found for each sample.
 
-The design and evaluation of AVClass is detailed in our RAID 2016 paper:
+The design and evaluation of AVClass is detailed in our 
+[RAID 2016 paper](https://software.imdea.org/~juanca/papers/avclass_raid16.pdf):
 
 > M.Sebastián, R. Rivera, P. Kotzias, and J. Caballero. AVClass: A tool for
 Massive Malware Labeling. In International Symposium on Research in Attacks,
