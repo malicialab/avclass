@@ -170,13 +170,14 @@ provided default file.
 But, if you want to test it you can do:
 
    ```
-   $./avclass_generic_detect.py -vt data/samples.json -gt ground.truth -tgen 10 > samples.gen 
+   $./avclass_generic_detect.py -lb data/samples.json -gt ground.truth -tgen 10 > samples.gen 
    ```
   
-  Each line in the *ground.truth* file should have the format:
+  Each line in the *ground.truth* file should have two **tab-separated** 
+  columns:
 
   ```
-  1fa3cfb35de9e82111fd45ad14de75d9  loadmoney
+  1fa3cfb35de9e82111fd45ad14de75d9 loadmoney
   ```
 
   which indicates that sample 1fa3cfb35de9e82111fd45ad14de75d9 is known to be
@@ -203,7 +204,7 @@ provided default file.
 But, if you want to test it you can do:
 
    ```
-   $./avclass_alias_detect.py -vt data/samples.json -nalias 100 -talias 0.98 > samples.aliases
+   $./avclass_alias_detect.py -lb data/samples.json -nalias 100 -talias 0.98 > samples.aliases
    ```
 
   The -nalias threshold provides the minimum number of samples two tokens 
@@ -229,10 +230,11 @@ See our RAID 2016 paper above for their definition.
   $./avclass_labeler.py -lb data/samples.json -v -gt ground.truth -eval > samples.labels
   ```
 
-  Each line in the *ground.truth* file should have the format:
+  Each line in the *ground.truth* file should have two **tab-separated** 
+  columns:
 
   ```
-  1fa3cfb35de9e82111fd45ad14de75d9  loadmoney 
+  1fa3cfb35de9e82111fd45ad14de75d9 loadmoney 
   ```
 
   which indicates that sample 1fa3cfb35de9e82111fd45ad14de75d9 is known to be 
