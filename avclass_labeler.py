@@ -13,6 +13,11 @@ import json
 import traceback
 import os
 
+# Default alias file
+default_alias_file = "data/default.aliases"
+# Default generic tokens file
+default_gen_file = "data/default.generics"
+
 def guess_hash(h):
     '''Given a hash string, guess the hash type based on the string length'''
     hlen = len(h)
@@ -52,7 +57,7 @@ def main(args):
                             '.verbose'
         verb_fd = open(log_filename, 'w+')
 
-    # Process each line in VirusTotal reports file
+    # Process each JSON
     vt_all = 0
     vt_empty = 0
     singletons = 0
@@ -70,7 +75,7 @@ def main(args):
 
             # Debug info
             if vt_all % 100 == 0:
-                sys.stderr.write('\r%d VT reports read' % vt_all)
+                sys.stderr.write('\r%d JSON read' % vt_all)
                 sys.stderr.flush()
             vt_all += 1
 
@@ -120,11 +125,11 @@ def main(args):
                     for entry in tokens:
                         curr_tok = entry[0]
                         curr_fam_set = token_family_map.get(curr_tok)
-                        if curr_fam_set:
-                            curr_fam_set.add(gt_dict[name])
-                        else:
-                            token_family_map[curr_tok] = \
-                                set([gt_dict[name]])
+                        family = gt_dict[name] if name in gt_dict else None
+                        if curr_fam_set and family:
+                            curr_fam_set.add(family)
+                        elif family:
+                            token_family_map[curr_tok] = set(family)
 
                 # Top candidate is most likely family name
                 if tokens:
@@ -146,7 +151,10 @@ def main(args):
                 first_token_dict[name] = family
 
                 # Get ground truth family, if available
-                gt_family = '\t' + gt_dict[name] if args.gt else ""
+                if args.gt:
+                    gt_family = '\t' + gt_dict[name] if name in gt_dict else ""
+                else:
+                    gt_family = ""
 
                 # Print family (and ground truth if available) to stdout
                 print '%s\t%s%s%s' % (name, family, gt_family, is_pup_str)
@@ -162,7 +170,7 @@ def main(args):
                 continue
 
         # Debug info
-        sys.stderr.write('\r%d VT reports read' % vt_all)
+        sys.stderr.write('\r%d JSON read' % vt_all)
         sys.stderr.flush()
         sys.stderr.write('\n')
 
@@ -240,11 +248,11 @@ if __name__=='__main__':
             Also calculates precision and recall if ground truth available''')
 
     argparser.add_argument('-vt',
-        help='file to parse with full VT reports '
+        help='file with full VT reports '
              '(REQUIRED if -lb argument not present)')
 
     argparser.add_argument('-lb',
-        help='file to parse with subset of VT reports'
+        help='file with simplified JSON reports'
              '{md5,sha1,sha256,scan_date,av_labels} '
              '(REQUIRED if -vt not present)')
 
@@ -257,12 +265,12 @@ if __name__=='__main__':
              ' Prints precision, recall, f-measure. Requires -gt parameter')
 
     argparser.add_argument('-alias',
-        help='file with aliases. Default: manual.aliases',
-        default = 'data/default.aliases')
+        help='file with aliases.',
+        default = default_alias_file)
 
     argparser.add_argument('-gen',
-        help='file with generic tokens. Default: manual.generics',
-        default = 'data/default.generics')
+        help='file with generic tokens.',
+        default = default_gen_file)
 
     argparser.add_argument('-av',
         help='file with list of AVs to use')
@@ -307,8 +315,14 @@ if __name__=='__main__':
 
     if args.alias and args.alias == '/dev/null':
         sys.stderr.write('[-] Using no aliases\n')
+    else:
+        sys.stderr.write('[-] Using aliases in %s\n' % (
+                          default_alias_file))
 
     if args.gen and args.gen == '/dev/null':
         sys.stderr.write('[-] Using no generic tokens\n')
+    else:
+        sys.stderr.write('[-] Using generic tokens in %s\n' % (
+                          default_gen_file))
         
     main(args)
