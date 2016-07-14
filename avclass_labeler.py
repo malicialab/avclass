@@ -75,7 +75,7 @@ def main(args):
 
             # Debug info
             if vt_all % 100 == 0:
-                sys.stderr.write('\r%d JSON read' % vt_all)
+                sys.stderr.write('\r[-] %d JSON read' % vt_all)
                 sys.stderr.flush()
             vt_all += 1
 
@@ -170,14 +170,15 @@ def main(args):
                 continue
 
         # Debug info
-        sys.stderr.write('\r%d JSON read' % vt_all)
+        sys.stderr.write('\r[-] %d JSON read' % vt_all)
         sys.stderr.flush()
         sys.stderr.write('\n')
 
     # Print statistics
     sys.stderr.write(
-            "Samples: %d NoLabels: %d Singletons: %d GroundTruth: %d\n" % (
-            vt_all, vt_empty, singletons, len(gt_dict)))
+            "[-] Samples: %d NoLabels: %d Singletons: %d "
+            "GroundTruth: %d\n" % (
+                vt_all, vt_empty, singletons, len(gt_dict)))
 
     # If ground truth, print precision, recall, and f-measure
     if args.gt and args.eval:
@@ -313,16 +314,24 @@ if __name__=='__main__':
         sys.stderr.write('Evaluating clustering accuracy needs -gt param\n')
         exit(1)
 
-    if args.alias and args.alias == '/dev/null':
-        sys.stderr.write('[-] Using no aliases\n')
+    if args.alias:
+        if args.alias == '/dev/null':
+            sys.stderr.write('[-] Using no aliases\n')
+        else:
+            sys.stderr.write('[-] Using aliases in %s\n' % (
+                              args.alias))
     else:
-        sys.stderr.write('[-] Using aliases in %s\n' % (
+        sys.stderr.write('[-] Using generic aliases in %s\n' % (
                           default_alias_file))
 
-    if args.gen and args.gen == '/dev/null':
-        sys.stderr.write('[-] Using no generic tokens\n')
+    if args.gen:
+        if args.gen == '/dev/null':
+            sys.stderr.write('[-] Using no generic tokens\n')
+        else:
+            sys.stderr.write('[-] Using generic tokens in %s\n' % (
+                              args.gen))
     else:
-        sys.stderr.write('[-] Using generic tokens in %s\n' % (
+        sys.stderr.write('[-] Using default generic tokens in %s\n' % (
                           default_gen_file))
         
     main(args)
