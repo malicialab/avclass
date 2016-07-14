@@ -11,9 +11,10 @@ It can also output a ranking of all alternative names it found for each sample.
 The design and evaluation of AVClass is detailed in our 
 [RAID 2016 paper](https://software.imdea.org/~juanca/papers/avclass_raid16.pdf):
 
-> M.Sebastián, R. Rivera, P. Kotzias, and J. Caballero. AVClass: A tool for
-Massive Malware Labeling. In International Symposium on Research in Attacks,
-Intrusions and Defenses, September 2016.
+> M.Sebastián, R. Rivera, P. Kotzias, and J. Caballero. 
+AVClass: A tool for Massive Malware Labeling. 
+In International Symposium on Research in Attacks, Intrusions and Defenses,
+September 2016.
 
 In a nutshell, AVClass comprises two phases: 
 preparation (optional) and labeling.
@@ -27,23 +28,27 @@ you do not need to run the preparation.
 
 **Why is AVClass useful?**
 
-Because a lot of times security researchers want to extract family information 
-from AV labels, but this process is not as simple as it looks, 
+Because a lot of times security researchers want to extract 
+family information from AV labels, 
+but this process is not as simple as it looks, 
 especially if you need to do it for large numbers (e.g., millions) of 
 samples. Some advantages of AVClass are:
 
 1. *Automatic.* 
-  AVClass removes manual analysis limitations on the size of the input dataset.
+  AVClass removes manual analysis limitations on the size of 
+  the input dataset.
 
 2. *Vendor-agnostic.*
-  AVclass operates on the labels of any available set of AV engines, which can vary from sample to sample.
+  AVclass operates on the labels of any available set of AV engines, 
+  which can vary from sample to sample.
 
 3. *Cross-platform.*
   AVclass can be used for any platforms supported by AV engines, 
   e.g., Windows or Android malware.
 
 4. *Does not require executables.*
-  AV labels can be obtained from online services like VirusTotal using a sample's hash, even when the executable is not available.
+  AV labels can be obtained from online services like VirusTotal 
+  using a sample's hash, even when the executable is not available.
 
 5. *Quantified accuracy.* 
   We have evaluated AVClass on 5 publicly available malware datasets with 
@@ -74,54 +79,56 @@ more details.
 
 ## Labeling 
    
-  The labeler takes as input 
-  a JSON file with the AV labels of malware samples (-vt or -lb switches), 
-  a file with generic tokens (-gen switch), 
-  and a file with aliases (-alias switch). 
-  It outputs the most likely family name for each sample.
-  If you do not provide alias or generic tokens files, 
-  the default ones in the *data* folder are used.
+The labeler takes as input 
+a JSON file with the AV labels of malware samples (-vt or -lb switches), 
+a file with generic tokens (-gen switch), 
+and a file with aliases (-alias switch). 
+It outputs the most likely family name for each sample.
+If you do not provide alias or generic tokens files, 
+the default ones in the *data* folder are used.
 
-  ```
-  $./avclass_labeler.py -lb data/samples.json -v > samples.labels
-  ```
+```
+$./avclass_labeler.py -lb data/malheurReference_lb.json -v > malheurReference.labels
+```
   
-  The above command labels the samples whose AV labels are in the 
-  *data/samples.json* file.
-  It prints the results to stdout, 
-  which we redirect to the *samples.labels* file.
-  The output looks like this:
+The above command labels the samples whose AV labels are in the 
+*data/malheurReference_lb.json* file.
+It prints the results to stdout, 
+which we redirect to the *malheurReference.labels* file.
+The output looks like this:
 
-  ```
-  1fa3cfb35de9e82111fd45ad14de75d9  loadmoney
-  1fa3ccb218ee40e970234b04d4c9a8fd  vobfus
-  ```
+```
+aca2d12934935b070df8f50e06a20539 adrotator
+67d15459e1f85898851148511c86d88d adultbrowser
+```
 
-  which means sample 1fa3cfb35de9e82111fd45ad14de75d9 is most likely from the 
-  *loadmoney* family and 
-  1fa3ccb218ee40e970234b04d4c9a8fd from the *vobfus* family.
+which means sample aca2d12934935b070df8f50e06a20539 is most likely 
+from the *adrotator* family and 
+67d15459e1f85898851148511c86d88d from the *adultbrowser* family.
 
-  The verbose (-v) switch makes it output an extra *samples.verbose* file
-  with all families extracted for each sample ranked by the number of AV 
-  engines that use that family.
-  The file looks like this:
+The verbose (-v) switch makes it output an extra 
+*malheurReference_lb.verbose.verbose* file
+with all families extracted for each sample ranked by the number of AV 
+engines that use that family.
+The file looks like this:
 
-  ```
-  1fa3cfb35de9e82111fd45ad14de75d9        [(u'loadmoney', 7), (u'hype', 2), (u'badur', 2)]
-  1fa3ccb218ee40e970234b04d4c9a8fd        [('vobfus', 16)]
-  ```
+```
+aca2d12934935b070df8f50e06a20539  [(u'adrotator', 8), (u'zlob', 2)]
+ee90a64fcfaa54a314a7b5bfe9b57357  [(u'swizzor', 19)]
+```
 
-  which means that for sample 1fa3cfb35de9e82111fd45ad14de75d9 
-  there are 7 AV engines assigning *loadmoney* as the family, 
-  another 2 assigning *hype*, and another 2 assigning *badur*.
-  Thus, *loadmoney* is the most likely family.
-  On the other hand, for 1fa3ccb218ee40e970234b04d4c9a8fd there are 16 AV 
-  engines assigning *vobfus* as family, and no other family candiate was found.
+which means that for sample aca2d12934935b070df8f50e06a20539 
+there are 8 AV engines assigning *adrotator* as the family and  
+another 2 assigning *zlob*.
+Thus, *adrotator* is the most likely family.
+On the other hand, for ee90a64fcfaa54a314a7b5bfe9b57357 there are 19 AV 
+engines assigning *swizzor* as family, 
+and no other family candiate was found.
 
-  Note that the sum of the number of AV engines may not equal the number of 
-  AV engines with a label in the input file for that sample 
-  because the labels of some AV engines may only include generic tokens 
-  that are removed by AVClass.
+Note that the sum of the number of AV engines may not equal the number 
+of AV engines with a label for that sample in the input file 
+because the labels of some AV engines may only include generic tokens 
+that are removed by AVClass.
 
 
 ## Input JSON format
@@ -136,7 +143,7 @@ VirusTotal report as fetched through the VirusTotal API.
 where each line in *file* should be a JSON 
 with (at least) these fields:
 {md5, sha1, sha256, scan_date, av_labels}. 
-There is an example of such input file in *data/samples.json*
+There is an example of such input file in *data/malheurReference_lb.json*
 
 **Why have 2 different input formats?**
 
@@ -159,35 +166,37 @@ The following sections describe steps that most users will not need.
 
 The labeling takes as input a file with generic tokens that should be 
 ignored in the AV labels, e.g., trojan, virus, generic, linux.
-By default, the labeling uses the *data/default.generics* generic tokens file.
-You can edit that file to add additional generic tokens you feel we are missing.
+By default, the labeling uses the *data/default.generics* 
+generic tokens file.
+You can edit that file to add additional generic tokens you feel 
+we are missing.
 
-In our RAID 2016 paper we describe an automatic approach to identify generic 
-tokens, which requires ground truth, 
+In our RAID 2016 paper we describe an automatic approach to 
+identify generic tokens, which requires ground truth, 
 i.e., it requires knowing the true family for each input sample.
 That is why we expect most users will skip this step and simply use our 
 provided default file.
 But, if you want to test it you can do:
 
-   ```
-   $./avclass_generic_detect.py -lb data/samples.json -gt ground.truth -tgen 10 > samples.gen 
-   ```
-  
-  Each line in the *ground.truth* file should have two **tab-separated** 
-  columns:
+```
+ $./avclass_generic_detect.py -lb data/malheurReference_lb.json -gt data/malheurReference_gt.tsv -tgen 10 > malheurReference.gen 
+```
 
-  ```
-  1fa3cfb35de9e82111fd45ad14de75d9 loadmoney
-  ```
+Each line in the *data/malheurReference_lb.json* file has 
+two **tab-separated** columns:
 
-  which indicates that sample 1fa3cfb35de9e82111fd45ad14de75d9 is known to be
-  of the *loadmoney* family.
+```
+0058780b175c3ce5e244f595951f611b8a24bee2 CASINO
+```
 
-  The *-tgen 10* switch is a threshold for the minimum number of families 
-  where a token has to be observed to be considered generic. 
-  If the switch is ommitted, the default threshold of 8 is used.
+which indicates that sample 0058780b175c3ce5e244f595951f611b8a24bee2 
+is known to be of the *CASINO* family.
 
-  For more details on this threshold, you can refer to our RAID 2016 paper.
+The *-tgen 10* switch is a threshold for the minimum number of families 
+where a token has to be observed to be considered generic. 
+If the switch is ommitted, the default threshold of 8 is used.
+
+For more details you can refer to our RAID 2016 paper.
 
 ## Preparation: Alias Detection
 
@@ -198,24 +207,25 @@ The labeling takes as input a file with aliases that should be merged.
 By default, the labeling uses the *data/default.aliases* aliases file.
 You can edit that file to add additional aliases you feel we are missing.
 
-In our RAID 2016 paper we describe an automatic approach to identify aliases.
+In our RAID 2016 paper we describe an automatic approach 
+to identify aliases.
 We expect most users will skip this step and simply use our 
 provided default file.
 But, if you want to test it you can do:
 
-   ```
-   $./avclass_alias_detect.py -lb data/samples.json -nalias 100 -talias 0.98 > samples.aliases
-   ```
+```
+ $./avclass_alias_detect.py -lb data/malheurReference_lb.json -nalias 100 -talias 0.98 > malheurReference.aliases
+```
 
-  The -nalias threshold provides the minimum number of samples two tokens 
-  need to be observed in to be considered aliases. 
-  If the switch is not provided the default is 20.
+The -nalias threshold provides the minimum number of samples two tokens 
+need to be observed in to be considered aliases. 
+If the switch is not provided the default is 20.
 
-  The -talias threshold provides the minimum fraction of times that 
-  the samples appear together.
-  If the switch is not provided the default is 0.94 (94%).
+The -talias threshold provides the minimum fraction of times that 
+the samples appear together.
+If the switch is not provided the default is 0.94 (94%).
 
-  For more details on these thresholds, you can refer to our RAID 2016 paper.
+For more details you can refer to our RAID 2016 paper.
 
 
 ## Ground truth evaluation
@@ -226,29 +236,30 @@ ground truth.
 The evaluation metrics used are precision, recall, and F1 measure.
 See our RAID 2016 paper above for their definition.
 
-  ```
-  $./avclass_labeler.py -lb data/samples.json -v -gt ground.truth -eval > samples.labels
-  ```
+```
+$./avclass_labeler.py -lb data/malheurReference_lb.json -v -gt data/malheurReference_gt.tsv -eval > data/malheurReference.labels
+```
 
-  Each line in the *ground.truth* file should have two **tab-separated** 
-  columns:
+Each line in the *data/malheurReference_lb.json* file has 
+two **tab-separated** columns:
 
-  ```
-  1fa3cfb35de9e82111fd45ad14de75d9 loadmoney 
-  ```
+```
+0058780b175c3ce5e244f595951f611b8a24bee2 CASINO
+```
 
-  which indicates that sample 1fa3cfb35de9e82111fd45ad14de75d9 is known to be 
-  of the *loadmoney* family.
-  Note that the particular label assigned to each family does not matter. 
-  What is important is that all samples in the same family are assigned the 
-  same label (i.e., the same string in the second column) 
-  
-  The ground truth can be obtained from publicly available malware datasets 
-  such as 
-  [Malheur](http://www.mlsec.org/malheur/), 
-  [Drebin](https://www.sec.cs.tu-bs.de/~danarp/drebin/), or 
-  [Malicia](http://malicia-project.com/dataset.html).
+which indicates that sample 0058780b175c3ce5e244f595951f611b8a24bee2 
+is known to be of the *CASINO* family.
+Note that the particular label assigned to each family does not matter. 
+What matters is that all samples in the same family are assigned the 
+same family name (i.e., the same string in the second column) 
 
+The ground truth can be obtained from publicly available malware 
+datasets. 
+The one in *data/malheurReference_gt.tsv* comes from the 
+[Malheur](http://www.mlsec.org/malheur/) dataset. 
+There are other public datasets with ground truth such as 
+[Drebin](https://www.sec.cs.tu-bs.de/~danarp/drebin/) or 
+[Malicia](http://malicia-project.com/dataset.html).
 
 
 ## Contributors
@@ -256,5 +267,6 @@ See our RAID 2016 paper above for their definition.
 Several members of the MaliciaLab at the 
 [IMDEA Software Institute](http://software.imdea.org) 
 have contributed code to AVClass including:
-Marcos Sebastián, Richard Rivera, Platon Kotzias, Srdjan Matic, and Juan Caballero.
+Marcos Sebastián, Richard Rivera, Platon Kotzias, Srdjan Matic, and 
+Juan Caballero.
 
