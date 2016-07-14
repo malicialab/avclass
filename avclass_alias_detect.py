@@ -10,7 +10,7 @@ import os
 
 
 def main(args):
-    # Read JSONs
+    # Set input switch
     itype = '-vt' if args.vt else '-lb'
     ifile = args.vt if args.vt else args.lb
 
@@ -40,6 +40,8 @@ def main(args):
             if int(nalias_num) > args.nalias and\
               float(talias_num) > args.talias:
                 print cline
+
+    # Done
     sys.stderr.write('[-] Done.\n')
 
 

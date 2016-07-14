@@ -10,17 +10,22 @@ import os
 
 
 def main(args):
+    # Set input switch
     itype = '-vt' if args.vt else '-lb'
     ifile = args.vt if args.vt else args.lb
-    FNULL = open(os.devnull, 'w')
+
+    # Run avclass_labeler
     sys.stderr.write('[-] Running avclass_labeler on %s\n' % (ifile))
+    FNULL = open(os.devnull, 'w')
     labeler = subprocess.Popen(\
        "python avclass_labeler.py %s %s -alias /dev/null"\
        " -gen /dev/null -gendetect -gt %s" % 
        (itype, ifile, args.gt), shell=True, stdout=FNULL)
     labeler.wait()
+
+    # Process generic tokens file
+    sys.stderr.write('[-] Processing results.\n')
     gen_fname = os.path.basename(os.path.splitext(ifile)[0]) + '.gen'
-    sys.stderr.write('[-] Processing token pairs.\n')
     with open(gen_fname, 'r') as fr:
         for pos, line in enumerate(fr):
             cline = line.strip('\n')
@@ -31,6 +36,8 @@ def main(args):
             token, fam_num = cline.split('\t')
             if int(fam_num) > args.tgen:
                 print cline
+
+    # Done
     sys.stderr.write('[-] Done.\n')
 
 
