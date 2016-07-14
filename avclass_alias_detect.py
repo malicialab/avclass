@@ -13,7 +13,7 @@ def main(args):
     itype = '-vt' if args.vt else '-lb'
     ifile = args.vt if args.vt else args.lb
     FNULL = open(os.devnull, 'w')
-    sys.stderr.write('[-] Running avclass_labeler on given dataset.\n')
+    sys.stderr.write('[-] Running avclass_labeler on %s\n' % (ifile))
     labeler = subprocess.Popen(\
        "python avclass_labeler.py %s %s -alias /dev/null -aliasdetect" % 
        (itype, ifile), shell=True, stdout=FNULL)
