@@ -10,16 +10,25 @@ import os
 
 
 def main(args):
+    # Read JSONs
     itype = '-vt' if args.vt else '-lb'
     ifile = args.vt if args.vt else args.lb
-    FNULL = open(os.devnull, 'w')
+
+    # Set generic tokens file if provided
+    gen_switch = "-gen " + args.gen if args.gen else ""
+    sys.stderr.write('Switch: %s\n' % (gen_switch))
+
+    # Run avclass_labeler
     sys.stderr.write('[-] Running avclass_labeler on %s\n' % (ifile))
+    FNULL = open(os.devnull, 'w')
     labeler = subprocess.Popen(\
-       "python avclass_labeler.py %s %s -alias /dev/null -aliasdetect" % 
-       (itype, ifile), shell=True, stdout=FNULL)
+       "python avclass_labeler.py %s %s %s -alias /dev/null -aliasdetect" %
+       (itype, ifile, gen_switch), shell=True, stdout=FNULL)
     labeler.wait()
-    alias_fname = os.path.basename(os.path.splitext(ifile)[0]) + '.alias'
+
+    # Process alias file
     sys.stderr.write('[-] Processing token pairs.\n')
+    alias_fname = os.path.basename(os.path.splitext(ifile)[0]) + '.alias'
     with open(alias_fname, 'r') as fr:
         for pos, line in enumerate(fr):
             cline = line.strip('\n')
@@ -50,8 +59,7 @@ if __name__=='__main__':
              '(REQUIRED if -vt not present)')
 
     argparser.add_argument('-gen',
-        help='file with generic tokens. Default: manual.generics',
-        default = 'manual.generics')
+        help='file with generic tokens.')
 
     argparser.add_argument('-nalias',
         help='Minimum number of times that a pair of tokes have been seen.'
