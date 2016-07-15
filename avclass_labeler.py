@@ -180,13 +180,13 @@ def main(args):
             "GroundTruth: %d\n" % (
                 vt_all, vt_empty, singletons, len(gt_dict)))
 
-    # If ground truth, print precision, recall, and f-measure
+    # If ground truth, print precision, recall, and F1-measure
     if args.gt and args.eval:
         precision, recall, fmeasure = \
                     ec.eval_precision_recall_fmeasure(gt_dict,
                                                       first_token_dict)
         sys.stderr.write( \
-            "Precision: %.2f\tRecall: %.2f\tF-Measure: %.2f\n" % \
+            "Precision: %.2f\tRecall: %.2f\tF1-Measure: %.2f\n" % \
                           (precision, recall, fmeasure))
 
     # If generic token detection, print map
@@ -239,6 +239,7 @@ def main(args):
 
     # Close log file
     if args.verbose:
+        sys.stderr.write('[-] Verbose output in %s\n' % (log_filename))
         verb_fd.close()
 
 
@@ -263,7 +264,7 @@ if __name__=='__main__':
     argparser.add_argument('-eval',
         action='store_true',
         help='if used it evaluates clustering accuracy.'
-             ' Prints precision, recall, f-measure. Requires -gt parameter')
+             ' Prints precision, recall, F1-measure. Requires -gt parameter')
 
     argparser.add_argument('-alias',
         help='file with aliases.',
