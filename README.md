@@ -115,6 +115,7 @@ The file looks like this:
 ```
 aca2d12934935b070df8f50e06a20539  [(u'adrotator', 8), (u'zlob', 2)]
 ee90a64fcfaa54a314a7b5bfe9b57357  [(u'swizzor', 19)]
+f465a2c1b852373c72a1ccd161fbe94c  SINGLETON:f465a2c1b852373c72a1ccd161fbe94c
 ```
 
 which means that for sample aca2d12934935b070df8f50e06a20539 
@@ -123,7 +124,11 @@ another 2 assigning *zlob*.
 Thus, *adrotator* is the most likely family.
 On the other hand, for ee90a64fcfaa54a314a7b5bfe9b57357 there are 19 AV 
 engines assigning *swizzor* as family, 
-and no other family candiate was found.
+and no other family was found.
+The last line means that for sample f465a2c1b852373c72a1ccd161fbe94c
+no family name was found in the AV labels. 
+Thus, the sample is placed by himself in a singleton cluster 
+with the name of the cluster being the sample's hash.
 
 Note that the sum of the number of AV engines may not equal the number 
 of AV engines with a label for that sample in the input file 
@@ -240,6 +245,17 @@ See our RAID 2016 paper above for their definition.
 $./avclass_labeler.py -lb data/malheurReference_lb.json -v -gt data/malheurReference_gt.tsv -eval > data/malheurReference.labels
 ```
 
+The output includes these lines:
+
+```
+Calculating precision and recall
+3131 out of 3131
+Precision: 90.81  Recall: 93.95 F1-Measure: 92.35
+```
+
+The last line corresponds to the accuracy metrics obtained by 
+comparing AVClass results with the provided ground truth.
+
 Each line in the *data/malheurReference_lb.json* file has 
 two **tab-separated** columns:
 
@@ -249,6 +265,7 @@ two **tab-separated** columns:
 
 which indicates that sample 0058780b175c3ce5e244f595951f611b8a24bee2 
 is known to be of the *CASINO* family.
+Each sample in the input file should also appear in the ground truth file.
 Note that the particular label assigned to each family does not matter. 
 What matters is that all samples in the same family are assigned the 
 same family name (i.e., the same string in the second column) 
