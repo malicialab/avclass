@@ -317,6 +317,13 @@ There are other public datasets with ground truth such as
 [Malicia](http://malicia-project.com/dataset.html).
 
 
+## Support
+
+If you need help with AVClass, want to discuss the project, or
+want to contribute generic tokens and/or aliases, you can join the 
+[AVClass mailing list](https://software.imdea.org/mailman/listinfo/avclass-users).
+
+
 ## Contributors
 
 Several members of the MaliciaLab at the 
