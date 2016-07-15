@@ -11,9 +11,10 @@ It can also output a ranking of all alternative names it found for each sample.
 The design and evaluation of AVClass is detailed in our 
 [RAID 2016 paper](https://software.imdea.org/~juanca/papers/avclass_raid16.pdf):
 
-> M.Sebastián, R. Rivera, P. Kotzias, and J. Caballero. 
+> Marcos Sebastián, Richard Rivera, Platon Kotzias, and Juan Caballero. 
 AVClass: A tool for Massive Malware Labeling. 
-In International Symposium on Research in Attacks, Intrusions and Defenses,
+In Proceedings of the International Symposium on Research in 
+Attacks, Intrusions and Defenses,
 September 2016.
 
 In a nutshell, AVClass comprises two phases: 
@@ -166,6 +167,43 @@ the easier to convert those AV labels into an input file.
 At this point you have read the most important information on how to use 
 AVClass. 
 The following sections describe steps that most users will not need.
+
+## Labeling: PUP Classification
+
+AVClass also contains a switch to classify a sample as
+Potentially Unwanted Program (PUP) or malware.
+This classification looks for PUP-related keywords
+(e.g., pup, pua, unwanted, adware) in the AV labels and was proposed in our
+[CCS 2015 paper](https://software.imdea.org/~juanca/papers/malsign_ccs15.pdf):
+
+> Platon Kotzias, Srdjan Matic, Richard Rivera, and Juan Caballero.
+Certified PUP: Abuse in Authenticode Code Signing.
+In Proceedings of the 22nd ACM Conference on Computer and Communication Security, Denver, CO, October 2015
+
+```
+$./avclass_labeler.py -lb data/malheurReference_lb.json -v -pup > malheurReference.labels
+```
+
+With the -pup switch the output of the *malheurReference.labels* file
+looks like this:
+
+```
+aca2d12934935b070df8f50e06a20539 adrotator 1
+67d15459e1f85898851148511c86d88d adultbrowser 0
+```
+
+The extract digit at the end is a Boolean flag that 
+indicates sample aca2d12934935b070df8f50e06a20539 is
+(likely) PUP, but sample 67d15459e1f85898851148511c86d88d is (likely) not.
+
+In our experience the PUP classification is conservative,
+i.e., if it says the sample is PUP, it most likely is.
+But, if it says that it is not PUP, it could still be PUP if the AV labels
+do not contain PUP-related keywords.
+Note that it is possible that some samples from a family get 
+the PUP flag while other samples from the same family do not
+because the PUP-related keywords may not appear in the labels of 
+all samples from the same family. 
 
 ## Preparation: Generic Token Detection
 

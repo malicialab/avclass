@@ -82,17 +82,17 @@ class AvLabels:
                           label_pairs) 
 
     @staticmethod
-    def is_pup(sample_info):
+    def is_pup(av_label_pairs):
         '''This function classifies the sample as PUP or not 
            using the AV labels as explained in the paper:
-           "Certified PUP: Abuse in Authenticode Code Signing" (ACM CCS 2015)
+           "Certified PUP: Abuse in Authenticode Code Signing" 
+           (ACM CCS 2015)
            It uses the AV labels of 11 specific AVs. 
            The function checks for 13 keywords used to indicate PUP.
            Return:
               True/False/None
         '''
         # If no AV labels, nothing to do, return
-        av_label_pairs = sample_info[3]
         if not av_label_pairs:
             return None
         # Initialize
