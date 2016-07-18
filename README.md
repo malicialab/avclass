@@ -287,6 +287,19 @@ If the switch is ommitted, the default threshold of 8 is used.
 
 For more details you can refer to our RAID 2016 paper.
 
+**Output**
+
+The above command outputs two files: 
+*malheurReference.gen* and *malheurReference_lb.gen*. 
+Each of them has 2 columns: token and number of families where the token 
+was observed.
+File *malheurReference.gen* is the final output with the detected 
+generic tokens for which the number of families is above 
+the given threshold. 
+The file *malheurReference_lb.gen* has this information for all tokens.
+Thus, *malheurReference.gen* is a subset of *malheurReference_lb.gen*. 
+
+
 ## Preparation: Alias Detection
 
 Different vendors may assign different names (i.e., aliases) for the same
@@ -303,7 +316,7 @@ provided default file.
 But, if you want to test it you can do:
 
 ```
- $./avclass_alias_detect.py -lb data/malheurReference_lb.json -nalias 100 -talias 0.98 > malheurReference.aliases
+$./avclass_alias_detect.py -lb data/malheurReference_lb.json -nalias 100 -talias 0.98 > malheurReference.aliases
 ```
 
 The -nalias threshold provides the minimum number of samples two tokens 
@@ -315,6 +328,25 @@ the samples appear together.
 If the switch is not provided the default is 0.94 (94%).
 
 For more details you can refer to our RAID 2016 paper.
+
+**Output**
+
+The above command outputs two files:
+*malheurReference.aliases* and *malheurReference_lb.alias*.
+Each of them has 6 columns: 
+1. t1: token that is an alias
+2. t2: family for which t1 is an alias
+3. |t1|: number of input samples where t1 was observed
+4. |t2|: number of input samples where t2 was observed
+5. |t1^t2|: number of input samples where both t1 and t2 were observed
+6. |t1^t2|/|t1|: ratio of input samples where both t1 and t2 
+were observed over the number of input samples where t1 was observed.
+
+File *malheurReference.aliases* is the final output with the 
+detected aliases that satisfy the -nalias and -talias thresholds.
+The file *malheurReference_lb.alias* has this information for all tokens.
+Thus, *malheurReference.aliases* is a subset 
+of *malheurReference_lb.alias*.
 
 
 ## Support

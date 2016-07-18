@@ -196,7 +196,7 @@ def main(args):
                             '.gen'
         gen_fd = open(gen_filename, 'w+')
         # Output header line
-        gen_fd.write("Token\t# Families\n")
+        gen_fd.write("Token\t#Families\n")
         sorted_pairs = sorted(token_family_map.iteritems(), 
                               key=lambda x: len(x[1]) if x[1] else 0, 
                               reverse=True)
@@ -216,7 +216,7 @@ def main(args):
         sorted_pairs = sorted(
                 pair_count_map.items(), key=itemgetter(1))
         # Output header line
-        alias_fd.write("# t1\tt2\t|t1|\t|t2|\t|t1^t2|\t|t1^t2|/|t_1|\n")
+        alias_fd.write("# t1\tt2\t|t1|\t|t2|\t|t1^t2|\t|t1^t2|/|t1|\n")
         # Compute token pair statistic and output to alias file
         for (t1,t2),c in sorted_pairs:
             n1 = token_count_map[t1]
