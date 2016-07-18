@@ -205,6 +205,52 @@ the PUP flag while other samples from the same family do not
 because the PUP-related keywords may not appear in the labels of 
 all samples from the same family. 
 
+## Labeling: Ground Truth Evaluation
+
+If you have ground truth for some malware samples, 
+i.e., you know the true family for those samples, you can evaluate the accuracy of the labeling output by AVClass on those samples with respect to that 
+ground truth.
+The evaluation metrics used are precision, recall, and F1 measure.
+See our RAID 2016 paper above for their definition.
+
+```
+$./avclass_labeler.py -lb data/malheurReference_lb.json -v -gt data/malheurReference_gt.tsv -eval > data/malheurReference.labels
+```
+
+The output includes these lines:
+
+```
+Calculating precision and recall
+3131 out of 3131
+Precision: 90.81  Recall: 93.95 F1-Measure: 92.35
+```
+
+The last line corresponds to the accuracy metrics obtained by 
+comparing AVClass results with the provided ground truth.
+
+Each line in the *data/malheurReference_lb.json* file has 
+two **tab-separated** columns:
+
+```
+0058780b175c3ce5e244f595951f611b8a24bee2 CASINO
+```
+
+which indicates that sample 0058780b175c3ce5e244f595951f611b8a24bee2 
+is known to be of the *CASINO* family.
+Each sample in the input file should also appear in the ground truth file.
+Note that the particular label assigned to each family does not matter. 
+What matters is that all samples in the same family are assigned the 
+same family name (i.e., the same string in the second column) 
+
+The ground truth can be obtained from publicly available malware 
+datasets. 
+The one in *data/malheurReference_gt.tsv* comes from the 
+[Malheur](http://www.mlsec.org/malheur/) dataset. 
+There are other public datasets with ground truth such as 
+[Drebin](https://www.sec.cs.tu-bs.de/~danarp/drebin/) or 
+[Malicia](http://malicia-project.com/dataset.html).
+
+
 ## Preparation: Generic Token Detection
 
 The labeling takes as input a file with generic tokens that should be 
@@ -269,52 +315,6 @@ the samples appear together.
 If the switch is not provided the default is 0.94 (94%).
 
 For more details you can refer to our RAID 2016 paper.
-
-
-## Ground truth evaluation
-
-If you have ground truth for some malware samples, 
-i.e., you know the true family for those samples, you can evaluate the accuracy of the labeling output by AVClass on those samples with respect to that 
-ground truth.
-The evaluation metrics used are precision, recall, and F1 measure.
-See our RAID 2016 paper above for their definition.
-
-```
-$./avclass_labeler.py -lb data/malheurReference_lb.json -v -gt data/malheurReference_gt.tsv -eval > data/malheurReference.labels
-```
-
-The output includes these lines:
-
-```
-Calculating precision and recall
-3131 out of 3131
-Precision: 90.81  Recall: 93.95 F1-Measure: 92.35
-```
-
-The last line corresponds to the accuracy metrics obtained by 
-comparing AVClass results with the provided ground truth.
-
-Each line in the *data/malheurReference_lb.json* file has 
-two **tab-separated** columns:
-
-```
-0058780b175c3ce5e244f595951f611b8a24bee2 CASINO
-```
-
-which indicates that sample 0058780b175c3ce5e244f595951f611b8a24bee2 
-is known to be of the *CASINO* family.
-Each sample in the input file should also appear in the ground truth file.
-Note that the particular label assigned to each family does not matter. 
-What matters is that all samples in the same family are assigned the 
-same family name (i.e., the same string in the second column) 
-
-The ground truth can be obtained from publicly available malware 
-datasets. 
-The one in *data/malheurReference_gt.tsv* comes from the 
-[Malheur](http://www.mlsec.org/malheur/) dataset. 
-There are other public datasets with ground truth such as 
-[Drebin](https://www.sec.cs.tu-bs.de/~danarp/drebin/) or 
-[Malicia](http://malicia-project.com/dataset.html).
 
 
 ## Support
