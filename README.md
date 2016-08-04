@@ -228,7 +228,7 @@ Precision: 90.81  Recall: 93.95 F1-Measure: 92.35
 The last line corresponds to the accuracy metrics obtained by 
 comparing AVClass results with the provided ground truth.
 
-Each line in the *data/malheurReference_lb.json* file has 
+Each line in the *data/malheurReference_gt.tsv* file has 
 two **tab-separated** columns:
 
 ```
@@ -271,7 +271,7 @@ But, if you want to test it you can do:
  $./avclass_generic_detect.py -lb data/malheurReference_lb.json -gt data/malheurReference_gt.tsv -tgen 10 > malheurReference.gen 
 ```
 
-Each line in the *data/malheurReference_lb.json* file has 
+Each line in the *data/malheurReference_gt.tsv* file has 
 two **tab-separated** columns:
 
 ```
