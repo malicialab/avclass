@@ -165,12 +165,10 @@ class AvLabels:
 
         # Split label into tokens and process each token
         for token in re.split("[^0-9a-zA-Z]", label):
-            # Remove leading and trailing backspace from token
-            # and convert to lowercase
+            # Convert to lowercase
             token = token.lower()
 
             # Remove digits at the end
-            # FIXME: What if it is a hash, and removes digits at the end???
             end_len = len(re.findall("\d*$", token)[0])
             if end_len:
                 token = token[:-end_len]
