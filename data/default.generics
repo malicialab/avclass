@@ -46,6 +46,8 @@ trojanransom
 trojanspy
 trojanapt
 trojanclicker
+trojanfakeav
+trojanpsw
 worm
 networm
 hllw
@@ -64,6 +66,7 @@ keylog
 keylogger
 stealer
 infostealer
+pwstealer
 banker
 monitor
 mailer
@@ -162,6 +165,7 @@ bundler
 bundled
 bundleapp
 bundleinstaller
+softwarebundler
 nsis
 browsermodifier
 
@@ -211,6 +215,7 @@ signed
 proxy
 servstart
 autorun
+server
 
 # Packer
 packer
@@ -226,6 +231,7 @@ malpack
 encpk
 malob
 crypt
+crypted
 cryptic
 krypt
 kryptk
@@ -236,8 +242,10 @@ malcrypt
 vbcrypt
 vbkrypt
 xpack
+zpack
 themida
 pecompact
+asprotect
 
 # Program
 program
