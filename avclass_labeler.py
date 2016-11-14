@@ -66,6 +66,7 @@ def main(args):
         token_count_map = {}
         pair_count_map = {}
         token_family_map = {}
+        fam_stats = {}
 
         for line in fd:
 
@@ -134,17 +135,21 @@ def main(args):
                 # Top candidate is most likely family name
                 if tokens:
                     family = tokens[0][0]
+                    is_singleton = False
                 else:
                     family = "SINGLETON:" + name
+                    is_singleton = True
                     singletons += 1
 
                 # Check if sample is PUP, if requested
                 if args.pup:
-                    if av_labels.is_pup(sample_info[3]):
+                    is_pup = av_labels.is_pup(sample_info[3])
+                    if is_pup:
                         is_pup_str = "\t1"
                     else:
                         is_pup_str = "\t0"
                 else:
+                    is_pup = None
                     is_pup_str =  ""
 
                 # Build family map for precision, recall, computation
@@ -164,6 +169,27 @@ def main(args):
                 if args.verbose:
                     verb_fd.write('%s\t%s%s%s\n' % (
                         name, tokens, gt_family, is_pup_str))
+
+                # Store family stats (if required)
+                if args.fam:
+                    if is_singleton:
+                        ff = 'SINGLETONS'
+                    else:
+                        ff = family
+                    try:
+                        numAll, numMal, numPup = fam_stats[ff]
+                    except KeyError:
+                        numAll = 0
+                        numMal = 0
+                        numPup = 0
+
+                    numAll += 1
+                    if args.pup:
+                        if is_pup:
+                            numPup += 1
+                        else:
+                            numMal += 1
+                    fam_stats[ff] = (numAll, numMal, numPup)
 
             except:
                 traceback.print_exc(file=sys.stderr)
@@ -237,6 +263,34 @@ def main(args):
         # Close alias file
         alias_fd.close()
 
+    # If family statistics, output to file
+    if args.fam:
+        # Open family file
+        fam_filename = os.path.basename(os.path.splitext(ifile)[0]) + \
+                            '.families'
+        fam_fd = open(fam_filename, 'w+')
+        # Output header line
+        if args.pup:
+            fam_fd.write("# Family\tTotal\t#Malware\tPUP\n")
+        else:
+            fam_fd.write("# Family\tTotal\n")
+        # Sort map
+        sorted_pairs = sorted(fam_stats.items(), key=itemgetter(1),
+                              reverse=True)
+        # Print map contents
+        for (f,fstat) in sorted_pairs:
+            if args.pup:
+                if fstat[1] > fstat[2]:
+                    famType = "malware"
+                else:
+                    famType = "pup"
+                fam_fd.write("%s\t%d\t%d\t%d\t%s\n" % (f, fstat[0], fstat[1],
+                                                fstat[2], famType))
+            else:
+                fam_fd.write("%s\t%d\n" % (f, fstat[0]))
+        # Close file
+        fam_fd.close()
+
     # Close log file
     if args.verbose:
         sys.stderr.write('[-] Verbose output in %s\n' % (log_filename))
@@ -290,12 +344,16 @@ if __name__=='__main__':
         help='if used produce aliases file at end')
 
     argparser.add_argument('-v', '--verbose',
-        help='output .verbose file with distinct tokens',
-        action='store_true')
+        action='store_true',
+        help='output .verbose file with distinct tokens')
 
     argparser.add_argument('-hash',
         help='hash used to name samples. Should match ground truth',
         choices=['md5', 'sha1', 'sha256'])
+
+    argparser.add_argument('-fam',
+        action='store_true',
+        help='if used produce families file with PUP/malware counts per family')
 
     args = argparser.parse_args()
 
