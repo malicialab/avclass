@@ -271,7 +271,7 @@ def main(args):
         fam_fd = open(fam_filename, 'w+')
         # Output header line
         if args.pup:
-            fam_fd.write("# Family\tTotal\t#Malware\tPUP\n")
+            fam_fd.write("# Family\tTotal\tMalware\tPUP\tFamType\n")
         else:
             fam_fd.write("# Family\tTotal\n")
         # Sort map
