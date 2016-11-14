@@ -244,9 +244,15 @@ vbcrypt
 vbkrypt
 xpack
 zpack
-themida
-pecompact
+susppack
+
+# Packed (specific packers)
 asprotect
+nspack
+pecompact
+upack
+themida
+vmprotect
 
 # Program
 program
