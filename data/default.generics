@@ -271,6 +271,9 @@ msil
 java
 j2me
 fakedoc
+fakepdf
+webpage
+iframe
 
 # Patch
 pepatch
