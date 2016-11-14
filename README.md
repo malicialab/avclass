@@ -168,9 +168,41 @@ At this point you have read the most important information on how to use
 AVClass. 
 The following sections describe steps that most users will not need.
 
+## Labeling: Family Ranking
+
+AVClass has a -fam switch to output a file with a ranking of the 
+families assigned to the input samples. 
+
+```
+$./avclass_labeler.py -lb data/malheurReference_lb.json -v -fam > malheurReference.labels
+```
+
+will produce a file called *malheurReference_lb.families* with two columns:
+
+```
+virut 441
+allaple 301
+podnuha 300
+```
+
+indicating that 441 samples were classified in the virut family, 
+301 as allaple, and 300 as podnuha.
+
+This switch is very similar to using the following shell command:
+
+```
+$cut -f 2 malheurReference.labels | sort | uniq -c | sort -nr
+```
+
+The main difference is that using the -fam switch all SINGLETON samples, 
+i.e., those for which no label was found, 
+are grouped into a fake *SINGLETONS* family, 
+while the shell command would leave each singleton as a separate family.
+
+
 ## Labeling: PUP Classification
 
-AVClass also contains a switch to classify a sample as
+AVClass also has a -pup switch to classify a sample as
 Potentially Unwanted Program (PUP) or malware.
 This classification looks for PUP-related keywords
 (e.g., pup, pua, unwanted, adware) in the AV labels and was proposed in our
@@ -192,7 +224,7 @@ aca2d12934935b070df8f50e06a20539 adrotator 1
 67d15459e1f85898851148511c86d88d adultbrowser 0
 ```
 
-The extract digit at the end is a Boolean flag that 
+The digit at the end is a Boolean flag that 
 indicates sample aca2d12934935b070df8f50e06a20539 is
 (likely) PUP, but sample 67d15459e1f85898851148511c86d88d is (likely) not.
 
@@ -204,6 +236,30 @@ Note that it is possible that some samples from a family get
 the PUP flag while other samples from the same family do not
 because the PUP-related keywords may not appear in the labels of 
 all samples from the same family. 
+To address this issue, you can combine the -pup switch with the -fam switch.
+This combination will add into the families file the classification of the 
+family as malware or PUP, based on a majority vote among the samples in a 
+family.
+
+```
+$./avclass_labeler.py -lb data/malheurReference_lb.json -v -pup -fam > malheurReference.labels
+```
+
+will produce a file called *malheurReference_lb.families* with five columns:
+
+```
+# Family  Total Malware PUP FamType
+virut 441 441 0 malware
+magiccasino 173 0 173 pup
+ejik  168 124 44  malware
+```
+
+For virut, the numbers indicate all the 441 virut samples are classified 
+as malware, and thus the last column states that virut is a malware family. 
+For magiccasino, all 173 samples are labeled as PUP, thus the family is PUP.
+For ejik, out of the 168 samples, 124 are labeled as malware and 44 as PUP, 
+so the family is classified as malware.
+
 
 ## Labeling: Ground Truth Evaluation
 
