@@ -108,7 +108,7 @@ from the *adrotator* family and
 67d15459e1f85898851148511c86d88d from the *adultbrowser* family.
 
 The verbose (-v) switch makes it output an extra 
-*malheurReference_lb.verbose.verbose* file
+*malheurReference_lb.verbose* file
 with all families extracted for each sample ranked by the number of AV 
 engines that use that family.
 The file looks like this:
@@ -261,11 +261,16 @@ You can edit that file to add additional generic tokens you feel
 we are missing.
 
 In our RAID 2016 paper we describe an automatic approach to 
-identify generic tokens, which requires ground truth, 
+identify generic tokens, which **requires ground truth**, 
 i.e., it requires knowing the true family for each input sample.
-That is why we expect most users will skip this step and simply use our 
-provided default file.
-But, if you want to test it you can do:
+Not only that, but **the ground truth should be large**, 
+i.e., contain at least one hundred thousand samples. 
+In our work we identified generic tokens using as ground truth 
+the concatenation of all datasets for which we had ground truth.
+This requirement of a large ground truth dataset is why we expect most users 
+will skip this step and simply use our provided default file.
+
+If you want to test generic token detection you can do:
 
 ```
  $./avclass_generic_detect.py -lb data/malheurReference_lb.json -gt data/malheurReference_gt.tsv -tgen 10 > malheurReference.gen 
@@ -285,10 +290,6 @@ The *-tgen 10* switch is a threshold for the minimum number of families
 where a token has to be observed to be considered generic. 
 If the switch is ommitted, the default threshold of 8 is used.
 
-For more details you can refer to our RAID 2016 paper.
-
-**Output**
-
 The above command outputs two files: 
 *malheurReference.gen* and *malheurReference_lb.gen*. 
 Each of them has 2 columns: token and number of families where the token 
@@ -298,6 +299,13 @@ generic tokens for which the number of families is above
 the given threshold. 
 The file *malheurReference_lb.gen* has this information for all tokens.
 Thus, *malheurReference.gen* is a subset of *malheurReference_lb.gen*. 
+
+However, note that in the above command you are trying to identify generic 
+tokens from a small dataset since Drebin only contains 3K labeled samples. 
+Thus, *malheurReference.gen* only contains 25 identified generic tokens. 
+Using those 25 generic tokens will produce significantly worse results 
+than using the generic tokens in *data/default.generics*. 
+For more details you can refer to our RAID 2016 paper.
 
 
 ## Preparation: Alias Detection
@@ -311,9 +319,18 @@ You can edit that file to add additional aliases you feel we are missing.
 
 In our RAID 2016 paper we describe an automatic approach 
 to identify aliases.
-We expect most users will skip this step and simply use our 
-provided default file.
-But, if you want to test it you can do:
+Our alias detection approach 
+**requires as input the AV labels for large set of samples**, 
+e.g., several million samples. 
+In contrast with the generic token detection, the input samples for 
+alias detection **do not need to be labeled**, 
+i.e., no need to know their family.
+In our work we identified aliases using as input the largest of our 
+unlabeled datasets, which contained nearly 8M samples. 
+This requirement of a large input dataset is why we expect most users
+will skip this step and simply use our provided default file.
+
+If you want to test alias detection you can do:
 
 ```
 $./avclass_alias_detect.py -lb data/malheurReference_lb.json -nalias 100 -talias 0.98 > malheurReference.aliases
@@ -326,10 +343,6 @@ If the switch is not provided the default is 20.
 The -talias threshold provides the minimum fraction of times that 
 the samples appear together.
 If the switch is not provided the default is 0.94 (94%).
-
-For more details you can refer to our RAID 2016 paper.
-
-**Output**
 
 The above command outputs two files:
 *malheurReference.aliases* and *malheurReference_lb.alias*.
@@ -347,6 +360,15 @@ detected aliases that satisfy the -nalias and -talias thresholds.
 The file *malheurReference_lb.alias* has this information for all tokens.
 Thus, *malheurReference.aliases* is a subset 
 of *malheurReference_lb.alias*.
+
+However, note that in the above command you are trying to identify aliases
+from a small dataset since Drebin only contains 3K samples.
+Thus, *malheurReference.aliases* only contains 6 identified aliases. 
+Using those 6 aliases will produce significantly worse results than using 
+the aliases in *data/default.aliases*.
+As mentioned, to improve the identified aliases you should provide as 
+input several million samples.
+For more details you can refer to our RAID 2016 paper.
 
 
 ## Support
