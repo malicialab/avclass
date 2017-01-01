@@ -83,6 +83,9 @@ def main(args):
             # Read JSON line and extract sample info (i.e., hashes and labels)
             vt_rep = json.loads(line)
             sample_info = av_labels.get_sample_info(vt_rep, args.vt)
+            if sample_info is None:
+                print ""
+                return
             name = getattr(sample_info, hash_type)
 
             # If the VT report has no AV labels, continue
