@@ -23,6 +23,7 @@ dangerousobject
 
 # Heuristic detection
 generic
+generik
 gen
 genmalicious
 generickd
@@ -183,6 +184,7 @@ variant
 based
 possible
 threat
+probably
 
 # Unclassified
 unknown
