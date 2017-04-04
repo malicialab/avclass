@@ -66,6 +66,8 @@ class AvLabels:
         label_pairs = []
         if from_vt:
             try:
+                if not vt_rep:
+                    return None
                 scans = vt_rep['scans']
             except KeyError:
                 return None
