@@ -131,8 +131,7 @@ class AvLabels:
            Returns updated label'''
 
         # Truncate after last '.'
-        if av_name in set(['Norman', 'Avast', 'Avira',
-                          'McAffee-GW-Edition', 'McAffee', 'Kaspersky',
+        if av_name in set(['Norman', 'Avast', 'Avira', 'Kaspersky',
                           'ESET-NOD32', 'Fortinet', 'Jiangmin', 'Comodo',
                           'GData', 'Avast', 'Sophos',
                           'TrendMicro-HouseCall', 'TrendMicro',
@@ -147,8 +146,18 @@ class AvLabels:
                 label = tokens[0]
 
         # Truncate after last '!'
-        if av_name == 'Agnitum':
+        if av_name in set(['Agnitum','McAffee','McAffee-GW-Edition']):
             label = label.rsplit('!', 1)[0]
+
+        # Truncate after last '('
+        if av_name in set(['K7AntiVirus', 'K7GW']):
+            label = label.rsplit('(', 1)[0]
+
+        # Truncate after last '@'
+        # GData would belong here, but already trimmed earlier
+        if av_name in set(['Ad-Aware', 'BitDefender', 'Emsisoft', 'F-Secure', 
+                          'Microworld-eScan']):
+            label = label.rsplit('(', 1)[0]
 
         return label
 
