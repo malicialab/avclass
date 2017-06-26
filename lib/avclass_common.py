@@ -221,7 +221,7 @@ class AvLabels:
         av_whitelist = self.avs
 
         # Initialize auxiliary data structures
-        duplicates = set()
+        labels_seen = set()
         token_map = {}
 
         # Process each AV label
@@ -245,11 +245,11 @@ class AvLabels:
                 label = label[:-4]
 
             # If we have seen the label before, skip
-            if label in duplicates:
+            if label in labels_seen:
                 continue
-            # If not, we add it to duplicates
+            # If not, we add it to the set of labels seen
             else:
-                duplicates.add(label)
+                labels_seen.add(label)
 
             ##################
             # Suffix removal #
