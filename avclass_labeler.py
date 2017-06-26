@@ -83,6 +83,17 @@ def main(args):
             # Read JSON line and extract sample info (i.e., hashes and labels)
             vt_rep = json.loads(line)
             sample_info = av_labels.get_sample_info(vt_rep, args.vt)
+            if sample_info is None:
+                try:
+                    name = vt_rep['md5']
+                    sys.stderr.write('\nNo AV labels for %s\n' % name)
+                except KeyError:
+                    sys.stderr.write('\nCould not process: %s\n' % line)
+                sys.stderr.flush()
+                vt_empty += 1
+                continue
+
+            # Sample's name is selected hash type (md5 by default)
             name = getattr(sample_info, hash_type)
 
             # If the VT report has no AV labels, continue
