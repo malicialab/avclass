@@ -232,6 +232,7 @@ packed
 malpack
 encpk
 malob
+cryp
 crypt
 crypted
 cryptic
@@ -241,6 +242,7 @@ kryptk
 kryptik
 obfuscated
 obfus
+obfusc
 malcrypt
 vbcrypt
 vbkrypt
@@ -304,6 +306,7 @@ fraudtool
 virtool
 keygen
 hacktool
+hktl
 spamtool
 
 # Small
