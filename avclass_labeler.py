@@ -112,7 +112,7 @@ def main(args):
 
                 # If alias detection, populate maps
                 if args.aliasdetect:
-                    prev_tok = ""
+                    prev_tokens = set([])
                     for entry in tokens:
                         curr_tok = entry[0]
                         curr_count = token_count_map.get(curr_tok)
@@ -120,7 +120,7 @@ def main(args):
                             token_count_map[curr_tok] = curr_count + 1
                         else:
                             token_count_map[curr_tok] = 1
-                        if prev_tok != "":
+                        for prev_tok in prev_tokens:
                             if prev_tok < curr_tok:
                                 pair = (prev_tok,curr_tok) 
                             else: 
@@ -130,7 +130,7 @@ def main(args):
                                 pair_count_map[pair] = pair_count + 1
                             else:
                                 pair_count_map[pair] = 1
-                        prev_tok = curr_tok
+                        prev_tokens.add(curr_tok)
 
                 # If generic token detection, populate map
                 if args.gendetect and args.gt:
