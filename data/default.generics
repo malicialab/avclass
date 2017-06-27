@@ -53,6 +53,8 @@ worm
 networm
 hllw
 virus
+fileinfector
+prepender
 hllp
 rootkit
 spyware
@@ -213,8 +215,11 @@ blocker
 fakems
 signed
 
-# Behavior: other
+# Behavior: proxy
 proxy
+trojanproxy
+
+# Behavior: other
 servstart
 autorun
 server
