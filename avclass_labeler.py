@@ -48,26 +48,49 @@ def main(args):
     # Create AvLabels object
     av_labels = AvLabels(args.gen, args.alias, args.av)
 
-    # Select input file with AV labels
-    ifile = args.vt if args.vt else args.lb
+    # Build list of input files
+    # NOTE: duplicate input files are not removed
+    ifile_l = []
+    if (args.vt):
+        ifile_l += args.vt
+        ifile_are_vt = True
+    if (args.lb):
+        ifile_l += args.lb
+        ifile_are_vt = False
+    if (args.vtdir): 
+        ifile_l += [os.path.join(args.vtdir, f) for f in os.listdir(args.vtdir)]
+        ifile_are_vt = True
+    if (args.lbdir):
+        ifile_l += [os.path.join(args.lbdir, f) for f in os.listdir(args.lbdir)]
+        ifile_are_vt = False
+
+    # Select output prefix
+    out_prefix = os.path.basename(os.path.splitext(ifile_l[0])[0])
 
     # If verbose, open log file
     if args.verbose:
-        log_filename = os.path.basename(os.path.splitext(ifile)[0]) + \
-                            '.verbose'
+        log_filename = out_prefix + '.verbose'
         verb_fd = open(log_filename, 'w+')
 
-    # Process each JSON
+    # Initialize state
+    first_token_dict = {}
+    token_count_map = {}
+    pair_count_map = {}
+    token_family_map = {}
+    fam_stats = {}
     vt_all = 0
     vt_empty = 0
     singletons = 0
-    with open(ifile, 'r') as fd:
-        first_token_dict = {}
-        token_count_map = {}
-        pair_count_map = {}
-        token_family_map = {}
-        fam_stats = {}
 
+    # Process each input file
+    for ifile in ifile_l:
+        # Open file
+        fd = open(ifile, 'r')
+
+        # Debug info, file processed
+        sys.stderr.write('[-] Processing input file %s\n' % ifile)
+
+        # Process all lines in file
         for line in fd:
 
             # If blank line, skip
@@ -82,7 +105,7 @@ def main(args):
 
             # Read JSON line and extract sample info (i.e., hashes and labels)
             vt_rep = json.loads(line)
-            sample_info = av_labels.get_sample_info(vt_rep, args.vt)
+            sample_info = av_labels.get_sample_info(vt_rep, ifile_are_vt)
             if sample_info is None:
                 try:
                     name = vt_rep['md5']
@@ -211,6 +234,9 @@ def main(args):
         sys.stderr.flush()
         sys.stderr.write('\n')
 
+        # Close file
+        fd.close()
+
     # Print statistics
     sys.stderr.write(
             "[-] Samples: %d NoLabels: %d Singletons: %d "
@@ -229,8 +255,7 @@ def main(args):
     # If generic token detection, print map
     if args.gendetect:
         # Open generic tokens file
-        gen_filename = os.path.basename(os.path.splitext(ifile)[0]) + \
-                            '.gen'
+        gen_filename = out_prefix + '.gen'
         gen_fd = open(gen_filename, 'w+')
         # Output header line
         gen_fd.write("Token\t#Families\n")
@@ -242,12 +267,12 @@ def main(args):
 
         # Close generic tokens file
         gen_fd.close()
+        sys.stderr.write('[-] Generic token data in %s\n' % (gen_filename))
 
     # If alias detection, print map
     if args.aliasdetect:
         # Open alias file
-        alias_filename = os.path.basename(os.path.splitext(ifile)[0]) + \
-                            '.alias'
+        alias_filename = out_prefix + '.alias'
         alias_fd = open(alias_filename, 'w+')
         # Sort token pairs by number of times they appear together
         sorted_pairs = sorted(
@@ -273,12 +298,12 @@ def main(args):
                 x,y,xn,yn,c,f))
         # Close alias file
         alias_fd.close()
+        sys.stderr.write('[-] Alias data in %s\n' % (alias_filename))
 
     # If family statistics, output to file
     if args.fam:
         # Open family file
-        fam_filename = os.path.basename(os.path.splitext(ifile)[0]) + \
-                            '.families'
+        fam_filename = out_prefix + '.families'
         fam_fd = open(fam_filename, 'w+')
         # Output header line
         if args.pup:
@@ -301,6 +326,7 @@ def main(args):
                 fam_fd.write("%s\t%d\n" % (f, fstat[0]))
         # Close file
         fam_fd.close()
+        sys.stderr.write('[-] Family data in %s\n' % (fam_filename))
 
     # Close log file
     if args.verbose:
@@ -314,14 +340,20 @@ if __name__=='__main__':
         description='''Extracts the family of a set of samples.
             Also calculates precision and recall if ground truth available''')
 
-    argparser.add_argument('-vt',
-        help='file with full VT reports '
-             '(REQUIRED if -lb argument not present)')
+    argparser.add_argument('-vt', action='append',
+        help='file with VT reports '
+             '(Can be provided multiple times)')
 
-    argparser.add_argument('-lb',
-        help='file with simplified JSON reports'
+    argparser.add_argument('-lb', action='append',
+        help='file with simplified JSON reports '
              '{md5,sha1,sha256,scan_date,av_labels} '
-             '(REQUIRED if -vt not present)')
+             '(Can be provided multiple times)')
+
+    argparser.add_argument('-vtdir',
+        help='existing directory with VT reports')
+
+    argparser.add_argument('-lbdir',
+        help='existing directory with simplified JSON reports')
 
     argparser.add_argument('-gt',
         help='file with ground truth')
@@ -368,12 +400,14 @@ if __name__=='__main__':
 
     args = argparser.parse_args()
 
-    if not args.vt and not args.lb:
-        sys.stderr.write('Argument -vt or -lb is required\n')
+    if not args.vt and not args.lb and not args.vtdir and not args.lbdir:
+        sys.stderr.write('One of the following 4 arguments is required: '
+                          '-vt,-lb,-vtdir,-lbdir\n')
         exit(1)
 
-    if args.vt and args.lb:
-        sys.stderr.write('Use either -vt or -lb argument, not both.\n')
+    if (args.vt or args.vtdir) and (args.lb or args.lbdir):
+        sys.stderr.write('Use either -vt/-vtdir or -lb/-lbdir. '
+                          'Both types of input files cannot be combined.\n')
         exit(1)
 
     if args.gendetect and not args.gt:

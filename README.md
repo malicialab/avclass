@@ -164,6 +164,46 @@ Furthermore, users could obtain AV labels from other sources and
 the simpler the input JSON format, 
 the easier to convert those AV labels into an input file.
 
+**Multiple input files**
+
+AVClass can handle multiple input files putting the results in the same 
+output files
+(if you want results in separate files, process each input file separately).
+
+It is possible to provide the -vt and -lb input options multiple times.
+
+```
+$./avclass_labeler.py -vt <file1> -vt <file2> > all.labels
+```
+```
+$./avclass_labeler.py -lb <file1> -lb <file2> > all.labels
+```
+
+There are also -vtdir and -lbdir options that can be used to provide 
+an input directory where all files are VT (-vtdir) 
+or simplified (-lbdir) JSON reports
+
+
+```
+$./avclass_labeler.py -vtdir <directory> > all.labels
+```
+
+It is also possible to combine -vt with -vtdir and -lb with -lbdir, 
+but you cannot combine input files of different format. 
+Thus, this command works:
+
+
+```
+$./avclass_labeler.py -vt <file> -vtdir <directory> > all.labels
+```
+
+But, this one throws an error: 
+
+```
+$./avclass_labeler.py -vt <file1> -lb <file2> > all.labels
+```
+
+
 At this point you have read the most important information on how to use 
 AVClass. 
 The following sections describe steps that most users will not need.
