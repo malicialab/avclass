@@ -421,6 +421,7 @@ if __name__=='__main__':
     if args.alias:
         if args.alias == '/dev/null':
             sys.stderr.write('[-] Using no aliases\n')
+            args.alias = None
         else:
             sys.stderr.write('[-] Using aliases in %s\n' % (
                               args.alias))
@@ -431,6 +432,7 @@ if __name__=='__main__':
     if args.gen:
         if args.gen == '/dev/null':
             sys.stderr.write('[-] Using no generic tokens\n')
+            args.gen = None
         else:
             sys.stderr.write('[-] Using generic tokens in %s\n' % (
                               args.gen))
