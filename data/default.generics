@@ -1,5 +1,4 @@
 # architecture / os
-# architecture / os
 win
 win32
 w32
@@ -22,6 +21,7 @@ delphi
 delf
 php
 java
+js
 
 # malicious software
 malware
@@ -108,13 +108,15 @@ fakealert
 clicker
 clickbot
 adclicker
+addisplay
+adlock
 click
 bitcoinminer
 bitcoin
 trojansms
 smssend
 searcher
-kgen
+diskcoder
 
 # unspecified ransomware that locks the screen
 winlock
@@ -176,6 +178,7 @@ docdl
 docdrop
 docdrp
 macrodown
+loader
 
 # pup
 pup
@@ -209,6 +212,13 @@ softwarebundler
 nsis
 browsermodifier
 unsafe
+hiddenapp
+hiddad
+securityrisk
+istartsurf
+airinstaller
+installflash
+startsurf
 
 # suspicious
 suspected
@@ -268,7 +278,12 @@ server
 static
 engine
 instalador
-crack
+redirector
+autoins
+shipup
+shipli
+regsup
+regrun
 
 # executes another file
 starter
@@ -301,6 +316,7 @@ krypt
 kryptk
 kryptik
 genkryptik
+msilkrypt
 obfuscated
 obfus
 obfusc
@@ -348,11 +364,13 @@ fakedoc
 fakepdf
 webpage
 iframe
+iframeref
 apk
 rtf
 dde
 ddeauto
 ddeexec
+pe
 
 # patch
 pepatch
@@ -375,9 +393,11 @@ securitytool
 fraudtool
 virtool
 keygen
+kgen
 hacktool
 hktl
 spamtool
+crack
 
 # small
 small
@@ -402,6 +422,15 @@ razy
 wisdomeyes
 yakes
 ursu
+midie
+mikey
+jaik
+jaiko
+jaike
+jintor
+jimmy
+wakme
+gepys
 
 # test
 test
@@ -416,6 +445,7 @@ normal
 other
 optional
 hack
+hackkms
 access
 
 # others
@@ -427,9 +457,11 @@ fakeapp
 hiddenapp
 fakemozilla
 fakeinstall
+fakeinst
 gdsda
 filerepmetagen
 bypass
+bypassuac
 repsandbox
 origin
 elenoocka
@@ -446,3 +478,13 @@ hype
 hqwaasjkflhi
 dovs
 ha15002e
+tftpd
+tdss
+tbvj
+boqx
+pdfka
+boogr
+hesv
+bcex
+d4fbeb
+wronginf
