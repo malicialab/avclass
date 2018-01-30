@@ -1,4 +1,5 @@
-# Architecture / OS
+# architecture / os
+# architecture / os
 win
 win32
 w32
@@ -14,14 +15,24 @@ macosx
 osx
 osx32
 
-# Malicious software
+# programming language
+autoit
+python
+delphi
+delf
+php
+java
+
+# malicious software
 malware
 malicious
 malagent
 maldroid
 dangerousobject
+mal
+maldoc
 
-# Heuristic detection
+# heuristic detection
 generic
 generik
 gen
@@ -34,9 +45,15 @@ siggen
 genetic
 genome
 kcloud
+cloud
 memscan
+heur
+ageneric
+sgeneric
+ransomheur
+tsgeneric
 
-# Malware classes
+# malware classes
 trojan
 horse
 troj
@@ -49,6 +66,7 @@ trojanapt
 trojanclicker
 trojanfakeav
 trojanpsw
+trjgen
 worm
 networm
 hllw
@@ -88,6 +106,7 @@ rogue
 fakeav
 fakealert
 clicker
+clickbot
 adclicker
 click
 bitcoinminer
@@ -95,8 +114,25 @@ bitcoin
 trojansms
 smssend
 searcher
+kgen
 
-# Macro
+# unspecified ransomware that locks the screen
+winlock
+screenlock
+locker
+lockscreen
+
+#stealer for steam credentials
+stimilik
+steamilik
+steamsteal
+
+# unspecified stealer
+thief
+passdumper
+pwdump
+
+# macro
 macro
 badmacro
 maliciousmacro
@@ -109,7 +145,7 @@ w2km
 mo97
 x2km
 
-# Downloader
+# downloader
 downloader
 downldr
 dloader
@@ -123,6 +159,7 @@ downware
 downagent
 dropper
 drop
+dropr
 dldrop
 exedrop
 mdropper
@@ -140,7 +177,7 @@ docdrop
 docdrp
 macrodown
 
-# PUP
+# pup
 pup
 pua
 adware
@@ -171,13 +208,15 @@ bundleinstaller
 softwarebundler
 nsis
 browsermodifier
+unsafe
 
-# Suspicious
+# suspicious
 suspected
 suspect
 suspicious
 susp
 suspic
+suspectcrc
 suspectcrc
 reputation
 behaveslike
@@ -188,52 +227,67 @@ possible
 threat
 probably
 confidence
+highconfidence
 
-# Unclassified
+# unclassified
 unknown
 unclassifiedmalware
 undef
 
-# Behavior: injection
+# behavior: injection
 injector
 inject
 vbinject
 injcrypt
 injected
+vbkryjetor
 
-# Behavior: homepage modification
+# behavior: homepage modification
 homepage
 startpage
 
-# Behavior: kill
+# behavior: kill
 avkill
 killav
 antiav
 antifw
 blocker
 
-# Behavior: signed
+# behavior: signed
 fakems
 signed
 
-# Behavior: proxy
+# behavior: proxy
 proxy
 trojanproxy
 
-# Behavior: other
+# behavior: other
 servstart
 autorun
 server
+static
+engine
+instalador
+crack
 
-# Packer
+# executes another file
+starter
+runner
+launcher
+vbsrunner
+powershellrunner
+
+# packer
 packer
 cryptor
 crypter
 obfuscator
 msilobfuscator
 encoder
+filecryptor
+pakes
 
-# Packed
+# packed
 packed
 malpack
 encpk
@@ -246,6 +300,7 @@ genpack
 krypt
 kryptk
 kryptik
+genkryptik
 obfuscated
 obfus
 obfusc
@@ -255,8 +310,10 @@ vbkrypt
 xpack
 zpack
 susppack
+vbpack
+cripack
 
-# Packed (specific packers)
+# packed (specific packers)
 asprotect
 nspack
 pecompact
@@ -264,14 +321,15 @@ upack
 themida
 vmprotect
 
-# Program
+# program
 program
 application
 appl
 software
 file
+filerepmalware
 
-# File types
+# file types
 text
 html
 script
@@ -290,21 +348,27 @@ fakedoc
 fakepdf
 webpage
 iframe
+apk
+rtf
+dde
+ddeauto
+ddeexec
 
-# Patch
+# patch
 pepatch
 patchfile
 patched
 
-# Exploit
+# exploit
 exploit
 expl
 
-# Corrupted
+# corrupted
 damaged
 corrupt
+malformed
 
-# Tools
+# tools
 tool
 risktool
 securitytool
@@ -315,12 +379,13 @@ hacktool
 hktl
 spamtool
 
-# Small
+# small
 small
 tiny
 
-# Generic families
+# generic families
 agent
+agentb
 eldorado
 artemis
 krap
@@ -332,12 +397,17 @@ symmi
 jorik
 graftor
 strictor
+zusy
+razy
+wisdomeyes
+yakes
+ursu
 
-# Test
+# test
 test
 testvirus
 
-# Misc
+# misc
 password
 website
 encodefeature
@@ -347,4 +417,32 @@ other
 optional
 hack
 access
- 
+
+# others
+antivm
+microfake
+fakeav
+fakems
+fakeapp
+hiddenapp
+fakemozilla
+fakeinstall
+gdsda
+filerepmetagen
+bypass
+repsandbox
+origin
+elenoocka
+evo
+bmgfb0ivisk
+1ywbboausbdib
+upkm
+ouraaqspkdkk
+remoteadmin
+fwwy
+clhf
+score
+hype
+hqwaasjkflhi
+dovs
+ha15002e
