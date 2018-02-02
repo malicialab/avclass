@@ -34,6 +34,7 @@ maldoc
 
 # heuristic detection
 generic
+genericgb
 generik
 gen
 genmalicious
@@ -47,11 +48,9 @@ genome
 kcloud
 cloud
 memscan
-heur
 ageneric
 sgeneric
 ransomheur
-tsgeneric
 
 # malware classes
 trojan
@@ -117,6 +116,8 @@ trojansms
 smssend
 searcher
 diskcoder
+diskwritter
+infector
 
 # unspecified ransomware that locks the screen
 winlock
@@ -179,6 +180,13 @@ docdrop
 docdrp
 macrodown
 loader
+downloadhelper
+soft32downloader
+dupzom
+silcon
+fraudload
+fraudrop
+mdrop
 
 # pup
 pup
@@ -212,6 +220,7 @@ softwarebundler
 nsis
 browsermodifier
 unsafe
+hiddenads
 hiddenapp
 hiddad
 securityrisk
@@ -219,6 +228,7 @@ istartsurf
 airinstaller
 installflash
 startsurf
+outbrowse
 
 # suspicious
 suspected
@@ -226,7 +236,6 @@ suspect
 suspicious
 susp
 suspic
-suspectcrc
 suspectcrc
 reputation
 behaveslike
@@ -274,6 +283,8 @@ trojanproxy
 # behavior: other
 servstart
 autorun
+autoruner
+autoruns
 server
 static
 engine
@@ -291,6 +302,7 @@ runner
 launcher
 vbsrunner
 powershellrunner
+powershell
 
 # packer
 packer
@@ -298,9 +310,11 @@ cryptor
 crypter
 obfuscator
 msilobfuscator
+msilperseus
 encoder
 filecryptor
 pakes
+black
 
 # packed
 packed
@@ -336,6 +350,7 @@ pecompact
 upack
 themida
 vmprotect
+hqwar
 
 # program
 program
@@ -358,7 +373,6 @@ msoffice
 shellcode
 shellkode
 msil
-java
 j2me
 fakedoc
 fakepdf
@@ -431,6 +445,10 @@ jintor
 jimmy
 wakme
 gepys
+aspxor
+cerbu
+golbla
+sivis
 
 # test
 test
@@ -447,17 +465,14 @@ optional
 hack
 hackkms
 access
+sitehijack
 
 # others
 antivm
 microfake
-fakeav
-fakems
 fakeapp
-hiddenapp
 fakemozilla
 fakeinstall
-fakeinst
 gdsda
 filerepmetagen
 bypass
@@ -488,3 +503,93 @@ hesv
 bcex
 d4fbeb
 wronginf
+foxhiex
+no_scans
+softonic
+cuem
+disfa
+diztakun
+dojos
+drpr
+ekstak
+extcrome
+forav
+hasad
+hosts
+jacard
+jiagu
+kaymundler
+kespo
+khalesi
+knobtromp
+llac
+lmuarnw1xabgc
+lynx
+madeba
+marker
+mecor
+micro
+mseg
+recam
+thus
+tiff
+tiggre
+tpyn
+tunkoo
+w2000m
+x2000m
+za0auqkdxfpi
+ausiv
+autohk
+ctqc
+delflash
+driverpack
+fo0baey9x6ci
+fo0bakfgryno
+fo0bamtwq6jo
+fo0baon3ujhp
+garrun
+genasom
+hiloti
+killproc
+lexip
+lodbak
+menti
+mistery
+obfsstrm
+onlinegames
+pacex
+patcher
+pdfjs
+pwsime
+rakhni
+rantest
+recyl
+remotecode
+reset
+revo
+rlpack
+scene
+scriptkd
+scrop
+siscos
+smartfortress
+testapp
+vehidis
+virtu
+vmpbad
+winner
+winreg
+yu0bfba
+zdtad
+ziqab4rv1zj
+softobase
+pcclient
+fakromup
+popuppers
+soft32down
+soft32download
+wedownload
+softbase
+bxib
+softonicdownloader
