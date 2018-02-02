@@ -1,4 +1,4 @@
-# Architecture / OS
+# architecture / os
 win
 win32
 w32
@@ -14,15 +14,27 @@ macosx
 osx
 osx32
 
-# Malicious software
+# programming language
+autoit
+python
+delphi
+delf
+php
+java
+js
+
+# malicious software
 malware
 malicious
 malagent
 maldroid
 dangerousobject
+mal
+maldoc
 
-# Heuristic detection
+# heuristic detection
 generic
+genericgb
 generik
 gen
 genmalicious
@@ -34,9 +46,13 @@ siggen
 genetic
 genome
 kcloud
+cloud
 memscan
+ageneric
+sgeneric
+ransomheur
 
-# Malware classes
+# malware classes
 trojan
 horse
 troj
@@ -49,6 +65,7 @@ trojanapt
 trojanclicker
 trojanfakeav
 trojanpsw
+trjgen
 worm
 networm
 hllw
@@ -88,15 +105,37 @@ rogue
 fakeav
 fakealert
 clicker
+clickbot
 adclicker
+addisplay
+adlock
 click
 bitcoinminer
 bitcoin
 trojansms
 smssend
 searcher
+diskcoder
+diskwritter
+infector
 
-# Macro
+# unspecified ransomware that locks the screen
+winlock
+screenlock
+locker
+lockscreen
+
+#stealer for steam credentials
+stimilik
+steamilik
+steamsteal
+
+# unspecified stealer
+thief
+passdumper
+pwdump
+
+# macro
 macro
 badmacro
 maliciousmacro
@@ -109,7 +148,7 @@ w2km
 mo97
 x2km
 
-# Downloader
+# downloader
 downloader
 downldr
 dloader
@@ -123,6 +162,7 @@ downware
 downagent
 dropper
 drop
+dropr
 dldrop
 exedrop
 mdropper
@@ -139,8 +179,16 @@ docdl
 docdrop
 docdrp
 macrodown
+loader
+downloadhelper
+soft32downloader
+dupzom
+silcon
+fraudload
+fraudrop
+mdrop
 
-# PUP
+# pup
 pup
 pua
 adware
@@ -171,8 +219,18 @@ bundleinstaller
 softwarebundler
 nsis
 browsermodifier
+unsafe
+hiddenads
+hiddenapp
+hiddad
+securityrisk
+istartsurf
+airinstaller
+installflash
+startsurf
+outbrowse
 
-# Suspicious
+# suspicious
 suspected
 suspect
 suspicious
@@ -188,52 +246,77 @@ possible
 threat
 probably
 confidence
+highconfidence
 
-# Unclassified
+# unclassified
 unknown
 unclassifiedmalware
 undef
 
-# Behavior: injection
+# behavior: injection
 injector
 inject
 vbinject
 injcrypt
 injected
+vbkryjetor
 
-# Behavior: homepage modification
+# behavior: homepage modification
 homepage
 startpage
 
-# Behavior: kill
+# behavior: kill
 avkill
 killav
 antiav
 antifw
 blocker
 
-# Behavior: signed
+# behavior: signed
 fakems
 signed
 
-# Behavior: proxy
+# behavior: proxy
 proxy
 trojanproxy
 
-# Behavior: other
+# behavior: other
 servstart
 autorun
+autoruner
+autoruns
 server
+static
+engine
+instalador
+redirector
+autoins
+shipup
+shipli
+regsup
+regrun
 
-# Packer
+# executes another file
+starter
+runner
+launcher
+vbsrunner
+powershellrunner
+powershell
+
+# packer
 packer
 cryptor
 crypter
 obfuscator
 msilobfuscator
+msilperseus
 encoder
+filecryptor
+pakes
+black
 
-# Packed
+# packed
 packed
 malpack
 encpk
@@ -246,6 +329,8 @@ genpack
 krypt
 kryptk
 kryptik
+genkryptik
+msilkrypt
 obfuscated
 obfus
 obfusc
@@ -255,23 +340,27 @@ vbkrypt
 xpack
 zpack
 susppack
+vbpack
+cripack
 
-# Packed (specific packers)
+# packed (specific packers)
 asprotect
 nspack
 pecompact
 upack
 themida
 vmprotect
+hqwar
 
-# Program
+# program
 program
 application
 appl
 software
 file
+filerepmalware
 
-# File types
+# file types
 text
 html
 script
@@ -284,43 +373,53 @@ msoffice
 shellcode
 shellkode
 msil
-java
 j2me
 fakedoc
 fakepdf
 webpage
 iframe
+iframeref
+apk
+rtf
+dde
+ddeauto
+ddeexec
+pe
 
-# Patch
+# patch
 pepatch
 patchfile
 patched
 
-# Exploit
+# exploit
 exploit
 expl
 
-# Corrupted
+# corrupted
 damaged
 corrupt
+malformed
 
-# Tools
+# tools
 tool
 risktool
 securitytool
 fraudtool
 virtool
 keygen
+kgen
 hacktool
 hktl
 spamtool
+crack
 
-# Small
+# small
 small
 tiny
 
-# Generic families
+# generic families
 agent
+agentb
 eldorado
 artemis
 krap
@@ -332,12 +431,30 @@ symmi
 jorik
 graftor
 strictor
+zusy
+razy
+wisdomeyes
+yakes
+ursu
+midie
+mikey
+jaik
+jaiko
+jaike
+jintor
+jimmy
+wakme
+gepys
+aspxor
+cerbu
+golbla
+sivis
 
-# Test
+# test
 test
 testvirus
 
-# Misc
+# misc
 password
 website
 encodefeature
@@ -346,5 +463,133 @@ normal
 other
 optional
 hack
+hackkms
 access
- 
+sitehijack
+
+# others
+antivm
+microfake
+fakeapp
+fakemozilla
+fakeinstall
+gdsda
+filerepmetagen
+bypass
+bypassuac
+repsandbox
+origin
+elenoocka
+evo
+bmgfb0ivisk
+1ywbboausbdib
+upkm
+ouraaqspkdkk
+remoteadmin
+fwwy
+clhf
+score
+hype
+hqwaasjkflhi
+dovs
+ha15002e
+tftpd
+tdss
+tbvj
+boqx
+pdfka
+boogr
+hesv
+bcex
+d4fbeb
+wronginf
+foxhiex
+no_scans
+softonic
+cuem
+disfa
+diztakun
+dojos
+drpr
+ekstak
+extcrome
+forav
+hasad
+hosts
+jacard
+jiagu
+kaymundler
+kespo
+khalesi
+knobtromp
+llac
+lmuarnw1xabgc
+lynx
+madeba
+marker
+mecor
+micro
+mseg
+recam
+thus
+tiff
+tiggre
+tpyn
+tunkoo
+w2000m
+x2000m
+za0auqkdxfpi
+ausiv
+autohk
+ctqc
+delflash
+driverpack
+fo0baey9x6ci
+fo0bakfgryno
+fo0bamtwq6jo
+fo0baon3ujhp
+garrun
+genasom
+hiloti
+killproc
+lexip
+lodbak
+menti
+mistery
+obfsstrm
+onlinegames
+pacex
+patcher
+pdfjs
+pwsime
+rakhni
+rantest
+recyl
+remotecode
+reset
+revo
+rlpack
+scene
+scriptkd
+scrop
+siscos
+smartfortress
+testapp
+vehidis
+virtu
+vmpbad
+winner
+winreg
+yu0bfba
+zdtad
+ziqab4rv1zj
+softobase
+pcclient
+fakromup
+popuppers
+soft32down
+soft32download
+wedownload
+softbase
+bxib
+softonicdownloader
