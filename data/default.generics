@@ -31,6 +31,12 @@ maldroid
 dangerousobject
 mal
 maldoc
+soft
+class
+softbase
+softonicdownloader
+soft32down
+soft32download
 
 # heuristic detection
 generic
@@ -58,6 +64,15 @@ genericrxcg
 genericrxac
 genericrxdw
 generictka
+genericrxcy
+genericrxdm
+genericrxbw
+genericrxda
+genericrxdz
+generickdz
+genericrxbr
+genericrxdv
+genericrxbe
 
 # malware classes
 trojan
@@ -78,6 +93,7 @@ networm
 hllw
 virus
 fileinfector
+filelocker
 prepender
 hllp
 rootkit
@@ -92,6 +108,7 @@ bkdr
 keylog
 keylogger
 stealer
+datastealer
 infostealer
 pwstealer
 banker
@@ -111,6 +128,7 @@ ransomlock
 ransomcrypt
 filecoder
 rogue
+faker
 fakeav
 fakealert
 clicker
@@ -198,7 +216,9 @@ dupzom
 silcon
 fraudload
 fraudrop
+fraud
 mdrop
+ddedownloader
 
 # pup
 pup
@@ -244,6 +264,7 @@ installflash
 startsurf
 outbrowse
 convertad
+roguesecurity
 
 # suspicious
 suspected
@@ -289,6 +310,14 @@ killav
 antiav
 antifw
 blocker
+wpakill
+killproc
+pskill
+killfiles
+
+#behaviour: remote
+remotecode
+remoteadmin
 
 # behavior: signed
 fakems
@@ -324,6 +353,9 @@ launcher
 vbsrunner
 powershellrunner
 powershell
+webshell
+shell
+exescript
 
 # packer
 packer
@@ -367,6 +399,8 @@ zpack
 susppack
 vbpack
 cripack
+multipacked
+packedent
 
 # packed (specific packers)
 asprotect
@@ -389,6 +423,7 @@ filerepmalware
 text
 html
 script
+cryptscript
 word
 msword
 excel
@@ -438,7 +473,7 @@ hktl
 spamtool
 crack
 wificrack
-wpakill
+
 
 # small
 small
@@ -447,6 +482,7 @@ tiny
 # generic families
 agent
 agentb
+agentam
 eldorado
 artemis
 krap
@@ -490,7 +526,6 @@ normal
 other
 optional
 hack
-hackkms
 access
 sitehijack
 
@@ -508,16 +543,12 @@ repsandbox
 origin
 elenoocka
 evo
-bmgfb0ivisk
-1ywbboausbdib
 upkm
 ouraaqspkdkk
-remoteadmin
 fwwy
 clhf
 score
 hype
-hqwaasjkflhi
 dovs
 ha15002e
 tftpd
@@ -550,7 +581,6 @@ kespo
 khalesi
 knobtromp
 llac
-lmuarnw1xabgc
 lynx
 madeba
 marker
@@ -563,22 +593,14 @@ tiff
 tiggre
 tpyn
 tunkoo
-w2000m
-x2000m
-za0auqkdxfpi
 ausiv
 autohk
 ctqc
 delflash
 driverpack
-fo0baey9x6ci
-fo0bakfgryno
-fo0bamtwq6jo
-fo0baon3ujhp
 garrun
 genasom
 hiloti
-killproc
 hideproc
 lexip
 lodbak
@@ -593,8 +615,8 @@ pwsime
 rakhni
 rantest
 recyl
-remotecode
 reset
+
 revo
 rlpack
 scene
@@ -610,42 +632,26 @@ winner
 winreg
 yu0bfba
 zdtad
-ziqab4rv1zj
 softobase
 pcclient
 fakromup
 popuppers
-soft32down
-soft32download
 wedownload
-softbase
-bxib
-softonicdownloader
-ctqc
 gt32supportgeeks
-0000010c
 elzob
 aauto
 agentbypass
 agentus
-lptqmgfb02rsmhac
-lptqmgfb0rnofeac
-lptqmgfbinq1slac
-lptqmgfbiq2pviac
-lptqmgfbobr2ueac
 mresmon
 paph
 phish
 startp
 vibro
-vmgfaulfo6oc
 volt
 yxdown
 limitail
-class
 enigmaprotector
 bloored
-cryptscript
 cuhb
 cuhz
 detrahere
@@ -654,15 +660,12 @@ drstwex
 error
 ethan
 explorerhijack
-filelocker
-fraud
 fullscreen
 genmaldow
 hehar
 hematite
 hrqaaihotdgg
 hworld
-killfiles
 mazam
 mediaget
 micvir
@@ -673,7 +676,6 @@ moonlight
 mucc
 necne
 noon
-pdfjsc
 poppy
 purgen
 rabased
@@ -689,13 +691,11 @@ unicorn
 walker
 wlksm
 zesibund
-050004e
 attach
 buzy
 cumt
 evital
 flashapp
-kmsauto
 lineno
 macri
 maker
@@ -710,12 +710,10 @@ skypespam
 systemhealer
 tencentprotect
 whld
-yu0bf5fgzrfi
 artel
 binder
 decode
 deepscan
-exescript
 faii
 fakeie
 michela
@@ -724,18 +722,14 @@ phishbank
 pornoblocker
 protector
 skeeyah
-soft
 stubrc
 vmvol
 winsecsrv
-agentam
-autokms
 crifi
 cupj
 cupl
 dacic
 daws
-db76e0f
 divi
 droma
 expack
@@ -746,3 +740,99 @@ dico
 bprotector
 msilinj
 jnlp
+powp
+windef
+yazz
+gamemodding
+zofo
+windex
+wyhymyz
+invader
+lime
+delikle
+adavz
+vchain
+expproc
+xylauncher
+xinfect
+evyl
+voodoo
+win9x
+demp
+hijacker
+sowwy
+crypto
+aayr
+hlam
+typic
+sola
+yytri
+acvx
+fpdldpk
+hookey
+updater
+damm
+fnah
+fakevimes
+fakeav
+smartinstaller
+userstartup
+internetprotection
+phishing
+xintruder
+cutq
+delvi
+mozla
+uztub
+filefinder
+hider
+superthreat
+ulpm
+tracker
+wallpaperchange
+imaut
+joke
+onion
+systemmodifier
+gamup
+attack
+
+#random strings
+lptqmgfb02rsmhac
+lptqmgfb0rnofeac
+lptqmgfbinq1slac
+lptqmgfbiq2pviac
+lptqmgfbobr2ueac
+fo0baey9x6ci
+fo0bakfgryno
+fo0bamtwq6jo
+fo0baon3ujhp
+ziqab4rv1zj
+wuwbbyusjhh
+ymqaa4q31wgi
+umnfrbptjsmib
+7y0auamvswki
+bmgfb0ivisk
+1ywbboausbdib
+omqarz7sipei
+yu0bf5fgzrfi
+hqwaasjkflhi
+lmuarnw1xabgc
+wmgfa4pjcyb
+vmgfaulfo6oc
+za0auqkdxfpi
+fbeb4f6a
+e02caf0c
+db76e0f
+b042b65c
+0808000c
+b5024da
+050004e
+0000010c
+w2000m
+x2000m
+pdfjsc
+bxib
+ctqc
+awfy
+gykw
