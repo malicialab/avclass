@@ -3,20 +3,22 @@
 AVClass labeler
 '''
 
+import os
 import sys
-sys.path.insert(0, 'lib/')
+path = os.path.dirname(os.path.abspath(__file__))
+libpath = os.path.join(path, 'lib/')
+sys.path.insert(0, libpath)
 import argparse
 from avclass_common import AvLabels
 from operator import itemgetter
 import evaluate_clustering as ec
 import json
 import traceback
-import os
 
 # Default alias file
-default_alias_file = "data/default.aliases"
+default_alias_file = os.path.join(path, "data/default.aliases")
 # Default generic tokens file
-default_gen_file = "data/default.generics"
+default_gen_file = os.path.join(path, "data/default.generics")
 
 def guess_hash(h):
     '''Given a hash string, guess the hash type based on the string length'''
