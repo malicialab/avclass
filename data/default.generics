@@ -54,6 +54,7 @@ networm
 hllw
 virus
 fileinfector
+infector
 prepender
 hllp
 rootkit
@@ -67,6 +68,7 @@ backdoor
 bkdr
 keylog
 keylogger
+datastealer
 stealer
 infostealer
 pwstealer
@@ -83,7 +85,9 @@ spambot
 ransom
 ransomlock
 ransomcrypt
+ransomware
 filecoder
+filecryptor
 rogue
 fakeav
 fakealert
@@ -123,6 +127,7 @@ downware
 downagent
 dropper
 drop
+dropr
 dldrop
 exedrop
 mdropper
@@ -151,6 +156,7 @@ riskware
 risk
 grayware
 unwnt
+addisplay
 adknowledge
 adload
 applicunwnt
@@ -171,6 +177,8 @@ bundleinstaller
 softwarebundler
 nsis
 browsermodifier
+unsafe
+securityrisk
 
 # Suspicious
 suspected
@@ -252,9 +260,11 @@ obfusc
 malcrypt
 vbcrypt
 vbkrypt
+vbpack
 xpack
 zpack
 susppack
+suspiciouspacker
 
 # Packed (specific packers)
 asprotect
@@ -290,6 +300,7 @@ fakedoc
 fakepdf
 webpage
 iframe
+powershell
 
 # Patch
 pepatch
