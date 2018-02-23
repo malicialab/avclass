@@ -18,7 +18,6 @@ easydl amonetize
 filesearch amonetize
 imonetize amonetize
 armour androidarmour
-arcparlor arcadeparlor
 badday badda
 bearshare bandoo
 ilivid bandoo
@@ -35,7 +34,6 @@ selfdel beebone
 kazaa benjamin
 qukart berbew
 padodor berbew
-bertle bertle
 bertlea bertle
 serbg bgserv
 midgare bifrose
@@ -71,6 +69,7 @@ cinmeng cinmus
 clemag cleaman
 clientconnect conduit
 searchprotect conduit
+opencandy conduit
 kucirc cosmu
 overdoom cosmu
 dalamodo cossta
@@ -171,6 +170,7 @@ dromedan andromeda
 lilu andromeda
 wauchos andromeda
 arcadeparlor gamevance
+arcparlor gamevance
 arcadeweb gamevance
 epicgames gamevance
 epicplay gamevance
@@ -205,8 +205,6 @@ rugo hotbar
 screensaver hotbar
 zango hotbar
 freepds hotclip
-huigezi hupigon
-pigeon hupigon
 optimum ibryte
 optimuminstall ibryte
 optimuminstaller ibryte
@@ -217,16 +215,15 @@ iceboy icekboy
 installcube icloader
 iconos iconosys
 iconosis iconosys
-inboxtoolbar inbox
 dowins inservice
 inservc inservice
 braininst installbrain
 brantall installbrain
 ibrain installbrain
-clickrun installcore
-clickrunsoftware installcore
-cryptinno installcore
-installco installcore
+clickrun dealply
+clickrunsoftware dealply
+cryptinno dealply
+installco dealply
 installrex installerex
 sneakytrail installerex
 tdownloader installerex
@@ -301,7 +298,6 @@ netboxserver netbox
 bespal netins
 nickispy nickyspy
 nickspy nickyspy
-conduit opencandy
 optixp optix
 optixpro optix
 bflient palevo
@@ -316,7 +312,6 @@ perfloger perflogger
 yoof picsys
 fixflo floxif
 flofix floxif
-floxif floxif
 floxlib floxif
 pioneer floxif
 apperhand plankton
@@ -446,8 +441,10 @@ tibspk tibs
 zhelatin tibs
 tinbakd tinba
 hupigon tinba
+pigeon tinba
 tiny tinba
 tinybanker tinba
+huigezi tinba
 pirrit tirrip
 pirritsuggestor tirrip
 inffinity toggle
@@ -489,6 +486,9 @@ madang virut
 madangel virut
 vetor virut
 virtob virut
+vitro virut
+virutchangeentry virut
+virux virut
 vserv viser
 vitallia vittalia
 vittaliaent vittalia
@@ -502,7 +502,6 @@ vbccrypt vobfus
 vbna vobfus
 vbobfus vobfus
 wbna vobfus
-vobfus vobfus
 vflood vtflooder
 vflooder vtflooder
 jadtre wapomi
@@ -541,8 +540,6 @@ xtrat remtasu
 zbomber zombbomber
 panda panda_banker
 zbocheman panda_banker
-zeus panda_banker
-zbot panda_banker
 bjlog zegost
 zeno zenosearch
 maxplus zeroaccess
@@ -557,7 +554,6 @@ zwunzi zwangi
 samas samsam
 hcsix hc6
 hc7 hc6
-xorist xorist
 sorikrypt xorist
 crypwalker ramsomeer
 dumb ramsomeer
@@ -570,7 +566,6 @@ cryptear hiddentear
 tear hiddentear
 digminein digmine
 digmineex digmine
-venusminer venusminer
 zurgop smokeloader
 dofoil smokeloader
 sharik smokeloader
@@ -601,6 +596,7 @@ wanacry wcry
 wannacrypt wcry
 wannacryptor wcry
 ransomwannacry wcry
+wannalocker wcry
 cridex dridex
 feodo dridex
 bugat dridex
@@ -628,10 +624,10 @@ jacksbot adwind
 jbifrost adwind
 jsocket adwind
 sednit apt28
+sofacy apt28
 cosduke apt29
 cosmicduke apt29
 miniduke apt29
-armalocky armalocky
 blubot bluebot
 kolab dorkbot
 ngrbot dorkbot
@@ -684,6 +680,7 @@ gafgyt mirai
 miari mirai
 masuta mirai
 memes mirai
+miras mira
 crossrat dark_caracal
 crat dark_caracal
 ismagent ismdoor
@@ -709,7 +706,6 @@ sure sureransom
 sureran sureransom
 sandrat droidjack
 sandrorat droidjack
-androrat androrat
 climap androrat
 dandro androrat
 sandr droidjack
@@ -750,6 +746,7 @@ stupcryp haters
 cryptoclone haters
 leadbolt android_leadbolt
 sagecrypt sage
+milicry sage
 rontokbro brontok
 rontokbr brontok
 betabot neurevt
@@ -768,6 +765,7 @@ eqdrug equationgroup
 equationdrug equationgroup
 equation equationgroup
 rozena bedep
+smsreg android_smskey
 smskey android_smskey
 installcore dealply
 alphaeon dealply
@@ -843,3 +841,17 @@ vbinder refroso
 oficla wemon
 sub7x subseven
 spybot sdbot
+lockscr android_lockscr
+xynyin gooligan
+sisnit android_sisnit
+salary joke_salary
+smsspy android_smsspy
+sivu android_sivu
+mobilepay android_mobilepay
+storm stormattack
+quervar dorifel
+xdoccrypt dorifel
+quackbot qbot
+hmad android_hmad
+liev live
+xinyinhe gooligan
