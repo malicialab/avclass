@@ -13,6 +13,7 @@ andr
 macosx
 osx
 osx32
+windows
 
 # programming language
 autoit
@@ -22,6 +23,7 @@ delf
 php
 java
 js
+perl
 
 # malicious software
 malware
@@ -37,6 +39,8 @@ softbase
 softonicdownloader
 soft32down
 soft32download
+fakromup
+popuppers
 
 # heuristic detection
 generic
@@ -75,6 +79,18 @@ genericrxdv
 genericrxbe
 genericrxaf
 genericrxbf
+genericrxaq
+genericrxcf
+genericcryptor
+genericrxbt
+genericrxed
+multigeneric
+genericrxbo
+genericrxaz
+generickds
+genericrxeb
+genericrxal
+genericrxbq
 
 # malware classes
 trojan
@@ -103,12 +119,13 @@ spyware
 ddos
 flooder
 dialer
-porndialer
+dial
 porn
 backdoor
 bkdr
 keylog
 keylogger
+keylgr
 stealer
 datastealer
 infostealer
@@ -117,6 +134,8 @@ banker
 monitor
 mailer
 email
+inboxtoolbar
+inbox
 emailworm
 massmailer
 smtp
@@ -139,13 +158,10 @@ adclicker
 addisplay
 adlock
 click
-bitcoinminer
-bitcoin
 trojansms
 smssend
 searcher
 diskcoder
-diskwritter
 infector
 spyagent
 passwordstealera
@@ -246,8 +262,6 @@ plugin
 downad
 toolbar
 webtoolbar
-casino
-casonline
 install
 installer
 bundle
@@ -256,6 +270,7 @@ bundled
 bundleapp
 bundleinstaller
 softwarebundler
+swbundler
 nsis
 browsermodifier
 unsafe
@@ -266,7 +281,6 @@ hidden
 hiddad
 securityrisk
 istartsurf
-airinstaller
 installflash
 startsurf
 outbrowse
@@ -299,6 +313,7 @@ undef
 
 # behavior: injection
 injector
+delphinjector
 inject
 vbinject
 injcrypt
@@ -410,6 +425,8 @@ vbpack
 cripack
 multipacked
 packedent
+vbpacked
+malwarecrypter
 
 # packed (specific packers)
 asprotect
@@ -529,6 +546,7 @@ testvirus
 
 # misc
 password
+passcrypt
 website
 encodefeature
 multi
@@ -551,7 +569,6 @@ bypass
 bypassuac
 repsandbox
 origin
-elenoocka
 evo
 upkm
 ouraaqspkdkk
@@ -562,9 +579,7 @@ hype
 dovs
 ha15002e
 tftpd
-tdss
 tbvj
-boqx
 pdfka
 boogr
 hesv
@@ -605,7 +620,6 @@ tpyn
 tunkoo
 ausiv
 autohk
-ctqc
 delflash
 driverpack
 garrun
@@ -626,7 +640,6 @@ rakhni
 rantest
 recyl
 reset
-
 revo
 rlpack
 scene
@@ -644,8 +657,6 @@ yu0bfba
 zdtad
 softobase
 pcclient
-fakromup
-popuppers
 wedownload
 gt32supportgeeks
 elzob
@@ -682,7 +693,6 @@ micvir
 mirc
 mobilespy
 mods
-moonlight
 mucc
 necne
 noon
@@ -698,7 +708,6 @@ sqlexp
 sram
 tougle
 unicorn
-walker
 wlksm
 zesibund
 attach
@@ -731,7 +740,6 @@ packfor
 phishbank
 pornoblocker
 protector
-skeeyah
 stubrc
 vmvol
 winsecsrv
@@ -770,6 +778,7 @@ voodoo
 win9x
 demp
 hijacker
+processhijack
 sowwy
 crypto
 aayr
@@ -784,7 +793,6 @@ updater
 damm
 fnah
 fakevimes
-fakeav
 smartinstaller
 userstartup
 internetprotection
@@ -809,6 +817,10 @@ attack
 desktopdefender
 securityshield
 swfdec
+hoax
+smshoax
+badfile
+skeeyah
 
 #random strings
 lptqmgfb02rsmhac
@@ -834,6 +846,26 @@ lmuarnw1xabgc
 wmgfa4pjcyb
 vmgfaulfo6oc
 za0auqkdxfpi
+bm0fsid1xpmb
+aifdxmrdrami
+dmkfaqd4fddb
+vkontaktedj
+umgfaajjydpg
+1acb645b29db
+e13bd3ab45f
+qz1axwvr8edi
+iiada0n33enb
+iappzjroid
+ymgdbmkkdoc
+lmkfa8a5g2ai
+aiwaa06upxb
+emuaz4gzawei
+omyaaysdwlbi
+qmkeflamy1ji
+vjxaaws0pbj
+908d4036d
+3f23d36b
+feb58bbf
 fbeb4f6a
 e02caf0c
 db76e0f
@@ -842,12 +874,17 @@ b042b65c
 b5024da
 050004e
 0000010c
+e6e3fc
 w2000m
 x2000m
+000c
+7adefc
 pdfjsc
 bxib
 ctqc
 awfy
 gykw
+ffcfb
+d4fbd
 e2d24fce
-ymgdbmkkdoc
+famvt
