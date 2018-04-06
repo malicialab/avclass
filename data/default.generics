@@ -92,6 +92,13 @@ genericrxeb
 genericrxal
 genericrxbq
 genericrxeh
+genericrxdp
+genericrxdr
+genericrxap
+genericrxee
+genericrxec
+genericrxdy
+genericrxbi
 
 # malware classes
 trojan
@@ -267,6 +274,7 @@ install
 installer
 bundle
 bundler
+bunndle
 bundled
 bundleapp
 bundleinstaller
@@ -323,6 +331,9 @@ vbkryjetor
 injecter
 ceeinject
 dllinject
+sqlinject
+iframeinject
+delfinject
 
 # behavior: homepage modification
 homepage
@@ -361,6 +372,7 @@ static
 engine
 instalador
 redirector
+ieredirector
 redir
 redirect
 redirectent
@@ -369,6 +381,8 @@ shipup
 shipli
 regsup
 regrun
+binder
+vbinder
 
 # executes another file
 starter
@@ -412,6 +426,7 @@ krypt
 kryptk
 kryptik
 genkryptik
+win32kryptik
 msilkrypt
 obfuscated
 obfus
@@ -482,6 +497,7 @@ patched
 # exploit
 exploit
 expl
+expkit
 
 # corrupted
 damaged
@@ -544,6 +560,8 @@ chapak
 johnnie
 refinka
 scar
+esfury
+fednu
 
 # test
 test
@@ -691,7 +709,6 @@ fullscreen
 genmaldow
 hehar
 hematite
-hrqaaihotdgg
 hworld
 mazam
 mediaget
@@ -736,8 +753,6 @@ systemhealer
 tencentprotect
 whld
 artel
-binder
-vbinder
 decode
 deepscan
 faii
@@ -849,18 +864,15 @@ agentwdcr
 activator
 remotemanipulator
 passwordstealer
-wmgfa8uhhuj
 hfpj
 9aec8c0e
 dircrypt
-ymgfaiyrspn
 07b67a
 silentinstaller
 ii0auszukbh
 winlnk
 smee
 antimalware
-win32kryptik
 bec461b
 winsec
 injeber
@@ -896,7 +908,6 @@ turn
 fnan
 hilevel
 jundrop
-rmkefxdptoci
 voiv
 outbreak
 systemhijack
@@ -928,35 +939,25 @@ dldlmn
 postscript
 collector
 353fd
-bm0fsyslfsgb
-genericrxbi
 istb
 winad
 registrydisabler
 shutwin
 airjp
 vipgsm
-bikds4d9zlnb
 powerless
 byfh
 spammy
-ymnfrvwrr2pib
 krserv
-genericrxec
-a7bd
-genericrxdy
 live
 taworm
 pepm
 ei0frjbgh
-rmkeffcrzffi
 vobj
 a9ca74d
 psrunner
-genericrxee
 dllhijack
 phnu
-f7f7fa
 testing
 iams
 psvr
@@ -965,51 +966,29 @@ wdjiange
 disabler
 hydracrypt
 powerdvd
-csly
-cvvx
 blacked
-7859a0a
-iframeinject
-expkit
 buiw
 faup
-sqlinject
 rgrk
-qvza40cwf1fi
-bunndle
 heim
 xadupi
 exkit
 parth
 downexec
-genericrxdp
 reload
-genericrxap
 downloaderb
-yu0bflnrd4ei
-gmkfamdkvkli
 adagent
-genericrxdr
-afc022f
-uowbr5dvjvnib
 cvyb
 sailvic
-aigeaqdyqtc
 wlock
 hiddenlink
 winvnc
 sfdld
-yz0azal4ljci
 taily
-bkff
-bhxu
-cvyh
 csfrsys
 pshellcode
 cvwl
 cdur
-delfinject
-rmkefdcwymfi
 fire
 smwnd
 gametool
@@ -1017,13 +996,7 @@ searchgo
 winexert
 dcom
 delfsnif
-nrww
-cvts
-irxarry0z5kg
-ieredirector
-crcf
-zbiw
-bngfr5c1qskib
+attribute
 
 #random strings
 lptqmgfb02rsmhac
@@ -1071,6 +1044,24 @@ wo0ancifwpdbi
 yu0bfncvkoji
 li0aac9g65eb
 li0aaclky5jb
+bngfr5c1qskib
+irxarry0z5kg
+rmkefdcwymfi
+yz0azal4ljci
+uowbr5dvjvnib
+qvza40cwf1fi
+aigeaqdyqtc
+yu0bflnrd4ei
+gmkfamdkvkli
+hrqaaihotdgg
+rmkeffcrzffi
+ymnfrvwrr2pib
+bm0fsyslfsgb
+bikds4d9zlnb
+rmkefxdptoci
+ymgfaiyrspn
+wmgfa8uhhuj
+372db757c08b
 908d4036d
 3f23d36b
 feb58bbf
@@ -1090,6 +1081,7 @@ e6e3fc
 w2000m
 x2000m
 000c
+afc022f
 7adefc
 pdfjsc
 bxib
@@ -1099,5 +1091,19 @@ gykw
 ffcfb
 d4fbd
 e2d24fce
+7859a0a
+f7f7fa
 famvt
 sfmhx
+a7bd
+nrww
+cvts
+crcf
+zbiw
+nssm
+bkff
+bhxu
+cvyh
+csly
+cvvx
+cb8b
