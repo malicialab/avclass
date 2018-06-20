@@ -60,7 +60,6 @@ cloud
 memscan
 ageneric
 sgeneric
-ransomheur
 genericr
 genericrxbb
 genericrxdk
@@ -107,7 +106,6 @@ troj
 trj
 trojanhorse
 trojware
-trojanransom
 trojanspy
 trojanapt
 trojanclicker
@@ -150,12 +148,6 @@ smtp
 stmp
 spammer
 spambot
-ransom
-ransomkd
-ransomware
-ransomlock
-ransomcrypt
-filecoder
 rogue
 faker
 fakeav
@@ -183,6 +175,17 @@ winlock
 screenlock
 locker
 lockscreen
+
+#generic ransomware
+snocry
+ransom
+ransomkd
+ransomware
+ransomlock
+ransomcrypt
+filecoder
+trojanransom
+ransomheur
 
 #stealer for steam credentials
 stimilik
@@ -1176,6 +1179,16 @@ msildyn
 bluteal
 passup
 gubed
+zlob
+bulta
+heapspray
+genericrxer
+ka2auefm
+ja0auggbxnji
+na0auim5fngi
+bsdownloader
+powshell
+dogrun
 
 #random strings
 lptqmgfb02rsmhac
@@ -1309,6 +1322,8 @@ metacol
 metcol
 alcaul
 bartallex
+melissa
+papa
 
 #exploit
 dynloader
