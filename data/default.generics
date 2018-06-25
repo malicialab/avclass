@@ -98,6 +98,9 @@ genericrxee
 genericrxec
 genericrxdy
 genericrxbi
+genericrxfq
+genericrxev
+genericrxbv
 
 # malware classes
 trojan
@@ -255,6 +258,7 @@ fraud
 mdrop
 ddedownloader
 donoff
+bsdownloader
 
 # pup
 pup
@@ -1124,10 +1128,8 @@ powecod
 inazun
 ani
 leveldldr
-genericrxev
 bdoor
 zolpiq
-auwbaqjnjpe
 mayachok
 conjar
 shellcodef
@@ -1139,7 +1141,6 @@ mplug
 multiplug
 pwszbot
 zboter
-genericrxbv
 obvod
 hpgen
 dorv
@@ -1169,12 +1170,10 @@ derdero
 chifrax
 batton
 singu
-9e0e394a
 agen
 mailto
 8372e68e
 cyix
-genericrxfq
 msildyn
 bluteal
 passup
@@ -1182,17 +1181,26 @@ gubed
 zlob
 bulta
 heapspray
-genericrxer
 ka2auefm
-ja0auggbxnji
-na0auim5fngi
-bsdownloader
 powshell
 dogrun
 atraps
 ototi
-1owfaanezsai
 czjd
+mailcab
+wecod
+tspy
+tonick
+blouiroet
+cmgdrfzmfflah
+proxychanger
+zpevdo
+dowtre
+xmlpars
+tmnfr1tgsoak
+zlader
+cryptpack
+jatif
 
 #random strings
 lptqmgfb02rsmhac
@@ -1270,6 +1278,10 @@ hnjfbqzsvsl
 smjfbqzsvsl
 qmlfrt0j91kid
 dmkfdcglsbig
+ja0auggbxnji
+na0auim5fngi
+1owfaanezsai
+auwbaqjnjpe
 908d4036d
 3f23d36b
 feb58bbf
@@ -1282,6 +1294,9 @@ b5024da
 050004e
 0000010c
 2d90e5db
+gf14000c
+4aa05cee
+9e0e394a
 gnjdbs
 effb37a
 e6e3fc
@@ -1328,6 +1343,7 @@ alcaul
 bartallex
 melissa
 papa
+bendis
 
 #exploit
 dynloader
@@ -1345,6 +1361,7 @@ dreamexploid
 sikret
 karam
 rafold
+slippto
 
 #PHP Backdoor?
 zonie
