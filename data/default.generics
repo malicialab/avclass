@@ -189,6 +189,8 @@ ransomcrypt
 filecoder
 trojanransom
 ransomheur
+obfusransom
+ransominject
 
 #stealer for steam credentials
 stimilik
@@ -1209,6 +1211,8 @@ renamer
 cabby
 msppoint
 psyme
+grenam
+exrec
 
 #random strings
 lptqmgfb02rsmhac
