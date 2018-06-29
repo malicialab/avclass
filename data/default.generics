@@ -28,6 +28,7 @@ gen
 genmalicious
 generickd
 tsgeneric
+genericr
 heuristic
 heur
 siggen
@@ -35,6 +36,9 @@ genetic
 genome
 kcloud
 memscan
+score
+attribute
+advml
 
 # Malware classes
 trojan
@@ -94,11 +98,17 @@ fakealert
 clicker
 adclicker
 click
+miner
+coinmine
+coinminer
 bitcoinminer
 bitcoin
+btcmine
+bitminer
 trojansms
 smssend
 searcher
+phishing
 
 # Macro
 macro
@@ -144,6 +154,8 @@ docdl
 docdrop
 docdrp
 macrodown
+downloadware
+dloadware
 
 # PUP
 pup
@@ -205,6 +217,7 @@ undef
 # Behavior: injection
 injector
 inject
+injecter
 vbinject
 injcrypt
 injected
@@ -228,10 +241,28 @@ signed
 proxy
 trojanproxy
 
-# Behavior: other
-servstart
+# Behavior: autorun
 autorun
+autoruner
+starter
+
+# Behavior: network
+netfilter
+redirector
+sniffer
+portscan
+
+# Behavior: files
+killfiles
+renamer
+
+# Behavior: services
+servstart
 server
+
+# Behavior: VM detect
+vmdetect
+vmdetector
 
 # Packer
 packer
@@ -257,6 +288,7 @@ kryptik
 obfuscated
 obfus
 obfusc
+obfuscate
 malcrypt
 vbcrypt
 vbkrypt
@@ -301,11 +333,15 @@ fakepdf
 webpage
 iframe
 powershell
+perl
+python
+flash
 
 # Patch
 pepatch
 patchfile
 patched
+patcher
 
 # Exploit
 exploit
@@ -314,6 +350,7 @@ expl
 # Corrupted
 damaged
 corrupt
+pemalform
 
 # Tools
 tool
@@ -322,9 +359,12 @@ securitytool
 fraudtool
 virtool
 keygen
+hack
 hacktool
 hktl
 spamtool
+crack
+cracktool
 
 # Small
 small
@@ -356,6 +396,6 @@ multi
 normal
 other
 optional
-hack
 access
+onion
  
