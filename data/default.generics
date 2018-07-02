@@ -34,11 +34,14 @@ heur
 siggen
 genetic
 genome
+cloud
 kcloud
 memscan
 score
 attribute
 advml
+sape
+maltrec
 
 # Malware classes
 trojan
@@ -208,6 +211,7 @@ possible
 threat
 probably
 confidence
+highconfidence
 
 # Unclassified
 unknown
