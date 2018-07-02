@@ -101,6 +101,7 @@ genericrxbi
 genericrxfq
 genericrxev
 genericrxbv
+genericrxfy
 
 # malware classes
 trojan
@@ -1217,6 +1218,8 @@ gnamer
 japik
 delfs
 pswtool
+remote
+moljec
 
 #random strings
 lptqmgfb02rsmhac
