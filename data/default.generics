@@ -40,8 +40,10 @@ memscan
 score
 attribute
 advml
+bloodhound
 sape
 maltrec
+symvt
 
 # Malware classes
 trojan
@@ -87,6 +89,7 @@ emailworm
 massmailer
 smtp
 stmp
+spam
 spammer
 spambot
 ransom
@@ -340,6 +343,7 @@ powershell
 perl
 python
 flash
+jpeg
 
 # Patch
 pepatch
@@ -355,6 +359,7 @@ expl
 damaged
 corrupt
 pemalform
+malpe
 
 # Tools
 tool
