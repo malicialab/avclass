@@ -11,7 +11,8 @@ remoteutilities
 tcpscan
 lazagne
 mimikatz
-wincred (usada por equationgroup)
+#(usada por equationgroup)
+wincred
 nettool
 tcpscan
 netsup
