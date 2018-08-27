@@ -313,7 +313,6 @@ netbox
 netfilter
 netpass
 netsky
-netsnak
 netspoof
 nimda
 nineap
@@ -586,3 +585,9 @@ transroot
 reimage
 computrace
 cynos
+hostmodifier
+pamado
+creprote
+yekrand
+yelloader
+dnscleaner
