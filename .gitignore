@@ -1,1 +1,2 @@
-lib/*.pyc
+*.pyc
+.cache/
