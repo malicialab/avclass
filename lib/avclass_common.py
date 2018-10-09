@@ -36,7 +36,10 @@ class AvLabels:
         almap = {}
         with open(alfile, 'r') as fd:
             for line in fd:
-                alias, token = line.strip().split()[0:2]
+                tmp_line = line.strip().split()[0:2]
+                if len(tmp_line) == 0:
+                    continue
+                alias, token = tmp_line
                 almap[alias] = token
         return almap
 
