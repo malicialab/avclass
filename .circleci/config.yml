@@ -1,0 +1,19 @@
+version: 2
+jobs:
+  build:
+    machine:
+      enabled: true
+    working_directory: ~/avclass
+    steps:
+      - checkout
+      - run: pip install --retries 11 --timeout 30 docker
+      - run: docker build --tag avclass .
+      - run:
+          name: executing pytest
+          command: |
+            docker run --rm -ti --entrypoint="" avclass bash -c "pip install pytest && pytest" || FAILED="TRUE"
+            if [[ -z "$FAILED" ]] ; then
+               exit 0;
+            else
+               exit 1;
+            fi
