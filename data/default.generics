@@ -354,7 +354,6 @@ killfiles
 
 #behaviour: remote
 remotecode
-remoteadmin
 
 # behavior: signed
 fakems
@@ -392,7 +391,6 @@ launcher
 vbsrunner
 powershellrunner
 powershell
-pwshell
 webshell
 shell
 exescript
@@ -413,7 +411,6 @@ sixxpack
 confuser
 suspiciouspacker
 vprotect
-vemply
 obsidium
 
 # packed
@@ -439,7 +436,6 @@ malcrypt
 vbcrypt
 vbkrypt
 xpack
-zpack
 susppack
 vbpack
 cripack
@@ -530,21 +526,7 @@ tiny
 
 # generic families
 agent
-emelent
-fugrafa
-rack
 ahkm
-c8ee0d
-msiexec
-hphancitor
-genericrxau
-ff0454c
-tapswipe
-zampol
-genautorunlnkfile
-sfdbvtkg
-c7bb91d
-genericrxdx
 agentb
 agentam
 eldorado
@@ -688,8 +670,6 @@ ja0auggbxnji
 na0auim5fngi
 1owfaanezsai
 auwbaqjnjpe
-tmnfr1tgsoak
-cmgdrfzmfflah
 biqaaidaipb
 umkfaqszcobb
 lptnowbbkhmvjdgb
@@ -706,7 +686,6 @@ b5024da
 050004e
 0000010c
 2d90e5db
-gf14000c
 4aa05cee
 9e0e394a
 c426ab03506d
@@ -714,7 +693,6 @@ c426ab03506d
 b72a15df
 f6276b
 tmnfr1tgsoak
-4aa05cee
 415e
 3bf5dabf
 cmgdrfzmfflah
@@ -859,7 +837,6 @@ flashback
 story
 killboot
 appder
-laroux
 metacol
 metcol
 alcaul
@@ -876,7 +853,6 @@ iframebof
 pubenush
 anifile
 anicmoo
-ani
 onload
 mhtredir
 ieslice
@@ -894,7 +870,6 @@ webdoid
 zonie
 
 # others
-fdld
 cwds
 3c4a2cc05b2f
 dfbs
@@ -906,10 +881,6 @@ bmsfyiaie4lc
 rpcdcom
 cozer
 begseabug
-utanioz
-coreshell
-nekto
-subxe
 antivm
 microfake
 fakeapp
@@ -1112,7 +1083,6 @@ voodoo
 win9x
 demp
 hijacker
-processhijack
 sowwy
 crypto
 aayr
@@ -1349,26 +1319,17 @@ ranos
 fsysna
 bestafera
 1table
-regon
-qlist
-mpacked
-senglot
-trojandldr
-icirac
-brresmon
 azden
 prardrukat
 ratc
 pjapps
 beeg
 brresmon
-azden
 mpacked
 senglot
 trojandldr
 icirac
 qlist
-1table
 regon
 cxyc
 dropapp
@@ -1447,7 +1408,6 @@ mensa
 skybag
 dapato
 occamy
-bartallex
 banloader
 rimod
 badur
@@ -1581,11 +1541,9 @@ netinject
 loic
 ntvck
 hqowdo
-vmgfaaj7eiig
 cdtv
 tmgfaaefxrbi
 fbkg
-cmifaqernkhi
 rmgfawerxwni
 ardy
 chekafev
@@ -1980,7 +1938,6 @@ saflad
 emelent
 fugrafa
 rack
-ahkm
 c8ee0d
 msiexec
 hphancitor
@@ -2268,10 +2225,6 @@ unisys
 ahoki
 cmhfb8w88s
 cmhfbcrmrcd
-exchanger
-fesber
-genericrxey
-genericrxgt
 tibser
 credlik
 ymgfrntzxdkib
