@@ -445,7 +445,6 @@ rasdialer gen_dialer
 dialers gen_dialer
 webdialer gen_dialer
 idlekms kms_hacktool
-coinhive minecruch
 gaobot agobot
 kojer joker
 jorek joker
@@ -1586,4 +1585,7 @@ buckeye apt3
 mosquito turla
 capturatela operation_comando
 korvar winevar
-winewar winevar
+coinhive minecrunch
+minecruch minecrunch
+redlambert longhorn
+foosace coreshell
