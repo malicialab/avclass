@@ -64,6 +64,7 @@ class AvLabels:
            Returns a SampleInfo named tuple: md5, sha1, sha256, label_pairs 
         '''
         label_pairs = []
+        vt_rep = vt_rep["results"]
         if from_vt:
             try:
                 scans = vt_rep['scans']
