@@ -63,6 +63,8 @@ class AvLabels:
         '''Parse and extract sample information from JSON line
            Returns a SampleInfo named tuple: md5, sha1, sha256, label_pairs 
         '''
+        if "results" in vt_rep:
+            vt_rep = vt_rep["results"]
         label_pairs = []
         if from_vt:
             try:
