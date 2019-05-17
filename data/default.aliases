@@ -1731,3 +1731,5 @@ techfu finfisher
 ptrace CVE-2003-0127
 rekoob keboobe
 redaman rtm_banker
+vmsplice CVE-2008-0600
+vmspli CVE-2008-0600
