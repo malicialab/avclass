@@ -125,18 +125,18 @@ if __name__ == "__main__":
     }
 
     # a sample where estimated != ground truth
-    print "Ground truth"
-    print "%8s --> %10s" % ("Element", "Cluster_ID")
+    print("Ground truth")
+    print("%8s --> %10s" % ("Element", "Cluster_ID"))
     for k, v in diz_grth.iteritems():
-        print "%8s --> %10s" % (k, v)
-    print
-    print "Estimated clustering"
-    print "%8s --> %10s" % ("Element", "Cluster_ID")
+        print("%8s --> %10s" % (k, v))
+
+    print("Estimated clustering")
+    print("%8s --> %10s" % ("Element", "Cluster_ID"))
     for k, v in diz_estim.iteritems():
-        print "%8s --> %10s" % (k, v)
-    print
+        print("%8s --> %10s" % (k, v))
+
     # precision, recall, f-measure
     p, r, f = eval_precision_recall_fmeasure(diz_grth, diz_estim)
-    print "Precison: %s%%" % p
-    print "Recall: %s%%" % r
-    print "F-Measure: %s%%" % f
+    print("Precison: %s%%" % p)
+    print("Recall: %s%%" % r)
+    print("F-Measure: %s%%" % f)

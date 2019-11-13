@@ -5,6 +5,7 @@ AVClass labeler
 
 import os
 import sys
+import gzip
 path = os.path.dirname(os.path.abspath(__file__))
 libpath = os.path.join(path, 'lib/')
 sys.path.insert(0, libpath)
@@ -87,7 +88,14 @@ def main(args):
     # Process each input file
     for ifile in ifile_l:
         # Open file
-        fd = open(ifile, 'r')
+        if ifile.split(".")[-1] == "json":
+            fd = open(ifile, 'r')
+        elif ifile.split(".")[-1] == "gz":
+            fd = gzip.open(ifile, 'r')
+        else:
+            print(f"unable to open {ifile}, {ifile.split('.')[-1]} needs to be json or gz")
+            return
+
 
         # Debug info, file processed
         sys.stderr.write('[-] Processing input file %s\n' % ifile)
@@ -133,8 +141,7 @@ def main(args):
             # If verbose, print the whole list
             try:
                 # Get distinct tokens from AV labels
-                tokens = av_labels.get_family_ranking(sample_info).items()
-
+                tokens = list(av_labels.get_family_ranking(sample_info).items())
                 # If alias detection, populate maps
                 if args.aliasdetect:
                     prev_tokens = set([])
@@ -198,7 +205,7 @@ def main(args):
                     gt_family = ""
 
                 # Print family (and ground truth if available) to stdout
-                print '%s\t%s%s%s' % (name, family, gt_family, is_pup_str)
+                print('%s\t%s%s%s' % (name, family, gt_family, is_pup_str))
 
                 # If verbose, print tokens (and ground truth if available) 
                 # to log file
