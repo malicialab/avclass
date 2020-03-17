@@ -65,10 +65,21 @@ class AvLabels:
         '''
         label_pairs = []
         if from_vt:
+            # V2 reports
             try:
                 scans = vt_rep['scans']
+                md5 = vt_rep['md5']
+                sha1 = vt_rep['sha1']
+                sha256 = vt_rep['sha256']
+            # V3 reports
             except KeyError:
-                return None
+                try:
+                    scans = vt_rep['attributes']['last_analysis_results']
+                    md5 = vt_rep['attributes']['md5']
+                    sha1 = vt_rep['attributes']['sha1']
+                    sha256 = vt_rep['attributes']['sha256']
+                except KeyError:
+                    return None
             for av, res in scans.items():
                 if res['detected']:
                     label = res['result']
@@ -78,9 +89,11 @@ class AvLabels:
                     label_pairs.append((av, clean_label))
         else:
             label_pairs = vt_rep['av_labels']
+            md5 = vt_rep['md5']
+            sha1 = vt_rep['sha1']
+            sha256 = vt_rep['sha256']
 
-        return SampleInfo(vt_rep['md5'], vt_rep['sha1'], vt_rep['sha256'],
-                          label_pairs) 
+        return SampleInfo(md5, sha1, sha256, label_pairs) 
 
     @staticmethod
     def is_pup(av_label_pairs):
