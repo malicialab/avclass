@@ -45,7 +45,7 @@ def main(args):
                 gt_dict[gt_hash] = family
 
         # Guess type of hash in ground truth file
-        hash_type = guess_hash(gt_dict.keys()[0])
+        hash_type = guess_hash(list(gt_dict.keys())[0])
 
     # Create AvLabels object
     av_labels = AvLabels(args.gen, args.alias, args.av)
@@ -133,7 +133,7 @@ def main(args):
             # If verbose, print the whole list
             try:
                 # Get distinct tokens from AV labels
-                tokens = av_labels.get_family_ranking(sample_info).items()
+                tokens = list(av_labels.get_family_ranking(sample_info).items())
 
                 # If alias detection, populate maps
                 if args.aliasdetect:
@@ -198,7 +198,8 @@ def main(args):
                     gt_family = ""
 
                 # Print family (and ground truth if available) to stdout
-                print '%s\t%s%s%s' % (name, family, gt_family, is_pup_str)
+                sys.stdout.write('%s\t%s%s%s\n' % (name, family, gt_family, 
+                                                    is_pup_str))
 
                 # If verbose, print tokens (and ground truth if available) 
                 # to log file
@@ -261,7 +262,7 @@ def main(args):
         gen_fd = open(gen_filename, 'w+')
         # Output header line
         gen_fd.write("Token\t#Families\n")
-        sorted_pairs = sorted(token_family_map.iteritems(), 
+        sorted_pairs = sorted(token_family_map.items(), 
                               key=lambda x: len(x[1]) if x[1] else 0, 
                               reverse=True)
         for (t,fset) in sorted_pairs:

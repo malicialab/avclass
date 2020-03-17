@@ -72,8 +72,9 @@ class AvLabels:
             for av, res in scans.items():
                 if res['detected']:
                     label = res['result']
-                    clean_label = filter(lambda x: x in string.printable, 
-                                      label).strip().encode('utf-8').strip()
+                    clean_label = ''.join(filter(
+                                      lambda x: x in string.printable, 
+                                        label)).strip()
                     label_pairs.append((av, clean_label))
         else:
             label_pairs = vt_rep['av_labels']
@@ -269,7 +270,7 @@ class AvLabels:
         ##################################################################
         # Token ranking: sorts tokens by decreasing count and then token #
         ##################################################################
-        sorted_tokens = sorted(token_map.iteritems(), 
+        sorted_tokens = sorted(token_map.items(), 
                                 key=itemgetter(1,0), 
                                 reverse=True)
 

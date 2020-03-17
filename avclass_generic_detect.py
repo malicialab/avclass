@@ -31,11 +31,11 @@ def main(args):
             cline = line.strip('\n')
             # Print headers
             if not pos:
-                print cline
+                sys.stdout.write("%s\n" % cline)
                 continue
             token, fam_num = cline.split('\t')
             if int(fam_num) > args.tgen:
-                print cline
+                sys.stdout.write("%s\n" % cline)
 
     # Done
     sys.stderr.write('[-] Done.\n')

@@ -34,12 +34,12 @@ def main(args):
             cline = line.strip('\n')
             # Print headers
             if not pos:
-                print cline
+                sys.stdout.write("%s\n" % cline)
                 continue
             t1, t2, t1_num, t2_num, nalias_num, talias_num = cline.split('\t')
             if int(nalias_num) > args.nalias and\
               float(talias_num) > args.talias:
-                print cline
+                sys.stdout.write("%s\n" % cline)
 
     # Done
     sys.stderr.write('[-] Done.\n')
