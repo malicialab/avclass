@@ -318,7 +318,7 @@ The output includes these lines:
 ```
 Calculating precision and recall
 3131 out of 3131
-Precision: 90.81  Recall: 93.95 F1-Measure: 92.35
+Precision: 90.81  Recall: 94.05 F1-Measure: 92.40
 ```
 
 The last line corresponds to the accuracy metrics obtained by 
@@ -469,10 +469,8 @@ For more details you can refer to our RAID 2016 paper.
 
 ## Support
 
-If you need help with AVClass, want to discuss the project, or
-want to contribute generic tokens and/or aliases, you can join the 
-[AVClass mailing list](https://software.imdea.org/mailman/listinfo/avclass-users).
-
+If you have issues or want to contribute generic tokens and/or aliases,
+please file a bug report through GitHub.
 
 ## Contributors
 
