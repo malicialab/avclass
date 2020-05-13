@@ -65,23 +65,16 @@ class AvLabels:
         '''
         label_pairs = []
         if from_vt:
-            # V2 reports
+
             try:
-                scans = vt_rep['scans']
-                md5 = vt_rep['md5']
-                sha1 = vt_rep['sha1']
-                sha256 = vt_rep['sha256']
-            # V3 reports
+                scans = vt_rep['attributes']['last_analysis_results']
+                md5 = vt_rep['attributes']['md5']
+                sha1 = vt_rep['attributes']['sha1']
+                sha256 = vt_rep['attributes']['sha256']
             except KeyError:
-                try:
-                    scans = vt_rep['attributes']['last_analysis_results']
-                    md5 = vt_rep['attributes']['md5']
-                    sha1 = vt_rep['attributes']['sha1']
-                    sha256 = vt_rep['attributes']['sha256']
-                except KeyError:
-                    return None
+                return None
             for av, res in scans.items():
-                if res['detected']:
+                if res['result'] != None:
                     label = res['result']
                     clean_label = ''.join(filter(
                                       lambda x: x in string.printable, 

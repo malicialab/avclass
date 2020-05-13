@@ -107,6 +107,11 @@ def main(args):
 
             # Read JSON line and extract sample info (i.e., hashes and labels)
             vt_rep = json.loads(line)
+
+            # VT APIv3 begins with "data" key
+            if "data" in vt_rep:
+                vt_rep = vt_rep["data"]
+            
             sample_info = av_labels.get_sample_info(vt_rep, ifile_are_vt)
             if sample_info is None:
                 try:
