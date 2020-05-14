@@ -59,41 +59,62 @@ class AvLabels:
         return avs
 
     @staticmethod
-    def get_sample_info(vt_rep, from_vt):
+    def get_sample_info_lb(vt_rep):
         '''Parse and extract sample information from JSON line
-           Returns a SampleInfo named tuple: md5, sha1, sha256, label_pairs 
+           Returns a SampleInfo named tuple
+        '''
+        return SampleInfo(vt_rep['md5'], vt_rep['sha1'], vt_rep['sha256'],
+                          vt_rep['av_labels'])
+
+    @staticmethod
+    def get_sample_info_vt_v2(vt_rep):
+        '''Parse and extract sample information from JSON line
+           Returns a SampleInfo named tuple
         '''
         label_pairs = []
-        if from_vt:
-            # V2 reports
-            try:
-                scans = vt_rep['scans']
-                md5 = vt_rep['md5']
-                sha1 = vt_rep['sha1']
-                sha256 = vt_rep['sha256']
-            # V3 reports
-            except KeyError:
-                try:
-                    scans = vt_rep['attributes']['last_analysis_results']
-                    md5 = vt_rep['attributes']['md5']
-                    sha1 = vt_rep['attributes']['sha1']
-                    sha256 = vt_rep['attributes']['sha256']
-                except KeyError:
-                    return None
-            for av, res in scans.items():
-                if res['detected']:
-                    label = res['result']
-                    clean_label = ''.join(filter(
-                                      lambda x: x in string.printable, 
-                                        label)).strip()
-                    label_pairs.append((av, clean_label))
-        else:
-            label_pairs = vt_rep['av_labels']
+        # Obtain scan results, if available
+        try:
+            scans = vt_rep['scans']
             md5 = vt_rep['md5']
             sha1 = vt_rep['sha1']
             sha256 = vt_rep['sha256']
+        except KeyError:
+            return None
+        # Obtain labels from scan results
+        for av, res in scans.items():
+            if res['detected']:
+                label = res['result']
+                clean_label = ''.join(filter(
+                                  lambda x: x in string.printable,
+                                    label)).strip()
+                label_pairs.append((av, clean_label))
 
-        return SampleInfo(md5, sha1, sha256, label_pairs) 
+        return SampleInfo(md5, sha1, sha256, label_pairs)
+
+    @staticmethod
+    def get_sample_info_vt_v3(vt_rep):
+        '''Parse and extract sample information from JSON line
+           Returns a SampleInfo named tuple
+        '''
+        label_pairs = []
+        # Obtain scan results, if available
+        try:
+            scans = vt_rep['data']['attributes']['last_analysis_results']
+            md5 = vt_rep['data']['attributes']['md5']
+            sha1 = vt_rep['data']['attributes']['sha1']
+            sha256 = vt_rep['data']['attributes']['sha256']
+        except KeyError:
+            return None
+        # Obtain labels from scan results
+        for av, res in scans.items():
+            label = res['result']
+            if label is not None:
+                clean_label = ''.join(filter(
+                                  lambda x: x in string.printable,
+                                    label)).strip()
+                label_pairs.append((av, clean_label))
+
+        return SampleInfo(md5, sha1, sha256, label_pairs)
 
     @staticmethod
     def is_pup(av_label_pairs):

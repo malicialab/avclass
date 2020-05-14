@@ -144,6 +144,8 @@ AVClass supports two input JSON formats:
 1. VirusTotal JSON reports (*-vt file*), 
 where each line in *file* should be the full JSON of a 
 VirusTotal report as fetched through the VirusTotal API.
+By default, it assumes the VT reports are from VT API version 2.
+If the VT reports are from VT API version 3, add the -vt3 command line option.
 
 2. Simplified JSON (*-lb file*),
 where each line in *file* should be a JSON 

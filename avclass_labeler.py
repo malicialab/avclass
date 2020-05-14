@@ -66,6 +66,14 @@ def main(args):
         ifile_l += [os.path.join(args.lbdir, f) for f in os.listdir(args.lbdir)]
         ifile_are_vt = False
 
+    # Select correct sample info extraction function
+    if not ifile_are_vt:
+        get_sample_info = av_labels.get_sample_info_lb
+    elif args.vt3:
+        get_sample_info = av_labels.get_sample_info_vt_v3
+    else:
+        get_sample_info = av_labels.get_sample_info_vt_v2
+
     # Select output prefix
     out_prefix = os.path.basename(os.path.splitext(ifile_l[0])[0])
 
@@ -107,7 +115,7 @@ def main(args):
 
             # Read JSON line and extract sample info (i.e., hashes and labels)
             vt_rep = json.loads(line)
-            sample_info = av_labels.get_sample_info(vt_rep, ifile_are_vt)
+            sample_info = get_sample_info(vt_rep)
             if sample_info is None:
                 try:
                     name = vt_rep['md5']
@@ -400,6 +408,9 @@ if __name__=='__main__':
     argparser.add_argument('-fam',
         action='store_true',
         help='if used produce families file with PUP/malware counts per family')
+
+    argparser.add_argument('-vt3', action='store_true',
+        help='input are VT v3 files')
 
     args = argparser.parse_args()
 
