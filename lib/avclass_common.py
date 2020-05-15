@@ -275,11 +275,23 @@ class AvLabels:
             # Duplicate removal #
             #####################
 
-            # If label ends in ' (B)', remove it
+            # Emsisoft uses same label as 
+            # GData/ESET-NOD32/BitDefender/Ad-Aware/MicroWorld-eScan,
+            # but suffixes ' (B)' to their label. Remove the suffix.
             if label.endswith(' (B)'):
                 label = label[:-4]
 
-            # If we have seen the label before, skip
+            # F-Secure uses Avira's engine since Nov. 2018
+            # but prefixes 'Malware.' to Avira's label. Remove the prefix.
+            if label.startswith('Malware.'):
+                label = label[8:]
+
+            # Other engines often use exactly the same label, e.g.,
+            #   AVG/Avast
+            #   K7Antivirus/K7GW
+            #   Kaspersky/ZoneAlarm
+
+            # If we have seen the exact same label before, skip
             if label in labels_seen:
                 continue
             # If not, we add it to the set of labels seen
