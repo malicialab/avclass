@@ -43,7 +43,7 @@ def eval_precision_recall_fmeasure(GROUNDTRUTH_DICT, ESTIMATED_DICT):
     rev_est_dict = {}
     for k, v in ESTIMATED_DICT.items():
         if v not in rev_est_dict:
-            rev_est_dict[v] = set([k])
+            rev_est_dict[v] = { k }
         else:
             rev_est_dict[v].add(k)
 
@@ -51,7 +51,7 @@ def eval_precision_recall_fmeasure(GROUNDTRUTH_DICT, ESTIMATED_DICT):
     gt_rev_dict = {}
     for k, v in GROUNDTRUTH_DICT.items():
         if v not in gt_rev_dict:
-            gt_rev_dict[v] = set([k])
+            gt_rev_dict[v] = { k }
         else:
             gt_rev_dict[v].add(k)
 

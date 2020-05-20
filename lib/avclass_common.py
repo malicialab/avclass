@@ -12,6 +12,23 @@ from operator import itemgetter, attrgetter
 SampleInfo = namedtuple('SampleInfo', 
                         ['md5', 'sha1', 'sha256', 'labels'])
 
+# AVs to use in is_pup method
+pup_av_set = {'Malwarebytes', 'K7AntiVirus', 'Avast',
+              'AhnLab-V3', 'Kaspersky', 'K7GW', 'Ikarus',
+              'Fortinet', 'Antiy-AVL', 'Agnitum', 'ESET-NOD32'}
+
+# Tokens that indicate PUP used by is_pup method
+pup_tokens = {'PUA', 'Adware', 'PUP', 'Unwanted', 'Riskware', 'grayware',
+              'Unwnt', 'Adknowledge', 'toolbar', 'casino', 'casonline',
+              'AdLoad', 'not-a-virus'}
+
+# AVs to use in suffix removal
+suffix_removal_av_set = {'Norman', 'Avast', 'Avira', 'Kaspersky',
+                          'ESET-NOD32', 'Fortinet', 'Jiangmin', 'Comodo',
+                          'GData', 'Avast', 'Sophos',
+                          'TrendMicro-HouseCall', 'TrendMicro',
+                          'NANO-Antivirus', 'Microsoft'}
+
 class AvLabels:
     '''
     Class to operate on AV labels, 
@@ -133,26 +150,18 @@ class AvLabels:
         # Initialize
         pup = False
         threshold = 0.5
-        # AVs to use
-        av_set = set(['Malwarebytes', 'K7AntiVirus', 'Avast',
-                  'AhnLab-V3', 'Kaspersky', 'K7GW', 'Ikarus',
-                  'Fortinet', 'Antiy-AVL', 'Agnitum', 'ESET-NOD32'])
-        # Tags that indicate PUP
-        tags = set(['PUA', 'Adware', 'PUP', 'Unwanted', 'Riskware', 'grayware',
-                    'Unwnt', 'Adknowledge', 'toolbar', 'casino', 'casonline',
-                    'AdLoad', 'not-a-virus'])
-
-        # Set with (AV name, Flagged/not flagged as PUP), for AVs in av_set
-        bool_set = set([(pair[0], t.lower() in pair[1].lower()) for t in tags
+        # Set with (AV name, Flagged/not flagged as PUP), for AVs in pup_av_set
+        bool_set = set([(pair[0], t.lower() in pair[1].lower()) 
+                        for t in pup_tokens
                         for pair in av_label_pairs
-                        if pair[0] in av_set])
+                        if pair[0] in pup_av_set])
 
         # Number of AVs that had a label for the sample
         av_detected = len([p[0] for p in av_label_pairs
-                           if p[0] in av_set])
+                           if p[0] in pup_av_set])
 
         # Number of AVs that flagged the sample as PUP
-        av_pup = map(lambda x: x[1], bool_set).count(True)
+        av_pup = list(map(lambda x: x[1], bool_set)).count(True)
 
         # Flag as PUP according to a threshold
         if (float(av_pup) >= float(av_detected)*threshold) and av_pup != 0:
@@ -166,11 +175,7 @@ class AvLabels:
            Returns updated label'''
 
         # Truncate after last '.'
-        if av_name in set(['Norman', 'Avast', 'Avira', 'Kaspersky',
-                          'ESET-NOD32', 'Fortinet', 'Jiangmin', 'Comodo',
-                          'GData', 'Avast', 'Sophos',
-                          'TrendMicro-HouseCall', 'TrendMicro',
-                          'NANO-Antivirus', 'Microsoft']):
+        if av_name in suffix_removal_av_set:
             label = label.rsplit('.', 1)[0]
 
         # Truncate after last '.' 

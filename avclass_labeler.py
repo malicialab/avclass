@@ -145,7 +145,7 @@ def main(args):
 
                 # If alias detection, populate maps
                 if args.aliasdetect:
-                    prev_tokens = set([])
+                    prev_tokens = set()
                     for entry in tokens:
                         curr_tok = entry[0]
                         curr_count = token_count_map.get(curr_tok)
