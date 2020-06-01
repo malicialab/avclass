@@ -37,6 +37,7 @@ genome
 cloud
 kcloud
 memscan
+high
 score
 attribute
 advml
@@ -347,6 +348,7 @@ iframe
 powershell
 perl
 python
+autoit
 flash
 jpeg
 
@@ -385,7 +387,9 @@ small
 tiny
 
 # Generic families
+agen
 agent
+agentb
 eldorado
 artemis
 krap
