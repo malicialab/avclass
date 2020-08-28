@@ -25,6 +25,7 @@ dangerousobject
 generic
 generik
 gen
+agen
 genmalicious
 generickd
 tsgeneric
@@ -37,6 +38,7 @@ genome
 cloud
 kcloud
 memscan
+high
 score
 attribute
 advml
@@ -349,6 +351,7 @@ perl
 python
 flash
 jpeg
+autoit
 
 # Patch
 pepatch
