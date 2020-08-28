@@ -150,7 +150,7 @@ If the VT reports are from VT API version 3, add the -vt3 command line option.
 2. Simplified JSON (*-lb file*),
 where each line in *file* should be a JSON 
 with (at least) these fields:
-{md5, sha1, sha256, scan_date, av_labels}. 
+{md5, sha1, sha256, av_labels}. 
 There is an example of such input file in *data/malheurReference_lb.json*
 
 **Why have 2 different input formats?**
