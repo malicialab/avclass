@@ -26,6 +26,7 @@ pup_tokens = {'PUA', 'Adware', 'PUP', 'Unwanted', 'Riskware', 'grayware',
 suffix_removal_av_set = {'Norman', 'Avast', 'Avira', 'Kaspersky',
                           'ESET-NOD32', 'Fortinet', 'Jiangmin', 'Comodo',
                           'GData', 'Avast', 'Sophos',
+                          'BitDefenderTheta', 'Alibaba', 'Tencent', 'Cyren', 'Arcabit',
                           'TrendMicro-HouseCall', 'TrendMicro',
                           'NANO-Antivirus', 'Microsoft'}
 
@@ -186,7 +187,7 @@ class AvLabels:
                 label = tokens[0]
 
         # Truncate after last '!'
-        if av_name in set(['Agnitum','McAffee','McAffee-GW-Edition']):
+        if av_name in set(['Agnitum','McAffee','McAffee-GW-Edition', 'Yandex']):
             label = label.rsplit('!', 1)[0]
 
         # Truncate after last '('
