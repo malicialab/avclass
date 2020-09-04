@@ -89,7 +89,7 @@ class Taxonomy:
                 log.warn("[Taxonomy] Replacing %s with %s\n" % (
                                   t.path, tag.path))
                 del self.__tag_map[t.path]
-        log.info("[Taxonomy] Adding tag %s" % s)
+        log.debug("[Taxonomy] Adding tag %s" % s)
         self.__tag_map[tag.name] = tag
         self.__tag_map[tag.path] = tag
         return
@@ -98,7 +98,7 @@ class Taxonomy:
         ''' Remove tag from taxonomy. Returns 1 if removed, zero if unknown '''
         tag = self.__tag_map.get(t, None)
         if tag:
-            log.info("[Taxonomy] Removing tag: %s" % tag.path)
+            log.debug("[Taxonomy] Removing tag: %s" % tag.path)
             del self.__tag_map[tag.name]
             del self.__tag_map[tag.path]
             return 1
@@ -238,7 +238,7 @@ class Rules:
         # If no destinations, nothing to do
         if (not dst_l):
             return
-        log.info("[Rules] Adding %s -> %s" % (src, dst_l))
+        log.debug("[Rules] Adding %s -> %s" % (src, dst_l))
         src_tag = create_tag(src)
         if overwrite:
             target_l = [create_tag(dst).name for dst in dst_l]
@@ -254,7 +254,7 @@ class Rules:
     def remove_rule(self, src):
         l = self._rmap.get(src, [])
         if l:
-            log.info("[Rules] Removing rule: %s -> %s" % (src, l))
+            log.debug("[Rules] Removing rule: %s -> %s" % (src, l))
             del self._rmap[src]
             return 1
         else:

@@ -24,7 +24,7 @@ handler_stderr = logging.StreamHandler(sys.stderr)
 handler_stderr.setLevel(logging.INFO)
 handler_stderr.setFormatter(formatter)
 root = logging.getLogger()
-root.setLevel(logging.DEBUG)
+root.setLevel(logging.INFO)
 root.addHandler(handler_stderr)
 
 
@@ -54,7 +54,7 @@ class Update:
         self.__t = t
         # Initialize blacklist
         self.blist = in_taxonomy.platform_tags()
-        log.info(self.blist)
+        log.debug(self.blist)
         # Maps src -> cnt
         self.src_map = {}
         # Read relations from file
@@ -156,7 +156,7 @@ class Update:
         for rel in self.rel_set:
             p1 = self.__out_taxonomy.get_path(rel.t1)
             p2 = self.__out_taxonomy.get_path(rel.t2)
-            log.info("Processing %s\t%s" % (p1, p2))
+            log.debug("Processing %s\t%s" % (p1, p2))
             if self.is_expansion_rel(rel):
                 self.add_expansion(rel.t1, [rel.t2])
                 acc.append(rel)
@@ -191,7 +191,7 @@ class Update:
         p1,c1 = self.__out_taxonomy.get_info(rel.t1)
         p2,c2 = self.__out_taxonomy.get_info(rel.t2)
 
-        log.info("Processing %s\t%s" % (p1, p2))
+        log.debug("Processing %s\t%s" % (p1, p2))
 
         # If both directions strong, then equivalent, i.e., alias
         if (float(rel.tinv_alias_num) >= args.t):
@@ -278,7 +278,7 @@ class Update:
             # Do a pass in remaining relations
             cnt = 0
             new_set = set()
-            log.info("[-] %03d Processing relations" % num_iter)
+            log.debug("[-] %03d Processing relations" % num_iter)
             while self.rel_set:
                 rel = self.rel_set.pop()
                 # If known relation, continue
@@ -306,7 +306,7 @@ class Update:
         # self.find_aliases()
 
         # Find expansions
-        log.info("[-] Finding expansions")
+        log.debug("[-] Finding expansions")
         self.find_expansions()
 
 
@@ -394,9 +394,15 @@ class Update:
             tag_filepath = out_prefix + ".tagging"
             exp_filepath = out_prefix + ".expansion"
         taxonomy.to_file(tax_filepath)
+        log.info('[-] Output %d taxonomy tags to %s' % (
+                        len(taxonomy), tax_filepath))
         tagging.expand_all_destinations()
         tagging.to_file(tag_filepath)
+        log.info('[-] Output %d tagging rules to %s' % (
+                        len(tagging), tax_filepath))
         expansion.to_file(exp_filepath)
+        log.info('[-] Output %d expansion rules to %s' % (
+                        len(expansion), exp_filepath))
 
 
 if __name__ == '__main__':
@@ -427,6 +433,19 @@ if __name__ == '__main__':
         action='store_true',
         help='update default taxonomy,tagging,expansion files in place')
 
+    argparser.add_argument('-tag',
+        help='file with tagging rules.',
+        default = default_tagging_file)
+
+    argparser.add_argument('-tax',
+        help='file with taxonomy.',
+        default = default_taxonomy_file)
+
+    argparser.add_argument('-exp',
+        help='file with expansion rules.',
+        default = default_expansion_file)
+
+
     # Parse arguments
     args = argparser.parse_args()
 
@@ -442,13 +461,19 @@ if __name__ == '__main__':
       out_prefix = os.path.splitext(args.alias)[0]
 
     # Read taxonomy
-    taxonomy = Taxonomy(default_taxonomy_file)
-
-    # Read expansion rules
-    expansion = Expansion(default_expansion_file)
+    taxonomy = Taxonomy(args.tax)
+    log.info('[-] Read %d taxonomy tags from %s' % (
+                        len(taxonomy), args.tax))
 
     # Read tagging rules
-    tagging = Tagging(default_tagging_file)
+    tagging = Tagging(args.tag)
+    log.info('[-] Read %d tagging rules from %s' % (
+                        len(tagging), args.tag))
+
+    # Read expansion rules
+    expansion = Expansion(args.exp)
+    log.info('[-] Read %d expansion rules from %s' % (
+                        len(expansion), args.exp))
 
     # Build update object
     if not args.alias:
@@ -457,14 +482,14 @@ if __name__ == '__main__':
         alias_fname = args.alias
     update = Update(alias_fname, taxonomy, tagging, expansion, args.n, args.t)
 
-    log.info('[-] Read %d relations satisfying t>=%.2f n>=%d\n' % (
+    log.info('[-] Processing %d relations satisfying t>=%.2f n>=%d' % (
                         update.num_rules(), args.t, args.n))
 
     # Output initial rules
     update.output_relations(out_prefix + ".orig.rules")
 
     # Output initial rules statistics
-    update.output_rule_stats(sys.stderr)
+    # update.output_rule_stats(sys.stderr)
 
     # Process relations
     update.run()
