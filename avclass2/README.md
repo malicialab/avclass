@@ -65,7 +65,7 @@ For example, *FAM:adrotator* makes explicit that *adrotator* is a malware family
 *CLASS:grayware* that *grayware* is a malware class, and 
 *CLASS:grayware:adware* that *adware* is a subclass of *grayware*.
 
-** Compatibility mode **
+**Compatibility mode**
 
 The compatibility -c option makes AVClass2 output the same format as AVClass. 
 
