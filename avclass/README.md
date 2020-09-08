@@ -87,16 +87,25 @@ that are removed by AVClass.
 
 ## Input JSON format
 
-AVClass supports three input JSON formats:
+AVClass supports three input JSON formats: 
 
-1. VirusTotal JSON reports (**-vt** file), where each line in file should be 
-   the full JSON of a VirusTotal report as fetched through the VirusTotal API. 
-   By default, it assumes the VT reports are from VT API version 2. 
-   If the VT reports are from VT API version 3, add the **-vt3** command line option.
+1. VirusTotal v2 API JSON reports (*-vt file*), 
+where each line in the input *file* should be the full JSON of a 
+VirusTotal v2 API response to the */file/report* endpoint,
+e.g., obtained by querying https://www.virustotal.com/vtapi/v2/file/report?apikey={apikey}&resource={hash}
+There is an example VirusTotal v2 input file in examples/vtv2_sample.json
 
-2. Simplified JSON (**-lb** file), where each line in file should be a JSON with 
-   (at least) these fields: {md5, sha1, sha256, scan_date, av_labels}. 
-   There is an example of such input file in ../examples/malheurReference_lb.json
+2. VirusTotal v3 API JSON reports (*-vt file -vt3*), 
+where each line in the input *file* should be the full JSON of a VirusTotal API version 3 response with a *File* object report, 
+e.g., obtained by querying https://www.virustotal.com/api/v3/files/{hash}
+There is an example VirusTotal v3 input file in examples/vtv3_sample.json
+
+3. Simplified JSON (*-lb file*),
+where each line in *file* should be a JSON 
+with (at least) these fields:
+{md5, sha1, sha256, av_labels}. 
+There is an example of such input file in *examples/malheurReference_lb.json*
+
 
 **Multiple input files**
 
