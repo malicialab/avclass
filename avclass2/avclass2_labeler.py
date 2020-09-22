@@ -428,12 +428,14 @@ if __name__=='__main__':
 
     args = argparser.parse_args()
 
-    if not args.vt and not args.lb:
-        sys.stderr.write('Argument -vt or -lb is required\n')
+    if not args.vt and not args.lb and not args.vtdir and not args.lbdir:
+        sys.stderr.write('One of the following 4 arguments is required: '
+                          '-vt,-lb,-vtdir,-lbdir\n')
         exit(1)
 
-    if args.vt and args.lb:
-        sys.stderr.write('Use either -vt or -lb argument, not both.\n')
+    if (args.vt or args.vtdir) and (args.lb or args.lbdir):
+        sys.stderr.write('Use either -vt/-vtdir or -lb/-lbdir. '
+                          'Both types of input files cannot be combined.\n')
         exit(1)
 
     if args.tag:
