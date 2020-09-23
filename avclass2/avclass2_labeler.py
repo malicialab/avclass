@@ -37,10 +37,16 @@ def format_tag_pairs(l, taxonomy=None):
     ''' Return ranked tags as string '''
     if not l:
         return ""
-    p = taxonomy.get_path(l[0][0]) if taxonomy else l[0][0]
+    if taxonomy is not None:
+        p = taxonomy.get_path(l[0][0])
+    else:
+        p = l[0][0]
     out = "%s|%d" % (p, l[0][1])
     for (t,s) in l[1:]:
-        p = taxonomy.get_path(t) if taxonomy else t
+        if taxonomy is not None:
+            p = taxonomy.get_path(t) 
+        else:
+            p = t
         out += ",%s|%d" % (p, s)
     return out
 
