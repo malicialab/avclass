@@ -1005,7 +1005,6 @@ FILE:filetype:msword
 FILE:filetype:pdf
 FILE:filetype:text
 FILE:iframe
-FILE:iframe:iframeref
 FILE:installer
 FILE:installer:installmate
 FILE:installer:installshield
