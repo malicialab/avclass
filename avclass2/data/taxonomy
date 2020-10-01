@@ -53,8 +53,6 @@ CLASS:downloader
 CLASS:fakeantivirus
 CLASS:grayware
 CLASS:grayware:adware
-CLASS:grayware:adware:adlibrary
-CLASS:grayware:adware:adlibrary:adpush
 CLASS:grayware:adware:multiplug
 CLASS:grayware:casino
 CLASS:grayware:tool
@@ -96,6 +94,7 @@ FAM:adlock
 FAM:admogo
 FAM:adpeak
 FAM:adpooh
+FAM:adpush
 FAM:adrd
 FAM:adrotator
 FAM:adrotoob
@@ -131,6 +130,7 @@ FAM:aplog
 FAM:apofer
 FAM:appoffer
 FAM:appsad
+FAM:appsgeyser
 FAM:appwiz
 FAM:appwizz
 FAM:aqplay
@@ -245,6 +245,7 @@ FAM:dangbei
 FAM:darkkomet
 FAM:darop
 FAM:dasu
+FAM:datacollector
 FAM:daws
 FAM:dbtes
 FAM:deblio
@@ -253,6 +254,7 @@ FAM:delbar
 FAM:deshacop
 FAM:detroie
 FAM:dianle
+FAM:dianjin
 FAM:dianru
 FAM:dilidi
 FAM:dinwod
@@ -436,6 +438,7 @@ FAM:imaut
 FAM:imlog
 FAM:inbox
 FAM:infectionads
+FAM:inmobi
 FAM:inor
 FAM:inservice
 FAM:installbrain
@@ -457,7 +460,6 @@ FAM:itracker
 FAM:jayqa
 FAM:jeefo
 FAM:jfpush
-FAM:jiagu
 FAM:jiead
 FAM:jifake
 FAM:jinupd
@@ -573,6 +575,7 @@ FAM:mobilespy
 FAM:mobiletracker
 FAM:mobiletx
 FAM:mobwin
+FAM:mocen
 FAM:mocpiad
 FAM:mogap
 FAM:mogosec
@@ -698,6 +701,7 @@ FAM:reporo
 FAM:reptilicus
 FAM:resharer
 FAM:reveton
+FAM:revmob
 FAM:riltok
 FAM:rimod
 FAM:robtes
@@ -728,7 +732,6 @@ FAM:scam
 FAM:sckeylog
 FAM:sdbot
 FAM:seaweth
-FAM:secapk
 FAM:securityshield
 FAM:securityxploded
 FAM:senddroid
@@ -995,9 +998,8 @@ FILE:fakepublisher
 FILE:filetype:flash
 FILE:filetype:html
 FILE:filetype:jpeg
-FILE:filetype:msoffice
-FILE:filetype:msoffice:msexcel
-FILE:filetype:msoffice:msword
+FILE:filetype:msexcel
+FILE:filetype:msword
 FILE:filetype:pdf
 FILE:filetype:text
 FILE:iframe
@@ -1018,6 +1020,7 @@ FILE:packed:asprotect
 FILE:packed:decrypter
 FILE:packed:execryptor
 FILE:packed:expressor
+FILE:packed:jiagu
 FILE:packed:krunchy
 FILE:packed:maskpe
 FILE:packed:molebox
@@ -1027,13 +1030,14 @@ FILE:packed:pearmor
 FILE:packed:pecompact
 FILE:packed:polycrypt
 FILE:packed:rcryptor
+FILE:packed:secapk
+FILE:packed:secneo
 FILE:packed:themida
 FILE:packed:upack
 FILE:packed:vmprotect
 FILE:proglang:autoit
 FILE:proglang:delphi
 FILE:proglang:java
-FILE:proglang:java:genericgba
 FILE:proglang:perl
 FILE:proglang:powershell
 FILE:proglang:python

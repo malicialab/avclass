@@ -67,7 +67,6 @@ applicunwnt	grayware
 applovin	plankton
 appquanta	wkload
 apprisk	grayware
-appsgeyser	fakeflash
 aque	beebone
 arcadeparlor	gamevance
 arcadeweb	gamevance
@@ -373,7 +372,7 @@ fakenotify	opfake
 fakeplay	fakeplayer
 fakeqou	styricka
 fakerecovery	fakesysdef
-fakerun	airpush
+fakerun	fakeapp
 fakesecsuit	spyeye
 fakesite	perkel
 fakeumg	gumen
@@ -931,7 +930,6 @@ relik	updtkiller
 remtasu	xtrat
 renamer	files
 reptilic	reptilicus
-revmob	plankton
 revtcp	metasploit
 rimecud	palevo
 risk	grayware
