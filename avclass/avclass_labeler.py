@@ -7,7 +7,9 @@ import os
 import sys
 path = os.path.dirname(os.path.abspath(__file__))
 libpath = os.path.join(path, 'lib/')
-sys.path.insert(0, libpath)
+sharedpath = os.path.join(path, '../shared/')
+sys.path.insert(1, libpath)
+sys.path.insert(1, sharedpath)
 import argparse
 from avclass_common import AvLabels
 from operator import itemgetter
