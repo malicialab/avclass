@@ -254,8 +254,8 @@ FAM:defmid
 FAM:delbar
 FAM:deshacop
 FAM:detroie
-FAM:dianle
 FAM:dianjin
+FAM:dianle
 FAM:dianru
 FAM:dilidi
 FAM:dinwod
@@ -1001,6 +1001,7 @@ FILE:filetype:flash
 FILE:filetype:html
 FILE:filetype:jpeg
 FILE:filetype:msexcel
+FILE:filetype:msoffice
 FILE:filetype:msword
 FILE:filetype:pdf
 FILE:filetype:text
