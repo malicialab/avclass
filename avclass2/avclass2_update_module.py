@@ -24,7 +24,7 @@ handler_stderr = logging.StreamHandler(sys.stderr)
 handler_stderr.setLevel(logging.INFO)
 handler_stderr.setFormatter(formatter)
 root = logging.getLogger()
-root.setLevel(logging.INFO)
+root.setLevel(logging.DEBUG)
 root.addHandler(handler_stderr)
 
 
@@ -445,6 +445,9 @@ if __name__ == '__main__':
         help='file with expansion rules.',
         default = default_expansion_file)
 
+    argparser.add_argument('-v', '--verbose',
+        action='store_true',
+        help='verbose, prints debugging statements.')
 
     # Parse arguments
     args = argparser.parse_args()
@@ -453,6 +456,10 @@ if __name__ == '__main__':
     if not args.alias:
         log.error('[-] Please provide an alias file with -alias')
         exit(1)
+
+    # Set logging level
+    if (args.verbose):
+        handler_stderr.setLevel(logging.DEBUG)
 
     # Set output prefix
     if args.o:
