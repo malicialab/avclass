@@ -1,8 +1,13 @@
+#!/usr/bin/env python
+'''
+AVClass2 input checker
+'''
+
 import os
 import sys
 import argparse
 script_dir = os.path.dirname(os.path.abspath(__file__))
-sys.path.insert(0, os.path.join(script_dir, 'lib/'))
+sys.path.insert(1, os.path.join(script_dir, 'lib/'))
 from avclass2_common import Taxonomy, Tagging, Expansion
 
 default_tag_file = "data/default.tagging"
