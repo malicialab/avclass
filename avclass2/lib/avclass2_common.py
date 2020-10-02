@@ -62,7 +62,7 @@ class Taxonomy:
 
     def __len__(self):
         ''' Taxonomy length is the number of tags it contains '''
-        return len(self.__tag_map)/2
+        return len(self.__tag_map)//2
 
     def is_generic(self, t):
         ''' Return true if input is generic, false otherwise '''
