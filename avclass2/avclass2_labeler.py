@@ -16,11 +16,11 @@ import json
 import traceback
 
 # Default tagging file
-default_tag_file = os.path.join(script_dir, "data/tagging")
+default_tag_file = os.path.join(script_dir, "data/default.tagging")
 # Default expansion file
-default_exp_file = os.path.join(script_dir, "data/expansion")
+default_exp_file = os.path.join(script_dir, "data/default.expansion")
 # Default taxonomy file
-default_tax_file = os.path.join(script_dir, "data/taxonomy")
+default_tax_file = os.path.join(script_dir, "data/default.taxonomy")
 
 def guess_hash(h):
     ''' Given a hash string, guess the hash type based on the string length '''

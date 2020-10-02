@@ -29,11 +29,11 @@ root.addHandler(handler_stderr)
 
 
 # Default tagging file
-default_tagging_file = os.path.join(script_dir, "data/tagging")
+default_tagging_file = os.path.join(script_dir, "data/default.tagging")
 # Default expansion file
-default_expansion_file = os.path.join(script_dir, "data/expansion")
+default_expansion_file = os.path.join(script_dir, "data/default.expansion")
 # Default taxonomy file
-default_taxonomy_file = os.path.join(script_dir, "data/taxonomy")
+default_taxonomy_file = os.path.join(script_dir, "data/default.taxonomy")
 
 # Threshold for string similarity
 sim_threshold = 0.6

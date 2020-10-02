@@ -5,9 +5,9 @@ script_dir = os.path.dirname(os.path.abspath(__file__))
 sys.path.insert(0, os.path.join(script_dir, 'lib/'))
 from avclass2_common import Taxonomy, Tagging, Expansion
 
-default_tag_file = "data/tagging"
-default_tax_file = "data/taxonomy"
-default_exp_file = "data/expansion"
+default_tag_file = "data/default.tagging"
+default_tax_file = "data/default.taxonomy"
+default_exp_file = "data/default.expansion"
 
 if __name__ == '__main__':
     argparser = argparse.ArgumentParser(prog='input_checker',
