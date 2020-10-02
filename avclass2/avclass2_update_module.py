@@ -399,7 +399,7 @@ class Update:
         tagging.expand_all_destinations()
         tagging.to_file(tag_filepath)
         log.info('[-] Output %d tagging rules to %s' % (
-                        len(tagging), tax_filepath))
+                        len(tagging), tag_filepath))
         expansion.to_file(exp_filepath)
         log.info('[-] Output %d expansion rules to %s' % (
                         len(expansion), exp_filepath))
