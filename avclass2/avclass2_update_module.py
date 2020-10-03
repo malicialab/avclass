@@ -36,7 +36,7 @@ default_expansion_file = os.path.join(script_dir, "data/default.expansion")
 default_taxonomy_file = os.path.join(script_dir, "data/default.taxonomy")
 
 # Threshold for string similarity
-sim_threshold = 0.6
+# sim_threshold = 0.6
 
 # Relation
 Rel = namedtuple('Rel', ['t1', 't2', 't1_num', 't2_num', 
@@ -54,7 +54,6 @@ class Update:
         self.__t = t
         # Initialize blacklist
         self.blist = in_taxonomy.platform_tags()
-        log.debug(self.blist)
         # Maps src -> cnt
         self.src_map = {}
         # Read relations from file
@@ -157,6 +156,11 @@ class Update:
             p1 = self.__out_taxonomy.get_path(rel.t1)
             p2 = self.__out_taxonomy.get_path(rel.t2)
             log.debug("Processing %s\t%s" % (p1, p2))
+            # Ignore relations where t1 is an alias
+            l = self.__out_tagging.get_dst(rel.t1)
+            if l:
+                log.debug("Ignoring relation for alias %s" % p1)
+                continue
             if self.is_expansion_rel(rel):
                 self.add_expansion(rel.t1, [rel.t2])
                 acc.append(rel)
