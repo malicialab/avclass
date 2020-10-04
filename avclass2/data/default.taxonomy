@@ -41,6 +41,7 @@ BEH:sms:sendssms
 BEH:spam
 BEH:tor
 BEH:vmdetect
+BEH:whatsapp
 CLASS:apt
 CLASS:backdoor
 CLASS:bot
@@ -73,11 +74,8 @@ CLASS:virus
 CLASS:virus:prepender
 CLASS:worm
 CLASS:worm:emailworm
-FAM:0052b
-FAM:154b2720de
 FAM:1clickdownload
 FAM:4shared
-FAM:560de1fe9de
 FAM:abeciv
 FAM:accutrack
 FAM:acecard
@@ -128,11 +126,11 @@ FAM:anydown
 FAM:anzhu
 FAM:aplog
 FAM:apofer
+FAM:appinventor
 FAM:appoffer
 FAM:appsad
 FAM:appsgeyser
 FAM:appwiz
-FAM:appwizz
 FAM:aqplay
 FAM:asacub
 FAM:asprox
@@ -155,7 +153,6 @@ FAM:bauts
 FAM:bebeg
 FAM:becou
 FAM:beebone
-FAM:beita
 FAM:beitaad
 FAM:belesak
 FAM:benjamin
@@ -303,7 +300,6 @@ FAM:etooe
 FAM:ewind
 FAM:expiro
 FAM:expressdownloader
-FAM:f7fa48878f6c
 FAM:faceniff
 FAM:fakeangry
 FAM:fakeapp
@@ -353,8 +349,6 @@ FAM:foncy
 FAM:forav
 FAM:fosniw
 FAM:framaroot
-FAM:freeandroidspy
-FAM:freeandspy
 FAM:freespy
 FAM:frupi
 FAM:fujacks
@@ -381,7 +375,6 @@ FAM:geral
 FAM:getnow
 FAM:gexin
 FAM:ggtrack
-FAM:gibdy
 FAM:gidby
 FAM:gidix
 FAM:ginamster
@@ -930,7 +923,6 @@ FAM:warezov
 FAM:webalta
 FAM:webkey
 FAM:webprefix
-FAM:whatsapp
 FAM:whistlesoftware
 FAM:whiteice
 FAM:whitesmoke
@@ -996,7 +988,6 @@ FILE:exploit:signaturebypass
 FILE:exploit:stagefright
 FILE:exploit:towelroot
 FILE:fakepdf
-FILE:fakepublisher
 FILE:filetype:flash
 FILE:filetype:html
 FILE:filetype:jpeg
@@ -1068,6 +1059,7 @@ FILE:proglang:python
 FILE:proglang:visualbasic
 FILE:shellcode
 FILE:signed
+FILE:signed:fakepublisher
 FILE:small
 FILE:testvirus
 FILE:webpage
