@@ -297,6 +297,7 @@ FAM:eorezo
 FAM:equationdrug
 FAM:esfury
 FAM:etooe
+FAM:etumbot
 FAM:ewind
 FAM:expiro
 FAM:expressdownloader
@@ -340,6 +341,7 @@ FAM:firseria
 FAM:fjcon
 FAM:fkav
 FAM:fkdefend
+FAM:flame
 FAM:float
 FAM:flystudio
 FAM:fobus
@@ -351,6 +353,7 @@ FAM:fosniw
 FAM:framaroot
 FAM:freespy
 FAM:frupi
+FAM:fucobha
 FAM:fujacks
 FAM:gabas
 FAM:gabpath
@@ -496,6 +499,7 @@ FAM:laroux
 FAM:ldpinch
 FAM:leadbolt
 FAM:leapp
+FAM:lecna
 FAM:lemon
 FAM:letv
 FAM:lien
@@ -551,6 +555,7 @@ FAM:microjoin
 FAM:midia
 FAM:migun
 FAM:milipnot
+FAM:mimikatz
 FAM:minimob
 FAM:mirai
 FAM:mmarketpay
@@ -968,6 +973,7 @@ FAM:ztorg
 FAM:zusy
 FAM:zvuzona
 FAM:zwangi
+FAM:zxshell
 FILE:bundle
 FILE:corrupted
 FILE:exploit
