@@ -120,17 +120,19 @@ def main(args):
     # Process each input file
     for ifile in ifile_l:
         # Open file
-        fd = open(ifile, 'r')
+        fd = open(ifile, 'r', encoding='utf-8')
 
         # Debug info, file processed
         sys.stderr.write('[-] Processing input file %s\n' % ifile)
 
         # Process all lines in file
-        for line in fd:
+        #for line in fd:
+        # @packmad BRUTAL fix, it works when we have a single report in each file
+        if True:
 
             # If blank line, skip
-            if line == '\n':
-                continue
+            #if line == '\n':
+            #    continue
 
             # Debug info
             if vt_all % 100 == 0:
@@ -139,7 +141,8 @@ def main(args):
             vt_all += 1
 
             # Read JSON line
-            vt_rep = json.loads(line)
+            # @packmad BRUTAL fix, read file instead of line
+            vt_rep = json.load(fd)
 
             # Extract sample info
             sample_info = get_sample_info(vt_rep)
