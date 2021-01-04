@@ -73,7 +73,8 @@ In Proceedings of the International Symposium on Research in
 Attacks, Intrusions and Defenses,
 September 2016.
 
-The design and evaluation of AVClass2 is detailed in our ACSAC 2020 paper.
+The design and evaluation of AVClass2 is detailed in our
+[ACSAC 2020 paper](https://arxiv.org/pdf/2006.10615.pdf):
 
 > Silvia Sebastián, Juan Caballero. 
 AVClass2: Massive Malware Tag Extraction from AV Labels. 
