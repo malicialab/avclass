@@ -6,7 +6,7 @@ import sys
 from collections import namedtuple
 from operator import itemgetter
 
-from avclass.lib import Taxonomy, Expansion, Tagging
+from avclass.common import Taxonomy, Expansion, Tagging
 
 
 # Set logging

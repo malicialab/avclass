@@ -1,6 +1,6 @@
 import sys
 import argparse
-from avclass.lib import Taxonomy, Tagging, Expansion
+from avclass.common import Taxonomy, Tagging, Expansion
 
 
 default_tag_file = "data/default.tagging"

@@ -6,7 +6,8 @@ import traceback
 
 from operator import itemgetter
 
-from avclass.lib import AvLabels, clustering as ec
+from avclass.common import AvLabels
+from avclass import clustering as ec
 
 
 script_dir = os.path.dirname(os.path.abspath(__file__))
@@ -477,4 +478,3 @@ def parse_args():
 
 if __name__=='__main__':
     main()
-    
