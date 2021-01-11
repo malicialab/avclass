@@ -7,6 +7,9 @@ setup(
     description='Tag and label malware samples',
     license='LICENSE',
     packages=find_packages(),
+    package_data={
+        'avclass': ['data/default.*'],
+    },
     install_requires=[],
     setup_requires=[
         'pytest-runner',
@@ -17,6 +20,6 @@ setup(
     entry_points={
         'console_scripts': [
             'avclass = avclass.labeler:main',
-            'avclass-validate = avclass.input_checker:main',
+            'avclass-validate = avclass.util:validate_files',
         ],
     })
