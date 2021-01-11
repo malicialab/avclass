@@ -7,16 +7,7 @@ import traceback
 from operator import itemgetter
 
 from avclass.common import AvLabels
-from avclass import clustering as ec
-
-
-script_dir = os.path.dirname(os.path.abspath(__file__))
-# Default tagging file
-default_tag_file = os.path.join(script_dir, "data/default.tagging")
-# Default expansion file
-default_exp_file = os.path.join(script_dir, "data/default.expansion")
-# Default taxonomy file
-default_tax_file = os.path.join(script_dir, "data/default.taxonomy")
+from avclass import clustering as ec, util
 
 
 def guess_hash(h):
@@ -30,6 +21,7 @@ def guess_hash(h):
         return 'sha256'
     else:
         return None
+
 
 def format_tag_pairs(l, taxonomy=None):
     ''' Return ranked tags as string '''
@@ -48,6 +40,7 @@ def format_tag_pairs(l, taxonomy=None):
         out += ",%s|%d" % (p, s)
     return out
 
+
 def list_str(l, sep=", ", prefix=""):
     ''' Return list as a string '''
     if not l:
@@ -56,6 +49,7 @@ def list_str(l, sep=", ", prefix=""):
     for s in l[1:]:
         out = out + sep + s
     return out
+
 
 def main():
     args = parse_args()
@@ -354,7 +348,7 @@ def main():
 
 
 def parse_args():
-    argparser = argparse.ArgumentParser(prog='avclass2_labeler',
+    argparser = argparse.ArgumentParser(prog='avclass',
         description='''Extracts tags for a set of samples.
             Also calculates precision and recall if ground truth available''')
 
@@ -387,15 +381,15 @@ def parse_args():
 
     argparser.add_argument('-tag',
         help='file with tagging rules.',
-        default = default_tag_file)
+        default = util.DEFAULT_TAG_PATH)
 
     argparser.add_argument('-tax',
         help='file with taxonomy.',
-        default = default_tax_file)
+        default = util.DEFAULT_TAX_PATH)
 
     argparser.add_argument('-exp',
         help='file with expansion rules.',
-        default = default_exp_file)
+        default = util.DEFAULT_EXP_PATH)
 
     argparser.add_argument('-av',
         help='file with list of AVs to use')
@@ -435,43 +429,37 @@ def parse_args():
 
     if not args.vt and not args.lb and not args.vtdir and not args.lbdir:
         sys.stderr.write('One of the following 4 arguments is required: '
-                          '-vt,-lb,-vtdir,-lbdir\n')
+                         '-vt,-lb,-vtdir,-lbdir\n')
         exit(1)
 
     if (args.vt or args.vtdir) and (args.lb or args.lbdir):
         sys.stderr.write('Use either -vt/-vtdir or -lb/-lbdir. '
-                          'Both types of input files cannot be combined.\n')
+                         'Both types of input files cannot be combined.\n')
         exit(1)
 
     if args.tag:
         if args.tag == '/dev/null':
             sys.stderr.write('[-] Using no tagging rules\n')
         else:
-            sys.stderr.write('[-] Using tagging rules in %s\n' % (
-                              args.tag))
+            sys.stderr.write('[-] Using tagging rules in %s\n' % (args.tag))
     else:
-        sys.stderr.write('[-] Using default tagging rules in %s\n' % (
-                          default_tag_file))
+        sys.stderr.write('[-] Using default tagging rules in %s\n' % (util.DEFAULT_TAG_PATH))
 
     if args.tax:
         if args.tax == '/dev/null':
             sys.stderr.write('[-] Using no taxonomy\n')
         else:
-            sys.stderr.write('[-] Using taxonomy in %s\n' % (
-                              args.tax))
+            sys.stderr.write('[-] Using taxonomy in %s\n' % (args.tax))
     else:
-        sys.stderr.write('[-] Using default taxonomy in %s\n' % (
-                          default_tax_file))
+        sys.stderr.write('[-] Using default taxonomy in %s\n' % (util.DEFAULT_TAX_PATH))
 
     if args.exp:
         if args.exp == '/dev/null':
             sys.stderr.write('[-] Using no expansion tags\n')
         else:
-            sys.stderr.write('[-] Using expansion tags in %s\n' % (
-                              args.exp))
+            sys.stderr.write('[-] Using expansion tags in %s\n' % (args.exp))
     else:
-        sys.stderr.write('[-] Using default expansion tags in %s\n' % (
-                          default_exp_file))
+        sys.stderr.write('[-] Using default expansion tags in %s\n' % (util.DEFAULT_EXP_PATH))
 
     return args
 
