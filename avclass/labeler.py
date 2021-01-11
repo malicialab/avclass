@@ -1,26 +1,22 @@
-#!/usr/bin/env python
-'''
-AVClass2 labeler
-'''
-
-import os
-import sys
-script_dir = os.path.dirname(os.path.abspath(__file__))
-sys.path.insert(1, os.path.join(script_dir, 'lib/'))
-sys.path.insert(1, os.path.join(script_dir, '../shared/'))
 import argparse
-from avclass2_common import AvLabels
-from operator import itemgetter
-import evaluate_clustering as ec
+import os
 import json
+import sys
 import traceback
 
+from operator import itemgetter
+
+from avclass.lib import AvLabels, clustering as ec
+
+
+script_dir = os.path.dirname(os.path.abspath(__file__))
 # Default tagging file
 default_tag_file = os.path.join(script_dir, "data/default.tagging")
 # Default expansion file
 default_exp_file = os.path.join(script_dir, "data/default.expansion")
 # Default taxonomy file
 default_tax_file = os.path.join(script_dir, "data/default.taxonomy")
+
 
 def guess_hash(h):
     ''' Given a hash string, guess the hash type based on the string length '''

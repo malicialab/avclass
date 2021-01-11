@@ -1,19 +1,13 @@
-#!/usr/bin/env python
-# -*- coding: utf-8 -*-
-'''
-AVClass2 Update module
-'''
-import sys
-import os
 import argparse
 import logging
-# Make sure paths are relative to execution path
-script_dir = os.path.dirname(os.path.abspath(__file__))
-sys.path.insert(0, os.path.join(script_dir, 'lib/'))
-from operator import itemgetter
+import os
+import sys
+
 from collections import namedtuple
-from avclass2_common import Taxonomy, Expansion, Tagging
-# from Levenshtein import ratio as levenshtein_ratio
+from operator import itemgetter
+
+from avclass.lib import Taxonomy, Expansion, Tagging
+
 
 # Set logging
 log = logging.getLogger(__name__)
@@ -28,6 +22,7 @@ root.setLevel(logging.DEBUG)
 root.addHandler(handler_stderr)
 
 
+script_dir = os.path.dirname(os.path.abspath(__file__))
 # Default tagging file
 default_tagging_file = os.path.join(script_dir, "data/default.tagging")
 # Default expansion file
@@ -41,6 +36,7 @@ default_taxonomy_file = os.path.join(script_dir, "data/default.taxonomy")
 # Relation
 Rel = namedtuple('Rel', ['t1', 't2', 't1_num', 't2_num', 
                          'nalias_num', 'talias_num', 'tinv_alias_num'])
+
 
 class Update:
     ''' Update Module '''
@@ -487,11 +483,7 @@ if __name__ == '__main__':
                         len(expansion), args.exp))
 
     # Build update object
-    if not args.alias:
-        alias_fname = os.path.basename(os.path.splitext(ifile)[0]) + '.alias'
-    else:
-        alias_fname = args.alias
-    update = Update(alias_fname, taxonomy, tagging, expansion, args.n, args.t)
+    update = Update(args.alias, taxonomy, tagging, expansion, args.n, args.t)
 
     log.info('[-] Processing %d relations satisfying t>=%.2f n>=%d' % (
                         update.num_rules(), args.t, args.n))

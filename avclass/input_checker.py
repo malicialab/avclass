@@ -1,18 +1,12 @@
-#!/usr/bin/env python
-'''
-AVClass2 input checker
-'''
-
-import os
 import sys
 import argparse
-script_dir = os.path.dirname(os.path.abspath(__file__))
-sys.path.insert(1, os.path.join(script_dir, 'lib/'))
-from avclass2_common import Taxonomy, Tagging, Expansion
+from avclass.lib import Taxonomy, Tagging, Expansion
+
 
 default_tag_file = "data/default.tagging"
 default_tax_file = "data/default.taxonomy"
 default_exp_file = "data/default.expansion"
+
 
 if __name__ == '__main__':
     argparser = argparse.ArgumentParser(prog='input_checker',
