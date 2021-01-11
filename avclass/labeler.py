@@ -56,7 +56,8 @@ def list_str(l, sep=", ", prefix=""):
         out = out + sep + s
     return out
 
-def main(args):
+def main():
+    args = parse_args()
     # Select hash used to identify sample, by default MD5
     hash_type = args.hash if args.hash else 'md5'
 
@@ -351,7 +352,7 @@ def main(args):
         sys.stderr.write('[-] Alias data in %s\n' % (alias_filename))
 
 
-if __name__=='__main__':
+def parse_args():
     argparser = argparse.ArgumentParser(prog='avclass2_labeler',
         description='''Extracts tags for a set of samples.
             Also calculates precision and recall if ground truth available''')
@@ -471,4 +472,9 @@ if __name__=='__main__':
         sys.stderr.write('[-] Using default expansion tags in %s\n' % (
                           default_exp_file))
 
-    main(args)
+    return args
+
+
+if __name__=='__main__':
+    main()
+    

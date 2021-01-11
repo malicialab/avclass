@@ -8,7 +8,7 @@ default_tax_file = "data/default.taxonomy"
 default_exp_file = "data/default.expansion"
 
 
-if __name__ == '__main__':
+def main():
     argparser = argparse.ArgumentParser(prog='input_checker',
         description='Checks format of files Tagging, Expansion and Taxonomy.')
 
@@ -48,3 +48,6 @@ if __name__ == '__main__':
     sys.stdout.write('[-] Normalized %d expansion rules in %s\n' % (
                         len(expansion), args.exp))
 
+
+if __name__ == '__main__':
+    main()

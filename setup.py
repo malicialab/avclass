@@ -14,4 +14,9 @@ setup(
     tests_require=[
         'pytest',
     ],
-)
+    entry_points={
+        'console_scripts': [
+            'avclass = avclass.labeler:main',
+            'avclass-validate = avclass.input_checker:main',
+        ],
+    })
