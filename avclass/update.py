@@ -7,7 +7,7 @@ from collections import namedtuple
 from operator import itemgetter
 
 from avclass import util
-from avclass.common import Taxonomy, Expansion, Tagging
+from avclass.common import Taxonomy, Expansion, Translation
 
 
 logger = logging.getLogger(__name__)
@@ -463,7 +463,7 @@ if __name__ == '__main__':
                         len(taxonomy), args.tax))
 
     # Read tagging rules
-    tagging = Tagging(args.tag)
+    tagging = Translation(args.tag)
     logger.info('[-] Read %d tagging rules from %s' % (
                         len(tagging), args.tag))
 

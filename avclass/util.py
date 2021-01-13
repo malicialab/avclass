@@ -3,7 +3,7 @@ import logging
 import pkg_resources
 
 from avclass import data
-from avclass.common import Taxonomy, Tagging, Expansion
+from avclass.common import Taxonomy, Translation, Expansion
 
 from typing import AnyStr
 
@@ -63,7 +63,7 @@ def validate_tagging(path: AnyStr, taxonomy: Taxonomy):
     :param taxonomy: Valid Taxonomy object
     :return: None
     """
-    tagging = Tagging(path)
+    tagging = Translation(path)
     tagging.validate(taxonomy)
     # tagging.expand_all_destinations()
     tagging.to_file(path)
