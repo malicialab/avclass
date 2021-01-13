@@ -1,10 +1,10 @@
 import sys
 
 from collections import defaultdict
-from typing import Dict, Set
+from typing import Dict, Set, Tuple
 
 
-def tp_fp_fn(expected: Set, guess: Set):
+def tp_fp_fn(expected: Set, guess: Set) -> Tuple[int, int, int]:
     """
     Calculate the true-positives, false-positives, and false-negatives between ``expected`` and ``guess``
 
@@ -19,7 +19,7 @@ def tp_fp_fn(expected: Set, guess: Set):
     return tp, fp, fn
 
 
-def eval_precision_recall_fmeasure(expected: Dict, guess: Dict):
+def eval_precision_recall_fmeasure(expected: Dict, guess: Dict) -> Tuple[int, int, int]:
     """
     Evaluate the precision, recall, and f-measure for the comparison of ``expected`` to ``guess``
 
