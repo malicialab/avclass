@@ -1,11 +1,11 @@
 import logging
+import operator
 import re
 import string
 import sys
 
-from collections import namedtuple
-from operator import itemgetter
-from typing import Any, AnyStr, Collection, Dict, List, Optional, Set, Tuple, Union
+from collections import defaultdict, namedtuple
+from typing import AnyStr, Collection, Dict, List, Optional, Set, Tuple, Union
 
 
 logger = logging.getLogger(__name__)
@@ -569,10 +569,14 @@ class AvLabels:
         return False
 
     @staticmethod
-    def __remove_suffixes(av_name, label):
-        '''Remove AV specific suffixes from given label
-           Returns updated label'''
+    def __remove_suffixes(av_name: AnyStr, label: AnyStr) -> AnyStr:
+        """
+        Remove vendor-specific suffixes from the label
 
+        :param av_name: The AV name to remove
+        :param label: The label to change
+        :return: The new label
+        """
         # Truncate after last '.'
         if av_name in suffix_removal_av_set:
             label = label.rsplit('.', 1)[0]
@@ -590,15 +594,15 @@ class AvLabels:
 
         return label
 
+    def get_label_tags(self, label: AnyStr, hashes: Collection[AnyStr]) -> Set[AnyStr]:
+        """
+        Tokenize, translate, and filter a label into tags.  ``hashes`` are used to provide a dynamic filter of sorts.
+        We don't want to tokenize parts of the sample's hash which is a common thing for some AV vendors.
 
-    def get_label_tags(self, label, hashes):
-        ''' Return list of tags in given label 
-            Tokenizes label, filters unneeded tokens, and 
-            applies tagging rules '''
-
-        # Initialize set of tags to return
-        # We use a set to avoid duplicate tokens in the same AV label
-        # This avoids "potentially unwanted" contributing twice BEH:pup
+        :param label: The label to convert
+        :param hashes: A list of hashes to be used as dynamic filters
+        :return: A set of tags that were extracted from the label
+        """
         tags = set()
 
         # If empty label, nothing to do
@@ -618,12 +622,7 @@ class AvLabels:
             # Ignore token if prefix of a hash of the sample
             # Most AVs use MD5 prefixes in labels, 
             # but we check SHA1 and SHA256 as well
-            hash_token = False
-            for hash_str in hashes:
-                if hash_str[0:len(token)] == token:
-                  hash_token = True
-                  break
-            if hash_token:
+            if any([h.startswith(token) for h in hashes]):
                 continue
 
             # Ignore generic tokens
@@ -644,9 +643,13 @@ class AvLabels:
         # Return tags
         return tags
 
+    def __expand(self, tag_set: Set[AnyStr]) -> Set[AnyStr]:
+        """
+        Expand tags into more tags using expansion rules and the Taxonomy
 
-    def __expand(self, tag_set):
-        ''' Return expanded set of tags '''
+        :param tag_set: Starting set of tags
+        :return: Expanded set of tags
+        """
         ret = set()
         for t in tag_set:
             # Include tag
@@ -658,90 +661,64 @@ class AvLabels:
             # Include implicit expansions in taxonomy
             ret.update(self.taxonomy.expand(t))
 
-        # Return a list for backwards compatibility 
         return ret
 
-    def get_sample_tags(self, sample_info):
-        ''' Returns dictionary tag -> AV list of tags for the given sample '''
+    def get_sample_tags(self, sample_info: SampleInfo) -> Dict[AnyStr, List[AnyStr]]:
+        """
+        Get a dictionary where the key is a tag and the value is a list of AV engines that confirmed that tag.
 
-        # Whitelist the AVs to filter the ones with meaningful labels
-        av_whitelist = self.avs
-        # Initialize auxiliary data structures
+        :param sample_info: The SampleInfo object to inspect
+        :return: A dictionary where k,v = tag,[av, ...]
+        """
         duplicates = set()
-        av_dict = {}
+        av_dict = defaultdict(list)
 
         # Process each AV label
-        for (av_name, label) in sample_info.labels:
-            # If empty label, nothing to do
-            if not label:
+        for av_name, label in sample_info.labels:
+            if not label or av_name not in self.avs:
                 continue
 
-            ################
-            # AV selection #
-            ################
-            if av_whitelist and av_name not in av_whitelist:
-                continue
-
-            #####################
-            # Duplicate removal #
-            #####################
-
-            # Emsisoft uses same label as 
+            # Emsisoft uses same label as
             # GData/ESET-NOD32/BitDefender/Ad-Aware/MicroWorld-eScan,
             # but suffixes ' (B)' to their label. Remove the suffix.
-            if label.endswith(' (B)'):
-                label = label[:-4]
+            label = label.rstrip(' (B)')
 
             # F-Secure uses Avira's engine since Nov. 2018
             # but prefixes 'Malware.' to Avira's label. Remove the prefix.
-            if label.startswith('Malware.'):
-                label = label[8:]
+            label = label.lstrip('Malware.')
 
             # Other engines often use exactly the same label, e.g.,
             #   AVG/Avast
             #   K7Antivirus/K7GW
             #   Kaspersky/ZoneAlarm
 
-            # If we have seen the exact same label before, skip
             if label in duplicates:
                 continue
-            # If not, we add it to duplicates
-            else:
-                duplicates.add(label)
 
-            ##################
-            # Suffix removal #
-            ##################
+            duplicates.add(label)
+
             label = self.__remove_suffixes(av_name, label)
-
-            ########################################################
-            # Tokenization and tagging                             #
-            ########################################################
-            hashes = [ sample_info.md5, sample_info.sha1, sample_info.sha256 ]
+            hashes = [sample_info.md5, sample_info.sha1, sample_info.sha256]
             tags = self.get_label_tags(label, hashes)
 
-            ########################################################
-            # Expansions                                           #
-            ########################################################
-            # NOTE: Avoiding to do expansion when aliases
-            if self.alias_detect:
-                expanded_tags = tags
-            else:
-                expanded_tags = self.__expand(tags)
+            # NOTE: Avoid expansion when aliases are set
+            expanded_tags = tags if self.alias_detect else self.__expand(tags)
 
-            ########################################################
-            # Stores information that relates AV vendors with tags #
-            ########################################################
+            # store av vendors for each tag
             for t in expanded_tags:
-                av_dict.setdefault(t, []).append(av_name)
+                av_dict[t].append(av_name)
 
         return av_dict
 
-    def rank_tags(self, av_dict, threshold=1):
-        ''' Return list of (tag, confidence) ranked by decreasing confidence 
-            and filter tags with less or equal threshold confidence '''
+    @staticmethod
+    def rank_tags(av_dict: Dict[AnyStr, List[AnyStr]], threshold: int = 1) -> List[Tuple[AnyStr, int]]:
+        """
+        Get a list of tuples containing a tag and the number of AV that confirmed that tag sorted by number of AV
+        (descending).
 
-        pairs = ((t, len(avs)) for (t,avs) in av_dict.items() 
-                    if len(avs) > threshold)
-        return sorted(pairs, key=itemgetter(1,0), reverse=True)
-
+        :param av_dict: The AV dictionary (from ``get_sample_tags()``)
+        :param threshold: The minimum rank/count to include
+        :return: A sorted list of tag, av-count pairs
+        """
+        pairs = ((t, len(avs)) for t, avs in av_dict.items() if len(avs) > threshold)
+        return sorted(pairs, key=operator.itemgetter(1, 0), reverse=True)
