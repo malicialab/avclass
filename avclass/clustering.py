@@ -41,7 +41,7 @@ def eval_precision_recall_fmeasure(expected: Dict, guess: Dict):
     for k, v in expected.items():
         gt_rev_dict[v].add(k)
 
-    counter, l = 0, len(guess)
+    counter, gl = 0, len(guess)
 
     sys.stderr.write('Calculating precision and recall\n')
 
@@ -49,7 +49,7 @@ def eval_precision_recall_fmeasure(expected: Dict, guess: Dict):
     for element in guess:
         # Print progress
         if counter % 1000 == 0:
-            sys.stderr.write('\r%d out of %d' % (counter, l))
+            sys.stderr.write('\r%d out of %d' % (counter, gl))
             sys.stderr.flush()
         counter += 1
 
@@ -71,7 +71,7 @@ def eval_precision_recall_fmeasure(expected: Dict, guess: Dict):
         r = 1.0*tp/(tp+fn)
         tmp_recall += r
 
-    sys.stderr.write('\r%d out of %d' % (counter, l))
+    sys.stderr.write('\r%d out of %d' % (counter, gl))
     sys.stderr.write('\n')
 
     precision = 100.0 * tmp_precision / len(guess)
@@ -81,7 +81,7 @@ def eval_precision_recall_fmeasure(expected: Dict, guess: Dict):
     return precision, recall, fmeasure
 
 
-if __name__ == "__main__":
+def main():
     # The ground truth.
     # Dictionary with mapping: "element : cluster_id".
     diz_grth = {
@@ -104,12 +104,12 @@ if __name__ == "__main__":
     # truth, but just different cluster labels. Precision == Recall ==
     # F-Measure == 100%.
     # Dictionary with mapping: "element : cluster_id".
-    diz_estim_grth = {
-        "a": 2,
-        "b": 2,
-        "c": 66,
-        "d": 9
-    }
+    # diz_estim_grth = {
+    #     "a": 2,
+    #     "b": 2,
+    #     "c": 66,
+    #     "d": 9
+    # }
 
     # a sample where estimated != ground truth
     sys.stdout.write("Ground truth\n")
@@ -130,3 +130,7 @@ if __name__ == "__main__":
     sys.stdout.write("\nPrecison: %s%%\n" % p)
     sys.stdout.write("Recall: %s%%\n" % r)
     sys.stdout.write("F-Measure: %s%%\n" % f)
+
+
+if __name__ == "__main__":
+    main()
