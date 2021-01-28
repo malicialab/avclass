@@ -348,6 +348,9 @@ def main(args):
                 yn = n1
             f = float(c) / float(xn)
             finv = float(c) / float(yn)
+            if args.path:
+                x = av_labels.taxonomy.get_path(x)
+                y = av_labels.taxonomy.get_path(y)
             alias_fd.write("%s\t%s\t%d\t%d\t%d\t%0.2f\t%0.2f\n" % (
                 x, y, xn, yn, c, f, finv))
         # Close alias file
