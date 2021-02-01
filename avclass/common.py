@@ -5,7 +5,7 @@ import string
 import sys
 
 from collections import defaultdict, namedtuple
-from typing import AnyStr, Collection, Dict, List, Optional, Set, Tuple, Union
+from typing import AnyStr, Callable, Collection, Dict, List, Optional, Set, Tuple, Union
 
 
 logger = logging.getLogger(__name__)
@@ -496,6 +496,26 @@ class AvLabels:
         self.avs = self.read_avs(av_file) if av_file else None
         # Alias statistics initialization
         self.alias_detect = alias_detect
+
+    def get_sample_call(self, data_type: AnyStr) -> Callable:
+        """
+        Return the correct parser for the report type
+        
+        :param data_type: the type of file vt2, vt3, lb
+        :return: Callable function that returns SampleInfo
+        """
+        if data_type == "lb":
+            return self.get_sample_info_lb
+        elif data_type == "vt" or data_type == "vt2":
+            return self.get_sample_info_vt_v2
+        elif data_type == "vt3":
+            return self.get_sample_info_vt_v3
+        else:
+            sys.stderr.write(
+                "Invalid data type for sample: %s (should be vt, vt2, vt3, lb)"
+                % data_type
+            )
+            return self.get_sample_info_vt_v3
 
     @staticmethod
     def read_avs(avs_file: AnyStr) -> Set[AnyStr]:
