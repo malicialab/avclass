@@ -118,7 +118,9 @@ class AVClassLabeler:
                     self.process_line(line)
             except json.decoder.JSONDecodeError:
                 if isinstance(ifile, str):
-                    self.print_error("Error parsing %s (possible incorrect file type\n" % ifile)
+                    self.print_error(
+                        "Error parsing %s (possible incorrect file type\n" % ifile
+                    )
                 continue
 
             # Debug info
@@ -621,12 +623,12 @@ def main():
 
 
 def get_files(
-    file_input: Optional[AnyStr]=None,
-    data_type: Optional[AnyStr]=None,
-    vt: Optional[AnyStr]=None,
-    lb: Optional[AnyStr]=None,
-    vtdir: Optional[AnyStr]=None,
-    lbdir: Optional[AnyStr]=None,
+    file_input: Optional[AnyStr] = None,
+    data_type: Optional[AnyStr] = None,
+    vt: Optional[AnyStr] = None,
+    lb: Optional[AnyStr] = None,
+    vtdir: Optional[AnyStr] = None,
+    lbdir: Optional[AnyStr] = None,
     vt3: Optional[bool] = False,
 ) -> Tuple:
     """
@@ -697,23 +699,29 @@ def parse_args():
         "multiple times)",
     )
 
-    argparser.add_argument("-vtdir", help="DEPRECATED (use -i & -type): existing directory with VT reports")
-
     argparser.add_argument(
-        "-lbdir", help="DEPRECATED (use -i & -type) existing directory with simplified JSON reports"
+        "-vtdir", help="DEPRECATED (use -i & -type): existing directory with VT reports"
     )
 
-    argparser.add_argument("-vt3", action="store_true", help="DEPRECATED (use -type): input are VT v3 files")
+    argparser.add_argument(
+        "-lbdir",
+        help="DEPRECATED (use -i & -type) existing directory with simplified JSON reports",
+    )
 
     argparser.add_argument(
-        "-i", "--input", 
+        "-vt3",
+        action="store_true",
+        help="DEPRECATED (use -type): input are VT v3 files",
+    )
+
+    argparser.add_argument(
+        "-i",
+        "--input",
         action="append",
-        help="input report file or directory (Can be provided multiple times)"
+        help="input report file or directory (Can be provided multiple times)",
     )
-    
-    argparser.add_argument(
-        "-type", "--type", help="the type of report (vt2, vt3, lb)"
-    )
+
+    argparser.add_argument("-type", "--type", help="the type of report (vt2, vt3, lb)")
 
     argparser.add_argument(
         "-gt",
@@ -783,7 +791,13 @@ def parse_args():
     args = argparser.parse_args()
 
     # TODO - use non-exclusive group to ensure at least one is selected instead of this
-    if not args.input and not args.vt and not args.lb and not args.vtdir and not args.lbdir:
+    if (
+        not args.input
+        and not args.vt
+        and not args.lb
+        and not args.vtdir
+        and not args.lbdir
+    ):
         sys.stderr.write(
             "One of the following 4 arguments is required: " "-vt,-lb,-vtdir,-lbdir\n"
         )
