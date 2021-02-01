@@ -7,8 +7,14 @@ import traceback
 from operator import itemgetter
 from typing import AnyStr, Optional
 
-from avclass.common import AvLabels, Taxonomy
-from avclass import clustering as ec, util
+try:
+    from avclass.common import AvLabels, Taxonomy
+    from avclass import clustering as ec, util
+except ModuleNotFoundError:
+    # Helps find the avclasses when run from console
+    sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
+    from avclass.common import AvLabels, Taxonomy
+    from avclass import clustering as ec, util
 
 
 def guess_hash(h: AnyStr) -> Optional[AnyStr]:
@@ -18,14 +24,14 @@ def guess_hash(h: AnyStr) -> Optional[AnyStr]:
     :param h: The hash
     :return: The hash type (str)
     """
-    ''' Given a hash string, guess the hash type based on the string length '''
+    """ Given a hash string, guess the hash type based on the string length """
     hlen = len(h)
     if hlen == 32:
-        return 'md5'
+        return "md5"
     elif hlen == 40:
-        return 'sha1'
+        return "sha1"
     elif hlen == 64:
-        return 'sha256'
+        return "sha256"
 
     return None
 
@@ -50,7 +56,7 @@ def format_tag_pairs(l, taxonomy: Taxonomy = None) -> AnyStr:
     out = "%s|%d" % (p, l[0][1])
     for t, s in l[1:]:
         if taxonomy is not None:
-            p = taxonomy.get_path(t) 
+            p = taxonomy.get_path(t)
         else:
             p = t
         out += ",%s|%d" % (p, s)
@@ -80,14 +86,14 @@ def main():
     # TODO - break this function up.
     args = parse_args()
     # Select hash used to identify sample, by default MD5
-    hash_type = args.hash or 'md5'
+    hash_type = args.hash or "md5"
 
     # If ground truth provided, read it from file
     gt_dict = {}
     if args.gt:
-        with open(args.gt, 'r') as gt_fd:
+        with open(args.gt, "r") as gt_fd:
             for line in gt_fd:
-                gt_hash, family = map(str, line.strip().split('\t', 1))
+                gt_hash, family = map(str, line.strip().split("\t", 1))
                 gt_dict[gt_hash] = family
 
         # Guess type of hash in ground truth file
@@ -132,12 +138,21 @@ def main():
     pair_count_map = {}
     vt_all = 0
     avtags_dict = {}
-    stats = {'samples': 0, 'noscans': 0, 'tagged': 0, 'maltagged': 0,
-             'FAM': 0, 'CLASS': 0, 'BEH': 0, 'FILE': 0, 'UNK': 0}
+    stats = {
+        "samples": 0,
+        "noscans": 0,
+        "tagged": 0,
+        "maltagged": 0,
+        "FAM": 0,
+        "CLASS": 0,
+        "BEH": 0,
+        "FILE": 0,
+        "UNK": 0,
+    }
 
     for ifile in ifile_l:
-        fd = open(ifile, 'r')
-        sys.stderr.write('[-] Processing input file %s\n' % ifile)
+        fd = open(ifile, "r")
+        sys.stderr.write("[-] Processing input file %s\n" % ifile)
 
         for line in fd:
             if not line.strip():
@@ -145,7 +160,7 @@ def main():
 
             # Debug info
             if vt_all % 100 == 0:
-                sys.stderr.write('\r[-] %d JSON read' % vt_all)
+                sys.stderr.write("\r[-] %d JSON read\n" % vt_all)
                 sys.stderr.flush()
             vt_all += 1
 
@@ -154,13 +169,13 @@ def main():
 
             if sample_info is None:
                 try:
-                    name = vt_rep['md5']
-                    sys.stderr.write('\nNo scans for %s\n' % name)
+                    name = vt_rep["md5"]
+                    sys.stderr.write("\nNo scans for %s\n" % name)
                 except KeyError:
-                    sys.stderr.write('\nCould not process: %s\n' % line)
+                    sys.stderr.write("\nCould not process: %s\n" % line)
 
                 sys.stderr.flush()
-                stats['noscans'] += 1
+                stats["noscans"] += 1
                 continue
 
             # Sample's name is selected hash type (md5 by default)
@@ -168,7 +183,7 @@ def main():
 
             # If the VT report has no AV labels, output and continue
             if not sample_info.labels:
-                sys.stdout.write('%s\t-\t[]\n' % name)
+                sys.stdout.write("%s\t-\t[]\n" % name)
                 # sys.stderr.write('\nNo AV labels for %s\n' % name)
                 # sys.stderr.flush()
                 continue
@@ -212,7 +227,13 @@ def main():
                     if args.stats:
                         if vt_count > 3:
                             stats["maltagged"] += 1
-                            cat_map = {'FAM': False, 'CLASS': False, 'BEH': False, 'FILE': False, 'UNK': False}
+                            cat_map = {
+                                "FAM": False,
+                                "CLASS": False,
+                                "BEH": False,
+                                "FILE": False,
+                                "UNK": False,
+                            }
                             for t in tags:
                                 path, cat = av_labels.taxonomy.get_info(t[0])
                                 cat_map[cat] = True
@@ -240,7 +261,7 @@ def main():
                             break
 
                     first_token_dict[name] = fam
-                    gt_family = '\t' + gt_dict.get(name, "")
+                    gt_family = "\t" + gt_dict.get(name, "")
                 else:
                     gt_family = ""
 
@@ -256,64 +277,75 @@ def main():
                         tag_str = format_tag_pairs(tags, av_labels.taxonomy)
                     else:
                         tag_str = format_tag_pairs(tags)
-                    sys.stdout.write('%s\t%d\t%s%s%s%s\n' % name, vt_count, tag_str, gt_family, is_pup_str, vtt)
+                    sys.stdout.write(
+                        "%s\t%d\t%s%s%s%s\n"
+                        % (name, vt_count, tag_str, gt_family, is_pup_str, vtt)
+                    )
                 else:
-                    sys.stdout.write('%s\t%s%s%s\n' % name, fam, gt_family, is_pup_str)
+                    sys.stdout.write("%s\t%s%s%s\n" % name, fam, gt_family, is_pup_str)
             except:
                 traceback.print_exc(file=sys.stderr)
                 continue
 
-        sys.stderr.write('\r[-] %d JSON read' % vt_all)
+        sys.stderr.write("\r[-] %d JSON read" % vt_all)
         sys.stderr.flush()
-        sys.stderr.write('\n')
+        sys.stderr.write("\n")
 
         fd.close()
 
     # Print statistics
-    sys.stderr.write("[-] Samples: %d NoScans: %d NoTags: %d GroundTruth: %d\n" %
-                     (vt_all, stats['noscans'], vt_all - stats['tagged'], len(gt_dict)))
+    sys.stderr.write(
+        "[-] Samples: %d NoScans: %d NoTags: %d GroundTruth: %d\n"
+        % (vt_all, stats["noscans"], vt_all - stats["tagged"], len(gt_dict))
+    )
 
     # If ground truth, print precision, recall, and F1-measure
     if args.gt:
-        precision, recall, fmeasure = ec.eval_precision_recall_fmeasure(gt_dict, first_token_dict)
-        sys.stderr.write("Precision: %.2f\tRecall: %.2f\tF1-Measure: %.2f\n" % (precision, recall, fmeasure))
+        precision, recall, fmeasure = ec.eval_precision_recall_fmeasure(
+            gt_dict, first_token_dict
+        )
+        sys.stderr.write(
+            "Precision: %.2f\tRecall: %.2f\tF1-Measure: %.2f\n"
+            % (precision, recall, fmeasure)
+        )
 
     # Output stats
     if args.stats:
-        stats_fd = open("%s.stats" % out_prefix, 'w')
+        stats_fd = open("%s.stats" % out_prefix, "w")
         num_samples = vt_all
-        stats_fd.write('Samples: %d\n' % num_samples)
-        num_tagged = stats['tagged']
+        stats_fd.write("Samples: %d\n" % num_samples)
+        num_tagged = stats["tagged"]
         frac = float(num_tagged) / float(num_samples) * 100
-        stats_fd.write('Tagged (all): %d (%.01f%%)\n' % (num_tagged, frac))
-        num_maltagged = stats['maltagged']
+        stats_fd.write("Tagged (all): %d (%.01f%%)\n" % (num_tagged, frac))
+        num_maltagged = stats["maltagged"]
         frac = float(num_maltagged) / float(num_samples) * 100
-        stats_fd.write('Tagged (VT>3): %d (%.01f%%)\n' % (num_maltagged, frac))
-        for c in ['FILE', 'CLASS', 'BEH', 'FAM', 'UNK']:
+        stats_fd.write("Tagged (VT>3): %d (%.01f%%)\n" % (num_maltagged, frac))
+        for c in ["FILE", "CLASS", "BEH", "FAM", "UNK"]:
             count = stats[c]
             frac = float(count) / float(num_maltagged) * 100
-            stats_fd.write('%s: %d (%.01f%%)\n' % (c, stats[c], frac))
+            stats_fd.write("%s: %d (%.01f%%)\n" % (c, stats[c], frac))
         stats_fd.close()
 
     # Output vendor info
     if args.avtags:
-        avtags_fd = open("%s.avtags" % out_prefix, 'w')
+        avtags_fd = open("%s.avtags" % out_prefix, "w")
         for t in sorted(avtags_dict.keys()):
-            avtags_fd.write('%s\t' % t)
-            pairs = sorted(avtags_dict[t].items(), key=lambda pair: pair[1], reverse=True)
+            avtags_fd.write("%s\t" % t)
+            pairs = sorted(
+                avtags_dict[t].items(), key=lambda pair: pair[1], reverse=True
+            )
 
             for pair in pairs:
-                avtags_fd.write('%s|%d,' % (pair[0], pair[1]))
-            avtags_fd.write('\n')
+                avtags_fd.write("%s|%d," % (pair[0], pair[1]))
+            avtags_fd.write("\n")
         avtags_fd.close()
 
     # If alias detection, print map
     if args.aliasdetect:
-        alias_filename = out_prefix + '.alias'
-        alias_fd = open(alias_filename, 'w+')
+        alias_filename = out_prefix + ".alias"
+        alias_fd = open(alias_filename, "w+")
         # Sort token pairs by number of times they appear together
-        sorted_pairs = sorted(
-            pair_count_map.items(), key=itemgetter(1))
+        sorted_pairs = sorted(pair_count_map.items(), key=itemgetter(1))
         # sorted_pairs = sorted(
         #     pair_count_map.items())
 
@@ -335,101 +367,154 @@ def main():
                 yn = n1
             f = float(c) / float(xn)
             finv = float(c) / float(yn)
-            alias_fd.write("%s\t%s\t%d\t%d\t%d\t%0.2f\t%0.2f\n" % (x, y, xn, yn, c, f, finv))
+            alias_fd.write(
+                "%s\t%s\t%d\t%d\t%d\t%0.2f\t%0.2f\n" % (x, y, xn, yn, c, f, finv)
+            )
         # Close alias file
         alias_fd.close()
-        sys.stderr.write('[-] Alias data in %s\n' % alias_filename)
+        sys.stderr.write("[-] Alias data in %s\n" % alias_filename)
 
 
 def parse_args():
-    argparser = argparse.ArgumentParser(prog='avclass',
-                                        description='Extracts tags for a set of samples.  Also calculates precision and'
-                                                    ' recall if ground truth available')
+    argparser = argparse.ArgumentParser(
+        prog="avclass",
+        description="Extracts tags for a set of samples.  Also calculates precision and"
+        " recall if ground truth available",
+    )
 
-    argparser.add_argument('-vt', action='append', help='file with VT reports (Can be provided multiple times)')
+    argparser.add_argument(
+        "-vt",
+        action="append",
+        help="file with VT reports (Can be provided multiple times)",
+    )
 
-    argparser.add_argument('-lb', action='append', help='file with simplified JSON reports '
-                                                        '{md5,sha1,sha256,scan_date,av_labels} (Can be provided '
-                                                        'multiple times)')
+    argparser.add_argument(
+        "-lb",
+        action="append",
+        help="file with simplified JSON reports "
+        "{md5,sha1,sha256,scan_date,av_labels} (Can be provided "
+        "multiple times)",
+    )
 
-    argparser.add_argument('-vtdir', help='existing directory with VT reports')
+    argparser.add_argument("-vtdir", help="existing directory with VT reports")
 
-    argparser.add_argument('-lbdir', help='existing directory with simplified JSON reports')
+    argparser.add_argument(
+        "-lbdir", help="existing directory with simplified JSON reports"
+    )
 
-    argparser.add_argument('-vt3', action='store_true', help='input are VT v3 files')
+    argparser.add_argument("-vt3", action="store_true", help="input are VT v3 files")
 
-    argparser.add_argument('-gt', help='file with ground truth. If provided it evaluates clustering accuracy. '
-                                       'Prints precision, recall, F1-measure.')
+    argparser.add_argument(
+        "-gt",
+        help="file with ground truth. If provided it evaluates clustering accuracy. "
+        "Prints precision, recall, F1-measure.",
+    )
 
-    argparser.add_argument('-vtt', help='Include VT tags in the output.', action='store_true')
+    argparser.add_argument(
+        "-vtt", help="Include VT tags in the output.", action="store_true"
+    )
 
-    argparser.add_argument('-tag', help='file with tagging rules.', default=util.DEFAULT_TAG_PATH)
+    argparser.add_argument(
+        "-tag", help="file with tagging rules.", default=util.DEFAULT_TAG_PATH
+    )
 
-    argparser.add_argument('-tax', help='file with taxonomy.', default=util.DEFAULT_TAX_PATH)
+    argparser.add_argument(
+        "-tax", help="file with taxonomy.", default=util.DEFAULT_TAX_PATH
+    )
 
-    argparser.add_argument('-exp', help='file with expansion rules.', default=util.DEFAULT_EXP_PATH)
+    argparser.add_argument(
+        "-exp", help="file with expansion rules.", default=util.DEFAULT_EXP_PATH
+    )
 
-    argparser.add_argument('-av', help='file with list of AVs to use')
+    argparser.add_argument("-av", help="file with list of AVs to use")
 
-    argparser.add_argument('-avtags', help='extracts tags per av vendor', action='store_true')
+    argparser.add_argument(
+        "-avtags", help="extracts tags per av vendor", action="store_true"
+    )
 
-    argparser.add_argument('-pup', action='store_true', help='if used each sample is classified as PUP or not')
+    argparser.add_argument(
+        "-pup",
+        action="store_true",
+        help="if used each sample is classified as PUP or not",
+    )
 
-    argparser.add_argument('-p', '--path', help='output.full path for tags', action='store_true')
+    argparser.add_argument(
+        "-p", "--path", help="output.full path for tags", action="store_true"
+    )
 
-    argparser.add_argument('-hash', help='hash used to name samples. Should match ground truth',
-                           choices=['md5', 'sha1', 'sha256'])
+    argparser.add_argument(
+        "-hash",
+        help="hash used to name samples. Should match ground truth",
+        choices=["md5", "sha1", "sha256"],
+    )
 
-    argparser.add_argument('-c', help='Compatibility mode. Outputs results in AVClass format.', action='store_true')
+    argparser.add_argument(
+        "-c",
+        help="Compatibility mode. Outputs results in AVClass format.",
+        action="store_true",
+    )
 
-    argparser.add_argument('-aliasdetect', action='store_true', help='if used produce aliases file at end')
+    argparser.add_argument(
+        "-aliasdetect", action="store_true", help="if used produce aliases file at end"
+    )
 
-    argparser.add_argument('-stats', action='store_true', help='if used produce 1 file with stats per category '
-                                                               '(File, Class, Behavior, Family, Unclassified)')
+    argparser.add_argument(
+        "-stats",
+        action="store_true",
+        help="if used produce 1 file with stats per category "
+        "(File, Class, Behavior, Family, Unclassified)",
+    )
 
     args = argparser.parse_args()
 
     # TODO - use non-exclusive group to ensure at least one is selected instead of this
     if not args.vt and not args.lb and not args.vtdir and not args.lbdir:
-        sys.stderr.write('One of the following 4 arguments is required: '
-                         '-vt,-lb,-vtdir,-lbdir\n')
+        sys.stderr.write(
+            "One of the following 4 arguments is required: " "-vt,-lb,-vtdir,-lbdir\n"
+        )
         exit(1)
 
     # TODO - use mutex group for this instead of manual check
     if (args.vt or args.vtdir) and (args.lb or args.lbdir):
-        sys.stderr.write('Use either -vt/-vtdir or -lb/-lbdir. '
-                         'Both types of input files cannot be combined.\n')
+        sys.stderr.write(
+            "Use either -vt/-vtdir or -lb/-lbdir. "
+            "Both types of input files cannot be combined.\n"
+        )
         exit(1)
 
     # TODO - consider letting argparse handle this?
     if args.tag:
-        if args.tag == '/dev/null':
-            sys.stderr.write('[-] Using no tagging rules\n')
+        if args.tag == "/dev/null":
+            sys.stderr.write("[-] Using no tagging rules\n")
         else:
-            sys.stderr.write('[-] Using tagging rules in %s\n' % args.tag)
+            sys.stderr.write("[-] Using tagging rules in %s\n" % args.tag)
     else:
-        sys.stderr.write('[-] Using default tagging rules in %s\n' % util.DEFAULT_TAG_PATH)
+        sys.stderr.write(
+            "[-] Using default tagging rules in %s\n" % util.DEFAULT_TAG_PATH
+        )
 
     # TODO - consider letting argparse handle this?
     if args.tax:
-        if args.tax == '/dev/null':
-            sys.stderr.write('[-] Using no taxonomy\n')
+        if args.tax == "/dev/null":
+            sys.stderr.write("[-] Using no taxonomy\n")
         else:
-            sys.stderr.write('[-] Using taxonomy in %s\n' % args.tax)
+            sys.stderr.write("[-] Using taxonomy in %s\n" % args.tax)
     else:
-        sys.stderr.write('[-] Using default taxonomy in %s\n' % util.DEFAULT_TAX_PATH)
+        sys.stderr.write("[-] Using default taxonomy in %s\n" % util.DEFAULT_TAX_PATH)
 
     # TODO - consider letting argparse handle this?
     if args.exp:
-        if args.exp == '/dev/null':
-            sys.stderr.write('[-] Using no expansion tags\n')
+        if args.exp == "/dev/null":
+            sys.stderr.write("[-] Using no expansion tags\n")
         else:
-            sys.stderr.write('[-] Using expansion tags in %s\n' % args.exp)
+            sys.stderr.write("[-] Using expansion tags in %s\n" % args.exp)
     else:
-        sys.stderr.write('[-] Using default expansion tags in %s\n' % util.DEFAULT_EXP_PATH)
+        sys.stderr.write(
+            "[-] Using default expansion tags in %s\n" % util.DEFAULT_EXP_PATH
+        )
 
     return args
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     main()
