@@ -20,7 +20,7 @@ except ModuleNotFoundError:
     from avclass import clustering as ec, util
 
 
-class AVClass2:
+class AVClassLabeler:
     output = []
     av_labels = None
     hash_type = None
@@ -113,8 +113,13 @@ class AVClass2:
                 self.print_error("[-] Processing input file %s\n" % ifile)
 
             # Process all lines in file
-            for line in fd:
-                self.process_line(line)
+            try:
+                for line in fd:
+                    self.process_line(line)
+            except json.decoder.JSONDecodeError:
+                if isinstance(ifile, str):
+                    self.print_error("Error parsing %s (possible incorrect file type\n" % ifile)
+                continue
 
             # Debug info
             self.print_error("\r[-] %d JSON read" % self.vt_all, flush=True)
@@ -588,17 +593,16 @@ def main():
         alias_detect=args.aliasdetect,
     )
     # Build list of input files
-    # TODO: File selection should be rewritten as it is difficult to add new types.
-    # Would be nice to just have '-i or --input', detect if its a directory or file,
-    # then use a new arg string to specify the data type ["vt2", "vt3", "lb"]
     files, data_type = get_files(
+        file_input=args.input,
+        data_type=args.type,
         vt=args.vt,
         lb=args.lb,
         vtdir=args.vtdir,
         lbdir=args.lbdir,
         vt3=args.vt3,
     )
-    av_class = AVClass2(av_labels=av_labels)
+    av_class = AVClassLabeler(av_labels=av_labels)
     result = av_class.run(
         files=files,
         data_type=data_type,
@@ -617,10 +621,12 @@ def main():
 
 
 def get_files(
-    vt: Optional[str] = None,
-    lb: Optional[str] = None,
-    vtdir: Optional[str] = None,
-    lbdir: Optional[str] = None,
+    file_input: Optional[AnyStr]=None,
+    data_type: Optional[AnyStr]=None,
+    vt: Optional[AnyStr]=None,
+    lb: Optional[AnyStr]=None,
+    vtdir: Optional[AnyStr]=None,
+    lbdir: Optional[AnyStr]=None,
     vt3: Optional[bool] = False,
 ) -> Tuple:
     """
@@ -633,29 +639,40 @@ def get_files(
     :param vt3: vt3 json format
     :return: A Tuple of files and type
     """
-    # NOTE: duplicate input files are not removed
     ifile_l = []
     ifile_are_vt = None
-    if vt:
-        ifile_l += vt
-        ifile_are_vt = True
-    if lb:
-        ifile_l += lb
-        ifile_are_vt = False
-    if vtdir:
-        ifile_l += [os.path.join(vtdir, f) for f in os.listdir(vtdir)]
-        ifile_are_vt = True
-    if lbdir:
-        ifile_l += [os.path.join(lbdir, f) for f in os.listdir(lbdir)]
-        ifile_are_vt = False
+    if file_input:
+        for fi in file_input:
+            if os.path.isdir(fi):
+                for f in os.listdir(fi):
+                    dir_file = os.path.join(fi, f)
+                    if dir_file not in ifile_l:
+                        ifile_l.append(dir_file)
+            elif fi not in ifile_l:
+                ifile_l.append(fi)
+    else:
+        # NOTE: duplicate input files are not removed
+        if vt:
+            ifile_l += vt
+            ifile_are_vt = True
+        if lb:
+            ifile_l += lb
+            ifile_are_vt = False
+        if vtdir:
+            ifile_l += [os.path.join(vtdir, f) for f in os.listdir(vtdir)]
+            ifile_are_vt = True
+        if lbdir:
+            ifile_l += [os.path.join(lbdir, f) for f in os.listdir(lbdir)]
+            ifile_are_vt = False
 
     # Select correct sample info extraction function
-    if not ifile_are_vt:
-        data_type = "lb"
-    elif vt3:
-        data_type = "vt3"
-    else:
-        data_type = "vt2"
+    if not data_type:
+        if not ifile_are_vt:
+            data_type = "lb"
+        elif vt3:
+            data_type = "vt3"
+        else:
+            data_type = "vt2"
     return ifile_l, data_type
 
 
@@ -669,24 +686,34 @@ def parse_args():
     argparser.add_argument(
         "-vt",
         action="append",
-        help="file with VT reports (Can be provided multiple times)",
+        help="DEPRECATED (use -i & -type): file with VT reports (Can be provided multiple times)",
     )
 
     argparser.add_argument(
         "-lb",
         action="append",
-        help="file with simplified JSON reports "
+        help="DEPRECATED (use -i & -type): file with simplified JSON reports "
         "{md5,sha1,sha256,scan_date,av_labels} (Can be provided "
         "multiple times)",
     )
 
-    argparser.add_argument("-vtdir", help="existing directory with VT reports")
+    argparser.add_argument("-vtdir", help="DEPRECATED (use -i & -type): existing directory with VT reports")
 
     argparser.add_argument(
-        "-lbdir", help="existing directory with simplified JSON reports"
+        "-lbdir", help="DEPRECATED (use -i & -type) existing directory with simplified JSON reports"
     )
 
-    argparser.add_argument("-vt3", action="store_true", help="input are VT v3 files")
+    argparser.add_argument("-vt3", action="store_true", help="DEPRECATED (use -type): input are VT v3 files")
+
+    argparser.add_argument(
+        "-i", "--input", 
+        action="append",
+        help="input report file or directory (Can be provided multiple times)"
+    )
+    
+    argparser.add_argument(
+        "-type", "--type", help="the type of report (vt2, vt3, lb)"
+    )
 
     argparser.add_argument(
         "-gt",
@@ -756,7 +783,7 @@ def parse_args():
     args = argparser.parse_args()
 
     # TODO - use non-exclusive group to ensure at least one is selected instead of this
-    if not args.vt and not args.lb and not args.vtdir and not args.lbdir:
+    if not args.input and not args.vt and not args.lb and not args.vtdir and not args.lbdir:
         sys.stderr.write(
             "One of the following 4 arguments is required: " "-vt,-lb,-vtdir,-lbdir\n"
         )
