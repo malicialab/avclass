@@ -66,7 +66,7 @@ class AVClassLabeler:
             Dict,
             List[Dict],
         ],
-        data_type: str = "vt3",
+        data_type: Optional[AnyStr] = "vt3",
         hash_type: Optional[AnyStr] = "md5",
         ground_truth: Optional[AnyStr] = None,
         stats_export: bool = False,
@@ -91,6 +91,7 @@ class AVClassLabeler:
         self.hash_type = self.get_hash_type(hash_type)
 
         # Select file type used for sampling
+        data_type = data_type if data_type else "vt3"
         self.get_sample_info = self.av_labels.get_sample_call(data_type)
 
         # Select output prefix
@@ -572,14 +573,14 @@ class AVClassLabeler:
             out = out + sep + s
         return out
 
-    def print_error(self, output: str = "", flush=False):
+    def print_error(self, output: AnyStr = "", flush=False):
         if self.console:
             # TODO - would this be better? print(output, file=sys.stderr, flush=flush, end="")
             sys.stderr.write(output)
             if flush:
                 sys.stderr.flush()
 
-    def print_output(self, output: str = ""):
+    def print_output(self, output: AnyStr = ""):
         if self.console:
             sys.stdout.write(output)
 
@@ -595,19 +596,13 @@ def main():
         alias_detect=args.aliasdetect,
     )
     # Build list of input files
-    files, data_type = get_files(
+    files = get_files(
         file_input=args.input,
-        data_type=args.type,
-        vt=args.vt,
-        lb=args.lb,
-        vtdir=args.vtdir,
-        lbdir=args.lbdir,
-        vt3=args.vt3,
     )
     av_class = AVClassLabeler(av_labels=av_labels)
     result = av_class.run(
         files=files,
-        data_type=data_type,
+        data_type=args.type,
         hash_type=args.hash,
         stats_export=args.stats,
         vt_tags=args.vtt,
@@ -624,25 +619,14 @@ def main():
 
 def get_files(
     file_input: Optional[AnyStr] = None,
-    data_type: Optional[AnyStr] = None,
-    vt: Optional[AnyStr] = None,
-    lb: Optional[AnyStr] = None,
-    vtdir: Optional[AnyStr] = None,
-    lbdir: Optional[AnyStr] = None,
-    vt3: Optional[bool] = False,
-) -> Tuple:
+) -> List[AnyStr]:
     """
-    Return list as a string
+    Return List of the files to process
 
-    :param vt: vt file
-    :param lb: lb file
-    :param vtdir: vt directory
-    :param lbdir: lb directory
-    :param vt3: vt3 json format
-    :return: A Tuple of files and type
+    :param file_input: file or directory to process
+    :return: List of type str
     """
     ifile_l = []
-    ifile_are_vt = None
     if file_input:
         for fi in file_input:
             if os.path.isdir(fi):
@@ -652,30 +636,7 @@ def get_files(
                         ifile_l.append(dir_file)
             elif fi not in ifile_l:
                 ifile_l.append(fi)
-    else:
-        # NOTE: duplicate input files are not removed
-        if vt:
-            ifile_l += vt
-            ifile_are_vt = True
-        if lb:
-            ifile_l += lb
-            ifile_are_vt = False
-        if vtdir:
-            ifile_l += [os.path.join(vtdir, f) for f in os.listdir(vtdir)]
-            ifile_are_vt = True
-        if lbdir:
-            ifile_l += [os.path.join(lbdir, f) for f in os.listdir(lbdir)]
-            ifile_are_vt = False
-
-    # Select correct sample info extraction function
-    if not data_type:
-        if not ifile_are_vt:
-            data_type = "lb"
-        elif vt3:
-            data_type = "vt3"
-        else:
-            data_type = "vt2"
-    return ifile_l, data_type
+    return ifile_l
 
 
 def parse_args():
@@ -686,42 +647,15 @@ def parse_args():
     )
 
     argparser.add_argument(
-        "-vt",
-        action="append",
-        help="DEPRECATED (use -i & -type): file with VT reports (Can be provided multiple times)",
-    )
-
-    argparser.add_argument(
-        "-lb",
-        action="append",
-        help="DEPRECATED (use -i & -type): file with simplified JSON reports "
-        "{md5,sha1,sha256,scan_date,av_labels} (Can be provided "
-        "multiple times)",
-    )
-
-    argparser.add_argument(
-        "-vtdir", help="DEPRECATED (use -i & -type): existing directory with VT reports"
-    )
-
-    argparser.add_argument(
-        "-lbdir",
-        help="DEPRECATED (use -i & -type) existing directory with simplified JSON reports",
-    )
-
-    argparser.add_argument(
-        "-vt3",
-        action="store_true",
-        help="DEPRECATED (use -type): input are VT v3 files",
-    )
-
-    argparser.add_argument(
         "-i",
         "--input",
         action="append",
         help="input report file or directory (Can be provided multiple times)",
     )
 
-    argparser.add_argument("-type", "--type", help="the type of report (vt2, vt3, lb)")
+    argparser.add_argument(
+        "-t", "--type", help="the type of report file (vt2, vt3, lb)"
+    )
 
     argparser.add_argument(
         "-gt",
@@ -791,25 +725,15 @@ def parse_args():
     args = argparser.parse_args()
 
     # TODO - use non-exclusive group to ensure at least one is selected instead of this
-    if (
-        not args.input
-        and not args.vt
-        and not args.lb
-        and not args.vtdir
-        and not args.lbdir
-    ):
-        sys.stderr.write(
-            "One of the following 4 arguments is required: " "-vt,-lb,-vtdir,-lbdir\n"
-        )
+    if not args.input:
+        sys.stderr.write("Input file / directory is required: " "-i\n")
         exit(1)
 
-    # TODO - use mutex group for this instead of manual check
-    if (args.vt or args.vtdir) and (args.lb or args.lbdir):
+    if not args.type:
+
         sys.stderr.write(
-            "Use either -vt/-vtdir or -lb/-lbdir. "
-            "Both types of input files cannot be combined.\n"
+            "[-] No type defined, using file type of VirusTotal v3: '-t vt3'\n"
         )
-        exit(1)
 
     devnull = "/dev/null"
     # TODO - consider letting argparse handle this?
