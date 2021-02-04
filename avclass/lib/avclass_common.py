@@ -170,7 +170,7 @@ class AvLabels:
 
 
     @staticmethod
-    def __remove_suffixes(av_name, label):
+    def _remove_suffixes(av_name, label):
         '''Remove AV specific suffixes from given label
            Returns updated label'''
 
@@ -202,7 +202,7 @@ class AvLabels:
         return label
 
 
-    def __normalize(self, label, hashes):
+    def _normalize(self, label, hashes):
         '''Tokenize label, filter tokens, and replace aliases'''
 
         # If empty label, nothing to do
@@ -306,12 +306,12 @@ class AvLabels:
             ##################
             # Suffix removal #
             ##################
-            label = self.__remove_suffixes(av_name, label)
+            label = self._remove_suffixes(av_name, label)
 
             ########################################################
             # Tokenization, token filtering, and alias replacement #
             ########################################################
-            tokens = self.__normalize(label, hashes)
+            tokens = self._normalize(label, hashes)
 
             # Increase token count in map
             for t in tokens:
