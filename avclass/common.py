@@ -75,7 +75,7 @@ class Taxonomy:
 
         :param filepath: Path to taxonomy data
         """
-        self.__tag_map = {}
+        self._tag_map = {}
         if filepath:
             self.read_taxonomy(filepath)
 
@@ -86,7 +86,7 @@ class Taxonomy:
         :return: The length (int) of the Taxonomy
         """
         return (
-            len(self.__tag_map) // 2
+            len(self._tag_map) // 2
         )  # TODO - perhaps there should be two dicts, one for names, one for paths?
 
     def is_generic(self, tag: AnyStr) -> bool:
@@ -96,7 +96,7 @@ class Taxonomy:
         :param tag: The tag
         :return: Boolean
         """
-        t = self.__tag_map.get(tag, None)
+        t = self._tag_map.get(tag, None)
         return getattr(t, "cat", None) == "GEN"
 
     def is_tag(self, tag: AnyStr) -> bool:
@@ -106,7 +106,7 @@ class Taxonomy:
         :param tag: The tag
         :return: Boolean
         """
-        return tag in self.__tag_map
+        return tag in self._tag_map
 
     def add_tag(self, s: AnyStr, override: bool = False):
         """
@@ -117,18 +117,18 @@ class Taxonomy:
         :return: None
         """
         tag = create_tag(s)
-        t = self.__tag_map.get(tag.name, None)
+        t = self._tag_map.get(tag.name, None)
 
         if t and (t.path != tag.path):
             if override:
                 logger.warning("[Taxonomy] Replacing %s with %s\n" % t.path, tag.path)
-                del self.__tag_map[t.path]
+                del self._tag_map[t.path]
             else:
                 return
 
         logger.debug("[Taxonomy] Adding tag %s" % s)
-        self.__tag_map[tag.name] = tag
-        self.__tag_map[tag.path] = tag
+        self._tag_map[tag.name] = tag
+        self._tag_map[tag.path] = tag
 
     def remove_tag(self, tag: AnyStr) -> bool:
         """
@@ -137,11 +137,11 @@ class Taxonomy:
         :param tag: The tag to remove
         :return: Whether or not the tag was present
         """
-        t = self.__tag_map.get(tag, None)
+        t = self._tag_map.get(tag, None)
         if tag:
             logger.debug("[Taxonomy] Removing tag: %s" % t.path)
-            del self.__tag_map[t.name]
-            del self.__tag_map[t.path]
+            del self._tag_map[t.name]
+            del self._tag_map[t.path]
         return t is not None
 
     def get_category(self, tag: AnyStr) -> AnyStr:
@@ -151,7 +151,7 @@ class Taxonomy:
         :param tag: The tag
         :return: The category
         """
-        t = self.__tag_map.get(tag, None)
+        t = self._tag_map.get(tag, None)
         return getattr(t, "cat", "UNK")
 
     def get_path(self, tag: AnyStr) -> AnyStr:
@@ -161,7 +161,7 @@ class Taxonomy:
         :param tag: The tag
         :return: The tag's path
         """
-        t = self.__tag_map.get(tag, None)
+        t = self._tag_map.get(tag, None)
         return getattr(t, "path", f"UNK:{tag}")
 
     def get_prefix_l(self, tag: AnyStr) -> List[AnyStr]:
@@ -171,7 +171,7 @@ class Taxonomy:
         :param tag: The tag
         :return: The tag's prefix list
         """
-        t = self.__tag_map.get(tag, None)
+        t = self._tag_map.get(tag, None)
         return getattr(t, "prefix_l", [])
 
     def get_prefix(self, tag: AnyStr) -> List[AnyStr]:
@@ -181,7 +181,7 @@ class Taxonomy:
         :param tag: The tag
         :return: String representation of the tag's full prefix
         """
-        t = self.__tag_map.get(tag, None)
+        t = self._tag_map.get(tag, None)
         tag_pfx = tag.path.split(":")[:-1]
         return t.prefix_l if t else tag_pfx
 
@@ -192,7 +192,7 @@ class Taxonomy:
         :param tag: The tag
         :return: The depth (int) of the tag
         """
-        t = self.__tag_map.get(tag, None)
+        t = self._tag_map.get(tag, None)
         if t:
             return len(tag.prefix_l) + 2
         return 0
@@ -204,7 +204,7 @@ class Taxonomy:
         :param tag: The tag
         :return: Tuple containing tag.path and tag.cat
         """
-        t = self.__tag_map.get(tag, None)
+        t = self._tag_map.get(tag, None)
         if t:
             return t.path, t.cat
         return f"UNK:{tag}", "UNK"
@@ -216,9 +216,9 @@ class Taxonomy:
         :param tag: The tag
         :return: A list of prefixes
         """
-        t = self.__tag_map.get(tag, None)
+        t = self._tag_map.get(tag, None)
         if t:
-            return [x for x in t.prefix_l if x in self.__tag_map]
+            return [x for x in t.prefix_l if x in self._tag_map]
         return []
 
     def platform_tags(self) -> Set[AnyStr]:
@@ -229,7 +229,7 @@ class Taxonomy:
         """
         return {
             tag.name
-            for _, tag in self.__tag_map.items()
+            for _, tag in self._tag_map.items()
             if tag.path.startswith(platform_prefix)
         }
 
@@ -286,7 +286,7 @@ class Taxonomy:
         :return: None
         """
         with open(filepath, "w") as fd:
-            tag_l = sorted(self.__tag_map.items(), key=lambda item: item[1].path)
+            tag_l = sorted(self._tag_map.items(), key=lambda item: item[1].path)
             idx = 0
             for name, tag in tag_l:
                 if (idx % 2) == 0:
@@ -784,12 +784,12 @@ class AvLabels:
 
             duplicates.add(label)
 
-            label = self.__remove_suffixes(av_name, label)
+            label = self._remove_suffixes(av_name, label)
             hashes = [sample_info.md5, sample_info.sha1, sample_info.sha256]
             tags = self.get_label_tags(label, hashes)
 
             # NOTE: Avoid expansion when aliases are set
-            expanded_tags = tags if self.alias_detect else self.__expand(tags)
+            expanded_tags = tags if self.alias_detect else self._expand(tags)
 
             # store av vendors for each tag
             for t in expanded_tags:

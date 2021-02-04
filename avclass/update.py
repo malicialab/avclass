@@ -30,11 +30,11 @@ Relation = namedtuple('Relation', ['t1', 't2', 't1_num', 't2_num', 'nalias_num',
 class Update:
     def __init__(self, rel_filepath: AnyStr, in_taxonomy: Taxonomy, in_translation: Translation,
                  in_expansion: Expansion, n, t):
-        self.__out_taxonomy = in_taxonomy
-        self.__out_translation = in_translation
-        self.__out_expansion = in_expansion
-        self.__n = n
-        self.__t = t
+        self._out_taxonomy = in_taxonomy
+        self._out_translation = in_translation
+        self._out_expansion = in_expansion
+        self._n = n
+        self._t = t
         # Initialize blacklist
         self.blist = in_taxonomy.platform_tags()
         # Maps src -> cnt
@@ -55,8 +55,8 @@ class Update:
         :param rel: The relationship
         :return: Boolean
         """
-        return ((int(rel.nalias_num) < self.__n) or
-                (float(rel.talias_num) < self.__t))
+        return ((int(rel.nalias_num) < self._n) or
+                (float(rel.talias_num) < self._t))
 
     def is_blacklisted_rel(self, rel: Relation) -> bool:
         """
@@ -77,16 +77,16 @@ class Update:
         t1 = rel.t1
         t2 = rel.t2
         # Known taxonomy relation
-        if self.__out_taxonomy.overlaps(t1, t2):
+        if self._out_taxonomy.overlaps(t1, t2):
             return True
         # Known expansion rule
-        t1_dst = self.__out_expansion.get_dst(t1)
-        t2_dst = self.__out_expansion.get_dst(t2)
+        t1_dst = self._out_expansion.get_dst(t1)
+        t2_dst = self._out_expansion.get_dst(t2)
         if t2 in t1_dst or t1 in t2_dst:
             return True
         # Known tagging rule
-        t1_dst = sorted(self.__out_translation.get_dst(t1))
-        t2_dst = sorted(self.__out_translation.get_dst(t2))
+        t1_dst = sorted(self._out_translation.get_dst(t1))
+        t2_dst = sorted(self._out_translation.get_dst(t2))
         if t2 in t1_dst or t1 in t2_dst:
             return True
         # Known alias in tagging
@@ -102,9 +102,9 @@ class Update:
         :param path: The full path
         :return: None
         """
-        dst = self.__out_translation.get_dst(name)
+        dst = self._out_translation.get_dst(name)
         if not dst:
-            self.__out_taxonomy.add_tag(path)
+            self._out_taxonomy.add_tag(path)
 
     def add_expansion(self, src: AnyStr, dst_l: Collection[AnyStr]):
         """
@@ -116,19 +116,19 @@ class Update:
         """
         ''' Add expansion rule fixing destination if src in tagging '''
         # Select source handling aliases
-        dst = self.__out_translation.get_dst(src)
+        dst = self._out_translation.get_dst(src)
         if dst:
             new_src = dst[0]
         else:
             new_src = src
         # Select destinations removing overlaps with existing rule
-        dst = self.__out_expansion.get_dst(src)
+        dst = self._out_expansion.get_dst(src)
         if dst:
             dst.extend(dst_l)
-            target_l = self.__out_taxonomy.remove_overlaps(dst)
-            self.__out_expansion.add_rule(new_src, target_l, True)
+            target_l = self._out_taxonomy.remove_overlaps(dst)
+            self._out_expansion.add_rule(new_src, target_l, True)
         else:
-            self.__out_expansion.add_rule(new_src, dst_l, True)
+            self._out_expansion.add_rule(new_src, dst_l, True)
 
     def add_alias(self, src: AnyStr, dst: AnyStr, dst_prefix: AnyStr):
         """
@@ -140,7 +140,7 @@ class Update:
         :return: None
         """
         # If src in tagging, use most popular target
-        tr_dst = self.__out_translation.get_dst(src)
+        tr_dst = self._out_translation.get_dst(src)
         target = dst
         if tr_dst:
             cnt_max = self.src_map[dst]
@@ -149,17 +149,17 @@ class Update:
                 if cnt > cnt_max:
                     target = e
         # If dst is in tagging, update tagging rule destination,
-        tr_dst = self.__out_translation.get_dst(dst)
+        tr_dst = self._out_translation.get_dst(dst)
         if tr_dst:
             target_l = tr_dst
         # else add dst to taxonomy
         else:
             target_l = [target]
-            self.__out_taxonomy.add_tag('%s:%s' % (dst_prefix, dst))
+            self._out_taxonomy.add_tag('%s:%s' % (dst_prefix, dst))
         # Remove src from taxonomy
-        self.__out_taxonomy.remove_tag(src)
+        self._out_taxonomy.remove_tag(src)
         # Replace tagging rule
-        self.__out_translation.add_rule(src, target_l, True)
+        self._out_translation.add_rule(src, target_l, True)
 
     def is_expansion_rel(self, rel: Relation) -> bool:
         """
@@ -168,8 +168,8 @@ class Update:
         :param rel: The relation
         :return: Boolean
         """
-        c1 = self.__out_taxonomy.get_category(rel.t1)
-        c2 = self.__out_taxonomy.get_category(rel.t2)
+        c1 = self._out_taxonomy.get_category(rel.t1)
+        c2 = self._out_taxonomy.get_category(rel.t2)
         return (((c1 == "FAM") and (c2 != c1) and (c2 != "UNK")) or
                 ((c1 == "CLASS") and ((c2 == "FILE") or (c2 == "BEH"))) or
                 ((c1 == "UNK") and ((c2 == "BEH") or (c2 == "CLASS"))))
@@ -182,11 +182,11 @@ class Update:
         """
         acc = []
         for rel in self.rel_set:
-            p1 = self.__out_taxonomy.get_path(rel.t1)
-            p2 = self.__out_taxonomy.get_path(rel.t2)
+            p1 = self._out_taxonomy.get_path(rel.t1)
+            p2 = self._out_taxonomy.get_path(rel.t2)
             logger.debug("Processing %s\t%s" % (p1, p2))
             # Ignore relations where t1 is an alias
-            dst = self.__out_translation.get_dst(rel.t1)
+            dst = self._out_translation.get_dst(rel.t1)
             if dst:
                 logger.debug("Ignoring relation for alias %s" % p1)
                 continue
@@ -198,16 +198,16 @@ class Update:
 
     # def is_alias_rel(self, rel):
     #    ''' Return true if relation implies alias rule '''
-    #    c1 = self.__out_taxonomy.get_category(rel.t1)
-    #    c2 = self.__out_taxonomy.get_category(rel.t2)
+    #    c1 = self._out_taxonomy.get_category(rel.t1)
+    #    c2 = self._out_taxonomy.get_category(rel.t2)
     #    return (((c1 == "UNK") and (c2 == "FAM")) or
     #            ((c1 == "UNK") and (c2 == "UNK")))
 
     # def find_aliases(self):
     #    ''' Find aliases among relations '''
     #    for rel in self.rel_set:
-    #        c1 = self.__out_taxonomy.get_category(rel.t1)
-    #        c2 = self.__out_taxonomy.get_category(rel.t2)
+    #        c1 = self._out_taxonomy.get_category(rel.t1)
+    #        c2 = self._out_taxonomy.get_category(rel.t2)
     #        if self.is_alias_rel(rel):
     #            self.G.add_node(rel.t1)
     #            self.G.add_node(rel.t2)
@@ -223,8 +223,8 @@ class Update:
         """
         t1 = rel.t1
         t2 = rel.t2
-        p1, c1 = self.__out_taxonomy.get_info(rel.t1)
-        p2, c2 = self.__out_taxonomy.get_info(rel.t2)
+        p1, c1 = self._out_taxonomy.get_info(rel.t1)
+        p2, c2 = self._out_taxonomy.get_info(rel.t2)
 
         logger.debug("Processing %s\t%s" % (p1, p2))
 
@@ -388,19 +388,19 @@ class Update:
         with open(filepath, 'w') as fd:
             fd.write("# t1\tt2\t|t1|\t|t2|\t|t1^t2|\t|t1^t2|/|t1|\t|t1^t2|/|t2|\n")
             sorted_rules = sorted(self.rel_set,
-                                  key=lambda r: (self.__out_taxonomy.get_category(r.t1),
-                                                 self.__out_taxonomy.get_category(r.t2)))
+                                  key=lambda r: (self._out_taxonomy.get_category(r.t1),
+                                                 self._out_taxonomy.get_category(r.t2)))
             for rel in sorted_rules:
-                p1, c1 = self.__out_taxonomy.get_info(rel.t1)
-                p2, c2 = self.__out_taxonomy.get_info(rel.t2)
+                p1, c1 = self._out_taxonomy.get_info(rel.t1)
+                p2, c2 = self._out_taxonomy.get_info(rel.t2)
                 fd.write("%s\t%s\t%s\t%s\t%s\t%s\t%s\n" % (p1, p2, rel.t1_num, rel.t2_num, rel.nalias_num,
                                                            rel.talias_num, rel.tinv_alias_num))
 
     def output_rule_stats(self, fd: TextIO):
         # Compute rule statistics
         for rel in self.rel_set:
-            c1 = self.__out_taxonomy.get_category(rel.t1)
-            c2 = self.__out_taxonomy.get_category(rel.t2)
+            c1 = self._out_taxonomy.get_category(rel.t1)
+            c2 = self._out_taxonomy.get_category(rel.t2)
             self.cat_pairs_map[(c1, c2)] = self.cat_pairs_map.get((c1, c2), 0) + 1
             self.dst_map[rel.t2] = self.dst_map.get(rel.t2, 0) + 1
         # Output statistics
