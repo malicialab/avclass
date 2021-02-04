@@ -208,8 +208,8 @@ class Update:
             elif (c1 == c2):
                 prefix = p1[0:p1.rfind(':')]
             else:
-                log.warn("Equivalent rule with different categories: %s\t%s" % 
-                            (p1, p2))
+                log.warning("Equivalent rule with different categories: %s\t%s"
+                                % (p1, p2))
                 return -1
             self.add_alias(t1, t2, prefix)
             return 1

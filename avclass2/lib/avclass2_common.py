@@ -23,8 +23,6 @@ uncategorized_cat  = "UNC"
 SampleInfo = namedtuple('SampleInfo', 
                         ['md5', 'sha1', 'sha256', 'labels', 'vt_tags'])
 
-Tag = namedtuple('Tag', ['name', 'cat', 'path', 'prefix_l'])
-
 # AVs to use in suffix removal
 suffix_removal_av_set = {'Norman', 'Avast', 'Avira', 'Kaspersky',
                           'ESET-NOD32', 'Fortinet', 'Jiangmin', 'Comodo',
@@ -32,23 +30,48 @@ suffix_removal_av_set = {'Norman', 'Avast', 'Avira', 'Kaspersky',
                           'TrendMicro-HouseCall', 'TrendMicro',
                           'NANO-Antivirus', 'Microsoft'}
 
-def create_tag(s):
-    ''' Create a Tag from its string representation '''
-    word_list = s.strip().split(":")
-    if len(word_list) > 1:
-        name = word_list[-1].lower()
-        cat = word_list[0].upper()
-        prefix_l = [x.lower() for x in word_list[1:-1]]
-        path = cat
-        for x in prefix_l:
-            path = path + ':' + x
-        path = path + ':' + name
-    else:
-        name = word_list[0].lower()
-        cat = uncategorized_cat
-        prefix_l = []
-        path = name
-    return Tag(name, cat, path, prefix_l)
+class Tag:
+    ''' A Tag in the taxonomy '''
+    def __init__(self, s):
+        word_list = s.strip().split(":")
+        if len(word_list) > 1:
+            self._name = word_list[-1].lower()
+            self._cat = word_list[0].upper()
+            self._prefix_l = [x.lower() for x in word_list[1:-1]]
+            path = self._cat
+            for x in self._prefix_l:
+                path = path + ':' + x
+            self._path = path + ':' + self._name
+        else:
+            self._name = word_list[0].lower()
+            self._cat = uncategorized_cat
+            self._prefix_l = []
+            self._path = self._name
+
+    def __hash__(self):
+        ''' Return hash '''
+        return hash((self._path))
+
+    @property
+    def name(self):
+        ''' Return tag name '''
+        return self._name
+
+    @property
+    def cat(self):
+        ''' Return tag category '''
+        return self._cat
+
+    @property
+    def path(self):
+        ''' Return tag path '''
+        return self._path
+
+    @property
+    def prefix_l(self):
+        ''' Return tag prefix list '''
+        return self._prefix_l
+
 
 class Taxonomy:
     '''
@@ -56,13 +79,18 @@ class Taxonomy:
     '''
     def __init__(self, filepath):
         ''' Map tag.name | tag.path -> Tag '''
+        self.__tags = set()
         self.__tag_map = {}
         if filepath:
             self.read_taxonomy(filepath)
 
     def __len__(self):
         ''' Taxonomy length is the number of tags it contains '''
-        return len(self.__tag_map)//2
+        return len(self.__tags)
+
+    def __iter__(self):
+        ''' Iterator over the alphabetically sorted tags in the taxonomy '''
+        return (t for t in sorted(self.__tags))
 
     def is_generic(self, t):
         ''' Return true if input is generic, false otherwise '''
@@ -80,16 +108,17 @@ class Taxonomy:
         ''' Add tag to taxonomy 
             If tag already exists with different path, 
               only replaces if override True '''
-        tag = create_tag(s)
+        tag = Tag(s)
         t = self.__tag_map.get(tag.name, None)
         if t and (t.path != tag.path):
             if (not override):
                 return
             else:
-                log.warn("[Taxonomy] Replacing %s with %s\n" % (
+                log.warning("[Taxonomy] Replacing %s with %s\n" % (
                                   t.path, tag.path))
                 del self.__tag_map[t.path]
         log.debug("[Taxonomy] Adding tag %s" % s)
+        self.__tags.add(tag)
         self.__tag_map[tag.name] = tag
         self.__tag_map[tag.path] = tag
         return
@@ -101,6 +130,7 @@ class Taxonomy:
             log.debug("[Taxonomy] Removing tag: %s" % tag.path)
             del self.__tag_map[tag.name]
             del self.__tag_map[tag.path]
+            self.__tags.remove(tag)
             return 1
         else:
             return 0
@@ -239,14 +269,14 @@ class Rules:
         if (not dst_l):
             return
         log.debug("[Rules] Adding %s -> %s" % (src, dst_l))
-        src_tag = create_tag(src)
+        src_tag = Tag(src)
         if overwrite:
-            target_l = [create_tag(dst).name for dst in dst_l]
+            target_l = [Tag(dst).name for dst in dst_l]
             self._rmap[src_tag.name] = set(target_l)
         else:
             curr_dst = self._rmap.get(src_tag.name, set())
             for dst in dst_l:
-                dst_tag = create_tag(dst)
+                dst_tag = Tag(dst)
                 curr_dst.add(dst_tag.name)
             self._rmap[src_tag.name] = curr_dst
         return
