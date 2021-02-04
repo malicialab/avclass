@@ -653,7 +653,7 @@ def parse_args():
     )
 
     argparser.add_argument(
-        "-t", "--type", help="the type of report file (vt2, vt3, lb)"
+        "-t", "--type", help="the type of report file (vt2, vt3, lb, md)"
     )
 
     argparser.add_argument(

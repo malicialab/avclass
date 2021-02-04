@@ -501,7 +501,7 @@ class AvLabels:
         """
         Return the correct parser for the report type
         
-        :param data_type: the type of file vt2, vt3, lb
+        :param data_type: the type of file vt2, vt3, lb, md
         :return: Callable function that returns SampleInfo
         """
         if data_type == "lb":
@@ -510,9 +510,11 @@ class AvLabels:
             return self.get_sample_info_vt_v2
         elif data_type == "vt3":
             return self.get_sample_info_vt_v3
+        elif data_type == "md":
+            return self.get_sample_info_md
         else:
             sys.stderr.write(
-                "Invalid data type for sample: %s (should be vt, vt2, vt3, lb)"
+                "Invalid data type for sample: %s (should be vt, vt2, vt3, lb, md)"
                 % data_type
             )
             return self.get_sample_info_vt_v3
@@ -542,9 +544,9 @@ class AvLabels:
         )
 
     @staticmethod
-    def get_sample_info_vt_v2(record):
+    def get_sample_info_vt_v2(record: Dict) -> SampleInfo:
         """
-        Convert VT (v2) JSON to a SampleInfo object
+        Convert VirusTotal (v2) JSON to a SampleInfo object
 
         :param record: The JSON record
         :return: An instance of SampleInfo
@@ -572,9 +574,9 @@ class AvLabels:
         return SampleInfo(md5, sha1, sha256, label_pairs, vt_tags)
 
     @staticmethod
-    def get_sample_info_vt_v3(record):
+    def get_sample_info_vt_v3(record: Dict) -> SampleInfo:
         """
-        Convert VT (v3) JSON to a SampleInfo object
+        Convert VirusTotal (v3) JSON to a SampleInfo object
 
         :param record: The JSON record
         :return: An instance of SampleInfo
@@ -602,7 +604,35 @@ class AvLabels:
         return SampleInfo(md5, sha1, sha256, label_pairs, vt_tags)
 
     @staticmethod
-    def is_pup(tag_pairs, taxonomy: Taxonomy) -> Optional[bool]:
+    def get_sample_info_md(record: Dict) -> SampleInfo:
+        """
+        Convert OPSWAT MetaDefender JSON to a SampleInfo object
+
+        :param record: The JSON record
+        :return: An instance of SampleInfo
+        """
+        try:
+            scans = record["scan_results"]["scan_details"]
+            md5 = record["file_info"]["md5"]
+            sha1 = record["file_info"]["sha1"]
+            sha256 = record["file_info"]["sha256"]
+        except KeyError:
+            return None
+
+        # Obtain labels from scan results
+        label_pairs = []
+        for av, res in scans.items():
+            label = res["threat_found"]
+            if label is not None and res["scan_result_i"] == 1:
+                clean_label = "".join(
+                    filter(lambda x: x in string.printable, label)
+                ).strip()
+                label_pairs.append((av, clean_label))
+
+        return SampleInfo(md5, sha1, sha256, label_pairs, [])
+
+    @staticmethod
+    def is_pup(tag_pairs: List[Tuple], taxonomy: Taxonomy) -> Optional[bool]:
         """
         Attempts to classify a sample (represented by ``tag_pairs``) as a PUP.  We accomplish this by checking for the
         "grayware" label in the highest ranked CLASS.
