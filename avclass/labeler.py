@@ -596,7 +596,7 @@ def main():
         alias_detect=args.aliasdetect,
     )
     # Build list of input files
-    files = get_files(
+    files = get_arg_files(
         file_input=args.input,
     )
     av_class = AVClassLabeler(av_labels=av_labels)
@@ -617,25 +617,24 @@ def main():
         print(json.dumps(result))
 
 
-def get_files(
-    file_input: Optional[AnyStr] = None,
+def get_arg_files(
+    file_input: List[AnyStr],
 ) -> List[AnyStr]:
     """
     Return List of the files to process
 
-    :param file_input: file or directory to process
+    :param file_input: file(s) or directory to process
     :return: List of type str
     """
     ifile_l = []
-    if file_input:
-        for fi in file_input:
-            if os.path.isdir(fi):
-                for f in os.listdir(fi):
-                    dir_file = os.path.join(fi, f)
-                    if dir_file not in ifile_l:
-                        ifile_l.append(dir_file)
-            elif fi not in ifile_l:
-                ifile_l.append(fi)
+    for fi in file_input:
+        if os.path.isdir(fi):
+            for f in os.listdir(fi):
+                dir_file = os.path.join(fi, f)
+                if dir_file not in ifile_l:
+                    ifile_l.append(dir_file)
+        elif fi not in ifile_l:
+            ifile_l.append(fi)
     return ifile_l
 
 
@@ -724,13 +723,11 @@ def parse_args():
 
     args = argparser.parse_args()
 
-    # TODO - use non-exclusive group to ensure at least one is selected instead of this
     if not args.input:
         sys.stderr.write("Input file / directory is required: " "-i\n")
         exit(1)
 
     if not args.type:
-
         sys.stderr.write(
             "[-] No type defined, using file type of VirusTotal v3: '-t vt3'\n"
         )
