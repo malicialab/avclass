@@ -18,8 +18,6 @@ uncategorized_cat = "UNC"
 
 SampleInfo = namedtuple("SampleInfo", ["md5", "sha1", "sha256", "labels", "vt_tags"])
 
-Tag = namedtuple("Tag", ["name", "cat", "path", "prefix_l"])
-
 # AVs to use in suffix removal
 suffix_removal_av_set = {
     "Norman",
@@ -40,28 +38,47 @@ suffix_removal_av_set = {
 }
 
 
-def create_tag(s: AnyStr):
-    """
-    Create a Tag from its string representation (path)
+class Tag:
+    ''' A Tag in the taxonomy '''
+    def __init__(self, s):
+        word_list = s.strip().split(":")
+        if len(word_list) > 1:
+            self._name = word_list[-1].lower()
+            self._cat = word_list[0].upper()
+            self._prefix_l = [x.lower() for x in word_list[1:-1]]
+            path = self._cat
+            for x in self._prefix_l:
+                path = path + ':' + x
+            self._path = path + ':' + self._name
+        else:
+            self._name = word_list[0].lower()
+            self._cat = uncategorized_cat
+            self._prefix_l = []
+            self._path = self._name
 
-    :param s: The string
-    :return: A Tag object
-    """
-    word_list = s.strip().split(":")
-    if len(word_list) > 1:
-        name = word_list[-1].lower()
-        cat = word_list[0].upper()
-        prefix_l = [x.lower() for x in word_list[1:-1]]
-        path = cat
-        for x in prefix_l:
-            path = path + ":" + x
-        path = path + ":" + name
-    else:
-        name = word_list[0].lower()
-        cat = uncategorized_cat
-        prefix_l = []
-        path = name
-    return Tag(name, cat, path, prefix_l)
+    def __hash__(self):
+        ''' Return hash '''
+        return hash((self._path))
+
+    @property
+    def name(self):
+        ''' Return tag name '''
+        return self._name
+
+    @property
+    def cat(self):
+        ''' Return tag category '''
+        return self._cat
+
+    @property
+    def path(self):
+        ''' Return tag path '''
+        return self._path
+
+    @property
+    def prefix_l(self):
+        ''' Return tag prefix list '''
+        return self._prefix_l
 
 
 class Taxonomy:
@@ -75,6 +92,7 @@ class Taxonomy:
 
         :param filepath: Path to taxonomy data
         """
+        self._tags = set()
         self._tag_map = {}
         if filepath:
             self.read_taxonomy(filepath)
@@ -85,9 +103,11 @@ class Taxonomy:
 
         :return: The length (int) of the Taxonomy
         """
-        return (
-            len(self._tag_map) // 2
-        )  # TODO - perhaps there should be two dicts, one for names, one for paths?
+        return len(self._tags)
+
+    def __iter__(self):
+        ''' Iterator over the alphabetically sorted tags in the taxonomy '''
+        return (t for t in sorted(self._tags))
 
     def is_generic(self, tag: AnyStr) -> bool:
         """
@@ -116,7 +136,7 @@ class Taxonomy:
         :param override: Whether or not to replace a duplicate if present
         :return: None
         """
-        tag = create_tag(s)
+        tag = Tag(s)
         t = self._tag_map.get(tag.name, None)
 
         if t and (t.path != tag.path):
@@ -142,6 +162,7 @@ class Taxonomy:
             logger.debug("[Taxonomy] Removing tag: %s" % t.path)
             del self._tag_map[t.name]
             del self._tag_map[t.path]
+            self._tags.remove(tag)
         return t is not None
 
     def get_category(self, tag: AnyStr) -> AnyStr:
@@ -334,14 +355,14 @@ class Rules:
             return
 
         logger.debug("[Rules] Adding %s -> %s" % (src, dst_l))
-        src_tag = create_tag(src)
+        src_tag = Tag(src)
         if overwrite:
-            target_l = [create_tag(dst).name for dst in dst_l]
+            target_l = [Tag(dst).name for dst in dst_l]
             self._rmap[src_tag.name] = set(target_l)
         else:
             curr_dst = self._rmap.get(src_tag.name, set())
             for dst in dst_l:
-                dst_tag = create_tag(dst)
+                dst_tag = Tag(dst)
                 curr_dst.add(dst_tag.name)
             self._rmap[src_tag.name] = curr_dst
 
@@ -656,7 +677,7 @@ class AvLabels:
         return False
 
     @staticmethod
-    def __remove_suffixes(av_name: AnyStr, label: AnyStr) -> AnyStr:
+    def _remove_suffixes(av_name: AnyStr, label: AnyStr) -> AnyStr:
         """
         Remove vendor-specific suffixes from the label
 
@@ -730,7 +751,7 @@ class AvLabels:
         # Return tags
         return tags
 
-    def __expand(self, tag_set: Set[AnyStr]) -> Set[AnyStr]:
+    def _expand(self, tag_set: Set[AnyStr]) -> Set[AnyStr]:
         """
         Expand tags into more tags using expansion rules and the Taxonomy
 
