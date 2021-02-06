@@ -251,13 +251,13 @@ class Rules:
     '''
     def __init__(self, filepath):
         ''' Map src -> set(dst) '''
-        self._rmap = {}
+        self._src_map = {}
         if filepath:
             self.read_rules(filepath)
 
     def __len__(self):
         ''' Length is number of rules, i.e., number of src '''
-        return len(self._rmap)
+        return len(self._src_map)
 
     def add_rule(self, src, dst_l, overwrite=False):
         ''' Add rule. If rule exists:
@@ -272,27 +272,27 @@ class Rules:
         src_tag = Tag(src)
         if overwrite:
             target_l = [Tag(dst).name for dst in dst_l]
-            self._rmap[src_tag.name] = set(target_l)
+            self._src_map[src_tag.name] = set(target_l)
         else:
-            curr_dst = self._rmap.get(src_tag.name, set())
+            curr_dst = self._src_map.get(src_tag.name, set())
             for dst in dst_l:
                 dst_tag = Tag(dst)
                 curr_dst.add(dst_tag.name)
-            self._rmap[src_tag.name] = curr_dst
+            self._src_map[src_tag.name] = curr_dst
         return
 
     def remove_rule(self, src):
-        l = self._rmap.get(src, [])
+        l = self._src_map.get(src, [])
         if l:
             log.debug("[Rules] Removing rule: %s -> %s" % (src, l))
-            del self._rmap[src]
+            del self._src_map[src]
             return 1
         else:
             return 0
 
     def get_dst(self, src):
         ''' Returns dst list for given src, or empty list if no expansion '''
-        return list(self._rmap.get(src, []))
+        return list(self._src_map.get(src, []))
 
     def read_rules(self, filepath):
         '''Read rules from given file'''
@@ -309,7 +309,7 @@ class Rules:
         ''' Output sorted rules to given file 
             If taxonomy is provided, it outputs full tag path '''
         fd = open(filepath, 'w')
-        for src,dst_set in sorted(self._rmap.items()):
+        for src,dst_set in sorted(self._src_map.items()):
             dst_l = sorted(dst_set, reverse=False)
             if taxonomy:
                 src_path = taxonomy.get_path(src)
@@ -324,11 +324,11 @@ class Rules:
     def expand_src_destinations(self, src):
         ''' Return destination list for given src after recursively 
             following any rules for destinations '''
-        dst_set = self._rmap.get(src, set())
+        dst_set = self._src_map.get(src, set())
         out = set()
         while dst_set:
             dst = dst_set.pop()
-            l = self._rmap.get(dst, [])
+            l = self._src_map.get(dst, [])
             if l:
                 for e in l:
                     if (e not in out) and (e != dst):
@@ -340,10 +340,10 @@ class Rules:
     def expand_all_destinations(self):
         ''' Return destination list for given src after recursively 
             following any rules for destinations '''
-        src_l = self._rmap.keys()
+        src_l = self._src_map.keys()
         for src in src_l:
             dst_l = self.expand_src_destinations(src)
-            self._rmap[src] = dst_l
+            self._src_map[src] = dst_l
 
 class Tagging(Rules):
     '''
@@ -354,7 +354,7 @@ class Tagging(Rules):
 
     def validate(self, taxonomy):
         ''' Check that tags in tagging rules are in given taxonomy '''
-        for tok,tag_l in self._rmap.items():
+        for tok,tag_l in self._src_map.items():
             for t in tag_l:
                 if (not taxonomy.is_tag(t)):
                     sys.stdout.write("[Tagging] %s not in taxonomy\n" % t)
@@ -369,7 +369,7 @@ class Expansion(Rules):
 
     def validate(self, taxonomy):
         ''' Check that tags in expansion rules are in given taxonomy '''
-        for src,dst_set in self._rmap.items():
+        for src,dst_set in self._src_map.items():
             if (not taxonomy.is_tag(src)):
                 sys.stdout.write("[Expansion] %s not in taxonomy\n" % src)
             for dst in dst_set:
