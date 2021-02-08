@@ -147,3 +147,4 @@ cython_debug/
 *.avtags
 *.stats
 *.alias
+*.labels
