@@ -5,9 +5,9 @@ from avclass import data
 
 
 __all__ = (
-    'DEFAULT_EXP_PATH',
-    'DEFAULT_TAG_PATH',
-    'DEFAULT_TAX_PATH',
+    "DEFAULT_EXP_PATH",
+    "DEFAULT_TAG_PATH",
+    "DEFAULT_TAX_PATH",
 )
 
 RESOURCE_EXP = "default.expansion"
@@ -28,4 +28,3 @@ if pkg_resources.resource_exists(data.__name__, RESOURCE_TAX):
     DEFAULT_TAX_PATH = pkg_resources.resource_filename(data.__name__, RESOURCE_TAX)
 
 atexit.register(pkg_resources.cleanup_resources)
-

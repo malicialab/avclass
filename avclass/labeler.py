@@ -52,7 +52,7 @@ class AVClassLabeler:
         "UNK": 0,
     }
 
-    def __init__(self, av_labels: AvLabels):
+    def __init__(self, av_labels: AvLabels = AvLabels()):
         self.av_labels = av_labels
 
     def run(

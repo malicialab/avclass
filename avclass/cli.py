@@ -9,10 +9,11 @@ from typing import AnyStr
 logger = logging.getLogger(__name__)
 
 __all__ = (
-    'validate_expansion',
-    'validate_tagging',
-    'validate_taxonomy',
+    "validate_expansion",
+    "validate_tagging",
+    "validate_taxonomy",
 )
+
 
 def validate_taxonomy(path: AnyStr):
     """
@@ -24,7 +25,7 @@ def validate_taxonomy(path: AnyStr):
     taxonomy = Taxonomy(path)
     taxonomy.to_file(path)
 
-    logger.info('[-] Normalized %d tags in taxonomy %s\n' % (len(taxonomy), path))
+    logger.info("[-] Normalized %d tags in taxonomy %s\n" % (len(taxonomy), path))
 
     return taxonomy
 
@@ -42,7 +43,7 @@ def validate_tagging(path: AnyStr, taxonomy: Taxonomy):
     # tagging.expand_all_destinations()
     tagging.to_file(path)
 
-    logger.info('[-] Normalized %d tagging rules in %s\n' % (len(tagging), path))
+    logger.info("[-] Normalized %d tagging rules in %s\n" % (len(tagging), path))
 
 
 def validate_expansion(path: AnyStr, taxonomy: Taxonomy):
@@ -57,20 +58,16 @@ def validate_expansion(path: AnyStr, taxonomy: Taxonomy):
     expansion.validate(taxonomy)
     expansion.to_file(path)
 
-    logger.info('[-] Normalized %d expansion rules in %s\n' % (len(expansion), path))
+    logger.info("[-] Normalized %d expansion rules in %s\n" % (len(expansion), path))
 
 
 def validate_files():
-    parser = argparse.ArgumentParser(description='Checks format of files Tagging, Expansion and Taxonomy.')
-    parser.add_argument('-exp',
-                        help='expansion file',
-                        default=util.DEFAULT_EXP_PATH)
-    parser.add_argument('-tag',
-                        help='tagging file',
-                        default=util.DEFAULT_TAG_PATH)
-    parser.add_argument('-tax',
-                        help='taxonomy file',
-                        default=util.DEFAULT_TAX_PATH)
+    parser = argparse.ArgumentParser(
+        description="Checks format of files Tagging, Expansion and Taxonomy."
+    )
+    parser.add_argument("-exp", help="expansion file", default=util.DEFAULT_EXP_PATH)
+    parser.add_argument("-tag", help="tagging file", default=util.DEFAULT_TAG_PATH)
+    parser.add_argument("-tax", help="taxonomy file", default=util.DEFAULT_TAX_PATH)
 
     args = parser.parse_args()
 

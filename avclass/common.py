@@ -40,7 +40,8 @@ suffix_removal_av_set = {
 
 
 class Tag:
-    ''' A Tag in the taxonomy '''
+    """ A Tag in the taxonomy """
+
     def __init__(self, s):
         word_list = s.strip().split(":")
         if len(word_list) > 1:
@@ -49,8 +50,8 @@ class Tag:
             self._prefix_l = [x.lower() for x in word_list[1:-1]]
             path = self._cat
             for x in self._prefix_l:
-                path = path + ':' + x
-            self._path = path + ':' + self._name
+                path = path + ":" + x
+            self._path = path + ":" + self._name
         else:
             self._name = word_list[0].lower()
             self._cat = uncategorized_cat
@@ -58,27 +59,27 @@ class Tag:
             self._path = self._name
 
     def __hash__(self):
-        ''' Return hash '''
+        """ Return hash """
         return hash((self._path))
 
     @property
     def name(self):
-        ''' Return tag name '''
+        """ Return tag name """
         return self._name
 
     @property
     def cat(self):
-        ''' Return tag category '''
+        """ Return tag category """
         return self._cat
 
     @property
     def path(self):
-        ''' Return tag path '''
+        """ Return tag path """
         return self._path
 
     @property
     def prefix_l(self):
-        ''' Return tag prefix list '''
+        """ Return tag prefix list """
         return self._prefix_l
 
 
@@ -107,7 +108,7 @@ class Taxonomy:
         return len(self._tags)
 
     def __iter__(self):
-        ''' Iterator over the alphabetically sorted tags in the taxonomy '''
+        """ Iterator over the alphabetically sorted tags in the taxonomy """
         return (t for t in sorted(self._tags))
 
     def is_generic(self, tag: AnyStr) -> bool:
@@ -522,7 +523,7 @@ class AvLabels:
     def get_sample_call(self, data_type: AnyStr) -> Callable:
         """
         Return the correct parser for the report type
-        
+
         :param data_type: the type of file vt2, vt3, lb, md
         :return: Callable function that returns SampleInfo
         """
