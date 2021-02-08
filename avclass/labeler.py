@@ -30,7 +30,7 @@ class AVClassLabeler:
     console = False
     av_tags = False
     stats_export = False
-    compatibility_v1 = False
+    family_only = False
     pup_classify = False
     path_export = False
     vt_tags = False
@@ -75,7 +75,7 @@ class AVClassLabeler:
         av_tags: bool = False,
         pup_classify: bool = False,
         path_export: bool = False,
-        compatibility_v1: bool = False,
+        family_only: bool = False,
         console: bool = False,
     ) -> List[Dict]:
         # Set class arguments
@@ -83,7 +83,7 @@ class AVClassLabeler:
         self.ground_truth = ground_truth
         self.av_tags = av_tags
         self.stats_export = stats_export
-        self.compatibility_v1 = compatibility_v1
+        self.family_only = family_only
         self.pup_classify = pup_classify
         self.path_export = path_export
         self.vt_tags = vt_tags
@@ -232,7 +232,7 @@ class AVClassLabeler:
         pup_val = self.is_pup(self.pup_classify, tags)
 
         # Print family (and ground truth if available)
-        if self.compatibility_v1:
+        if self.family_only:
             class_entry = self.avclass1_output(
                 name=name,
                 family=fam,
@@ -307,7 +307,7 @@ class AVClassLabeler:
         else:
             vtt = ""
         tag_str = self.format_tag_pairs_str(
-            tags, self.av_labels.taxonomy, self.path_export
+            tags=tags, taxonomy=self.av_labels.taxonomy, path_export=self.path_export
         )
         self.print_output(
             "%s\t%d\t%s%s%s%s\n"
@@ -315,7 +315,7 @@ class AVClassLabeler:
         )
         # Build json output
         tag_dict = self.format_tag_pairs_list(
-            tags, self.av_labels.taxonomy, self.path_export
+            tags=tags, taxonomy=self.av_labels.taxonomy, path_export=self.path_export
         )
         values = {"hash": name, "av_count": vt_count, "tags": tag_dict}
         if self.ground_truth:
@@ -327,7 +327,7 @@ class AVClassLabeler:
         return values
 
     def get_family(self, name: AnyStr, tags: List[Tuple]) -> Tuple:
-        if self.compatibility_v1 or self.ground_truth:
+        if self.family_only or self.ground_truth:
             fam = "SINGLETON:" + name
             # fam = ''
             for (t, s) in tags:
@@ -605,7 +605,7 @@ class AVClassLabeler:
         out = []
         for (tag, count) in tags:
             values = {"tag": tag, "count": count}
-            if path_export and taxonomy:
+            if path_export and taxonomy is not None:
                 values["category"] = taxonomy.get_category(tag)
                 values["path"] = taxonomy.get_path(tag)
             out.append(values)
@@ -670,7 +670,7 @@ def main():
         ground_truth=args.gt,
         pup_classify=args.pup,
         path_export=args.path,
-        compatibility_v1=args.c,
+        family_only=args.c,
         console=not args.json,
     )
     if args.json:

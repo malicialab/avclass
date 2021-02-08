@@ -1,17 +1,17 @@
-# AVClass and AVClass2
+# AVClass
 
-AVClass and AVClass2 are Python tools to tag / label malware samples. 
-You give them as input the AV labels for a large number of malware samples (e.g., VirusTotal JSON reports) 
-and they output tags extracted from the AV labels of each sample. 
-The original AVClass only outputs family names (i.e., family tags). 
-By default, it outputs the most likely family for each sample (e.g., *zbot*, *virut*). 
+AVClass is a Python package / command line tool to tag / label malware samples. 
+You input the AV labels for a large number of malware samples (e.g., VirusTotal JSON reports) 
+and it outputs tags extracted from the AV labels of each sample. 
+AVClass will output the family names, along with other tags capturing the malware class (e.g., *worm*, *ransomware*, *grayware*), behaviors (e.g., *spam*, *ddos*), and file properties (e.g., *packed*, *themida*, *bundle*, *nsis*). 
+It can also be run in compatibility mode `-c` (AVClass 1.x) to only output the family names (i.e., family tags). 
 It can also output a ranking of all alternative family names it found for each sample.
-The newer AVClass2, in addition to family names, also outputs other tags capturing the malware class (e.g., *worm*, *ransomware*, *grayware*), behaviors (e.g., *spam*, *ddos*), and file properties (e.g., *packed*, *themida*, *bundle*, *nsis*). 
 
-A quick example helps illustrating the differences. If you run AVClass2 on our example input file:
+
+A quick example helps illustrating the differences of compatibility mode. If you run AVClass on our example input file:
 
 ```shell
-$./avclass2/avclass2_labeler.py -lb examples/malheurReference_lb.json -p
+$ python3 ./avclass/labeler.py -i ./examples/malheurReference_lb.json -t lb -p
 ```
 
 the output on stdout is:
@@ -27,40 +27,150 @@ was flagged by 33 AV engines and 10 of them agree it is *grayware*, 9 that it is
 Sample *67d15459e1f85898851148511c86d88d* is flagged by 37 AV engines and 23 of them 
 consider it a *dialer*, 8 that it belongs to the *adultbrowser* family, and so on.
 
-If you instead run AVClass on the same input file:
+If you instead run AVClass on the same input file in compatibility mode:
 
 ```shell
-$./avclass/avclass_labeler.py -lb examples/malheurReference_lb.json
+$ python3 ./avclass/labeler.py -i ./examples/malheurReference_lb.json -t lb -c
 ```
 
-the output looks like this:
+the output looks like this, which simply reports the most common family name for each sample.
 
 ```
 aca2d12934935b070df8f50e06a20539 adrotator
 67d15459e1f85898851148511c86d88d adultbrowser
 ``` 
 
-which simply reports the most common family name for each sample.
 
-In a nutshell, that is the main difference between both tools. 
-Of course, there are more options for both tools, 
-which you can read about in their corresponding README files. 
+The output can also be formatted as **JSON**.
+```shell
+$ python3 ./avclass/labeler.py -i ./examples/malheurReference_lb.json -t lb -p -json
+```
+the output on stdout is:
 
+```json
+{
+  "labels": [
+    {
+      "hash": "aca2d12934935b070df8f50e06a20539",
+      "av_count": 33,
+      "tags": [
+        {
+          "tag": "grayware",
+          "count": 9,
+          "category": "CLASS",
+          "path": "CLASS:grayware"
+        },
+        {
+          "tag": "adware",
+          "count": 9,
+          "category": "CLASS",
+          "path": "CLASS:grayware:adware"
+        },
+        {
+          "tag": "windows",
+          "count": 8,
+          "category": "FILE",
+          "path": "FILE:os:windows"
+        },
+        {
+          "tag": "adrotator",
+          "count": 8,
+          "category": "FAM",
+          "path": "FAM:adrotator"
+        },
+        {
+          "tag": "execdownload",
+          "count": 3,
+          "category": "BEH",
+          "path": "BEH:execdownload"
+        },
+        {
+          "tag": "downloader",
+          "count": 3,
+          "category": "CLASS",
+          "path": "CLASS:downloader"
+        },
+        {
+          "tag": "zlob",
+          "count": 2,
+          "category": "FAM",
+          "path": "FAM:zlob"
+        }
+      ]
+    }
+  ]
+}
+```
 
-## Which one should I use?
+Or it can be used as a Python package:
+```py
+import json
+from avclass.labeler import AVClassLabeler
 
-AVClass2 is the newer tool and it extracts more information 
-from the input AV labels.
-So, if you are new to AVClass and AVClass2, we recommend trying it out first.
+av_class = AVClassLabeler()
+result = av_class.run(
+    files="./examples/malheurReference_lb.json",
+    data_type="lb",
+    path_export=True,
+)
+print(json.dumps(result))
+```
+the output on stdout is:
 
-However, there are several reasons to keep AVClass around. 
-First, it is more mature and used by many analysts, 
-so we want to preserve backwards compatibility.
-Second, for some applications only family names are needed and 
-for that AVClass is enough.
-Third, AVClass is faster than AVClass2 since it extracts less info. 
-The lower runtime is nice when processing millions of samples and 
-not requiring the extra tags AVClass2 provides. 
+```json
+{
+  "labels": [
+    {
+      "hash": "aca2d12934935b070df8f50e06a20539",
+      "av_count": 33,
+      "tags": [
+        {
+          "tag": "grayware",
+          "count": 9,
+          "category": "CLASS",
+          "path": "CLASS:grayware"
+        },
+        {
+          "tag": "adware",
+          "count": 9,
+          "category": "CLASS",
+          "path": "CLASS:grayware:adware"
+        },
+        {
+          "tag": "windows",
+          "count": 8,
+          "category": "FILE",
+          "path": "FILE:os:windows"
+        },
+        {
+          "tag": "adrotator",
+          "count": 8,
+          "category": "FAM",
+          "path": "FAM:adrotator"
+        },
+        {
+          "tag": "execdownload",
+          "count": 3,
+          "category": "BEH",
+          "path": "BEH:execdownload"
+        },
+        {
+          "tag": "downloader",
+          "count": 3,
+          "category": "CLASS",
+          "path": "CLASS:downloader"
+        },
+        {
+          "tag": "zlob",
+          "count": 2,
+          "category": "FAM",
+          "path": "FAM:zlob"
+        }
+      ]
+    }
+  ]
+}
+```
 
 ## References
 
@@ -80,16 +190,15 @@ The design and evaluation of AVClass2 is detailed in our
 AVClass2: Massive Malware Tag Extraction from AV Labels. 
 In proceedings of the Annual Computer Security Applications Conference, December 2020.
 
-## Why are AVClass and AVClass2 useful?
+## Why is AVClass useful?
 
 Because a lot of times security researchers want to extract family and other 
 information from AV labels, but this process is not as simple as it looks, 
 especially if you need to do it for large numbers (e.g., millions) of samples. 
-Some advantages of AVClass and AVClass2 are:
+Some advantages of AVClass are:
 
 1. *Automatic.* They remove manual analysis limitations on the size of the 
-input 
-dataset.
+input dataset.
 
 2. *Vendor-agnostic.* They operate on the labels of any available set of AV 
 engines, which can vary from sample to sample.
@@ -100,7 +209,7 @@ engines, e.g., Windows or Android malware.
 4. *Does not require executables.* AV labels can be obtained from online services
  like VirusTotal using a sample's hash, even when the executable is not available.
 
-5. *Quantified accuracy.* We have evaluated AVClass and AVClass2 on millions of 
+5. *Quantified accuracy.* We have evaluated AVClass 2.x on millions of 
 samples and publicly available malware datasets with ground truth. 
 Evaluation details are in the RAID 2016 and ACSAC 2020 papers.
 
@@ -110,21 +219,21 @@ these tools.
 
 ## Limitations
 
-The main limitations of AVClass and AVClass2 are that its output depends 
+The main limitations of AVClass is that the output depends 
 on the input AV labels. 
-Both tools try to compensate for the noise on the AV labels, 
+The tool tries to compensate for the noise on the AV labels, 
 but cannot identify tags if AV engines do not provide non-generic tokens 
 in the labels of a sample. 
-In particular, they cannot tag samples if at least 2 AV engines 
+In particular, it cannot tag samples if at least 2 AV engines 
 do not agree on a tag. 
 
-Still, there are many samples that both tools can tag
-and thus we believe you will find them useful.
+Still, there are many samples that it can tag
+and thus we believe you will find it useful.
 We recommend you to read the RAID 2016 and ACSAC 2020 papers for more details.
 
 ## Input JSON format
 
-AVClass and AVClass2 support three input JSON formats: 
+AVClass supports four input JSON formats: 
 
 1. VirusTotal v2 API JSON reports (*-vt file*), 
 where each line in the input *file* should be the full JSON of a 
@@ -133,7 +242,7 @@ e.g., obtained by querying https://www.virustotal.com/vtapi/v2/file/report?apike
 There is an example VirusTotal v2 input file in examples/vtv2_sample.json
 
 ```shell
-$./avclass2/avclass2_labeler.py -vt examples/vtv2_sample.json -p > output.txt
+$./avclass/labeler.py -i examples/vtv2_sample.json -t vt2 -p > output.txt
 ```
 
 2. VirusTotal v3 API JSON reports (*-vt file -vt3*), 
@@ -142,7 +251,7 @@ e.g., obtained by querying https://www.virustotal.com/api/v3/files/{hash}
 There is an example VirusTotal v3 input file in examples/vtv3_sample.json
 
 ```shell
-$./avclass2/avclass2_labeler.py -vt examples/vtv3_sample.json -p -vt3 > output.txt
+$./avclass/labeler.py -i examples/vtv3_sample.json -p -t vt3 > output.txt
 ```
 
 3. Simplified JSON (*-lb file*),
@@ -152,16 +261,23 @@ with (at least) these fields:
 There is an example of such input file in *examples/malheurReference_lb.json*
 
 ```shell
-$./avclass2/avclass2_labeler.py -lb examples/malheurReference_lb.json -p > output.txt
+$./avclass/labeler.py -i examples/malheurReference_lb.json -t lb -p > output.txt
+```
+
+4. Metadefender JSON (*-md file*),
+where each line in *file* should be a JSON
+
+```shell
+$./avclass/labeler.py -i examples/malheurReference_lb.json -t md -p > output.txt
 ```
 
 **Why have a simplified JSON format?**
 
 We believe most users will get the AV labels using VirusTotal. 
-However, AVClass and AVClass2 are IO-bound and a VirusTotal report 
+However, AVClass is IO-bound and a VirusTotal report 
 in addition to the AV labels and hashes includes 
-much other data that the tools do not need. 
-Thus, when applying AVClass or AVClass2 to millions of samples,
+a lot of other data that the tools do not need. 
+Thus, when applying AVClass to millions of samples,
 reducing the input file size by removing unnnecessary data 
 significantly improves efficiency. 
 Furthermore, users could obtain AV labels from other sources and 
@@ -170,8 +286,8 @@ the easier to convert those AV labels into an input file.
 
 ## Dependencies
 
-AVClass and AVClass2 are both written in Python. 
-They should both run on Python versions above 2.7 and 3.0.
+AVClass is both written in Python. 
+It should be run on Python versions >= 3.6.
 
 They do not require installing any dependencies.
 
@@ -182,11 +298,11 @@ pull request through GitHub.
 
 ## License
 
-AVClass and AVClass2 are both released under the MIT license
+AVClass is released under the MIT license
 
 ## Contributors
 
 Several members of the MaliciaLab at the [IMDEA Software Institute](http://software.imdea.org) 
-have contributed code to AVClasss and AVClass2: 
+have contributed code to AVClass: 
 Marcos Sebastián, Richard Rivera, Platon Kotzias, Srdjan Matic, Silvia Sebastián, and Juan Caballero.
 
