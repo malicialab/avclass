@@ -76,7 +76,6 @@ class AVClassLabeler:
         pup_classify: bool = False,
         path_export: bool = False,
         compatibility_v1: bool = False,
-        gzipped: bool = False,
         console: bool = False,
     ) -> List[Dict]:
         # Set class arguments
@@ -113,7 +112,7 @@ class AVClassLabeler:
             elif isinstance(ifile, StringIO):
                 fd = ifile
             else:
-                if gzipped:
+                if self.is_gz_file(ifile):
                     fd = gzip.open(ifile, "rt")
                 else:
                     fd = open(ifile, "r")
@@ -630,6 +629,10 @@ class AVClassLabeler:
             out = out + sep + s
         return out
 
+    def is_gz_file(self, filepath):
+        with open(filepath, "rb") as test_f:
+            return test_f.read(2) == b"\x1f\x8b"
+
     def print_error(self, output: AnyStr = "", flush=False):
         if self.console:
             # TODO - would this be better? print(output, file=sys.stderr, flush=flush, end="")
@@ -668,7 +671,6 @@ def main():
         pup_classify=args.pup,
         path_export=args.path,
         compatibility_v1=args.c,
-        gzipped=args.gzip,
         console=not args.json,
     )
     if args.json:
@@ -707,7 +709,7 @@ def parse_args():
         "-i",
         "--input",
         action="append",
-        help="input report file or directory (Can be provided multiple times)",
+        help="input report file (plain or gzip) or directory. (Can be provided multiple times)",
     )
 
     argparser.add_argument(
@@ -718,13 +720,6 @@ def parse_args():
         "-gt",
         help="file with ground truth. If provided it evaluates clustering accuracy. "
         "Prints precision, recall, F1-measure.",
-    )
-
-    argparser.add_argument(
-        "-gz",
-        "--gzip",
-        help="file with JSON reports is gzipped",
-        action="store_true",
     )
 
     argparser.add_argument(
