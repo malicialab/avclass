@@ -1,19 +1,18 @@
-# Install
-```shell
-$ git clone http://.../avclass
-$ cd avclass
-$ pip3 install .
-```
-
 # AVClass
-
 AVClass is a Python package / command line tool to tag / label malware samples. 
 You input the AV labels for a large number of malware samples (e.g., VirusTotal JSON reports) 
 and it outputs tags extracted from the AV labels of each sample. 
 AVClass will output the family names, along with other tags capturing the malware class (e.g., *worm*, *ransomware*, *grayware*), behaviors (e.g., *spam*, *ddos*), and file properties (e.g., *packed*, *themida*, *bundle*, *nsis*).  It can also output a ranking of all alternative family names it found for each sample.
 There is also a compatibility mode `-c` (AVClass 1.x) that will only output the family names (i.e., family tags). 
 
+## Install
+```shell
+$ git clone http://.../avclass
+$ cd avclass
+$ pip3 install .
+```
 
+## Examples
 A quick example helps illustrating the differences of 1.x compatibility mode. If you run AVClass on our example input file:
 
 ```shell
