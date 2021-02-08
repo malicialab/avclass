@@ -479,13 +479,13 @@ class AVClassLabeler:
                 y = self.av_labels.taxonomy.get_path(y)
             self.output["alias"].append(
                 {
-                    "tag1_label": x,
-                    "tag2_label": y,
-                    "tag1": xn,
-                    "tag2": yn,
-                    "tag1^tag2": c,
-                    "tag1^tag2/tag1": f,
-                    "tag1^tag2/tag2": finv,
+                    "alias_token": x,
+                    "alias_tag": y,
+                    "count_token": xn,
+                    "count_tag": yn,
+                    "ratio": c,
+                    "ratio_token": f,
+                    "raiio_tag": finv,
                 }
             )
             if out_prefix:

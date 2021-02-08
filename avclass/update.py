@@ -433,7 +433,7 @@ class Update:
         logger.info('[-] Output %d expansion rules to %s' % (len(expansion), exp_filepath))
 
 
-if __name__ == '__main__':
+def main():
     parser = argparse.ArgumentParser(description='Given a .alias file from the labeler, generates updates for the '
                                                  'taxonomy, tagging, and expansion files.')
 
@@ -508,3 +508,6 @@ if __name__ == '__main__':
         update.output(out_prefix)
 
     update.output_relations(out_prefix + ".final.rules")
+
+if __name__ == "__main__":
+    main()

@@ -1,17 +1,23 @@
+# Install
+```shell
+$ git clone http://.../avclass
+$ cd avclass
+$ pip3 install .
+```
+
 # AVClass
 
 AVClass is a Python package / command line tool to tag / label malware samples. 
 You input the AV labels for a large number of malware samples (e.g., VirusTotal JSON reports) 
 and it outputs tags extracted from the AV labels of each sample. 
-AVClass will output the family names, along with other tags capturing the malware class (e.g., *worm*, *ransomware*, *grayware*), behaviors (e.g., *spam*, *ddos*), and file properties (e.g., *packed*, *themida*, *bundle*, *nsis*). 
-It can also be run in compatibility mode `-c` (AVClass 1.x) to only output the family names (i.e., family tags). 
-It can also output a ranking of all alternative family names it found for each sample.
+AVClass will output the family names, along with other tags capturing the malware class (e.g., *worm*, *ransomware*, *grayware*), behaviors (e.g., *spam*, *ddos*), and file properties (e.g., *packed*, *themida*, *bundle*, *nsis*).  It can also output a ranking of all alternative family names it found for each sample.
+There is also a compatibility mode `-c` (AVClass 1.x) that will only output the family names (i.e., family tags). 
 
 
-A quick example helps illustrating the differences of compatibility mode. If you run AVClass on our example input file:
+A quick example helps illustrating the differences of 1.x compatibility mode. If you run AVClass on our example input file:
 
 ```shell
-$ python3 ./avclass/labeler.py -i ./examples/malheurReference_lb.json -t lb -p
+$ avclass -i ./examples/malheurReference_lb.json -t lb -p
 ```
 
 the output on stdout is:
@@ -27,10 +33,10 @@ was flagged by 33 AV engines and 10 of them agree it is *grayware*, 9 that it is
 Sample *67d15459e1f85898851148511c86d88d* is flagged by 37 AV engines and 23 of them 
 consider it a *dialer*, 8 that it belongs to the *adultbrowser* family, and so on.
 
-If you instead run AVClass on the same input file in compatibility mode:
+If you instead run AVClass on the same input file in compatibility mode `-c`:
 
 ```shell
-$ python3 ./avclass/labeler.py -i ./examples/malheurReference_lb.json -t lb -c
+$ avclass -i ./examples/malheurReference_lb.json -t lb -c
 ```
 
 the output looks like this, which simply reports the most common family name for each sample.
@@ -43,11 +49,11 @@ aca2d12934935b070df8f50e06a20539 adrotator
 
 The output can also be formatted as **JSON**.
 ```shell
-$ python3 ./avclass/labeler.py -i ./examples/malheurReference_lb.json -t lb -p -json
+$ avclass -i ./examples/malheurReference_lb.json -t lb -p -json
 ```
 the output on stdout is:
 
-```json
+```yaml
 {
   "labels": [
     {
@@ -117,7 +123,7 @@ print(json.dumps(result))
 ```
 the output on stdout is:
 
-```json
+```yaml
 {
   "labels": [
     {
@@ -170,6 +176,72 @@ the output on stdout is:
     }
   ]
 }
+```
+
+## Update Module
+
+The update module can be used to suggest additions and changes to the input 
+taxonomy, tagging rules, and expansion rules. 
+Using the update module comprises of two steps.
+The first step is obtaining an alias file from the labeler:
+
+```shell
+$ avclass -i ./examples/malheurReference_lb.json -t lb -aliasdetect
+```
+
+The above command will create a file named \<file\>.alias, 
+malheurReference_lb.alias in our example. This file has 7 columns:
+
+1. t1: token that is an alias
+2. t2: tag for which t1 is an alias
+3. |t1|: number of input samples where t1 was observed
+4. |t2|: number of input samples where t2 was observed
+5. |t1^t2|: number of input samples where both t1 and t2 were observed
+6. |t1^t2|/|t1|: ratio of input samples where both t1 and t2 were observed over the number of input samples where t1 was observed.
+7. |t1^t2|/|t2|: ratio of input samples where both t1 and t2 were observed over the number of input samples where t2 was observed.
+
+
+The Update Module takes the above file as input with the -alias option, 
+as well as the default taxonomy, tagging, and expansion files in the data directory. 
+It outputs updated taxonomy, tagging, and expansion files that include the 
+suggested additions and changes. 
+
+```shell
+$ avclass-update -alias malheurReference_lb.alias -o output_prefix
+```
+
+This will produce three files: 
+output_prefix.taxonomy, output_prefix.tagging, output_prefix.expansion. 
+You can diff the output and input files to analyze the proposed changes.
+
+You can also modify the input taxonomy, tagging, and expansion rules in place, 
+rather than producing new files:
+
+
+```shell
+$ avclass-update -alias malheurReference_lb.alias -update
+```
+
+
+## Customizing AVClass
+
+AVClass is fully customizable: 
+Tagging, Expansion and Taxonomy files can be easily modified by the analyst 
+either manually or by running the update module. 
+
+If you change those files manually, we recommend running 
+afterwards the input checker script to keep them tidy. 
+It sorts the tags in the taxonomy and performs some basic cleaning like 
+removing redundant entries:
+
+```shell
+$ avclass-validate -tax taxonomy_file -tag tagging_file -exp expansio_file
+```
+
+If the modifications are in the default files in the data directory you can simply run: 
+
+```shell
+$ avclass-validate
 ```
 
 ## References
@@ -242,7 +314,7 @@ e.g., obtained by querying https://www.virustotal.com/vtapi/v2/file/report?apike
 There is an example VirusTotal v2 input file in examples/vtv2_sample.json
 
 ```shell
-$./avclass/labeler.py -i examples/vtv2_sample.json -t vt2 -p > output.txt
+$ avclass -i examples/vtv2_sample.json -t vt2 -p > output.txt
 ```
 
 2. VirusTotal v3 API JSON reports (*-vt file -vt3*), 
@@ -251,7 +323,7 @@ e.g., obtained by querying https://www.virustotal.com/api/v3/files/{hash}
 There is an example VirusTotal v3 input file in examples/vtv3_sample.json
 
 ```shell
-$./avclass/labeler.py -i examples/vtv3_sample.json -p -t vt3 > output.txt
+$ avclass -i examples/vtv3_sample.json -p -t vt3 > output.txt
 ```
 
 3. Simplified JSON (*-lb file*),
@@ -261,14 +333,14 @@ with (at least) these fields:
 There is an example of such input file in *examples/malheurReference_lb.json*
 
 ```shell
-$./avclass/labeler.py -i examples/malheurReference_lb.json -t lb -p > output.txt
+$ avclass -i examples/malheurReference_lb.json -t lb -p > output.txt
 ```
 
 4. Metadefender JSON (*-md file*),
 where each line in *file* should be a JSON
 
 ```shell
-$./avclass/labeler.py -i examples/malheurReference_lb.json -t md -p > output.txt
+$ avclass -i examples/malheurReference_lb.json -t md -p > output.txt
 ```
 
 **Why have a simplified JSON format?**

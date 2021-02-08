@@ -25,7 +25,8 @@ def validate_taxonomy(path: AnyStr):
     taxonomy = Taxonomy(path)
     taxonomy.to_file(path)
 
-    logger.info("[-] Normalized %d tags in taxonomy %s\n" % (len(taxonomy), path))
+    print("[-] Normalized %d tags in taxonomy %s" % (len(taxonomy), path))
+    logger.info("[-] Normalized %d tags in taxonomy %s" % (len(taxonomy), path))
 
     return taxonomy
 
@@ -43,7 +44,8 @@ def validate_tagging(path: AnyStr, taxonomy: Taxonomy):
     # tagging.expand_all_destinations()
     tagging.to_file(path)
 
-    logger.info("[-] Normalized %d tagging rules in %s\n" % (len(tagging), path))
+    print("[-] Normalized %d tagging rules in %s" % (len(tagging), path))
+    logger.info("[-] Normalized %d tagging rules in %s" % (len(tagging), path))
 
 
 def validate_expansion(path: AnyStr, taxonomy: Taxonomy):
@@ -58,7 +60,8 @@ def validate_expansion(path: AnyStr, taxonomy: Taxonomy):
     expansion.validate(taxonomy)
     expansion.to_file(path)
 
-    logger.info("[-] Normalized %d expansion rules in %s\n" % (len(expansion), path))
+    print("[-] Normalized %d expansion rules in %s" % (len(expansion), path))
+    logger.info("[-] Normalized %d expansion rules in %s" % (len(expansion), path))
 
 
 def validate_files():
@@ -74,3 +77,7 @@ def validate_files():
     taxonomy = validate_taxonomy(args.tax)
     validate_tagging(args.tag, taxonomy)
     validate_expansion(args.exp, taxonomy)
+
+
+if __name__ == "__main__":
+    validate_files()

@@ -21,5 +21,6 @@ setup(
         'console_scripts': [
             'avclass = avclass.labeler:main',
             'avclass-validate = avclass.cli:validate_files',
+            'avclass-update = avclass.update:main',
         ],
     })
