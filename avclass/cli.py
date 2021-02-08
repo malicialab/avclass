@@ -1,6 +1,63 @@
 import argparse
+import logging
 
 from avclass import util
+from avclass.common import Taxonomy, Translation, Expansion
+from typing import AnyStr
+
+
+logger = logging.getLogger(__name__)
+
+__all__ = (
+    'validate_expansion',
+    'validate_tagging',
+    'validate_taxonomy',
+)
+
+def validate_taxonomy(path: AnyStr):
+    """
+    Validate and normalize a Taxonomy created from ``path``
+
+    :param path: Location on disk of a Taxonomy file
+    :return: Taxonomy object
+    """
+    taxonomy = Taxonomy(path)
+    taxonomy.to_file(path)
+
+    logger.info('[-] Normalized %d tags in taxonomy %s\n' % (len(taxonomy), path))
+
+    return taxonomy
+
+
+def validate_tagging(path: AnyStr, taxonomy: Taxonomy):
+    """
+    Validate and normalize Tagging created from ``path`` and verified against ``taxonomy``
+
+    :param path: Location on disk of a Tagging file
+    :param taxonomy: Valid Taxonomy object
+    :return: None
+    """
+    tagging = Translation(path)
+    tagging.validate(taxonomy)
+    # tagging.expand_all_destinations()
+    tagging.to_file(path)
+
+    logger.info('[-] Normalized %d tagging rules in %s\n' % (len(tagging), path))
+
+
+def validate_expansion(path: AnyStr, taxonomy: Taxonomy):
+    """
+    Validate and normalize Expansion created from ``path`` and verified against ``taxonomy``
+
+    :param path: Location on disk of an Expansion file
+    :param taxonomy: Valid Taxonomy object
+    :return: None
+    """
+    expansion = Expansion(path)
+    expansion.validate(taxonomy)
+    expansion.to_file(path)
+
+    logger.info('[-] Normalized %d expansion rules in %s\n' % (len(expansion), path))
 
 
 def validate_files():
@@ -17,6 +74,6 @@ def validate_files():
 
     args = parser.parse_args()
 
-    taxonomy = util.validate_taxonomy(args.tax)
-    util.validate_tagging(args.tag, taxonomy)
-    util.validate_expansion(args.exp, taxonomy)
+    taxonomy = validate_taxonomy(args.tax)
+    validate_tagging(args.tag, taxonomy)
+    validate_expansion(args.exp, taxonomy)

@@ -4,6 +4,7 @@ import re
 import string
 import sys
 
+from avclass import util
 from collections import defaultdict, namedtuple
 from typing import AnyStr, Callable, Collection, Dict, List, Optional, Set, Tuple, Union
 
@@ -505,9 +506,9 @@ class AvLabels:
 
     def __init__(
         self,
-        tag_file: AnyStr,
-        exp_file: AnyStr = None,
-        tax_file: AnyStr = None,
+        tag_file: AnyStr = util.DEFAULT_TAG_PATH,
+        exp_file: AnyStr = util.DEFAULT_EXP_PATH,
+        tax_file: AnyStr = util.DEFAULT_TAX_PATH,
         av_file: AnyStr = None,
         alias_detect: bool = False,
     ):
