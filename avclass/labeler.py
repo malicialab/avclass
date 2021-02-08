@@ -22,7 +22,7 @@ except ModuleNotFoundError:
 
 
 class AVClassLabeler:
-    output = []
+    output = {"labels": []}
     av_labels = None
     hash_type = None
     ground_truth = None
@@ -97,7 +97,10 @@ class AVClassLabeler:
         self.get_sample_info = self.av_labels.get_sample_call(data_type)
 
         # Select output prefix
-        out_prefix = os.path.basename(os.path.splitext(files[0])[0])
+        if isinstance(files, list) and isinstance(files[0], str):
+            out_prefix = os.path.basename(os.path.splitext(files[0])[0])
+        else:
+            out_prefix = None
 
         # Process each input file
         if not isinstance(files, list):
@@ -147,7 +150,7 @@ class AVClassLabeler:
         if self.stats_export:
             self.out_stats(out_prefix)
 
-        # Output vendor info
+        # Output av vendor info
         if self.av_tags:
             self.out_avtags(out_prefix)
 
@@ -238,7 +241,7 @@ class AVClassLabeler:
                 pup_val=pup_val,
                 vt_count=vt_count,
             )
-            self.output.append(class_entry)
+            self.output["labels"].append(class_entry)
         else:
             class_entry = self.avclass2_output(
                 name=name,
@@ -248,7 +251,7 @@ class AVClassLabeler:
                 pup_val=pup_val,
                 vt_count=vt_count,
             )
-            self.output.append(class_entry)
+            self.output["labels"].append(class_entry)
 
     def avclass1_output(
         self,
@@ -434,17 +437,28 @@ class AVClassLabeler:
             "Precision: %.2f\tRecall: %.2f\tF1-Measure: %.2f\n"
             % (precision, recall, fmeasure)
         )
+        self.output["ground_truth"] = {
+            "precision": "%.2f" % precision,
+            "recall": "%.2f" % recall,
+            "f1-measure": "%.2f" % fmeasure,
+        }
 
     def alias_detection(self, out_prefix: AnyStr, path_export: bool = False):
-        # Open alias file
-        alias_filename = out_prefix + ".alias"
-        alias_fd = open(alias_filename, "w+")
+        self.output["alias"] = []
+        alias_fd = None
+        alias_filename = None
         # Sort token pairs by number of times they appear together
         sorted_pairs = sorted(self.pair_count_map.items(), key=itemgetter(1))
         # sorted_pairs = sorted(self.pair_count_map.items())
 
-        # Output header line
-        alias_fd.write("# t1\tt2\t|t1|\t|t2|\t|t1^t2|\t|t1^t2|/|t1|\t|t1^t2|/|t2|\n")
+        # Open alias file
+        if out_prefix:
+            alias_filename = out_prefix + ".alias"
+            alias_fd = open(alias_filename, "w+")
+            # Output header line
+            alias_fd.write(
+                "# t1\tt2\t|t1|\t|t2|\t|t1^t2|\t|t1^t2|/|t1|\t|t1^t2|/|t2|\n"
+            )
         # Compute token pair statistic and output to alias file
         for (t1, t2), c in sorted_pairs:
             n1 = self.token_count_map[t1]
@@ -464,41 +478,79 @@ class AVClassLabeler:
             if path_export:
                 x = self.av_labels.taxonomy.get_path(x)
                 y = self.av_labels.taxonomy.get_path(y)
-            alias_fd.write(
-                "%s\t%s\t%d\t%d\t%d\t%0.2f\t%0.2f\n" % (x, y, xn, yn, c, f, finv)
+            self.output["alias"].append(
+                {
+                    "tag1_label": x,
+                    "tag2_label": y,
+                    "tag1": xn,
+                    "tag2": yn,
+                    "tag1^tag2": c,
+                    "tag1^tag2/tag1": f,
+                    "tag1^tag2/tag2": finv,
+                }
             )
-        # Close alias file
-        alias_fd.close()
-        self.print_error("[-] Alias data in %s\n" % (alias_filename))
+            if out_prefix:
+                alias_fd.write(
+                    "%s\t%s\t%d\t%d\t%d\t%0.2f\t%0.2f\n" % (x, y, xn, yn, c, f, finv)
+                )
+        if out_prefix:
+            # Close alias file
+            alias_fd.close()
+            self.print_error("[-] Alias data in %s\n" % (alias_filename))
 
     def out_avtags(self, out_prefix: AnyStr):
-        avtags_fd = open("%s.avtags" % out_prefix, "w")
-        for t in sorted(self.avtags_dict.keys()):
-            avtags_fd.write("%s\t" % t)
+        if out_prefix:
+            avtags_fd = open("%s.avtags" % out_prefix, "w")
+            for t in sorted(self.avtags_dict.keys()):
+                avtags_fd.write("%s\t" % t)
+                pairs = sorted(
+                    self.avtags_dict[t].items(), key=lambda pair: pair[1], reverse=True
+                )
+                for pair in pairs:
+                    avtags_fd.write("%s|%d," % (pair[0], pair[1]))
+                avtags_fd.write("\n")
+            avtags_fd.close()
+        self.output["av_tags"] = {}
+        for tag in sorted(self.avtags_dict.keys()):
+            self.output["av_tags"][tag] = []
             pairs = sorted(
-                self.avtags_dict[t].items(), key=lambda pair: pair[1], reverse=True
+                self.avtags_dict[tag].items(), key=lambda pair: pair[1], reverse=True
             )
             for pair in pairs:
-                avtags_fd.write("%s|%d," % (pair[0], pair[1]))
-            avtags_fd.write("\n")
-        avtags_fd.close()
+                self.output["av_tags"][tag].append({"name": pair[0], "count": pair[1]})
 
     def out_stats(self, out_prefix: AnyStr):
         # Output stats
-        stats_fd = open("%s.stats" % out_prefix, "w")
         num_samples = self.vt_all
-        stats_fd.write("Samples: %d\n" % num_samples)
         num_tagged = self.stats["tagged"]
-        frac = float(num_tagged) / float(num_samples) * 100
-        stats_fd.write("Tagged (all): %d (%.01f%%)\n" % (num_tagged, frac))
+        tag_frac = float(num_tagged) / float(num_samples) * 100
+
         num_maltagged = self.stats["maltagged"]
-        frac = float(num_maltagged) / float(num_samples) * 100
-        stats_fd.write("Tagged (VT>3): %d (%.01f%%)\n" % (num_maltagged, frac))
-        for c in ["FILE", "CLASS", "BEH", "FAM", "UNK"]:
-            count = self.stats[c]
+        maltag_frac = float(num_maltagged) / float(num_samples) * 100
+        if out_prefix:
+            stats_fd = open("%s.stats" % out_prefix, "w")
+            stats_fd.write("Samples: %d\n" % num_samples)
+            stats_fd.write("Tagged (all): %d (%.01f%%)\n" % (num_tagged, tag_frac))
+            stats_fd.write(
+                "Tagged (VT>3): %d (%.01f%%)\n" % (num_maltagged, maltag_frac)
+            )
+            for c in ["FILE", "CLASS", "BEH", "FAM", "UNK"]:
+                count = self.stats[c]
+                frac = float(count) / float(num_maltagged) * 100
+                stats_fd.write("%s: %d (%.01f%%)\n" % (c, self.stats[c], frac))
+            stats_fd.close()
+        self.output["stats"] = {
+            "samples": num_samples,
+            "tagged_all": {"count": num_tagged, "ratio": "%.01f%%" % tag_frac},
+            "tagged_vt3": {"count": num_maltagged, "ratio": "%.01f%%" % maltag_frac},
+            "category": [],
+        }
+        for cat in ["FILE", "CLASS", "BEH", "FAM", "UNK"]:
+            count = self.stats[cat]
             frac = float(count) / float(num_maltagged) * 100
-            stats_fd.write("%s: %d (%.01f%%)\n" % (c, self.stats[c], frac))
-        stats_fd.close()
+            self.output["stats"]["category"].append(
+                {cat: {"count": count, "ratio": "%.01f%%" % frac}}
+            )
 
     def guess_hash(self, h: AnyStr) -> Optional[AnyStr]:
         """

@@ -142,3 +142,8 @@ cython_debug/
 
 # Apple
 .DS_Store
+
+# Output
+*.avtags
+*.stats
+*.alias
