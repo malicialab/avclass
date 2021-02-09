@@ -22,38 +22,36 @@ except ModuleNotFoundError:
 
 
 class AVClassLabeler:
-    output = {"labels": []}
-    av_labels = None
-    hash_type = None
-    ground_truth = None
-    get_sample_info = None
-    console = False
-    av_tags = False
-    stats_export = False
-    family_only = False
-    pup_classify = False
-    path_export = False
-    vt_tags = False
-    vt_all = 0
-    first_token_dict = {}
-    token_count_map = {}
-    pair_count_map = {}
-    avtags_dict = {}
-    gt_dict = {}
-    stats = {
-        "samples": 0,
-        "noscans": 0,
-        "tagged": 0,
-        "maltagged": 0,
-        "FAM": 0,
-        "CLASS": 0,
-        "BEH": 0,
-        "FILE": 0,
-        "UNK": 0,
-    }
-
     def __init__(self, av_labels: AvLabels = AvLabels()):
         self.av_labels = av_labels
+        self.output = {"labels": []}
+        self.hash_type = None
+        self.ground_truth = None
+        self.get_sample_info = None
+        self.console = False
+        self.av_tags = False
+        self.stats_export = False
+        self.family_only = False
+        self.pup_classify = False
+        self.path_export = False
+        self.vt_tags = False
+        self.vt_all = 0
+        self.first_token_dict = {}
+        self.token_count_map = {}
+        self.pair_count_map = {}
+        self.avtags_dict = {}
+        self.gt_dict = {}
+        self.stats = {
+            "samples": 0,
+            "noscans": 0,
+            "tagged": 0,
+            "maltagged": 0,
+            "FAM": 0,
+            "CLASS": 0,
+            "BEH": 0,
+            "FILE": 0,
+            "UNK": 0,
+        }
 
     def run(
         self,
