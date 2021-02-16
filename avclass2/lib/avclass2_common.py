@@ -355,6 +355,8 @@ class Tagging(Rules):
     def validate(self, taxonomy):
         ''' Check that tags in tagging rules are in given taxonomy '''
         for tok,tag_l in self._src_map.items():
+            if taxonomy.is_tag(tok):
+                sys.stdout.write("[Tagging] SRC %s in taxonomy\n" % tok)
             for t in tag_l:
                 if (not taxonomy.is_tag(t)):
                     sys.stdout.write("[Tagging] %s not in taxonomy\n" % t)
