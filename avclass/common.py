@@ -328,7 +328,7 @@ class Rules:
 
         :param filepath: The file to read from
         """
-        self._rmap = {}
+        self._src_map = {}
         if filepath:
             self.read_rules(filepath)
 
@@ -338,7 +338,7 @@ class Rules:
 
         :return: Number of rules
         """
-        return len(self._rmap)
+        return len(self._src_map)
 
     def add_rule(
         self, src: AnyStr, dst_l: Collection[AnyStr] = None, overwrite: bool = False
@@ -360,19 +360,19 @@ class Rules:
         src_tag = Tag(src)
         if overwrite:
             target_l = [Tag(dst).name for dst in dst_l]
-            self._rmap[src_tag.name] = set(target_l)
+            self._src_map[src_tag.name] = set(target_l)
         else:
-            curr_dst = self._rmap.get(src_tag.name, set())
+            curr_dst = self._src_map.get(src_tag.name, set())
             for dst in dst_l:
                 dst_tag = Tag(dst)
                 curr_dst.add(dst_tag.name)
-            self._rmap[src_tag.name] = curr_dst
+            self._src_map[src_tag.name] = curr_dst
 
     def remove_rule(self, src: AnyStr) -> bool:
-        dst = self._rmap.get(src, [])
+        dst = self._src_map.get(src, [])
         if dst:
             logger.debug("[Rules] Removing rule: %s -> %s" % (src, dst))
-            del self._rmap[src]
+            del self._src_map[src]
             return True
         return False
 
@@ -383,7 +383,7 @@ class Rules:
         :param src: The source rule
         :return: List of dst
         """
-        return list(self._rmap.get(src, []))
+        return list(self._src_map.get(src, []))
 
     def read_rules(self, filepath: AnyStr):
         """
@@ -409,7 +409,7 @@ class Rules:
         :return: None
         """
         with open(filepath, "w") as fd:
-            for src, dst_set in sorted(self._rmap.items()):
+            for src, dst_set in sorted(self._src_map.items()):
                 dst_l = sorted(dst_set)
                 if taxonomy:
                     src_path = taxonomy.get_path(src)
@@ -428,11 +428,11 @@ class Rules:
         :return: List of expanded destinations
         """
         # TODO - this only goes one layer deep it seems.  Not actually recursive
-        dst_set = self._rmap.get(src, set())
+        dst_set = self._src_map.get(src, set())
         out = set()
         while dst_set:
             dst = dst_set.pop()
-            dst_l = self._rmap.get(dst, [])
+            dst_l = self._src_map.get(dst, [])
             if dst_l:
                 for d in dst_l:
                     if d not in out and d != dst:
@@ -447,10 +447,10 @@ class Rules:
 
         :return: None
         """
-        src_l = self._rmap.keys()
+        src_l = self._src_map.keys()
         for src in src_l:
             dst_l = self.expand_src_destinations(src)
-            self._rmap[src] = dst_l
+            self._src_map[src] = dst_l
 
 
 class Translation(Rules):
@@ -468,7 +468,9 @@ class Translation(Rules):
         :param taxonomy: The Taxonomy to use for checking
         :return: None
         """
-        for tok, tag_l in self._rmap.items():
+        for tok, tag_l in self._src_map.items():
+            if taxonomy.is_tag(tok):
+                sys.stdout.write("[Tagging] SRC %s in taxonomy\n" % tok)
             for t in tag_l:
                 if not taxonomy.is_tag(t):
                     sys.stdout.write("[Tagging] %s not in taxonomy\n" % t)
@@ -490,7 +492,7 @@ class Expansion(Rules):
         :param taxonomy: The Taxonomy to use for checking
         :return: None
         """
-        for src, dst_set in self._rmap.items():
+        for src, dst_set in self._src_map.items():
             if not taxonomy.is_tag(src):
                 sys.stdout.write("[Expansion] %s not in taxonomy\n" % src)
                 # TODO - raise or return False?
