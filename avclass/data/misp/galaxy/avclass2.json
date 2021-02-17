@@ -1,0 +1,9 @@
+{
+  "description": "A malware galaxy based on AvClass", 
+  "icon": "", 
+  "name": "AvClass", 
+  "namespace": "misp", 
+  "type": "avclass", 
+  "uuid": "e5689336-987d-4625-be6f-3a3d9f5c61b0", 
+  "version": 0.1
+}

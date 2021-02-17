@@ -2,10 +2,10 @@ BEH:alertuser
 BEH:autorun
 BEH:browsermodify
 BEH:browsermodify:toolbar
-BEH:click
+BEH:clicks
 BEH:ddos
 BEH:defaulttab
-BEH:dial
+BEH:dials
 BEH:dnsmodify
 BEH:execdownload
 BEH:facebook
@@ -19,7 +19,7 @@ BEH:infosteal:gamethief
 BEH:inject
 BEH:irc
 BEH:jswebinject
-BEH:keylog
+BEH:keylogging
 BEH:killproc
 BEH:killproc:killsectool
 BEH:locationcheck
@@ -175,7 +175,6 @@ FAM:blueguard
 FAM:bmmedia
 FAM:boaxxe
 FAM:bobax
-FAM:bobic
 FAM:boogrdex
 FAM:boomp
 FAM:boqx
@@ -520,7 +519,6 @@ FAM:lollipop
 FAM:loodos
 FAM:looper
 FAM:loozfon
-FAM:lotuseed
 FAM:lotusid
 FAM:lovefraud
 FAM:loveletter
@@ -983,7 +981,6 @@ FILE:bundle
 FILE:corrupted
 FILE:exploit
 FILE:exploit:asroot
-FILE:exploit:doidroot
 FILE:exploit:droidrt
 FILE:exploit:enoket
 FILE:exploit:exploid
@@ -991,7 +988,6 @@ FILE:exploit:exynos
 FILE:exploit:fakeroot
 FILE:exploit:gingerbreak
 FILE:exploit:gxox
-FILE:exploit:master
 FILE:exploit:masterkey
 FILE:exploit:ratc
 FILE:exploit:rootor
@@ -1105,7 +1101,6 @@ GEN:genfamily:artemis
 GEN:genfamily:badur
 GEN:genfamily:barys
 GEN:genfamily:dapato
-GEN:genfamily:delf
 GEN:genfamily:eldorado
 GEN:genfamily:foreign
 GEN:genfamily:graftor
