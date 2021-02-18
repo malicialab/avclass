@@ -606,11 +606,13 @@ class AvLabels:
         :param record: The JSON record
         :return: An instance of SampleInfo
         """
+        if 'data' in record:
+            record = record['data']
         try:
-            scans = record["data"]["attributes"]["last_analysis_results"]
-            md5 = record["data"]["attributes"]["md5"]
-            sha1 = record["data"]["attributes"]["sha1"]
-            sha256 = record["data"]["attributes"]["sha256"]
+            scans = record["attributes"]["last_analysis_results"]
+            md5 = record["attributes"]["md5"]
+            sha1 = record["attributes"]["sha1"]
+            sha256 = record["attributes"]["sha256"]
         except KeyError:
             return None
 
@@ -624,7 +626,7 @@ class AvLabels:
                 ).strip()
                 label_pairs.append((av, clean_label))
 
-        vt_tags = record["data"]["attributes"].get("tags", [])
+        vt_tags = record["attributes"].get("tags", [])
 
         return SampleInfo(md5, sha1, sha256, label_pairs, vt_tags)
 
