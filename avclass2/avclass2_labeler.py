@@ -14,7 +14,6 @@ from operator import itemgetter
 import evaluate_clustering as ec
 import json
 import traceback
-import gzip
 
 # Default tagging file
 default_tag_file = os.path.join(script_dir, "data/default.tagging")
@@ -121,26 +120,13 @@ def main(args):
     # Process each input file
     for ifile in ifile_l:
         # Open file
-        if args.gzip:
-            # Open gzip file and read fist byte to trigger any potential errors
-            # Peek does not change the file position of fd
-            try:
-                fd = gzip.open(ifile, 'r')
-                fd.peek(1)
-            except gzip.BadGzipFile:
-                sys.stderr.write('[-] Ignoring bad gzip file: %s\n' % ifile)
-                continue
-        else:
-            fd = open(ifile, 'r')
+        fd = open(ifile, 'r')
 
         # Debug info, file processed
         sys.stderr.write('[-] Processing input file %s\n' % ifile)
 
         # Process all lines in file
         for line in fd:
-
-            if args.gzip:
-                line = line.decode('utf-8')
 
             # If blank line, skip
             if line == '\n':
@@ -388,10 +374,6 @@ if __name__=='__main__':
 
     argparser.add_argument('-lbdir',
         help='existing directory with simplified JSON reports')
-
-    argparser.add_argument('-gz', '--gzip',
-        help='file with JSON reports is gzipped',
-        action='store_true')
 
     argparser.add_argument('-vt3', action='store_true',
         help='input are VT v3 files')
