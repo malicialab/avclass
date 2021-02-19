@@ -132,6 +132,9 @@ def main(args):
         # Process all lines in file
         for line in fd:
 
+            if args.gzip:
+                line = line.decode('utf-8')
+
             # If blank line, skip
             if line == '\n':
                 continue
