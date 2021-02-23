@@ -3411,6 +3411,18 @@
       "value": "goodnews"
     }, 
     {
+      "description": "FAM:goodor", 
+      "meta": {
+        "refs": "https://malpedia.caad.fkie.fraunhofer.de/details/win.goodor", 
+        "synonyms": [
+          "fuerboos"
+        ], 
+        "type": []
+      }, 
+      "uuid": "2115d439-31e9-45bd-ae00-dcb2fa5cde9c", 
+      "value": "goodor"
+    }, 
+    {
       "description": "FAM:gorillaprice", 
       "meta": {
         "refs": [], 
@@ -10185,7 +10197,10 @@
       "description": "FAM:bladabindi", 
       "meta": {
         "refs": "https://malpedia.caad.fkie.fraunhofer.de/details/win.njrat", 
-        "synonyms": [], 
+        "synonyms": [
+          "bladabi",
+          "njrat"
+        ], 
         "type": []
       }, 
       "uuid": "470bf5fe-81e2-3da1-a4da-6a1680119a0f", 
@@ -11066,6 +11081,18 @@
       "value": "dbtes"
     }, 
     {
+      "description": "FAM:deathransom", 
+      "meta": {
+        "refs": "https://malpedia.caad.fkie.fraunhofer.de/details/win.deathransom", 
+        "synonyms": [
+          "wacatac"
+        ], 
+        "type": []
+      }, 
+      "uuid": "bc154e88-a6ae-4f5d-b029-bbd3b8acf587", 
+      "value": "deathransom"
+    }, 
+    {
       "description": "FAM:deblio", 
       "meta": {
         "refs": [], 
@@ -11123,6 +11150,23 @@
       }, 
       "uuid": "9b9eaf63-3447-3349-b955-6b62a9809d85", 
       "value": "detroie"
+    }, 
+    {
+      "description": "FAM:dharma", 
+      "meta": {
+        "refs": "https://malpedia.caad.fkie.fraunhofer.de/details/win.dharma",
+        "synonyms": [
+          "crusis", 
+          "crysis",
+          "phobos",
+          "arena",
+          "wadhrama",
+          "ncov"
+        ], 
+        "type": []
+      }, 
+      "uuid": "689e26c6-8cf6-4ce0-ba87-cad1377996ae", 
+      "value": "dharma"
     }, 
     {
       "description": "FAM:dianjin", 
