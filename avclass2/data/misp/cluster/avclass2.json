@@ -2703,12 +2703,34 @@
       "value": "bobsoft"
     }, 
     {
+      "description": "FILE:packed:confuser", 
+      "meta": {
+        "refs": [], 
+        "synonyms": ["confuserex"], 
+        "type": []
+      }, 
+      "related": [
+        {
+          "dest-uuid": "eb6d3fe4-5b8e-306c-84ef-960f4e14cf1a",
+          "type": "subtechnique-of"
+        }
+      ],
+      "uuid": "f0c8b58d-040b-4956-9160-d17b6a6064e9", 
+      "value": "confuser"
+    }, 
+    {
       "description": "FILE:packed:decrypter", 
       "meta": {
         "refs": [], 
         "synonyms": [], 
         "type": []
       }, 
+      "related": [
+        {
+          "dest-uuid": "eb6d3fe4-5b8e-306c-84ef-960f4e14cf1a",
+          "type": "subtechnique-of"
+        }
+      ],
       "uuid": "11c5c00e-d453-39b9-b127-4c01be2227fb", 
       "value": "decrypter"
     }, 
@@ -4782,6 +4804,19 @@
       }, 
       "uuid": "16398cd7-6fd8-365a-b958-71625a781858", 
       "value": "kronos"
+    }, 
+    {
+      "description": "FAM:krytik", 
+      "meta": {
+        "refs": "https://www.microsoft.com/en-us/wdsi/threats/malware-encyclopedia-description?Name=Trojan:Win32/Kryptik", 
+        "synonyms": [
+          "krypt", 
+          "genkryptik"
+        ], 
+        "type": []
+      }, 
+      "uuid": "55857083-f16f-47f2-9384-45c13df89f74", 
+      "value": "krytik"
     }, 
     {
       "description": "FAM:ksapp", 
@@ -7398,6 +7433,19 @@
       "value": "rotexy"
     }, 
     {
+      "description": "FAM:rozena",
+      "meta": {
+        "refs": [
+          "https://malpedia.caad.fkie.fraunhofer.de/details/win.rozena",
+          "https://www.gdatasoftware.com/blog/2018/06/30862-fileless-malware-rozena"
+        ],
+        "synonyms": [],
+        "type": []
+      },
+      "uuid": "106d00a7-2044-46b6-9c08-35eb775764df",
+      "value": "rozena"
+    },
+    {
       "description": "FAM:rufraud", 
       "meta": {
         "refs": [], 
@@ -8610,6 +8658,12 @@
         ], 
         "type": []
       }, 
+      "related": [
+        {
+          "dest-uuid": "c65071d8-2bad-302b-8646-d309f7705fdb",
+          "type": "subtechnique-of"
+        }
+      ],
       "uuid": "b87b252e-b364-3cbb-92cf-939b2343b0bc", 
       "value": "gamethief"
     }, 
@@ -8689,6 +8743,12 @@
           "blocker", 
           "killav"
         ], 
+        "related": [
+          {
+            "dest-uuid": "aecd212a-8701-3527-bbde-8cd36b405f93",
+            "type": "subtechnique-of"
+          }
+        ],
         "type": []
       }, 
       "uuid": "1b4d1d8e-9cbf-3f9b-8308-23e6de3456fd", 
@@ -10945,6 +11005,22 @@
       }, 
       "uuid": "d46db949-1fd3-303c-9bf1-b56f86d9077b", 
       "value": "clinator"
+    }, 
+    {
+      "description": "FAM:clipbanker", 
+      "meta": {
+        "refs": "https://malpedia.caad.fkie.fraunhofer.de/details/win.clipbanker", 
+        "synonyms": [], 
+        "type": []
+      }, 
+      "related": [
+        {
+          "dest-uuid": "c65071d8-2bad-302b-8646-d309f7705fdb",
+          "type": "variant-of"
+        }
+      ],
+      "uuid": "21529e81-1aea-4435-a407-c5016653d63d", 
+      "value": "clipbanker"
     }, 
     {
       "description": "FAM:cmccwm", 
