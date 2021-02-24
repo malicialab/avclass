@@ -2629,6 +2629,12 @@
         "synonyms": [], 
         "type": []
       }, 
+      "related": [
+        {
+          "dest-uuid": "eb6d3fe4-5b8e-306c-84ef-960f4e14cf1a",
+          "type": "subtechnique-of"
+        }
+      ],
       "uuid": "b1c0c358-3a33-37db-974d-d4b8c31e45d3", 
       "value": "armadillo"
     }, 
@@ -2639,6 +2645,12 @@
         "synonyms": [], 
         "type": []
       }, 
+      "related": [
+        {
+          "dest-uuid": "eb6d3fe4-5b8e-306c-84ef-960f4e14cf1a",
+          "type": "subtechnique-of"
+        }
+      ],
       "uuid": "48eb867b-53ea-344f-8006-7756cdca4be9", 
       "value": "aspack"
     }, 
@@ -2649,6 +2661,12 @@
         "synonyms": [], 
         "type": []
       }, 
+      "related": [
+        {
+          "dest-uuid": "eb6d3fe4-5b8e-306c-84ef-960f4e14cf1a",
+          "type": "subtechnique-of"
+        }
+      ],
       "uuid": "cd8af59b-808b-3692-8068-2df3fd6a3ab6", 
       "value": "asprotect"
     }, 
@@ -2659,6 +2677,12 @@
         "synonyms": [], 
         "type": []
       }, 
+      "related": [
+        {
+          "dest-uuid": "eb6d3fe4-5b8e-306c-84ef-960f4e14cf1a",
+          "type": "subtechnique-of"
+        }
+      ],
       "uuid": "acebc64c-4419-3034-aeb7-62657e281101", 
       "value": "beroexepacker"
     }, 
@@ -2669,6 +2693,12 @@
         "synonyms": [], 
         "type": []
       }, 
+      "related": [
+        {
+          "dest-uuid": "eb6d3fe4-5b8e-306c-84ef-960f4e14cf1a",
+          "type": "subtechnique-of"
+        }
+      ],
       "uuid": "32b30e14-264e-3482-aa8f-e741f3f9ea29", 
       "value": "bobsoft"
     }, 
@@ -2689,6 +2719,12 @@
         "synonyms": [], 
         "type": []
       }, 
+      "related": [
+        {
+          "dest-uuid": "eb6d3fe4-5b8e-306c-84ef-960f4e14cf1a",
+          "type": "subtechnique-of"
+        }
+      ],
       "uuid": "b94cd8d8-48cf-38c0-b296-52036803a04f", 
       "value": "encryptpe"
     }, 
@@ -2699,6 +2735,12 @@
         "synonyms": [], 
         "type": []
       }, 
+      "related": [
+        {
+          "dest-uuid": "eb6d3fe4-5b8e-306c-84ef-960f4e14cf1a",
+          "type": "subtechnique-of"
+        }
+      ],
       "uuid": "2f5b61f3-5b5f-3eac-bbe6-32eb728cba6e", 
       "value": "enigma"
     }, 
@@ -2709,6 +2751,12 @@
         "synonyms": [], 
         "type": []
       }, 
+      "related": [
+        {
+          "dest-uuid": "eb6d3fe4-5b8e-306c-84ef-960f4e14cf1a",
+          "type": "subtechnique-of"
+        }
+      ],
       "uuid": "19aa389c-ff65-36c7-8d79-e109e356866f", 
       "value": "execryptor"
     }, 
@@ -2719,6 +2767,12 @@
         "synonyms": [], 
         "type": []
       }, 
+      "related": [
+        {
+          "dest-uuid": "eb6d3fe4-5b8e-306c-84ef-960f4e14cf1a",
+          "type": "subtechnique-of"
+        }
+      ],
       "uuid": "01f1aec1-33c8-3cbe-aa9b-5c78b8db18bf", 
       "value": "exestealth"
     }, 
@@ -2729,6 +2783,12 @@
         "synonyms": [], 
         "type": []
       }, 
+      "related": [
+        {
+          "dest-uuid": "eb6d3fe4-5b8e-306c-84ef-960f4e14cf1a",
+          "type": "subtechnique-of"
+        }
+      ],
       "uuid": "138e2027-887b-3d4a-8baf-f265cda803ec", 
       "value": "expressor"
     }, 
@@ -2739,6 +2799,12 @@
         "synonyms": [], 
         "type": []
       }, 
+      "related": [
+        {
+          "dest-uuid": "eb6d3fe4-5b8e-306c-84ef-960f4e14cf1a",
+          "type": "subtechnique-of"
+        }
+      ],
       "uuid": "62775d3e-9738-37eb-8521-b6086b278380", 
       "value": "jiagu"
     }, 
@@ -2751,6 +2817,12 @@
         ], 
         "type": []
       }, 
+      "related": [
+        {
+          "dest-uuid": "eb6d3fe4-5b8e-306c-84ef-960f4e14cf1a",
+          "type": "subtechnique-of"
+        }
+      ],
       "uuid": "0599aec6-6542-3014-b36a-85eb7b1acc50", 
       "value": "krunchy"
     }, 
@@ -2763,6 +2835,12 @@
         ], 
         "type": []
       }, 
+      "related": [
+        {
+          "dest-uuid": "eb6d3fe4-5b8e-306c-84ef-960f4e14cf1a",
+          "type": "subtechnique-of"
+        }
+      ],
       "uuid": "ac7fb78f-1cfb-3f53-a654-ebe0c02c61c1", 
       "value": "maskpe"
     }, 
@@ -2773,6 +2851,12 @@
         "synonyms": [], 
         "type": []
       }, 
+      "related": [
+        {
+          "dest-uuid": "eb6d3fe4-5b8e-306c-84ef-960f4e14cf1a",
+          "type": "subtechnique-of"
+        }
+      ],
       "uuid": "10398ebf-c9c9-3620-b718-40934daa60f3", 
       "value": "molebox"
     }, 
@@ -2783,6 +2867,12 @@
         "synonyms": [], 
         "type": []
       }, 
+      "related": [
+        {
+          "dest-uuid": "eb6d3fe4-5b8e-306c-84ef-960f4e14cf1a",
+          "type": "subtechnique-of"
+        }
+      ],
       "uuid": "cae3f868-9601-30b9-9e88-f5bf724c1fd3", 
       "value": "morphine"
     }, 
@@ -2793,6 +2883,12 @@
         "synonyms": [], 
         "type": []
       }, 
+      "related": [
+        {
+          "dest-uuid": "eb6d3fe4-5b8e-306c-84ef-960f4e14cf1a",
+          "type": "subtechnique-of"
+        }
+      ],
       "uuid": "030e9fd5-99c8-3c33-9896-d5711b54219a", 
       "value": "nakedpack"
     }, 
@@ -2803,6 +2899,12 @@
         "synonyms": [], 
         "type": []
       }, 
+      "related": [
+        {
+          "dest-uuid": "eb6d3fe4-5b8e-306c-84ef-960f4e14cf1a",
+          "type": "subtechnique-of"
+        }
+      ],
       "uuid": "9ebe63ac-3a1f-3a64-afed-8adcec5f2fff", 
       "value": "niceprotect"
     }, 
@@ -2813,6 +2915,12 @@
         "synonyms": [], 
         "type": []
       }, 
+      "related": [
+        {
+          "dest-uuid": "eb6d3fe4-5b8e-306c-84ef-960f4e14cf1a",
+          "type": "subtechnique-of"
+        }
+      ],
       "uuid": "fe292fb8-4e92-3def-8506-ee3278f457af", 
       "value": "npack"
     }, 
@@ -2823,6 +2931,12 @@
         "synonyms": [], 
         "type": []
       }, 
+      "related": [
+        {
+          "dest-uuid": "eb6d3fe4-5b8e-306c-84ef-960f4e14cf1a",
+          "type": "subtechnique-of"
+        }
+      ],
       "uuid": "3fa37052-f024-3c63-89be-d8c366d6f83e", 
       "value": "nspack"
     }, 
@@ -2833,6 +2947,12 @@
         "synonyms": [], 
         "type": []
       }, 
+      "related": [
+        {
+          "dest-uuid": "eb6d3fe4-5b8e-306c-84ef-960f4e14cf1a",
+          "type": "subtechnique-of"
+        }
+      ],
       "uuid": "5cea2ead-364f-3ff7-8dbf-9d0c0952c70c", 
       "value": "obsidium"
     }, 
@@ -2843,6 +2963,12 @@
         "synonyms": [], 
         "type": []
       }, 
+      "related": [
+        {
+          "dest-uuid": "eb6d3fe4-5b8e-306c-84ef-960f4e14cf1a",
+          "type": "subtechnique-of"
+        }
+      ],
       "uuid": "1bf29bd3-1e76-330c-87ee-c186adf9c646", 
       "value": "packman"
     }, 
@@ -2853,6 +2979,12 @@
         "synonyms": [], 
         "type": []
       }, 
+      "related": [
+        {
+          "dest-uuid": "eb6d3fe4-5b8e-306c-84ef-960f4e14cf1a",
+          "type": "subtechnique-of"
+        }
+      ],
       "uuid": "fe384ea4-109d-35ec-9f00-fea5f69914fd", 
       "value": "pearmor"
     }, 
@@ -2863,6 +2995,12 @@
         "synonyms": [], 
         "type": []
       }, 
+      "related": [
+        {
+          "dest-uuid": "eb6d3fe4-5b8e-306c-84ef-960f4e14cf1a",
+          "type": "subtechnique-of"
+        }
+      ],
       "uuid": "634815d7-0cd8-37da-b20f-b126a744b825", 
       "value": "pecompact"
     }, 
@@ -2873,6 +3011,12 @@
         "synonyms": [], 
         "type": []
       }, 
+      "related": [
+        {
+          "dest-uuid": "eb6d3fe4-5b8e-306c-84ef-960f4e14cf1a",
+          "type": "subtechnique-of"
+        }
+      ],
       "uuid": "70e0e627-e1a0-344a-a4cd-825e9de1b86f", 
       "value": "pecrypt"
     }, 
@@ -2883,6 +3027,12 @@
         "synonyms": [], 
         "type": []
       }, 
+      "related": [
+        {
+          "dest-uuid": "eb6d3fe4-5b8e-306c-84ef-960f4e14cf1a",
+          "type": "subtechnique-of"
+        }
+      ],
       "uuid": "36224c37-5a49-336f-9fa9-42db1db78cff", 
       "value": "pespin"
     }, 
@@ -2895,6 +3045,12 @@
         ], 
         "type": []
       }, 
+      "related": [
+        {
+          "dest-uuid": "eb6d3fe4-5b8e-306c-84ef-960f4e14cf1a",
+          "type": "subtechnique-of"
+        }
+      ],
       "uuid": "a515ed68-5ab7-3a7a-ba4d-63ff5edba892", 
       "value": "polycrypt"
     }, 
@@ -2905,6 +3061,12 @@
         "synonyms": [], 
         "type": []
       }, 
+      "related": [
+        {
+          "dest-uuid": "eb6d3fe4-5b8e-306c-84ef-960f4e14cf1a",
+          "type": "subtechnique-of"
+        }
+      ],
       "uuid": "26ee092f-b61c-3774-90ab-632d902a9690", 
       "value": "punisher"
     }, 
@@ -2915,6 +3077,12 @@
         "synonyms": [], 
         "type": []
       }, 
+      "related": [
+        {
+          "dest-uuid": "eb6d3fe4-5b8e-306c-84ef-960f4e14cf1a",
+          "type": "subtechnique-of"
+        }
+      ],
       "uuid": "d9221f76-bbe9-3936-a6f4-cc2582ed8ae8", 
       "value": "rcryptor"
     }, 
@@ -2925,6 +3093,12 @@
         "synonyms": [], 
         "type": []
       }, 
+      "related": [
+        {
+          "dest-uuid": "eb6d3fe4-5b8e-306c-84ef-960f4e14cf1a",
+          "type": "subtechnique-of"
+        }
+      ],
       "uuid": "a95dcb8b-fe56-31a7-80df-6764ed4b4759", 
       "value": "rlpack"
     }, 
@@ -2935,6 +3109,12 @@
         "synonyms": [], 
         "type": []
       }, 
+      "related": [
+        {
+          "dest-uuid": "eb6d3fe4-5b8e-306c-84ef-960f4e14cf1a",
+          "type": "subtechnique-of"
+        }
+      ],
       "uuid": "73ab92ef-dbf4-38d3-8687-e9df33211bd1", 
       "value": "sdprotector"
     }, 
@@ -2945,6 +3125,12 @@
         "synonyms": [], 
         "type": []
       }, 
+      "related": [
+        {
+          "dest-uuid": "eb6d3fe4-5b8e-306c-84ef-960f4e14cf1a",
+          "type": "subtechnique-of"
+        }
+      ],
       "uuid": "0e88fad9-544f-37fa-b4fd-13c91ea8afdd", 
       "value": "secapk"
     }, 
@@ -2955,6 +3141,12 @@
         "synonyms": [], 
         "type": []
       }, 
+      "related": [
+        {
+          "dest-uuid": "eb6d3fe4-5b8e-306c-84ef-960f4e14cf1a",
+          "type": "subtechnique-of"
+        }
+      ],
       "uuid": "e10e4847-cad5-32e3-ae8d-3f08d2c4baac", 
       "value": "secneo"
     }, 
@@ -2965,6 +3157,12 @@
         "synonyms": [], 
         "type": []
       }, 
+      "related": [
+        {
+          "dest-uuid": "eb6d3fe4-5b8e-306c-84ef-960f4e14cf1a",
+          "type": "subtechnique-of"
+        }
+      ],
       "uuid": "8cb96214-6910-3124-89fa-301eccee65ea", 
       "value": "simplepack"
     }, 
@@ -2975,6 +3173,12 @@
         "synonyms": [], 
         "type": []
       }, 
+      "related": [
+        {
+          "dest-uuid": "eb6d3fe4-5b8e-306c-84ef-960f4e14cf1a",
+          "type": "subtechnique-of"
+        }
+      ],
       "uuid": "6cf84378-cc5e-3e92-8a13-87697f25808f", 
       "value": "telock"
     }, 
@@ -2985,6 +3189,12 @@
         "synonyms": [], 
         "type": []
       }, 
+      "related": [
+        {
+          "dest-uuid": "eb6d3fe4-5b8e-306c-84ef-960f4e14cf1a",
+          "type": "subtechnique-of"
+        }
+      ],
       "uuid": "b247e2db-6c54-318f-95a4-8d3c0a0b384b", 
       "value": "themida"
     }, 
@@ -2995,6 +3205,12 @@
         "synonyms": [], 
         "type": []
       }, 
+      "related": [
+        {
+          "dest-uuid": "eb6d3fe4-5b8e-306c-84ef-960f4e14cf1a",
+          "type": "subtechnique-of"
+        }
+      ],
       "uuid": "a550b64f-0f43-3c19-b372-fff40ddf8002", 
       "value": "upack"
     }, 
@@ -3005,6 +3221,12 @@
         "synonyms": [], 
         "type": []
       }, 
+      "related": [
+        {
+          "dest-uuid": "eb6d3fe4-5b8e-306c-84ef-960f4e14cf1a",
+          "type": "subtechnique-of"
+        }
+      ],
       "uuid": "8a0a984c-44b7-38ed-8a8c-6e55a4c8d888", 
       "value": "upx"
     }, 
@@ -3017,6 +3239,12 @@
         ], 
         "type": []
       }, 
+      "related": [
+        {
+          "dest-uuid": "eb6d3fe4-5b8e-306c-84ef-960f4e14cf1a",
+          "type": "subtechnique-of"
+        }
+      ],
       "uuid": "b077a697-29f1-3780-9e37-88791a9e70c8", 
       "value": "vmprotect"
     }, 
@@ -3031,6 +3259,12 @@
         ], 
         "type": []
       }, 
+      "related": [
+        {
+          "dest-uuid": "eb6d3fe4-5b8e-306c-84ef-960f4e14cf1a",
+          "type": "subtechnique-of"
+        }
+      ],
       "uuid": "199805da-3a4c-3927-b32c-e6eb4b61f903", 
       "value": "yoda"
     }, 
@@ -5840,6 +6074,25 @@
       "value": "necurs"
     }, 
     {
+      "description": "FAM:neoreklami", 
+      "meta": {
+        "refs": [
+          "https://blog.malwarebytes.com/detections/adware-neoreklami/",
+          "https://www.microsoft.com/en-us/wdsi/threats/malware-encyclopedia-description?Name=Adware:Win32/Neoreklami"
+        ], 
+        "synonyms": [], 
+        "type": []
+      }, 
+      "related": [
+        {
+          "dest-uuid": "590eeb1a-2742-3301-94bf-9fa0856e959c",
+          "type": "variant-of"
+        }
+      ],
+      "uuid": "665ecfd3-b713-465f-879b-5182203b4a8b", 
+      "value": "neoreklami"
+    }, 
+    {
       "description": "FAM:neospy", 
       "meta": {
         "refs": [], 
@@ -6811,6 +7064,16 @@
       }, 
       "uuid": "ac2392d0-c38e-3909-aabf-5e632062f24d", 
       "value": "razam"
+    }, 
+    {
+      "description": "FAM:razy", 
+      "meta": {
+        "refs": "https://www.microsoft.com/en-us/wdsi/threats/malware-encyclopedia-description?Name=Trojan:Win32/Razy.A", 
+        "synonyms": [], 
+        "type": []
+      }, 
+      "uuid": "aad8ce8e-0c82-42f7-a63c-bbfe85c015b6", 
+      "value": "razy"
     }, 
     {
       "description": "FAM:rbot", 
@@ -8864,6 +9127,12 @@
         ], 
         "type": []
       }, 
+      "related": [
+        {
+          "dest-uuid": "0fa687bd-caa9-32b1-a77e-13b98dc83685",
+          "type": "variant-of"
+        }
+      ],
       "uuid": "590eeb1a-2742-3301-94bf-9fa0856e959c", 
       "value": "adware"
     }, 
@@ -8876,6 +9145,12 @@
         ], 
         "type": []
       }, 
+      "related": [
+        {
+          "dest-uuid": "0fa687bd-caa9-32b1-a77e-13b98dc83685",
+          "type": "variant-of"
+        }
+      ],
       "uuid": "3ce6bd72-2133-35f8-b5a9-3d22c5e55a93", 
       "value": "casino"
     }, 
@@ -8895,6 +9170,12 @@
         ], 
         "type": []
       }, 
+      "related": [
+        {
+          "dest-uuid": "590eeb1a-2742-3301-94bf-9fa0856e959c",
+          "type": "subtechnique-of"
+        }
+      ],
       "uuid": "636db272-61ce-3e0f-ad64-d77048b05066", 
       "value": "multiplug"
     }, 
@@ -8916,8 +9197,30 @@
         ], 
         "type": []
       }, 
+      "related": [
+        {
+          "dest-uuid": "0fa687bd-caa9-32b1-a77e-13b98dc83685",
+          "type": "variant-of"
+        }
+      ],
       "uuid": "b6d3ea56-83b3-3524-a2f5-c87ce2ed0aab", 
       "value": "tool"
+    }, 
+    {
+      "description": "CLASS:grayware:tool:remoteadmin", 
+      "meta": {
+        "refs": [], 
+        "synonyms": [], 
+        "type": []
+      }, 
+      "related": [
+        {
+          "dest-uuid": "b6d3ea56-83b3-3524-a2f5-c87ce2ed0aab",
+          "type": "variant-of"
+        }
+      ],
+      "uuid": "e43ecd9a-2734-34d6-b24f-77be13f4b9cd", 
+      "value": "remoteadmin"
     }, 
     {
       "description": "CLASS:hoax", 
@@ -8930,16 +9233,6 @@
       }, 
       "uuid": "e7bd337d-700c-376b-ac75-61c85dd8a246", 
       "value": "hoax"
-    }, 
-    {
-      "description": "CLASS:grayware:tool:remoteadmin", 
-      "meta": {
-        "refs": [], 
-        "synonyms": [], 
-        "type": []
-      }, 
-      "uuid": "e43ecd9a-2734-34d6-b24f-77be13f4b9cd", 
-      "value": "remoteadmin"
     }, 
     {
       "description": "CLASS:hoax:smshoax", 
@@ -9005,6 +9298,12 @@
         ], 
         "type": []
       }, 
+      "related": [
+        {
+          "dest-uuid": "64376dc5-0640-33a5-ba0e-1a4b71922c06",
+          "type": "variant-of"
+        }
+      ],
       "uuid": "3265ee34-384e-3dc8-9652-19d88d4374cb", 
       "value": "bitcoinminer"
     }, 
@@ -9108,6 +9407,12 @@
         "synonyms": [], 
         "type": []
       }, 
+      "related": [
+        {
+          "dest-uuid": "973cc9e5-32ab-3403-9ead-eb941690fc23",
+          "type": "subtechnique-of"
+        }
+      ],
       "uuid": "b7be1d66-ac27-3b2c-8361-a652564ec2e3", 
       "value": "prepender"
     }, 
@@ -9131,6 +9436,12 @@
         "synonyms": [], 
         "type": []
       }, 
+      "related": [
+        {
+          "dest-uuid": "f0b15f66-0eae-37d8-bf08-eeca70557795",
+          "type": "subtechnique-of"
+        }
+      ],
       "uuid": "980f8421-cccd-3c17-b998-1ab1b7c7bdb9", 
       "value": "emailworm"
     }, 
@@ -11089,6 +11400,12 @@
         ], 
         "type": []
       }, 
+      "related": [
+        {
+          "dest-uuid": "a8f4f4fa-1558-3f16-ac56-bce903a83b22",
+          "type": "variant-of"
+        }
+      ],
       "uuid": "bc154e88-a6ae-4f5d-b029-bbd3b8acf587", 
       "value": "deathransom"
     }, 
@@ -11154,7 +11471,11 @@
     {
       "description": "FAM:dharma", 
       "meta": {
-        "refs": "https://malpedia.caad.fkie.fraunhofer.de/details/win.dharma",
+        "refs": [
+          "https://malpedia.caad.fkie.fraunhofer.de/details/win.dharma",
+          "https://www.carbonblack.com/2018/07/10/carbon-black-tau-threat-analysis-recent-dharma-ransomware-highlights-attackers-continued-use-open-source-tools/",
+          "https://www.bleepingcomputer.com/news/security/new-arena-crysis-ransomware-variant-released/"
+        ],
         "synonyms": [
           "crusis", 
           "crysis",
@@ -11165,6 +11486,12 @@
         ], 
         "type": []
       }, 
+      "related": [
+        {
+          "dest-uuid": "a8f4f4fa-1558-3f16-ac56-bce903a83b22",
+          "type": "variant-of"
+        }
+      ],
       "uuid": "689e26c6-8cf6-4ce0-ba87-cad1377996ae", 
       "value": "dharma"
     }, 
@@ -11666,6 +11993,54 @@
       "uuid": "d43481d8-9186-33cc-8974-75fb3f7a357d", 
       "value": "elite"
     }, 
+    {
+      "description": "FAM:emotet",
+      "meta": {
+        "refs": [
+          "https://malpedia.caad.fkie.fraunhofer.de/details/win.emotet",
+          "https://blog.trendmicro.com/trendlabs-security-intelligence/ursnif-emotet-dridex-and-bitpaymer-gangs-linked-by-a-similar-loader/",
+          "http://blog.trendmicro.com/trendlabs-security-intelligence/emotet-returns-starts-spreading-via-spam-botnet/",
+          "https://www.fortinet.com/blog/threat-research/deep-analysis-of-new-emotet-variant-part-2.html",
+          "https://www.spamhaus.org/news/article/783/emotet-adds-a-further-layer-of-camouflage",
+          "https://isc.sans.edu/forums/diary/Emotet+infections+and+followup+malware/24532/",
+          "https://www.welivesecurity.com/2018/11/09/emotet-launches-major-new-spam-campaign/",
+          "https://github.com/d00rt/emotet_research",
+          "https://blog.kryptoslogic.com/malware/2018/08/01/emotet.html",
+          "https://www.us-cert.gov/ncas/alerts/TA18-201A",
+          "https://portswigger.net/daily-swig/emotet-trojan-implicated-in-wolverine-solutions-ransomware-attack",
+          "https://blog.trendmicro.com/trendlabs-security-intelligence/new-emotet-hijacks-windows-api-evades-sandbox-analysis/",
+          "https://blog.kryptoslogic.com/malware/2018/10/31/emotet-email-theft.html",
+          "http://blog.fortinet.com/2017/05/03/deep-analysis-of-new-emotet-variant-part-1",
+          "https://www.intezer.com/mitigating-emotet-the-most-common-banking-trojan/",
+          "https://maxkersten.nl/binary-analysis-course/malware-analysis/emotet-droppers/",
+          "https://research.checkpoint.com/emotet-tricky-trojan-git-clones/",
+          "https://www.cert.pl/en/news/single/analysis-of-emotet-v4/",
+          "https://www.symantec.com/blogs/threat-intelligence/evolution-emotet-trojan-distributor",
+          "https://www.crowdstrike.com/blog/meet-crowdstrikes-adversary-of-the-month-for-february-mummy-spider/",
+          "https://www.melani.admin.ch/melani/de/home/dokumentation/newsletter/Trojaner_Emotet_greift_Unternehmensnetzwerke_an.html",
+          "https://persianov.net/emotet-malware-analysis-part-1",
+          "https://persianov.net/emotet-malware-analysis-part-2",
+          "https://int0xcc.svbtle.com/dissecting-emotet-s-network-communication-protocol",
+          "https://blog.trendmicro.com/trendlabs-security-intelligence/exploring-emotet-examining-emotets-activities-infrastructure/",
+          "https://paste.cryptolaemus.com",
+          "https://cloudblogs.microsoft.com/microsoftsecure/2017/11/06/mitigating-and-eliminating-info-stealing-qakbot-and-emotet-in-corporate-networks/?source=mmpc",
+          "https://www.spamtitan.com/blog/emotet-malware-revives-old-email-conversations-threads-to-increase-infection-rates/",
+          "https://www.fidelissecurity.com/threatgeek/2017/07/emotet-takes-wing-spreader",
+          "https://securelist.com/analysis/publications/69560/the-banking-trojan-emotet-detailed-analysis/",
+          "https://feodotracker.abuse.ch/?filter=version_e",
+          "https://www.gdata.de/blog/2017/10/30110-emotet-beutet-outlook-aus",
+          "https://malfind.com/index.php/2018/07/23/deobfuscating-emotets-powershell-payload/",
+          "https://medium.com/@0xd0cf11e/analyzing-emotet-with-ghidra-part-1-4da71a5c8d69"
+        ],
+        "synonyms": [
+          "geodo",
+          "heodo"
+        ],
+        "type": []
+      },
+      "uuid": "054e50ca-aeec-428e-91a5-f45e4029a073",
+      "value": "emotet"
+    },
     {
       "description": "FAM:emudbot", 
       "meta": {
