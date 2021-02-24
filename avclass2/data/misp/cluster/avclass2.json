@@ -885,6 +885,69 @@
       "value": "trclick"
     }, 
     {
+      "description": "FAM:trickbot",
+      "meta": {
+        "refs": [
+          "https://malpedia.caad.fkie.fraunhofer.de/details/win.trickbot",
+          "https://www.cybereason.com/blog/triple-threat-emotet-deploys-trickbot-to-steal-data-spread-ryuk-ransomware",
+          "https://blog.malwarebytes.com/threat-analysis/2017/08/trickbot-comes-with-new-tricks-attacking-outlook-and-browsing-data/",
+          "http://www.vkremez.com/2017/11/lets-learn-trickbot-socks5-backconnect.html",
+          "https://blog.trendmicro.com/trendlabs-security-intelligence/trickbot-adds-remote-application-credential-grabbing-capabilities-to-its-repertoire/",
+          "http://www.vkremez.com/2017/12/lets-learn-introducing-new-trickbot.html",
+          "https://blog.trendmicro.com/trendlabs-security-intelligence/trickbot-shows-off-new-trick-password-grabber-module",
+          "https://www.fidelissecurity.com/threatgeek/2016/10/trickbot-we-missed-you-dyre",
+          "https://www.flashpoint-intel.com/blog/trickbot-account-checking-hybrid-attack-model/",
+          "http://www.peppermalware.com/2019/03/quick-analysis-of-trickbot-sample-with.html",
+          "https://blog.malwarebytes.com/threat-analysis/2016/10/trick-bot-dyrezas-successor/",
+          "https://www.youtube.com/watch?v=KMcSAlS9zGE",
+          "https://www.crowdstrike.com/blog/sin-ful-spiders-wizard-spider-and-lunar-spider-sharing-the-same-web/",
+          "https://www.arbornetworks.com/blog/asert/trickbot-banker-insights/",
+          "https://blog.malwarebytes.com/threat-analysis/malware-threat-analysis/2018/11/whats-new-trickbot-deobfuscating-elements/",
+          "https://www.trustwave.com/Resources/SpiderLabs-Blog/Tale-of-the-Two-Payloads-%E2%80%93-TrickBot-and-Nitol/",
+          "http://www.vkremez.com/2018/04/lets-learn-trickbot-implements-network.html",
+          "https://securityintelligence.com/trickbot-takes-to-latin-america-continues-to-expand-its-global-reach/",
+          "https://qmemcpy.io/post/reverse-engineering-malware-trickbot-part-2-loader",
+          "https://www.fireeye.com/blog/threat-research/2019/01/a-nasty-trick-from-credential-theft-malware-to-business-disruption.html",
+          "https://securityintelligence.com/trickbots-cryptocurrency-hunger-tricking-the-bitcoin-out-of-wallets/",
+          "https://blog.fraudwatchinternational.com/malware/trickbot-malware-works",
+          "https://www.blueliv.com/research/trickbot-banking-trojan-using-eflags-as-an-anti-hook-technique/",
+          "https://f5.com/labs/articles/threat-intelligence/malware/trickbot-expands-global-targets-beyond-banks-and-payment-processors-to-crms",
+          "https://f5.com/labs/articles/threat-intelligence/malware/little-trickbot-growing-up-new-campaign-24412",
+          "https://github.com/JR0driguezB/malware_configs/tree/master/TrickBot",
+          "https://escinsecurity.blogspot.de/2018/01/weekly-trickbot-analysis-end-of-wc-22.html",
+          "https://www.webroot.com/blog/2018/03/21/trickbot-banking-trojan-adapts-new-module/",
+          "https://www.fortinet.com/blog/threat-research/deep-analysis-of-trickbot-new-module-pwgrab.html",
+          "https://www.securityartwork.es/wp-content/uploads/2017/06/Informe_Evoluci%C3%B3n_Trickbot.pdf",
+          "https://blogs.forcepoint.com/security-labs/trickbot-spread-necurs-botnet-adds-nordic-countries-its-targets",
+          "http://blog.fortinet.com/2016/12/06/deep-analysis-of-the-online-banking-botnet-trickbot",
+          "https://www.cyberbit.com/blog/endpoint-security/latest-trickbot-variant-has-new-tricks-up-its-sleeve/",
+          "http://www.malware-traffic-analysis.net/2018/02/01/",
+          "https://www.cert.pl/en/news/single/detricking-trickbot-loader/",
+          "https://www.trendmicro.com/vinfo/us/security/news/cybercrime-and-digital-threats/evolving-trickbot-adds-detection-evasion-and-screen-locking-features",
+          "https://securityintelligence.com/tricks-of-the-trade-a-deeper-look-into-trickbots-machinations/",
+          "http://www.pwc.co.uk/issues/cyber-security-data-privacy/research/trickbots-bag-of-tricks.html",
+          "https://qmemcpy.io/post/reverse-engineering-malware-trickbot-part-3-core",
+          "https://www.ringzerolabs.com/2017/07/trickbot-banking-trojan-doc00039217doc.html",
+          "https://www.youtube.com/watch?v=EdchPEHnohw",
+          "https://sysopfb.github.io/malware/2018/04/16/trickbot-uacme.html",
+          "https://blog.talosintelligence.com/2018/07/smoking-guns-smoke-loader-learned-new.html",
+          "https://www.vkremez.com/2018/11/lets-learn-introducing-latest-trickbot.html",
+          "https://www.youtube.com/watch?v=lTywPmZEU1A",
+          "https://qmemcpy.github.io/post/reverse-engineering-malware-trickbot-part-1-packer",
+          "https://www.botconf.eu/wp-content/uploads/2016/11/2016-LT09-TrickBot-Adams.pdf",
+          "https://www.flashpoint-intel.com/blog/new-version-trickbot-adds-worm-propagation-module/"
+        ],
+        "synonyms": [
+          "thetrick",
+          "trickLoader",
+          "trickster"
+        ],
+        "type": []
+      },
+      "uuid": "b104ec95-e1bd-44c1-a193-d979bedc0a98",
+      "value": "trickbot"
+    },
+    {
       "description": "FAM:tridrongo", 
       "meta": {
         "refs": [], 
@@ -2642,6 +2705,7 @@
           "pakes", 
           "suspiciouspacker", 
           "susppack", 
+          "vbinder",
           "vbcrypt", 
           "vbkrypt", 
           "vbpack", 
@@ -5025,6 +5089,21 @@
       "value": "lien"
     }, 
     {
+      "description": "FAM:limerat",
+      "meta": {
+        "refs": [
+          "https://malpedia.caad.fkie.fraunhofer.de/details/win.limerat",
+          "https://www.youtube.com/watch?v=x-g-ZLeX8GM",
+          "https://blog.yoroi.company/research/limerat-spreads-in-the-wild/",
+          "https://github.com/NYAN-x-CAT/Lime-RAT/"
+        ],
+        "synonyms": [],
+        "type": []
+      },
+      "uuid": "1ea6f1b4-cf3d-40aa-981f-31a1efbd819f",
+      "value": "limerat"
+    },
+    {
       "description": "FAM:linkular", 
       "meta": {
         "refs": [], 
@@ -5102,6 +5181,22 @@
       "uuid": "bc6ae7c3-eff8-3b11-999b-4248e5d93073", 
       "value": "loapi"
     }, 
+    {
+      "description": "FAM:loda",
+      "meta": {
+        "refs": [
+          "https://malpedia.caad.fkie.fraunhofer.de/details/win.loda",
+          "https://www.proofpoint.com/us/threat-insight/post/introducing-loda-malware",
+          "https://zerophagemalware.com/2018/01/23/maldoc-rtf-drop-loda-logger/"
+        ],
+        "synonyms": [
+          "nymeria"
+        ],
+        "type": []
+      },
+      "uuid": "f6203215-d07e-4108-bb75-ee5ad7e9dbfc",
+      "value": "loda"
+    },
     {
       "description": "FAM:lockactivity", 
       "meta": {
@@ -7043,6 +7138,33 @@
       "value": "qqrob"
     }, 
     {
+      "description": "FAM:quasar",
+      "meta": {
+        "refs": [
+          "https://malpedia.caad.fkie.fraunhofer.de/details/win.quasar_rat",
+          "https://researchcenter.paloaltonetworks.com/2018/01/unit42-vermin-quasar-rat-custom-malware-used-ukraine/",
+          "https://www.fireeye.com/blog/threat-research/2019/04/spear-phishing-campaign-targets-ukraine-government.html",
+          "https://researchcenter.paloaltonetworks.com/2018/08/unit42-gorgon-group-slithering-nation-state-cybercrime/",
+          "https://github.com/quasar/QuasarRAT/tree/master/Client",
+          "https://www.volexity.com/blog/2018/06/07/patchwork-apt-group-targets-us-think-tanks/",
+          "https://www.pwc.co.uk/cyber-security/pdf/cloud-hopper-annex-b-final.pdf",
+          "http://researchcenter.paloaltonetworks.com/2017/01/unit42-downeks-and-quasar-rat-used-in-recent-targeted-attacks-against-governments",
+          "https://documents.trendmicro.com/assets/tech-brief-untangling-the-patchwork-cyberespionage-group.pdf?platform=hootsuite",
+          "https://ti.360.net/blog/articles/analysis-of-apt-c-09-target-china/",
+          "https://www.symantec.com/blogs/threat-intelligence/elfin-apt33-espionage",
+          "https://twitter.com/malwrhunterteam/status/789153556255342596",
+          "https://www.welivesecurity.com/2018/07/17/deep-dive-vermin-rathole/"
+        ],
+        "synonyms": [
+          "quasar_rat",
+          "quasarrat"
+        ],
+        "type": []
+      },
+      "uuid": "620903d7-42ed-4a16-b3df-4ca6076d9f31",
+      "value": "quasar"
+    },
+    {
       "description": "FAM:qumi", 
       "meta": {
         "refs": [], 
@@ -7374,7 +7496,8 @@
           "http://blog.deniable.org/blog/2016/08/26/lurking-around-revenge-rat/"
         ],
         "synonyms": [
-          "revenge_rat"
+          "revenge",
+          "revet"
         ],
         "type": []
       },
@@ -7666,6 +7789,26 @@
       "uuid": "5ff7793d-c1c4-380d-900e-d9aa6a409915", 
       "value": "sality"
     }, 
+    {
+      "description": "FAM:samsam",
+      "meta": {
+        "refs": [
+          "https://malpedia.caad.fkie.fraunhofer.de/details/win.samsam",
+          "http://blog.talosintel.com/2016/03/samsam-ransomware.html",
+          "https://www.sophos.com/en-us/medialibrary/pdfs/technical-papers/samsam-ransomware-chooses-its-targets-carefully-wpna.aspx",
+          "https://www.crowdstrike.com/blog/an-in-depth-analysis-of-samsam-ransomware-and-boss-spider/",
+          "https://www.justice.gov/opa/pr/two-iranian-men-indicted-deploying-ransomware-extort-hospitals-municipalities-and-public",
+          "https://nakedsecurity.sophos.com/2018/05/01/samsam-ransomware-a-mean-old-dog-with-a-nasty-new-trick-report/",
+          "http://blog.talosintelligence.com/2018/01/samsam-evolution-continues-netting-over.html"
+        ],
+        "synonyms": [
+          "samas"
+        ],
+        "type": []
+      },
+      "uuid": "d00e9064-f1e9-4696-87dc-13031aa4553d",
+      "value": "samsam"
+    },
     {
       "description": "FAM:sanctionedmedia", 
       "meta": {
@@ -9309,7 +9452,7 @@
         "type": []
       }, 
       "related": [
-        {
+        {90bb8141-d467-3376-8c85-4e0ec9a2be05
           "dest-uuid": "590eeb1a-2742-3301-94bf-9fa0856e959c",
           "type": "subtechnique-of"
         }
@@ -9564,6 +9707,12 @@
         ], 
         "type": []
       }, 
+      "related": [
+        {
+          "dest-uuid": "90bb8141-d467-3376-8c85-4e0ec9a2be05",
+          "type": "uses"
+        }
+      ],
       "uuid": "f0b15f66-0eae-37d8-bf08-eeca70557795", 
       "value": "worm"
     }, 
@@ -9838,6 +9987,32 @@
       "uuid": "805e91bc-aaed-380d-97f7-7d9ae2ab4703", 
       "value": "adviator"
     }, 
+    {
+      "description": "FAM:adwind",
+      "meta": {
+        "refs": [
+          "https://malpedia.caad.fkie.fraunhofer.de/details/jar.adwind",
+          "https://blogs.seqrite.com/evolution-of-jrat-java-malware/",
+          "https://www.fortinet.com/blog/threat-research/new-jrat-adwind-variant-being-spread-with-package-delivery-scam.html",
+          "http://blog.trendmicro.com/trendlabs-security-intelligence/spam-remote-access-trojan-adwind-jrat",
+          "http://malware-traffic-analysis.net/2017/07/04/index.html",
+          "https://codemetrix.net/decrypting-adwind-jrat-jbifrost-trojan/",
+          "https://gist.github.com/herrcore/8336975475e88f9bc539d94000412885",
+          "https://blog.talosintelligence.com/2018/09/adwind-dodgesav-dde.html"
+        ],
+        "synonyms": [
+          "AlienSpy",
+          "Frutas",
+          "JBifrost",
+          "JSocket",
+          "Sockrat",
+          "UNRECOM"
+        ],
+        "type": []
+      },
+      "uuid": "04e324c1-a981-4bf7-aab4-d64d0dacae51",
+      "value": "adwind"
+    },
     {
       "description": "FAM:adwk", 
       "meta": {
@@ -11005,6 +11180,20 @@
       "value": "centim"
     }, 
     {
+      "description": "FAM:cerberus", 
+      "meta": {
+        "refs": [
+          "https://malpedia.caad.fkie.fraunhofer.de/details/apk.cerberus",
+          "https://attack.mitre.org/software/S0480",
+          "https://www.threatfabric.com/blogs/cerberus-a-new-banking-trojan-from-the-underworld.html"
+        ],
+        "synonyms": [], 
+        "type": []
+      }, 
+      "uuid": "bfd0098a-822d-436b-b751-1c61ff661cfe", 
+      "value": "cerberus"
+    }, 
+    {
       "description": "FAM:cerekv", 
       "meta": {
         "refs": [], 
@@ -11151,6 +11340,31 @@
       "uuid": "5c5aa6ae-b94a-31df-bea0-4e672b746664", 
       "value": "cnzz"
     }, 
+    {
+      "description": "FAM:cobaltstrike",
+      "meta": {
+        "refs": [
+          "https://malpedia.caad.fkie.fraunhofer.de/details/win.cobalt_strike",
+          "https://www.fireeye.com/blog/threat-research/2017/06/phished-at-the-request-of-counsel.html",
+          "https://www.symantec.com/connect/blogs/odinaff-new-trojan-used-high-level-financial-attacks",
+          "https://github.com/JPCERTCC/aa-tools/blob/master/cobaltstrikescan.py",
+          "https://blogs.jpcert.or.jp/en/2018/08/volatility-plugin-for-detecting-cobalt-strike-beacon.html",
+          "https://blog.cobaltstrike.com/",
+          "https://www.cobaltstrike.com/support",
+          "https://www.fireeye.com/blog/threat-research/2018/11/not-so-cozy-an-uncomfortable-examination-of-a-suspected-apt29-phishing-campaign.html",
+          "http://blog.morphisec.com/new-global-attack-on-point-of-sale-systems",
+          "https://www.lac.co.jp/lacwatch/people/20180521_001638.html",
+          "https://401trg.com/burning-umbrella/ ",
+          "https://www.pentestpartners.com/security-blog/cobalt-strike-walkthrough-for-red-teamers/",
+          "https://pylos.co/2018/11/18/cozybear-in-from-the-cold/",
+          "http://cyberforensicator.com/2018/12/23/dissecting-cozy-bears-malicious-lnk-file/"
+        ],
+        "synonyms": [],
+        "type": []
+      },
+      "uuid": "008947a7-9634-4f83-851b-f65e1a0f2f0c",
+      "value": "cobaltstrike"
+    },
     {
       "description": "FAM:coinhive", 
       "meta": {
