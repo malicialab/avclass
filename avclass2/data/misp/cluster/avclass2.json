@@ -346,7 +346,7 @@
       "meta": {
         "refs": [
           "https://blog.malwarebytes.com/detections/trojan-swrort/",
-          "https://malpedia.caad.fkie.fraunhofer.de/details/ps1.swrort",
+          "https://malpedia.caad.fkie.fraunhofer.de/details/ps1.swrort"
         ],
         "synonyms": [],
         "type": []
