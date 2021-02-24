@@ -150,6 +150,7 @@ FAM:basbanke
 FAM:basebridge
 FAM:basepay
 FAM:bauts
+FAM:bazar
 FAM:bebeg
 FAM:becou
 FAM:beebone
@@ -494,7 +495,6 @@ FAM:koutodoor
 FAM:kovter
 FAM:krefel
 FAM:kronos
-FAM:kryptik
 FAM:ksapp
 FAM:kuguo
 FAM:kurash
@@ -605,6 +605,7 @@ FAM:myteam
 FAM:mytrackp
 FAM:mywebsearch
 FAM:nandrobox
+FAM:nanocore
 FAM:navbar
 FAM:nawiaiad
 FAM:necro
@@ -705,12 +706,14 @@ FAM:reflod
 FAM:refog
 FAM:regon
 FAM:relevantknowledge
+FAM:remcos
 FAM:renocide
 FAM:renos
 FAM:reporo
 FAM:reptilicus
 FAM:resharer
 FAM:reveton
+FAM:revetrat
 FAM:revmob
 FAM:riltok
 FAM:rimod
@@ -835,6 +838,7 @@ FAM:suaban
 FAM:suggestor
 FAM:supking
 FAM:svpeng
+FAM:swrort
 FAM:swisyn
 FAM:swizzor
 FAM:systemmonitor
@@ -916,6 +920,7 @@ FAM:virusdoctor
 FAM:virut
 FAM:viser
 FAM:vittalia
+FAM:vjworm
 FAM:vkemag
 FAM:vktihs
 FAM:vmvol

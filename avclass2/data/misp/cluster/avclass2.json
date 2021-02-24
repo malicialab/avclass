@@ -342,6 +342,19 @@
       "value": "svpeng"
     }, 
     {
+      "description": "FAM:swrort",
+      "meta": {
+        "refs": [
+          "https://blog.malwarebytes.com/detections/trojan-swrort/",
+          "https://malpedia.caad.fkie.fraunhofer.de/details/ps1.swrort",
+        ],
+        "synonyms": [],
+        "type": []
+      },
+      "uuid": "048b948f-5e4d-4e6f-a0b5-54157cf03c86",
+      "value": "swrort"
+    },
+    {
       "description": "FAM:swisyn", 
       "meta": {
         "refs": [], 
@@ -1283,6 +1296,21 @@
       }, 
       "uuid": "e6645d41-384f-3030-a76f-e12c94d6a39d", 
       "value": "vittalia"
+    }, 
+    {
+      "description": "FAM:vjworm", 
+      "meta": {
+        "refs": [
+          "https://cofense.com/vjw0rm-malware-heres-watch/",
+          "https://www.trendmicro.com/vinfo/us/threat-encyclopedia/malware/js_vjworm.i"
+        ], 
+        "synonyms": [
+          "vjw0rm"
+        ], 
+        "type": []
+      }, 
+      "uuid": "d2d82d11-f174-4804-abf5-2b81740b5993", 
+      "value": "vjworm"
     }, 
     {
       "description": "FAM:vkemag", 
@@ -2587,17 +2615,20 @@
       "meta": {
         "refs": [], 
         "synonyms": [
+          "binder",
           "cryp", 
           "crypt", 
           "crypted", 
           "crypter", 
           "cryptic", 
+          "cryptoobfuscator",
           "cryptor", 
           "encpk", 
           "genpack", 
           "krypt", 
           "kryptik", 
-          "kryptk", 
+          "kryptk",
+          "genkryptik",
           "malcrypt", 
           "malob", 
           "malpack", 
@@ -4806,19 +4837,6 @@
       "value": "kronos"
     }, 
     {
-      "description": "FAM:krytik", 
-      "meta": {
-        "refs": "https://www.microsoft.com/en-us/wdsi/threats/malware-encyclopedia-description?Name=Trojan:Win32/Kryptik", 
-        "synonyms": [
-          "krypt", 
-          "genkryptik"
-        ], 
-        "type": []
-      }, 
-      "uuid": "55857083-f16f-47f2-9384-45c13df89f74", 
-      "value": "krytik"
-    }, 
-    {
       "description": "FAM:ksapp", 
       "meta": {
         "refs": [], 
@@ -6069,6 +6087,24 @@
       "value": "nandrobox"
     }, 
     {
+      "description": "FAM:nanocore",
+      "meta": {
+        "refs": [
+          "https://malpedia.caad.fkie.fraunhofer.de/details/win.nanocore",
+          "https://www.fireeye.com/blog/threat-research/2017/09/apt33-insights-into-iranian-cyber-espionage.html",
+          "https://www.symantec.com/blogs/threat-intelligence/elfin-apt33-espionage",
+          "https://researchcenter.paloaltonetworks.com/2018/08/unit42-gorgon-group-slithering-nation-state-cybercrime/",
+          "https://www.bleepingcomputer.com/news/security/nanocore-rat-author-gets-33-months-in-prison/"
+        ],
+        "synonyms": [
+          "nancrat"
+        ],
+        "type": []
+      },
+      "uuid": "048b948f-5e4d-4e6f-a0b5-54157cf03c86",
+      "value": "nanocore"
+    },
+    {
       "description": "FAM:navbar", 
       "meta": {
         "refs": [], 
@@ -7234,6 +7270,31 @@
       "value": "relevantknowledge"
     }, 
     {
+      "description": "FAM:remcos",
+      "meta": {
+        "refs": [
+          "https://malpedia.caad.fkie.fraunhofer.de/details/win.remcos",
+          "https://www.riskiq.com/blog/labs/spear-phishing-turkish-defense-contractors/",
+          "https://researchcenter.paloaltonetworks.com/2018/08/unit42-gorgon-group-slithering-nation-state-cybercrime/",
+          "http://malware-traffic-analysis.net/2017/12/22/index.html",
+          "https://www.symantec.com/blogs/threat-intelligence/elfin-apt33-espionage",
+          "https://blog.fortinet.com/2017/02/14/remcos-a-new-rat-in-the-wild-2",
+          "https://krabsonsecurity.com/2018/03/02/analysing-remcos-rats-executable/",
+          "https://myonlinesecurity.co.uk/fake-order-spoofed-from-finchers-ltd-sankyo-rubber-delivers-remcos-rat-via-ace-attachments/",
+          "https://blog.talosintelligence.com/2018/08/picking-apart-remcos.html",
+          "https://secrary.com/ReversingMalware/RemcosRAT/"
+        ],
+        "synonyms": [
+          "remcosrat", 
+          "remvio", 
+          "socmer"
+        ],
+        "type": []
+      },
+      "uuid": "1b2a647e-35a2-418d-95e2-e77e0423060b",
+      "value": "remcos"
+    },
+    {
       "description": "FAM:renocide", 
       "meta": {
         "refs": [], 
@@ -7303,6 +7364,23 @@
       "uuid": "94805334-1d2e-3621-aa6d-0b3dc8e0405d", 
       "value": "reveton"
     }, 
+    {
+      "description": "FAM:revetrat",
+      "meta": {
+        "refs": [
+          "https://malpedia.caad.fkie.fraunhofer.de/details/win.revenge_rat",
+          "https://isc.sans.edu/diary/rss/22590",
+          "https://researchcenter.paloaltonetworks.com/2018/08/unit42-gorgon-group-slithering-nation-state-cybercrime/",
+          "http://blog.deniable.org/blog/2016/08/26/lurking-around-revenge-rat/"
+        ],
+        "synonyms": [
+          "revenge_rat"
+        ],
+        "type": []
+      },
+      "uuid": "2326ae09-ab18-41cd-8f87-187853a8623f",
+      "value": "revetrat"
+    },
     {
       "description": "FAM:revmob", 
       "meta": {
@@ -8743,14 +8821,14 @@
           "blocker", 
           "killav"
         ], 
-        "related": [
-          {
-            "dest-uuid": "aecd212a-8701-3527-bbde-8cd36b405f93",
-            "type": "subtechnique-of"
-          }
-        ],
         "type": []
       }, 
+      "related": [
+        {
+          "dest-uuid": "aecd212a-8701-3527-bbde-8cd36b405f93",
+          "type": "subtechnique-of"
+        }
+      ],
       "uuid": "1b4d1d8e-9cbf-3f9b-8308-23e6de3456fd", 
       "value": "killsectool"
     }, 
@@ -10350,6 +10428,27 @@
       "uuid": "40f45119-a4ce-335c-be07-c46ff67f3dcf", 
       "value": "bauts"
     }, 
+    {
+      "description": "FAM:bazar",
+      "meta": {
+        "refs": [
+          "https://malpedia.caad.fkie.fraunhofer.de/details/win.bazarbackdoor",
+          "https://www.advanced-intel.com/post/anatomy-of-attack-inside-bazarbackdoor-to-ryuk-ransomware-one-group-via-cobalt-strike",
+          "https://www.pandasecurity.com/en/mediacenter/business/bazarbackdoor-trickbot-backdoor/"
+        ],
+        "synonyms": [
+          "bazarbackdoor",
+          "beerbot",
+          "bazarcall",
+          "kegtap",
+          "team9backdoor",
+          "bazaloader"
+        ],
+        "type": []
+      },
+      "uuid": "2f6e812e-16a6-4fbc-9273-1aebc12b7d3d",
+      "value": "bazar"
+    },
     {
       "description": "FAM:bebeg", 
       "meta": {
