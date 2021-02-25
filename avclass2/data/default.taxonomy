@@ -138,6 +138,7 @@ FAM:asprox
 FAM:autoins
 FAM:autosus
 FAM:axespy
+FAM:azorult
 FAM:badda
 FAM:badnews
 FAM:badpac
@@ -392,6 +393,7 @@ FAM:ginamster
 FAM:ginko
 FAM:ginmaster
 FAM:gizmo
+FAM:glupteba
 FAM:gobot
 FAM:golddream
 FAM:goldentouch
@@ -642,6 +644,7 @@ FAM:opencandy
 FAM:openinstall
 FAM:opfake
 FAM:optix
+FAM:orcusrat
 FAM:outbrowse
 FAM:oveead
 FAM:paccy
@@ -915,6 +918,7 @@ FAM:usteal
 FAM:utchi
 FAM:uupay
 FAM:uuserv
+FAM:valyria
 FAM:vapsup
 FAM:vdloader
 FAM:verti
@@ -1079,6 +1083,7 @@ FILE:packed:upack
 FILE:packed:upx
 FILE:packed:vmprotect
 FILE:packed:yoda
+FILE:proglang:autohk
 FILE:proglang:autoit
 FILE:proglang:delphi
 FILE:proglang:java

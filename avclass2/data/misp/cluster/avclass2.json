@@ -1207,6 +1207,27 @@
       "value": "uuserv"
     }, 
     {
+      "description": "FAM:valyria",
+      "meta": {
+        "refs": [
+          "https://malpedia.caad.fkie.fraunhofer.de/details/ps1.powerstats",
+          "https://www.clearskysec.com/muddywater-operations-in-lebanon-and-oman/",
+          "https://unit42.paloaltonetworks.com/unit42-muddying-the-water-targeted-attacks-in-the-middle-east/",
+          "https://www.fireeye.com/blog/threat-research/2018/03/iranian-threat-group-updates-ttps-in-spear-phishing-campaign.html",
+          "https://blog.malwarebytes.com/threat-analysis/2017/09/elaborate-scripting-fu-used-in-espionage-attack-against-saudi-arabia-government_entity/",
+          "https://reaqta.com/2017/11/muddywater-apt-targeting-middle-east/",
+          "https://blog.trendmicro.com/trendlabs-security-intelligence/campaign-possibly-connected-muddywater-surfaces-middle-east-central-asia/",
+          "https://www.clearskysec.com/muddywater-targets-kurdish-groups-turkish-orgs/"
+        ],
+        "synonyms": [
+          "powerstats"
+        ],
+        "type": []
+      },
+      "uuid": "9f958d8b-0489-40e5-91b4-aa780fc90393",
+      "value": "valyria"
+    },
+    {
       "description": "FAM:vapsup", 
       "meta": {
         "refs": [], 
@@ -2848,8 +2869,10 @@
     {
       "description": "FILE:packed:enigma", 
       "meta": {
-        "refs": [], 
-        "synonyms": [], 
+        "refs": "https://enigmaprotector.com/", 
+        "synonyms": [
+          "enigmaprotector"
+        ], 
         "type": []
       }, 
       "related": [
@@ -3386,6 +3409,18 @@
       "value": "yoda"
     }, 
     {
+      "description": "FILE:proglang:autohk", 
+      "meta": {
+        "refs": [], 
+        "synonyms": [
+          "autohotkey"
+        ], 
+        "type": []
+      }, 
+      "uuid": "5391799c-5a56-4e63-8438-eba2b331e65d", 
+      "value": "autohk"
+    }, 
+    {
       "description": "FILE:proglang:autoit", 
       "meta": {
         "refs": [], 
@@ -3680,6 +3715,23 @@
       "uuid": "46e0b44b-cf35-3472-9941-1bc1ea14943e", 
       "value": "gizmo"
     }, 
+    {
+      "description": "FAM:glupteba",
+      "meta": {
+        "refs": [
+          "https://malpedia.caad.fkie.fraunhofer.de/details/win.glupteba",
+          "http://resources.infosecinstitute.com/tdss4-part-1/",
+          "http://malwarefor.me/2015-04-13-nuclear-ek-glupteba-and-operation-windigo/",
+          "https://www.welivesecurity.com/2014/03/18/operation-windigo-the-vivisection-of-a-large-linux-server-side-credential-stealing-malware-campaign/",
+          "https://www.welivesecurity.com/2011/03/02/tdl4-and-glubteba-piggyback-piggybugs/",
+          "https://www.welivesecurity.com/2018/03/22/glupteba-no-longer-windigo/"
+        ],
+        "synonyms": [],
+        "type": []
+      },
+      "uuid": "0409c6ab-133a-448e-a2cf-c2c7f55d4100",
+      "value": "glupteba"
+    },
     {
       "description": "FAM:gobot", 
       "meta": {
@@ -6571,6 +6623,26 @@
       "uuid": "bd3777dc-6822-36d9-b57b-fe623ddb0170", 
       "value": "optix"
     }, 
+    {
+      "description": "FAM:orcusrat",
+      "meta": {
+        "refs": [
+          "https://malpedia.caad.fkie.fraunhofer.de/details/win.orcus_rat",
+          "https://orcustechnologies.com/",
+          "https://blog.fortinet.com/2017/12/07/a-peculiar-case-of-orcus-rat-targeting-bitcoin-investors",
+          "https://www.canada.ca/en/radio-television-telecommunications/news/2019/03/crtc-and-rcmp-national-division-execute-warrants-in-malware-investigation.html",
+          "https://krebsonsecurity.com/2016/07/canadian-man-is-author-of-popular-orcus-rat/",
+          "https://krebsonsecurity.com/2019/04/canadian-police-raid-orcus-rat-author/",
+          "http://researchcenter.paloaltonetworks.com/2016/08/unit42-orcus-birth-of-an-unusual-plugin-builder-rat/"
+        ],
+        "synonyms": [
+          "orcus"
+        ],
+        "type": []
+      },
+      "uuid": "0c57b2b4-b545-4b5d-bd27-b102b635e432",
+      "value": "orcusrat"
+    },
     {
       "description": "FAM:outbrowse", 
       "meta": {
@@ -10459,6 +10531,31 @@
       "value": "axespy"
     }, 
     {
+      "description": "FAM:azorult",
+      "meta": {
+        "refs": [
+          "https://malpedia.caad.fkie.fraunhofer.de/details/win.azorult",
+          "https://www.bleepingcomputer.com/news/security/azorult-trojan-serving-aurora-ransomware-by-malactor-oktropys/",
+          "https://blog.minerva-labs.com/puffstealer-evasion-in-a-cloak-of-multiple-layers",
+          "https://malwarebreakdown.com/2017/07/24/the-seamless-campaign-drops-ramnit-follow-up-malware-azorult-stealer-smoke-loader-etc/",
+          "https://www.proofpoint.com/us/threat-insight/post/threat-actors-using-legitimate-paypal-accounts-to-distribute-chthonic-banking-trojan",
+          "http://www.vkremez.com/2017/07/lets-learn-reversing-credential-and.html",
+          "https://blog.minerva-labs.com/azorult-now-as-a-signed-google-update",
+          "https://www.proofpoint.com/us/threat-insight/post/new-version-azorult-stealer-improves-loading-features-spreads-alongside",
+          "https://malwarebreakdown.com/2017/11/12/seamless-campaign-delivers-ramnit-via-rig-ek-at-188-225-82-158-follow-up-malware-is-azorult-stealer/",
+          "https://www.blueliv.com/blog-news/research/azorult-crydbrox-stops-sells-malware-credential-stealer/",
+          "https://research.checkpoint.com/the-emergence-of-the-new-azorult-3-3/"
+        ],
+        "synonyms": [
+          "puffstealer",
+          "rultazo"
+        ],
+        "type": []
+      },
+      "uuid": "fc17c756-528b-416e-907d-9d1ef7403df1",
+      "value": "azorult"
+    },
+    {
       "description": "FAM:badda", 
       "meta": {
         "refs": [], 
@@ -10853,6 +10950,7 @@
         "refs": "https://malpedia.caad.fkie.fraunhofer.de/details/win.njrat", 
         "synonyms": [
           "bladabi",
+          "bladabindinet",
           "njrat"
         ], 
         "type": []
