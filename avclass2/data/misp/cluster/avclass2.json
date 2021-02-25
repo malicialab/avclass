@@ -7261,10 +7261,19 @@
     {
       "description": "FAM:razy", 
       "meta": {
-        "refs": "https://www.microsoft.com/en-us/wdsi/threats/malware-encyclopedia-description?Name=Trojan:Win32/Razy.A", 
+        "refs": [
+          "https://www.microsoft.com/en-us/wdsi/threats/malware-encyclopedia-description?Name=Trojan:Win32/Razy.A",
+          "https://threatpost.com/razy-browser-extensions-theft/141181/"
+        ], 
         "synonyms": [], 
         "type": []
       }, 
+      "related": [
+        {
+          "dest-uuid": "636db272-61ce-3e0f-ad64-d77048b05066",
+          "type": "variant-of"
+        }
+      ],
       "uuid": "aad8ce8e-0c82-42f7-a63c-bbfe85c015b6", 
       "value": "razy"
     }, 
@@ -9452,7 +9461,7 @@
         "type": []
       }, 
       "related": [
-        {90bb8141-d467-3376-8c85-4e0ec9a2be05
+        {
           "dest-uuid": "590eeb1a-2742-3301-94bf-9fa0856e959c",
           "type": "subtechnique-of"
         }
