@@ -9,9 +9,9 @@ script_dir = os.path.dirname(os.path.abspath(__file__))
 sys.path.insert(1, os.path.join(script_dir, 'lib/'))
 sys.path.insert(1, os.path.join(script_dir, '../shared/'))
 import argparse
-from avclass2_common import AvLabels
+from .lib.avclass2_common import AvLabels
 from operator import itemgetter
-import evaluate_clustering as ec
+import shared.evaluate_clustering as ec
 import json
 import traceback
 import gzip
@@ -362,7 +362,7 @@ def main(args):
         sys.stderr.write('[-] Alias data in %s\n' % (alias_filename))
 
 
-if __name__=='__main__':
+def real_main():
     argparser = argparse.ArgumentParser(prog='avclass2_labeler',
         description='''Extracts tags for a set of samples.
             Also calculates precision and recall if ground truth available''')
@@ -487,3 +487,7 @@ if __name__=='__main__':
                           default_exp_file))
 
     main(args)
+
+
+if __name__=='__main__':
+    real_main()

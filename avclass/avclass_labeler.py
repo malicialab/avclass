@@ -11,9 +11,9 @@ sharedpath = os.path.join(path, '../shared/')
 sys.path.insert(1, libpath)
 sys.path.insert(1, sharedpath)
 import argparse
-from avclass_common import AvLabels
+from .lib.avclass_common import AvLabels
 from operator import itemgetter
-import evaluate_clustering as ec
+import shared.evaluate_clustering as ec
 import json
 import traceback
 
@@ -347,8 +347,7 @@ def main(args):
         verb_fd.close()
 
 
-
-if __name__=='__main__':
+def real_main():
     argparser = argparse.ArgumentParser(prog='avclass_labeler',
         description='''Extracts the family of a set of samples.
             Also calculates precision and recall if ground truth available''')
@@ -457,3 +456,7 @@ if __name__=='__main__':
                           default_gen_file))
         
     main(args)
+
+
+if __name__=='__main__':
+    real_main()
