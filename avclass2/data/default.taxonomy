@@ -15,6 +15,7 @@ BEH:filemodify
 BEH:files
 BEH:hostsmodify
 BEH:infosteal
+BEH:infosteal:coinstealer
 BEH:infosteal:gamethief
 BEH:inject
 BEH:irc
@@ -137,6 +138,7 @@ FAM:asacub
 FAM:asprox
 FAM:autoins
 FAM:autosus
+FAM:avemaria
 FAM:axespy
 FAM:azorult
 FAM:badda
@@ -276,6 +278,7 @@ FAM:dorifel
 FAM:dorkbot
 FAM:dougalek
 FAM:dowgin
+FAM:downeks
 FAM:downloadadmin
 FAM:downloadassistant
 FAM:downloadguide
@@ -400,6 +403,7 @@ FAM:goldentouch
 FAM:gomanag
 FAM:gomunc
 FAM:gonesixty
+FAM:goodkit
 FAM:goodnews
 FAM:goodor
 FAM:gorillaprice
@@ -762,6 +766,7 @@ FAM:severs
 FAM:sfone
 FAM:shastrosms
 FAM:shedun
+FAM:shelma
 FAM:sheridroid
 FAM:shixot
 FAM:shiz

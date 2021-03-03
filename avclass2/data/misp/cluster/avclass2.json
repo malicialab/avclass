@@ -3804,6 +3804,38 @@
       "value": "gonesixty"
     }, 
     {
+      "description": "FAM:goodkit",
+      "meta": {
+        "refs": [
+          "https://malpedia.caad.fkie.fraunhofer.de/details/win.gootkit",
+          "https://www.lexsi.com/securityhub/homer-simpson-brian-krebs-rencontrent-zeus-gootkit/",
+          "http://blog.cert.societegenerale.com/2015/04/analyzing-gootkits-persistence-mechanism.html",
+          "https://securityintelligence.com/gootkit-developers-dress-it-up-with-web-traffic-proxy/",
+          "https://forums.juniper.net/t5/Security-Now/New-Gootkit-Banking-Trojan-variant-pushes-the-limits-on-evasive/ba-p/319055",
+          "https://www.f5.com/labs/articles/threat-intelligence/tackling-gootkit-s-traps",
+          "https://securelist.com/blog/research/76433/inside-the-gootkit-cc-server/",
+          "https://www.us-cert.gov/ncas/alerts/TA16-336A",
+          "http://www.vkremez.com/2018/04/lets-learn-in-depth-dive-into-gootkit.html",
+          "https://securityintelligence.com/gootkit-bobbing-and-weaving-to-avoid-prying-eyes/",
+          "https://www.youtube.com/watch?v=242Tn0IL2jE",
+          "http://www.kernelmode.info/forum/viewtopic.php?f=16&t=3669",
+          "https://www.s21sec.com/en/blog/2016/05/reverse-engineering-gootkit/",
+          "http://blog.trendmicro.com/trendlabs-security-intelligence/fake-judicial-spam-leads-to-backdoor-with-fake-certificate-authority/",
+          "https://news.drweb.com/show/?i=4338&lng=en",
+          "https://www.youtube.com/watch?v=QgUlPvEE4aw",
+          "https://www.cyphort.com/angler-ek-leads-to-fileless-gootkit/"
+        ],
+        "synonyms": [
+          "xswkit",
+          "talalpek",
+          "waldek"
+        ],
+        "type": []
+      },
+      "uuid": "beb37b7f-d2f9-47c5-a53b-4b5bb7db9cdf",
+      "value": "gootkit"
+    },
+    {
       "description": "FAM:goodnews", 
       "meta": {
         "refs": [], 
@@ -6363,7 +6395,8 @@
         "synonyms": [
           "netweird", 
           "weecnaw", 
-          "wirenet"
+          "wirenet",
+          "netwire"
         ], 
         "type": []
       }, 
@@ -8057,6 +8090,27 @@
       "value": "shedun"
     }, 
     {
+      "description": "FAM:shelma",
+      "meta": {
+        "refs": [
+          "https://malpedia.caad.fkie.fraunhofer.de/details/win.doghousepower",
+          "http://www1.paladion.net/hubfs/Newsletter/DogHousePower-%20Newly%20Identified%20Python-Based%20Ransomware.pdf"
+        ],
+        "synonyms": [
+          "doghousepower"
+        ],
+        "type": []
+      },
+      "related": [
+        {
+          "dest-uuid": "a8f4f4fa-1558-3f16-ac56-bce903a83b22",
+          "type": "variant-of"
+        }
+      ],
+      "uuid": "47ff7101-61d2-464f-8210-6fe26cac2772",
+      "value": "shelma"
+    },
+    {
       "description": "FAM:sheridroid", 
       "meta": {
         "refs": [], 
@@ -8950,6 +9004,22 @@
       }, 
       "uuid": "c65071d8-2bad-302b-8646-d309f7705fdb", 
       "value": "infosteal"
+    }, 
+    {
+      "description": "BEH:infosteal:coinstealer", 
+      "meta": {
+        "refs": [], 
+        "synonyms": [], 
+        "type": []
+      }, 
+      "related": [
+        {
+          "dest-uuid": "c65071d8-2bad-302b-8646-d309f7705fdb",
+          "type": "subtechnique-of"
+        }
+      ],
+      "uuid": "e8e60d44-4950-4671-b56e-707d6ce0b2f6", 
+      "value": "coinstealer"
     }, 
     {
       "description": "BEH:infosteal:gamethief", 
@@ -10520,6 +10590,21 @@
       "uuid": "4b0a463a-269d-3d58-ae8c-7935c51aa9bc", 
       "value": "autosus"
     }, 
+    {
+      "description": "FAM:avemaria",
+      "meta": {
+        "refs": [
+          "https://malpedia.caad.fkie.fraunhofer.de/details/win.ave_maria",
+          "https://blog.yoroi.company/research/the-ave_maria-malware/"
+        ],
+        "synonyms": [
+          "AVE_MARIA"
+        ],
+        "type": []
+      },
+      "uuid": "a006993a-6e83-4fb5-a6a6-d67a7dc71c23",
+      "value": "avemaria"
+    },
     {
       "description": "FAM:axespy", 
       "meta": {
@@ -12196,6 +12281,19 @@
       "uuid": "3eb5f701-637e-3b03-ac32-47f59641c718", 
       "value": "dowgin"
     }, 
+    {
+      "description": "FAM:downeks",
+      "meta": {
+        "refs": [
+          "https://malpedia.caad.fkie.fraunhofer.de/details/win.downeks",
+          "http://researchcenter.paloaltonetworks.com/2017/01/unit42-downeks-and-quasar-rat-used-in-recent-targeted-attacks-against-governments/?adbsc=social69739136&adbid=826218465723756545&adbpl=tw&adbpr=4487645412"
+        ],
+        "synonyms": [],
+        "type": []
+      },
+      "uuid": "c8149b45-7d28-421e-bc6f-25c4b8698b92",
+      "value": "downeks"
+    },
     {
       "description": "FAM:downloadadmin", 
       "meta": {
