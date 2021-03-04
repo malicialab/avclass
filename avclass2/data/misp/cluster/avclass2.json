@@ -12267,7 +12267,7 @@
       "value": "detroie"
     }, 
     {
-      "description": "FAM:dharma", 
+      "description": "FAM:crysis", 
       "meta": {
         "refs": [
           "https://malpedia.caad.fkie.fraunhofer.de/details/win.dharma",
@@ -12276,7 +12276,7 @@
         ],
         "synonyms": [
           "crusis", 
-          "crysis",
+          "dharma",
           "phobos",
           "arena",
           "wadhrama",
@@ -12291,7 +12291,7 @@
         }
       ],
       "uuid": "689e26c6-8cf6-4ce0-ba87-cad1377996ae", 
-      "value": "dharma"
+      "value": "crysis"
     }, 
     {
       "description": "FAM:dianjin", 
