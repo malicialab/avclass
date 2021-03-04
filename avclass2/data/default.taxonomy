@@ -103,6 +103,7 @@ FAM:adwind
 FAM:adwk
 FAM:adwo
 FAM:aesads
+FAM:agenttesla
 FAM:agobot
 FAM:agvd
 FAM:ahmyth
@@ -224,6 +225,7 @@ FAM:commplat
 FAM:conduit
 FAM:conficker
 FAM:contactscollector
+FAM:conti
 FAM:cooee
 FAM:coogos
 FAM:coolmirage
@@ -300,6 +302,7 @@ FAM:dusvext
 FAM:dynamer
 FAM:easyroot
 FAM:egame
+FAM:egregor
 FAM:egroupdial
 FAM:ejik
 FAM:elite
@@ -403,10 +406,11 @@ FAM:goldentouch
 FAM:gomanag
 FAM:gomunc
 FAM:gonesixty
-FAM:goodkit
 FAM:goodnews
 FAM:goodor
+FAM:gootkit
 FAM:gorillaprice
+FAM:gozi
 FAM:gpspy
 FAM:grabos
 FAM:graybird
@@ -432,6 +436,7 @@ FAM:hipposms
 FAM:honli
 FAM:hotbar
 FAM:hotclip
+FAM:houdini
 FAM:hoverwatch
 FAM:hqowdo
 FAM:hqwar
@@ -512,6 +517,7 @@ FAM:kyview
 FAM:laconic
 FAM:lardlond
 FAM:laroux
+FAM:lazagne
 FAM:ldpinch
 FAM:leadbolt
 FAM:leapp
@@ -663,6 +669,7 @@ FAM:penguin
 FAM:perflogger
 FAM:perkel
 FAM:petrolin
+FAM:petya
 FAM:phonespy
 FAM:picsys
 FAM:piom
@@ -701,6 +708,7 @@ FAM:qqrob
 FAM:qumi
 FAM:quozha
 FAM:qushu
+FAM:raccoon
 FAM:raden
 FAM:ramnit
 FAM:ranky
@@ -744,6 +752,7 @@ FAM:rukometa
 FAM:rungbu
 FAM:ruskill
 FAM:rusms
+FAM:ryuk
 FAM:sacti
 FAM:sacto
 FAM:sadenav
@@ -756,6 +765,7 @@ FAM:sanctionedmedia
 FAM:sandr
 FAM:savemy
 FAM:scam
+FAM:schwarzesonne
 FAM:sckeylog
 FAM:sdbot
 FAM:seaweth
@@ -834,6 +844,7 @@ FAM:spyapp
 FAM:spybubble
 FAM:spydealer
 FAM:spyeye
+FAM:spygate
 FAM:spyhasb
 FAM:spynote
 FAM:spyoo
@@ -1064,6 +1075,7 @@ FILE:packed:krunchy
 FILE:packed:maskpe
 FILE:packed:molebox
 FILE:packed:morphine
+FILE:packed:multipacked
 FILE:packed:nakedpack
 FILE:packed:niceprotect
 FILE:packed:npack
