@@ -135,6 +135,19 @@
       "value": "spyeye"
     }, 
     {
+      "description": "FAM:spygate",
+      "meta": {
+        "refs": [
+          "https://www.fortiguard.com/encyclopedia/virus/8225407",
+          "https://www.rekings.com/spygate-rat-3-2/",
+          "https://www.symantec.com/security_response/attacksignatures/detail.jsp%3Fasid%3D27950",
+          "http://spygate-rat.blogspot.lu/"
+        ]
+      },
+      "uuid": "793d27f3-f060-49f2-b572-8bc6fcdbbdef",
+      "value": "spygate"
+    },
+    {
       "description": "FAM:spyhasb", 
       "meta": {
         "refs": [], 
@@ -341,6 +354,19 @@
       "uuid": "b94f39e6-7997-373b-8d67-ae62d889e110", 
       "value": "svpeng"
     }, 
+    {
+      "description": "FAM:swrort",
+      "meta": {
+        "refs": [
+          "https://blog.malwarebytes.com/detections/trojan-swrort/",
+          "https://malpedia.caad.fkie.fraunhofer.de/details/ps1.swrort"
+        ],
+        "synonyms": [],
+        "type": []
+      },
+      "uuid": "048b948f-5e4d-4e6f-a0b5-54157cf03c86",
+      "value": "swrort"
+    },
     {
       "description": "FAM:swisyn", 
       "meta": {
@@ -872,6 +898,69 @@
       "value": "trclick"
     }, 
     {
+      "description": "FAM:trickbot",
+      "meta": {
+        "refs": [
+          "https://malpedia.caad.fkie.fraunhofer.de/details/win.trickbot",
+          "https://www.cybereason.com/blog/triple-threat-emotet-deploys-trickbot-to-steal-data-spread-ryuk-ransomware",
+          "https://blog.malwarebytes.com/threat-analysis/2017/08/trickbot-comes-with-new-tricks-attacking-outlook-and-browsing-data/",
+          "http://www.vkremez.com/2017/11/lets-learn-trickbot-socks5-backconnect.html",
+          "https://blog.trendmicro.com/trendlabs-security-intelligence/trickbot-adds-remote-application-credential-grabbing-capabilities-to-its-repertoire/",
+          "http://www.vkremez.com/2017/12/lets-learn-introducing-new-trickbot.html",
+          "https://blog.trendmicro.com/trendlabs-security-intelligence/trickbot-shows-off-new-trick-password-grabber-module",
+          "https://www.fidelissecurity.com/threatgeek/2016/10/trickbot-we-missed-you-dyre",
+          "https://www.flashpoint-intel.com/blog/trickbot-account-checking-hybrid-attack-model/",
+          "http://www.peppermalware.com/2019/03/quick-analysis-of-trickbot-sample-with.html",
+          "https://blog.malwarebytes.com/threat-analysis/2016/10/trick-bot-dyrezas-successor/",
+          "https://www.youtube.com/watch?v=KMcSAlS9zGE",
+          "https://www.crowdstrike.com/blog/sin-ful-spiders-wizard-spider-and-lunar-spider-sharing-the-same-web/",
+          "https://www.arbornetworks.com/blog/asert/trickbot-banker-insights/",
+          "https://blog.malwarebytes.com/threat-analysis/malware-threat-analysis/2018/11/whats-new-trickbot-deobfuscating-elements/",
+          "https://www.trustwave.com/Resources/SpiderLabs-Blog/Tale-of-the-Two-Payloads-%E2%80%93-TrickBot-and-Nitol/",
+          "http://www.vkremez.com/2018/04/lets-learn-trickbot-implements-network.html",
+          "https://securityintelligence.com/trickbot-takes-to-latin-america-continues-to-expand-its-global-reach/",
+          "https://qmemcpy.io/post/reverse-engineering-malware-trickbot-part-2-loader",
+          "https://www.fireeye.com/blog/threat-research/2019/01/a-nasty-trick-from-credential-theft-malware-to-business-disruption.html",
+          "https://securityintelligence.com/trickbots-cryptocurrency-hunger-tricking-the-bitcoin-out-of-wallets/",
+          "https://blog.fraudwatchinternational.com/malware/trickbot-malware-works",
+          "https://www.blueliv.com/research/trickbot-banking-trojan-using-eflags-as-an-anti-hook-technique/",
+          "https://f5.com/labs/articles/threat-intelligence/malware/trickbot-expands-global-targets-beyond-banks-and-payment-processors-to-crms",
+          "https://f5.com/labs/articles/threat-intelligence/malware/little-trickbot-growing-up-new-campaign-24412",
+          "https://github.com/JR0driguezB/malware_configs/tree/master/TrickBot",
+          "https://escinsecurity.blogspot.de/2018/01/weekly-trickbot-analysis-end-of-wc-22.html",
+          "https://www.webroot.com/blog/2018/03/21/trickbot-banking-trojan-adapts-new-module/",
+          "https://www.fortinet.com/blog/threat-research/deep-analysis-of-trickbot-new-module-pwgrab.html",
+          "https://www.securityartwork.es/wp-content/uploads/2017/06/Informe_Evoluci%C3%B3n_Trickbot.pdf",
+          "https://blogs.forcepoint.com/security-labs/trickbot-spread-necurs-botnet-adds-nordic-countries-its-targets",
+          "http://blog.fortinet.com/2016/12/06/deep-analysis-of-the-online-banking-botnet-trickbot",
+          "https://www.cyberbit.com/blog/endpoint-security/latest-trickbot-variant-has-new-tricks-up-its-sleeve/",
+          "http://www.malware-traffic-analysis.net/2018/02/01/",
+          "https://www.cert.pl/en/news/single/detricking-trickbot-loader/",
+          "https://www.trendmicro.com/vinfo/us/security/news/cybercrime-and-digital-threats/evolving-trickbot-adds-detection-evasion-and-screen-locking-features",
+          "https://securityintelligence.com/tricks-of-the-trade-a-deeper-look-into-trickbots-machinations/",
+          "http://www.pwc.co.uk/issues/cyber-security-data-privacy/research/trickbots-bag-of-tricks.html",
+          "https://qmemcpy.io/post/reverse-engineering-malware-trickbot-part-3-core",
+          "https://www.ringzerolabs.com/2017/07/trickbot-banking-trojan-doc00039217doc.html",
+          "https://www.youtube.com/watch?v=EdchPEHnohw",
+          "https://sysopfb.github.io/malware/2018/04/16/trickbot-uacme.html",
+          "https://blog.talosintelligence.com/2018/07/smoking-guns-smoke-loader-learned-new.html",
+          "https://www.vkremez.com/2018/11/lets-learn-introducing-latest-trickbot.html",
+          "https://www.youtube.com/watch?v=lTywPmZEU1A",
+          "https://qmemcpy.github.io/post/reverse-engineering-malware-trickbot-part-1-packer",
+          "https://www.botconf.eu/wp-content/uploads/2016/11/2016-LT09-TrickBot-Adams.pdf",
+          "https://www.flashpoint-intel.com/blog/new-version-trickbot-adds-worm-propagation-module/"
+        ],
+        "synonyms": [
+          "thetrick",
+          "trickLoader",
+          "trickster"
+        ],
+        "type": []
+      },
+      "uuid": "b104ec95-e1bd-44c1-a193-d979bedc0a98",
+      "value": "trickbot"
+    },
+    {
       "description": "FAM:tridrongo", 
       "meta": {
         "refs": [], 
@@ -1131,6 +1220,27 @@
       "value": "uuserv"
     }, 
     {
+      "description": "FAM:valyria",
+      "meta": {
+        "refs": [
+          "https://malpedia.caad.fkie.fraunhofer.de/details/ps1.powerstats",
+          "https://www.clearskysec.com/muddywater-operations-in-lebanon-and-oman/",
+          "https://unit42.paloaltonetworks.com/unit42-muddying-the-water-targeted-attacks-in-the-middle-east/",
+          "https://www.fireeye.com/blog/threat-research/2018/03/iranian-threat-group-updates-ttps-in-spear-phishing-campaign.html",
+          "https://blog.malwarebytes.com/threat-analysis/2017/09/elaborate-scripting-fu-used-in-espionage-attack-against-saudi-arabia-government_entity/",
+          "https://reaqta.com/2017/11/muddywater-apt-targeting-middle-east/",
+          "https://blog.trendmicro.com/trendlabs-security-intelligence/campaign-possibly-connected-muddywater-surfaces-middle-east-central-asia/",
+          "https://www.clearskysec.com/muddywater-targets-kurdish-groups-turkish-orgs/"
+        ],
+        "synonyms": [
+          "powerstats"
+        ],
+        "type": []
+      },
+      "uuid": "9f958d8b-0489-40e5-91b4-aa780fc90393",
+      "value": "valyria"
+    },
+    {
       "description": "FAM:vapsup", 
       "meta": {
         "refs": [], 
@@ -1283,6 +1393,21 @@
       }, 
       "uuid": "e6645d41-384f-3030-a76f-e12c94d6a39d", 
       "value": "vittalia"
+    }, 
+    {
+      "description": "FAM:vjworm", 
+      "meta": {
+        "refs": [
+          "https://cofense.com/vjw0rm-malware-heres-watch/",
+          "https://www.trendmicro.com/vinfo/us/threat-encyclopedia/malware/js_vjworm.i"
+        ], 
+        "synonyms": [
+          "vjw0rm"
+        ], 
+        "type": []
+      }, 
+      "uuid": "d2d82d11-f174-4804-abf5-2b81740b5993", 
+      "value": "vjworm"
     }, 
     {
       "description": "FAM:vkemag", 
@@ -2587,17 +2712,20 @@
       "meta": {
         "refs": [], 
         "synonyms": [
+          "binder",
           "cryp", 
           "crypt", 
           "crypted", 
           "crypter", 
           "cryptic", 
+          "cryptoobfuscator",
           "cryptor", 
           "encpk", 
           "genpack", 
           "krypt", 
           "kryptik", 
-          "kryptk", 
+          "kryptk",
+          "genkryptik",
           "malcrypt", 
           "malob", 
           "malpack", 
@@ -2611,6 +2739,7 @@
           "pakes", 
           "suspiciouspacker", 
           "susppack", 
+          "vbinder",
           "vbcrypt", 
           "vbkrypt", 
           "vbpack", 
@@ -2629,6 +2758,12 @@
         "synonyms": [], 
         "type": []
       }, 
+      "related": [
+        {
+          "dest-uuid": "eb6d3fe4-5b8e-306c-84ef-960f4e14cf1a",
+          "type": "subtechnique-of"
+        }
+      ],
       "uuid": "b1c0c358-3a33-37db-974d-d4b8c31e45d3", 
       "value": "armadillo"
     }, 
@@ -2639,6 +2774,12 @@
         "synonyms": [], 
         "type": []
       }, 
+      "related": [
+        {
+          "dest-uuid": "eb6d3fe4-5b8e-306c-84ef-960f4e14cf1a",
+          "type": "subtechnique-of"
+        }
+      ],
       "uuid": "48eb867b-53ea-344f-8006-7756cdca4be9", 
       "value": "aspack"
     }, 
@@ -2649,6 +2790,12 @@
         "synonyms": [], 
         "type": []
       }, 
+      "related": [
+        {
+          "dest-uuid": "eb6d3fe4-5b8e-306c-84ef-960f4e14cf1a",
+          "type": "subtechnique-of"
+        }
+      ],
       "uuid": "cd8af59b-808b-3692-8068-2df3fd6a3ab6", 
       "value": "asprotect"
     }, 
@@ -2659,6 +2806,12 @@
         "synonyms": [], 
         "type": []
       }, 
+      "related": [
+        {
+          "dest-uuid": "eb6d3fe4-5b8e-306c-84ef-960f4e14cf1a",
+          "type": "subtechnique-of"
+        }
+      ],
       "uuid": "acebc64c-4419-3034-aeb7-62657e281101", 
       "value": "beroexepacker"
     }, 
@@ -2669,8 +2822,30 @@
         "synonyms": [], 
         "type": []
       }, 
+      "related": [
+        {
+          "dest-uuid": "eb6d3fe4-5b8e-306c-84ef-960f4e14cf1a",
+          "type": "subtechnique-of"
+        }
+      ],
       "uuid": "32b30e14-264e-3482-aa8f-e741f3f9ea29", 
       "value": "bobsoft"
+    }, 
+    {
+      "description": "FILE:packed:confuser", 
+      "meta": {
+        "refs": [], 
+        "synonyms": ["confuserex"], 
+        "type": []
+      }, 
+      "related": [
+        {
+          "dest-uuid": "eb6d3fe4-5b8e-306c-84ef-960f4e14cf1a",
+          "type": "subtechnique-of"
+        }
+      ],
+      "uuid": "f0c8b58d-040b-4956-9160-d17b6a6064e9", 
+      "value": "confuser"
     }, 
     {
       "description": "FILE:packed:decrypter", 
@@ -2679,6 +2854,12 @@
         "synonyms": [], 
         "type": []
       }, 
+      "related": [
+        {
+          "dest-uuid": "eb6d3fe4-5b8e-306c-84ef-960f4e14cf1a",
+          "type": "subtechnique-of"
+        }
+      ],
       "uuid": "11c5c00e-d453-39b9-b127-4c01be2227fb", 
       "value": "decrypter"
     }, 
@@ -2689,16 +2870,30 @@
         "synonyms": [], 
         "type": []
       }, 
+      "related": [
+        {
+          "dest-uuid": "eb6d3fe4-5b8e-306c-84ef-960f4e14cf1a",
+          "type": "subtechnique-of"
+        }
+      ],
       "uuid": "b94cd8d8-48cf-38c0-b296-52036803a04f", 
       "value": "encryptpe"
     }, 
     {
       "description": "FILE:packed:enigma", 
       "meta": {
-        "refs": [], 
-        "synonyms": [], 
+        "refs": "https://enigmaprotector.com/", 
+        "synonyms": [
+          "enigmaprotector"
+        ], 
         "type": []
       }, 
+      "related": [
+        {
+          "dest-uuid": "eb6d3fe4-5b8e-306c-84ef-960f4e14cf1a",
+          "type": "subtechnique-of"
+        }
+      ],
       "uuid": "2f5b61f3-5b5f-3eac-bbe6-32eb728cba6e", 
       "value": "enigma"
     }, 
@@ -2709,6 +2904,12 @@
         "synonyms": [], 
         "type": []
       }, 
+      "related": [
+        {
+          "dest-uuid": "eb6d3fe4-5b8e-306c-84ef-960f4e14cf1a",
+          "type": "subtechnique-of"
+        }
+      ],
       "uuid": "19aa389c-ff65-36c7-8d79-e109e356866f", 
       "value": "execryptor"
     }, 
@@ -2719,6 +2920,12 @@
         "synonyms": [], 
         "type": []
       }, 
+      "related": [
+        {
+          "dest-uuid": "eb6d3fe4-5b8e-306c-84ef-960f4e14cf1a",
+          "type": "subtechnique-of"
+        }
+      ],
       "uuid": "01f1aec1-33c8-3cbe-aa9b-5c78b8db18bf", 
       "value": "exestealth"
     }, 
@@ -2729,6 +2936,12 @@
         "synonyms": [], 
         "type": []
       }, 
+      "related": [
+        {
+          "dest-uuid": "eb6d3fe4-5b8e-306c-84ef-960f4e14cf1a",
+          "type": "subtechnique-of"
+        }
+      ],
       "uuid": "138e2027-887b-3d4a-8baf-f265cda803ec", 
       "value": "expressor"
     }, 
@@ -2739,6 +2952,12 @@
         "synonyms": [], 
         "type": []
       }, 
+      "related": [
+        {
+          "dest-uuid": "eb6d3fe4-5b8e-306c-84ef-960f4e14cf1a",
+          "type": "subtechnique-of"
+        }
+      ],
       "uuid": "62775d3e-9738-37eb-8521-b6086b278380", 
       "value": "jiagu"
     }, 
@@ -2751,6 +2970,12 @@
         ], 
         "type": []
       }, 
+      "related": [
+        {
+          "dest-uuid": "eb6d3fe4-5b8e-306c-84ef-960f4e14cf1a",
+          "type": "subtechnique-of"
+        }
+      ],
       "uuid": "0599aec6-6542-3014-b36a-85eb7b1acc50", 
       "value": "krunchy"
     }, 
@@ -2763,6 +2988,12 @@
         ], 
         "type": []
       }, 
+      "related": [
+        {
+          "dest-uuid": "eb6d3fe4-5b8e-306c-84ef-960f4e14cf1a",
+          "type": "subtechnique-of"
+        }
+      ],
       "uuid": "ac7fb78f-1cfb-3f53-a654-ebe0c02c61c1", 
       "value": "maskpe"
     }, 
@@ -2773,6 +3004,12 @@
         "synonyms": [], 
         "type": []
       }, 
+      "related": [
+        {
+          "dest-uuid": "eb6d3fe4-5b8e-306c-84ef-960f4e14cf1a",
+          "type": "subtechnique-of"
+        }
+      ],
       "uuid": "10398ebf-c9c9-3620-b718-40934daa60f3", 
       "value": "molebox"
     }, 
@@ -2783,8 +3020,30 @@
         "synonyms": [], 
         "type": []
       }, 
+      "related": [
+        {
+          "dest-uuid": "eb6d3fe4-5b8e-306c-84ef-960f4e14cf1a",
+          "type": "subtechnique-of"
+        }
+      ],
       "uuid": "cae3f868-9601-30b9-9e88-f5bf724c1fd3", 
       "value": "morphine"
+    }, 
+    {
+      "description": "FILE:packed:multipacked", 
+      "meta": {
+        "refs": "https://encyclopedia.kaspersky.com/knowledge/multipacked/", 
+        "synonyms": [], 
+        "type": []
+      }, 
+      "related": [
+        {
+          "dest-uuid": "eb6d3fe4-5b8e-306c-84ef-960f4e14cf1a",
+          "type": "subtechnique-of"
+        }
+      ],
+      "uuid": "59f26518-641f-4c07-9aed-445d60158789", 
+      "value": "multipacked"
     }, 
     {
       "description": "FILE:packed:nakedpack", 
@@ -2793,6 +3052,12 @@
         "synonyms": [], 
         "type": []
       }, 
+      "related": [
+        {
+          "dest-uuid": "eb6d3fe4-5b8e-306c-84ef-960f4e14cf1a",
+          "type": "subtechnique-of"
+        }
+      ],
       "uuid": "030e9fd5-99c8-3c33-9896-d5711b54219a", 
       "value": "nakedpack"
     }, 
@@ -2803,6 +3068,12 @@
         "synonyms": [], 
         "type": []
       }, 
+      "related": [
+        {
+          "dest-uuid": "eb6d3fe4-5b8e-306c-84ef-960f4e14cf1a",
+          "type": "subtechnique-of"
+        }
+      ],
       "uuid": "9ebe63ac-3a1f-3a64-afed-8adcec5f2fff", 
       "value": "niceprotect"
     }, 
@@ -2813,6 +3084,12 @@
         "synonyms": [], 
         "type": []
       }, 
+      "related": [
+        {
+          "dest-uuid": "eb6d3fe4-5b8e-306c-84ef-960f4e14cf1a",
+          "type": "subtechnique-of"
+        }
+      ],
       "uuid": "fe292fb8-4e92-3def-8506-ee3278f457af", 
       "value": "npack"
     }, 
@@ -2823,6 +3100,12 @@
         "synonyms": [], 
         "type": []
       }, 
+      "related": [
+        {
+          "dest-uuid": "eb6d3fe4-5b8e-306c-84ef-960f4e14cf1a",
+          "type": "subtechnique-of"
+        }
+      ],
       "uuid": "3fa37052-f024-3c63-89be-d8c366d6f83e", 
       "value": "nspack"
     }, 
@@ -2833,6 +3116,12 @@
         "synonyms": [], 
         "type": []
       }, 
+      "related": [
+        {
+          "dest-uuid": "eb6d3fe4-5b8e-306c-84ef-960f4e14cf1a",
+          "type": "subtechnique-of"
+        }
+      ],
       "uuid": "5cea2ead-364f-3ff7-8dbf-9d0c0952c70c", 
       "value": "obsidium"
     }, 
@@ -2843,6 +3132,12 @@
         "synonyms": [], 
         "type": []
       }, 
+      "related": [
+        {
+          "dest-uuid": "eb6d3fe4-5b8e-306c-84ef-960f4e14cf1a",
+          "type": "subtechnique-of"
+        }
+      ],
       "uuid": "1bf29bd3-1e76-330c-87ee-c186adf9c646", 
       "value": "packman"
     }, 
@@ -2853,6 +3148,12 @@
         "synonyms": [], 
         "type": []
       }, 
+      "related": [
+        {
+          "dest-uuid": "eb6d3fe4-5b8e-306c-84ef-960f4e14cf1a",
+          "type": "subtechnique-of"
+        }
+      ],
       "uuid": "fe384ea4-109d-35ec-9f00-fea5f69914fd", 
       "value": "pearmor"
     }, 
@@ -2863,6 +3164,12 @@
         "synonyms": [], 
         "type": []
       }, 
+      "related": [
+        {
+          "dest-uuid": "eb6d3fe4-5b8e-306c-84ef-960f4e14cf1a",
+          "type": "subtechnique-of"
+        }
+      ],
       "uuid": "634815d7-0cd8-37da-b20f-b126a744b825", 
       "value": "pecompact"
     }, 
@@ -2873,6 +3180,12 @@
         "synonyms": [], 
         "type": []
       }, 
+      "related": [
+        {
+          "dest-uuid": "eb6d3fe4-5b8e-306c-84ef-960f4e14cf1a",
+          "type": "subtechnique-of"
+        }
+      ],
       "uuid": "70e0e627-e1a0-344a-a4cd-825e9de1b86f", 
       "value": "pecrypt"
     }, 
@@ -2883,6 +3196,12 @@
         "synonyms": [], 
         "type": []
       }, 
+      "related": [
+        {
+          "dest-uuid": "eb6d3fe4-5b8e-306c-84ef-960f4e14cf1a",
+          "type": "subtechnique-of"
+        }
+      ],
       "uuid": "36224c37-5a49-336f-9fa9-42db1db78cff", 
       "value": "pespin"
     }, 
@@ -2895,6 +3214,12 @@
         ], 
         "type": []
       }, 
+      "related": [
+        {
+          "dest-uuid": "eb6d3fe4-5b8e-306c-84ef-960f4e14cf1a",
+          "type": "subtechnique-of"
+        }
+      ],
       "uuid": "a515ed68-5ab7-3a7a-ba4d-63ff5edba892", 
       "value": "polycrypt"
     }, 
@@ -2905,6 +3230,12 @@
         "synonyms": [], 
         "type": []
       }, 
+      "related": [
+        {
+          "dest-uuid": "eb6d3fe4-5b8e-306c-84ef-960f4e14cf1a",
+          "type": "subtechnique-of"
+        }
+      ],
       "uuid": "26ee092f-b61c-3774-90ab-632d902a9690", 
       "value": "punisher"
     }, 
@@ -2915,6 +3246,12 @@
         "synonyms": [], 
         "type": []
       }, 
+      "related": [
+        {
+          "dest-uuid": "eb6d3fe4-5b8e-306c-84ef-960f4e14cf1a",
+          "type": "subtechnique-of"
+        }
+      ],
       "uuid": "d9221f76-bbe9-3936-a6f4-cc2582ed8ae8", 
       "value": "rcryptor"
     }, 
@@ -2925,6 +3262,12 @@
         "synonyms": [], 
         "type": []
       }, 
+      "related": [
+        {
+          "dest-uuid": "eb6d3fe4-5b8e-306c-84ef-960f4e14cf1a",
+          "type": "subtechnique-of"
+        }
+      ],
       "uuid": "a95dcb8b-fe56-31a7-80df-6764ed4b4759", 
       "value": "rlpack"
     }, 
@@ -2935,6 +3278,12 @@
         "synonyms": [], 
         "type": []
       }, 
+      "related": [
+        {
+          "dest-uuid": "eb6d3fe4-5b8e-306c-84ef-960f4e14cf1a",
+          "type": "subtechnique-of"
+        }
+      ],
       "uuid": "73ab92ef-dbf4-38d3-8687-e9df33211bd1", 
       "value": "sdprotector"
     }, 
@@ -2945,6 +3294,12 @@
         "synonyms": [], 
         "type": []
       }, 
+      "related": [
+        {
+          "dest-uuid": "eb6d3fe4-5b8e-306c-84ef-960f4e14cf1a",
+          "type": "subtechnique-of"
+        }
+      ],
       "uuid": "0e88fad9-544f-37fa-b4fd-13c91ea8afdd", 
       "value": "secapk"
     }, 
@@ -2955,6 +3310,12 @@
         "synonyms": [], 
         "type": []
       }, 
+      "related": [
+        {
+          "dest-uuid": "eb6d3fe4-5b8e-306c-84ef-960f4e14cf1a",
+          "type": "subtechnique-of"
+        }
+      ],
       "uuid": "e10e4847-cad5-32e3-ae8d-3f08d2c4baac", 
       "value": "secneo"
     }, 
@@ -2965,6 +3326,12 @@
         "synonyms": [], 
         "type": []
       }, 
+      "related": [
+        {
+          "dest-uuid": "eb6d3fe4-5b8e-306c-84ef-960f4e14cf1a",
+          "type": "subtechnique-of"
+        }
+      ],
       "uuid": "8cb96214-6910-3124-89fa-301eccee65ea", 
       "value": "simplepack"
     }, 
@@ -2975,6 +3342,12 @@
         "synonyms": [], 
         "type": []
       }, 
+      "related": [
+        {
+          "dest-uuid": "eb6d3fe4-5b8e-306c-84ef-960f4e14cf1a",
+          "type": "subtechnique-of"
+        }
+      ],
       "uuid": "6cf84378-cc5e-3e92-8a13-87697f25808f", 
       "value": "telock"
     }, 
@@ -2985,6 +3358,12 @@
         "synonyms": [], 
         "type": []
       }, 
+      "related": [
+        {
+          "dest-uuid": "eb6d3fe4-5b8e-306c-84ef-960f4e14cf1a",
+          "type": "subtechnique-of"
+        }
+      ],
       "uuid": "b247e2db-6c54-318f-95a4-8d3c0a0b384b", 
       "value": "themida"
     }, 
@@ -2995,6 +3374,12 @@
         "synonyms": [], 
         "type": []
       }, 
+      "related": [
+        {
+          "dest-uuid": "eb6d3fe4-5b8e-306c-84ef-960f4e14cf1a",
+          "type": "subtechnique-of"
+        }
+      ],
       "uuid": "a550b64f-0f43-3c19-b372-fff40ddf8002", 
       "value": "upack"
     }, 
@@ -3005,6 +3390,12 @@
         "synonyms": [], 
         "type": []
       }, 
+      "related": [
+        {
+          "dest-uuid": "eb6d3fe4-5b8e-306c-84ef-960f4e14cf1a",
+          "type": "subtechnique-of"
+        }
+      ],
       "uuid": "8a0a984c-44b7-38ed-8a8c-6e55a4c8d888", 
       "value": "upx"
     }, 
@@ -3017,6 +3408,12 @@
         ], 
         "type": []
       }, 
+      "related": [
+        {
+          "dest-uuid": "eb6d3fe4-5b8e-306c-84ef-960f4e14cf1a",
+          "type": "subtechnique-of"
+        }
+      ],
       "uuid": "b077a697-29f1-3780-9e37-88791a9e70c8", 
       "value": "vmprotect"
     }, 
@@ -3031,8 +3428,26 @@
         ], 
         "type": []
       }, 
+      "related": [
+        {
+          "dest-uuid": "eb6d3fe4-5b8e-306c-84ef-960f4e14cf1a",
+          "type": "subtechnique-of"
+        }
+      ],
       "uuid": "199805da-3a4c-3927-b32c-e6eb4b61f903", 
       "value": "yoda"
+    }, 
+    {
+      "description": "FILE:proglang:autohk", 
+      "meta": {
+        "refs": [], 
+        "synonyms": [
+          "autohotkey"
+        ], 
+        "type": []
+      }, 
+      "uuid": "5391799c-5a56-4e63-8438-eba2b331e65d", 
+      "value": "autohk"
     }, 
     {
       "description": "FILE:proglang:autoit", 
@@ -3330,6 +3745,23 @@
       "value": "gizmo"
     }, 
     {
+      "description": "FAM:glupteba",
+      "meta": {
+        "refs": [
+          "https://malpedia.caad.fkie.fraunhofer.de/details/win.glupteba",
+          "http://resources.infosecinstitute.com/tdss4-part-1/",
+          "http://malwarefor.me/2015-04-13-nuclear-ek-glupteba-and-operation-windigo/",
+          "https://www.welivesecurity.com/2014/03/18/operation-windigo-the-vivisection-of-a-large-linux-server-side-credential-stealing-malware-campaign/",
+          "https://www.welivesecurity.com/2011/03/02/tdl4-and-glubteba-piggyback-piggybugs/",
+          "https://www.welivesecurity.com/2018/03/22/glupteba-no-longer-windigo/"
+        ],
+        "synonyms": [],
+        "type": []
+      },
+      "uuid": "0409c6ab-133a-448e-a2cf-c2c7f55d4100",
+      "value": "glupteba"
+    },
+    {
       "description": "FAM:gobot", 
       "meta": {
         "refs": [], 
@@ -3411,6 +3843,50 @@
       "value": "goodnews"
     }, 
     {
+      "description": "FAM:goodor", 
+      "meta": {
+        "refs": "https://malpedia.caad.fkie.fraunhofer.de/details/win.goodor", 
+        "synonyms": [
+          "fuerboos"
+        ], 
+        "type": []
+      }, 
+      "uuid": "2115d439-31e9-45bd-ae00-dcb2fa5cde9c", 
+      "value": "goodor"
+    }, 
+    {
+      "description": "FAM:gootkit",
+      "meta": {
+        "refs": [
+          "https://malpedia.caad.fkie.fraunhofer.de/details/win.gootkit",
+          "https://www.lexsi.com/securityhub/homer-simpson-brian-krebs-rencontrent-zeus-gootkit/",
+          "http://blog.cert.societegenerale.com/2015/04/analyzing-gootkits-persistence-mechanism.html",
+          "https://securityintelligence.com/gootkit-developers-dress-it-up-with-web-traffic-proxy/",
+          "https://forums.juniper.net/t5/Security-Now/New-Gootkit-Banking-Trojan-variant-pushes-the-limits-on-evasive/ba-p/319055",
+          "https://www.f5.com/labs/articles/threat-intelligence/tackling-gootkit-s-traps",
+          "https://securelist.com/blog/research/76433/inside-the-gootkit-cc-server/",
+          "https://www.us-cert.gov/ncas/alerts/TA16-336A",
+          "http://www.vkremez.com/2018/04/lets-learn-in-depth-dive-into-gootkit.html",
+          "https://securityintelligence.com/gootkit-bobbing-and-weaving-to-avoid-prying-eyes/",
+          "https://www.youtube.com/watch?v=242Tn0IL2jE",
+          "http://www.kernelmode.info/forum/viewtopic.php?f=16&t=3669",
+          "https://www.s21sec.com/en/blog/2016/05/reverse-engineering-gootkit/",
+          "http://blog.trendmicro.com/trendlabs-security-intelligence/fake-judicial-spam-leads-to-backdoor-with-fake-certificate-authority/",
+          "https://news.drweb.com/show/?i=4338&lng=en",
+          "https://www.youtube.com/watch?v=QgUlPvEE4aw",
+          "https://www.cyphort.com/angler-ek-leads-to-fileless-gootkit/"
+        ],
+        "synonyms": [
+          "xswkit",
+          "talalpek",
+          "waldek"
+        ],
+        "type": []
+      },
+      "uuid": "beb37b7f-d2f9-47c5-a53b-4b5bb7db9cdf",
+      "value": "gootkit"
+    },
+    {
       "description": "FAM:gorillaprice", 
       "meta": {
         "refs": [], 
@@ -3422,6 +3898,27 @@
       "uuid": "83db9052-450f-30d9-90f0-e9ccffb3b348", 
       "value": "gorillaprice"
     }, 
+    {
+      "description": "FAM:gozi",
+      "meta": {
+        "refs": [
+          "https://malpedia.caad.fkie.fraunhofer.de/details/win.gozi",
+          "http://blog.malwaremustdie.org/2013/02/the-infection-of-styx-exploit-kit.html",
+          "https://www.secureworks.com/research/gozi",
+          "https://lokalhost.pl/gozi_tree.txt",
+          "https://blog.gdatasoftware.com/2016/11/29325-analysis-ursnif-spying-on-your-data-since-2007",
+          "http://researchcenter.paloaltonetworks.com/2017/02/unit42-banking-trojans-ursnif-global-distribution-networks-identified/"
+        ],
+        "synonyms": [
+          "papras",
+          "snifula",
+          "ursnif"
+        ],
+        "type": []
+      },
+      "uuid": "5fac06c6-010a-4af3-99c9-cb0052057bdf",
+      "value": "gozi"
+    },
     {
       "description": "FAM:gpspy", 
       "meta": {
@@ -3617,6 +4114,21 @@
       "value": "hiddenapp"
     }, 
     {
+      "description": "FAM:hiddentear",
+      "meta": {
+        "refs": [
+          "https://malpedia.caad.fkie.fraunhofer.de/details/win.hiddentear",
+          "https://www.tripwire.com/state-of-security/security-data-protection/cyber-security/hidden-tear-project-forbidden-fruit-is-the-sweetest/",
+          "https://twitter.com/struppigel/status/950787783353884672",
+          "https://github.com/goliate/hidden-tear"
+        ],
+        "synonyms": [],
+        "type": []
+      },
+      "uuid": "06e7d142-3ad1-40b6-b231-41dd47465ac3",
+      "value": "hiddentear"
+    },
+    {
       "description": "FAM:hiddnad", 
       "meta": {
         "refs": [], 
@@ -3718,6 +4230,25 @@
       "uuid": "373d306c-aaa3-38e3-b839-7dd39b51e89a", 
       "value": "hotclip"
     }, 
+    {
+      "description": "FAM:houdini",
+      "meta": {
+        "refs": [
+          "https://malpedia.caad.fkie.fraunhofer.de/details/win.houdini",
+          "http://researchcenter.paloaltonetworks.com/2016/10/unit42-houdinis-magic-reappearance/?adbsc=social67221546&adbid=790972447373668352&adbpl=tw&adbpr=4487645412",
+          "http://blogs.360.cn/post/analysis-of-apt-c-37.html"
+        ],
+        "synonyms": [
+          "dunihi",
+          "dinihou",
+          "hworm",
+          "jenxcus"
+        ],
+        "type": []
+      },
+      "uuid": "1f268f26-ad8b-4e4d-9efb-661904171c2a",
+      "value": "houdini"
+    },
     {
       "description": "FAM:hoverwatch", 
       "meta": {
@@ -4638,6 +5169,19 @@
       "value": "laroux"
     }, 
     {
+      "description": "FAM:lazagne",
+      "meta": {
+        "refs": [
+          "https://attack.mitre.org/software/S0349",
+          "https://github.com/AlessandroZ/LaZagne"
+        ],
+        "synonyms": [],
+        "type": []
+      },
+      "uuid": "a8b9546f-1a91-468d-9304-3f6654d39352",
+      "value": "lazagne"
+    },
+    {
       "description": "FAM:ldpinch", 
       "meta": {
         "refs": [], 
@@ -4726,6 +5270,21 @@
       "value": "lien"
     }, 
     {
+      "description": "FAM:limerat",
+      "meta": {
+        "refs": [
+          "https://malpedia.caad.fkie.fraunhofer.de/details/win.limerat",
+          "https://www.youtube.com/watch?v=x-g-ZLeX8GM",
+          "https://blog.yoroi.company/research/limerat-spreads-in-the-wild/",
+          "https://github.com/NYAN-x-CAT/Lime-RAT/"
+        ],
+        "synonyms": [],
+        "type": []
+      },
+      "uuid": "1ea6f1b4-cf3d-40aa-981f-31a1efbd819f",
+      "value": "limerat"
+    },
+    {
       "description": "FAM:linkular", 
       "meta": {
         "refs": [], 
@@ -4803,6 +5362,22 @@
       "uuid": "bc6ae7c3-eff8-3b11-999b-4248e5d93073", 
       "value": "loapi"
     }, 
+    {
+      "description": "FAM:loda",
+      "meta": {
+        "refs": [
+          "https://malpedia.caad.fkie.fraunhofer.de/details/win.loda",
+          "https://www.proofpoint.com/us/threat-insight/post/introducing-loda-malware",
+          "https://zerophagemalware.com/2018/01/23/maldoc-rtf-drop-loda-logger/"
+        ],
+        "synonyms": [
+          "nymeria"
+        ],
+        "type": []
+      },
+      "uuid": "f6203215-d07e-4108-bb75-ee5ad7e9dbfc",
+      "value": "loda"
+    },
     {
       "description": "FAM:lockactivity", 
       "meta": {
@@ -5788,6 +6363,24 @@
       "value": "nandrobox"
     }, 
     {
+      "description": "FAM:nanocore",
+      "meta": {
+        "refs": [
+          "https://malpedia.caad.fkie.fraunhofer.de/details/win.nanocore",
+          "https://www.fireeye.com/blog/threat-research/2017/09/apt33-insights-into-iranian-cyber-espionage.html",
+          "https://www.symantec.com/blogs/threat-intelligence/elfin-apt33-espionage",
+          "https://researchcenter.paloaltonetworks.com/2018/08/unit42-gorgon-group-slithering-nation-state-cybercrime/",
+          "https://www.bleepingcomputer.com/news/security/nanocore-rat-author-gets-33-months-in-prison/"
+        ],
+        "synonyms": [
+          "nancrat"
+        ],
+        "type": []
+      },
+      "uuid": "048b948f-5e4d-4e6f-a0b5-54157cf03c86",
+      "value": "nanocore"
+    },
+    {
       "description": "FAM:navbar", 
       "meta": {
         "refs": [], 
@@ -5826,6 +6419,25 @@
       }, 
       "uuid": "ddf07c01-91d3-35ab-b393-3afabe39dff7", 
       "value": "necurs"
+    }, 
+    {
+      "description": "FAM:neoreklami", 
+      "meta": {
+        "refs": [
+          "https://blog.malwarebytes.com/detections/adware-neoreklami/",
+          "https://www.microsoft.com/en-us/wdsi/threats/malware-encyclopedia-description?Name=Adware:Win32/Neoreklami"
+        ], 
+        "synonyms": [], 
+        "type": []
+      }, 
+      "related": [
+        {
+          "dest-uuid": "590eeb1a-2742-3301-94bf-9fa0856e959c",
+          "type": "variant-of"
+        }
+      ],
+      "uuid": "665ecfd3-b713-465f-879b-5182203b4a8b", 
+      "value": "neoreklami"
     }, 
     {
       "description": "FAM:neospy", 
@@ -5880,7 +6492,8 @@
         "synonyms": [
           "netweird", 
           "weecnaw", 
-          "wirenet"
+          "wirenet",
+          "netwire"
         ], 
         "type": []
       }, 
@@ -6141,6 +6754,26 @@
       "value": "optix"
     }, 
     {
+      "description": "FAM:orcusrat",
+      "meta": {
+        "refs": [
+          "https://malpedia.caad.fkie.fraunhofer.de/details/win.orcus_rat",
+          "https://orcustechnologies.com/",
+          "https://blog.fortinet.com/2017/12/07/a-peculiar-case-of-orcus-rat-targeting-bitcoin-investors",
+          "https://www.canada.ca/en/radio-television-telecommunications/news/2019/03/crtc-and-rcmp-national-division-execute-warrants-in-malware-investigation.html",
+          "https://krebsonsecurity.com/2016/07/canadian-man-is-author-of-popular-orcus-rat/",
+          "https://krebsonsecurity.com/2019/04/canadian-police-raid-orcus-rat-author/",
+          "http://researchcenter.paloaltonetworks.com/2016/08/unit42-orcus-birth-of-an-unusual-plugin-builder-rat/"
+        ],
+        "synonyms": [
+          "orcus"
+        ],
+        "type": []
+      },
+      "uuid": "0c57b2b4-b545-4b5d-bd27-b102b635e432",
+      "value": "orcusrat"
+    },
+    {
       "description": "FAM:outbrowse", 
       "meta": {
         "refs": [], 
@@ -6303,6 +6936,25 @@
       "uuid": "457c9036-a4bf-355e-844a-e74dd69c80e7", 
       "value": "petrolin"
     }, 
+    {
+      "description": "FAM:petya",
+      "meta": {
+        "refs": [
+          "https://malpedia.caad.fkie.fraunhofer.de/details/win.petya",
+          "https://blog.malwarebytes.com/threat-analysis/2016/05/petya-and-mischa-ransomware-duet-p1/",
+          "https://blog.malwarebytes.com/threat-analysis/2016/07/third-time-unlucky-improved-petya-is-out/",
+          "https://blog.malwarebytes.com/cybercrime/2017/07/keeping-up-with-the-petyas-demystifying-the-malware-family/",
+          "https://blog.malwarebytes.com/malwarebytes-news/2017/07/bye-bye-petya-decryptor-old-versions-released/",
+          "https://blog.malwarebytes.com/threat-analysis/2016/04/petya-ransomware/"
+        ],
+        "synonyms": [
+          "petr"
+        ],
+        "type": []
+      },
+      "uuid": "c4324143-3921-4771-a9b2-f15ae2b3777f",
+      "value": "petya"
+    },
     {
       "description": "FAM:phonespy", 
       "meta": {
@@ -6707,6 +7359,33 @@
       "value": "qqrob"
     }, 
     {
+      "description": "FAM:quasar",
+      "meta": {
+        "refs": [
+          "https://malpedia.caad.fkie.fraunhofer.de/details/win.quasar_rat",
+          "https://researchcenter.paloaltonetworks.com/2018/01/unit42-vermin-quasar-rat-custom-malware-used-ukraine/",
+          "https://www.fireeye.com/blog/threat-research/2019/04/spear-phishing-campaign-targets-ukraine-government.html",
+          "https://researchcenter.paloaltonetworks.com/2018/08/unit42-gorgon-group-slithering-nation-state-cybercrime/",
+          "https://github.com/quasar/QuasarRAT/tree/master/Client",
+          "https://www.volexity.com/blog/2018/06/07/patchwork-apt-group-targets-us-think-tanks/",
+          "https://www.pwc.co.uk/cyber-security/pdf/cloud-hopper-annex-b-final.pdf",
+          "http://researchcenter.paloaltonetworks.com/2017/01/unit42-downeks-and-quasar-rat-used-in-recent-targeted-attacks-against-governments",
+          "https://documents.trendmicro.com/assets/tech-brief-untangling-the-patchwork-cyberespionage-group.pdf?platform=hootsuite",
+          "https://ti.360.net/blog/articles/analysis-of-apt-c-09-target-china/",
+          "https://www.symantec.com/blogs/threat-intelligence/elfin-apt33-espionage",
+          "https://twitter.com/malwrhunterteam/status/789153556255342596",
+          "https://www.welivesecurity.com/2018/07/17/deep-dive-vermin-rathole/"
+        ],
+        "synonyms": [
+          "quasar_rat",
+          "quasarrat"
+        ],
+        "type": []
+      },
+      "uuid": "620903d7-42ed-4a16-b3df-4ca6076d9f31",
+      "value": "quasar"
+    },
+    {
       "description": "FAM:qumi", 
       "meta": {
         "refs": [], 
@@ -6738,6 +7417,26 @@
       "uuid": "0761227e-1a79-3a7b-bda6-b5962458e4ec", 
       "value": "qushu"
     }, 
+    {
+      "description": "FAM:raccoon",
+      "meta": {
+        "refs": [
+          "https://malpedia.caad.fkie.fraunhofer.de/details/win.raccoon",
+          "https://www.secfreaks.gr/2019/12/in-depth-analysis-of-an-infostealer-raccoon.html",
+          "https://www.bitdefender.com/files/News/CaseStudies/study/289/Bitdefender-WhitePaper-Fallout.pdf",
+          "https://www.cybereason.com/blog/hunting-raccoon-stealer-the-new-masked-bandit-on-the-block",
+          "https://www.cynexlink.com/2020/12/26/raccoon-malware-a-threat-to-cybersecurity/"
+        ],
+        "synonyms": [
+          "mohazo",
+          "racealer",
+          "racoon"
+        ],
+        "type": []
+      },
+      "uuid": "b934637a-5c8d-43bc-b595-61e8acd9af78",
+      "value": "raccoon"
+    },
     {
       "description": "FAM:raden", 
       "meta": {
@@ -6799,6 +7498,25 @@
       }, 
       "uuid": "ac2392d0-c38e-3909-aabf-5e632062f24d", 
       "value": "razam"
+    }, 
+    {
+      "description": "FAM:razy", 
+      "meta": {
+        "refs": [
+          "https://www.microsoft.com/en-us/wdsi/threats/malware-encyclopedia-description?Name=Trojan:Win32/Razy.A",
+          "https://threatpost.com/razy-browser-extensions-theft/141181/"
+        ], 
+        "synonyms": [], 
+        "type": []
+      }, 
+      "related": [
+        {
+          "dest-uuid": "636db272-61ce-3e0f-ad64-d77048b05066",
+          "type": "variant-of"
+        }
+      ],
+      "uuid": "aad8ce8e-0c82-42f7-a63c-bbfe85c015b6", 
+      "value": "razy"
     }, 
     {
       "description": "FAM:rbot", 
@@ -6924,6 +7642,31 @@
       "value": "relevantknowledge"
     }, 
     {
+      "description": "FAM:remcos",
+      "meta": {
+        "refs": [
+          "https://malpedia.caad.fkie.fraunhofer.de/details/win.remcos",
+          "https://www.riskiq.com/blog/labs/spear-phishing-turkish-defense-contractors/",
+          "https://researchcenter.paloaltonetworks.com/2018/08/unit42-gorgon-group-slithering-nation-state-cybercrime/",
+          "http://malware-traffic-analysis.net/2017/12/22/index.html",
+          "https://www.symantec.com/blogs/threat-intelligence/elfin-apt33-espionage",
+          "https://blog.fortinet.com/2017/02/14/remcos-a-new-rat-in-the-wild-2",
+          "https://krabsonsecurity.com/2018/03/02/analysing-remcos-rats-executable/",
+          "https://myonlinesecurity.co.uk/fake-order-spoofed-from-finchers-ltd-sankyo-rubber-delivers-remcos-rat-via-ace-attachments/",
+          "https://blog.talosintelligence.com/2018/08/picking-apart-remcos.html",
+          "https://secrary.com/ReversingMalware/RemcosRAT/"
+        ],
+        "synonyms": [
+          "remcosrat", 
+          "remvio", 
+          "socmer"
+        ],
+        "type": []
+      },
+      "uuid": "1b2a647e-35a2-418d-95e2-e77e0423060b",
+      "value": "remcos"
+    },
+    {
       "description": "FAM:renocide", 
       "meta": {
         "refs": [], 
@@ -6993,6 +7736,24 @@
       "uuid": "94805334-1d2e-3621-aa6d-0b3dc8e0405d", 
       "value": "reveton"
     }, 
+    {
+      "description": "FAM:revetrat",
+      "meta": {
+        "refs": [
+          "https://malpedia.caad.fkie.fraunhofer.de/details/win.revenge_rat",
+          "https://isc.sans.edu/diary/rss/22590",
+          "https://researchcenter.paloaltonetworks.com/2018/08/unit42-gorgon-group-slithering-nation-state-cybercrime/",
+          "http://blog.deniable.org/blog/2016/08/26/lurking-around-revenge-rat/"
+        ],
+        "synonyms": [
+          "revenge",
+          "revet"
+        ],
+        "type": []
+      },
+      "uuid": "2326ae09-ab18-41cd-8f87-187853a8623f",
+      "value": "revetrat"
+    },
     {
       "description": "FAM:revmob", 
       "meta": {
@@ -7123,6 +7884,19 @@
       "value": "rotexy"
     }, 
     {
+      "description": "FAM:rozena",
+      "meta": {
+        "refs": [
+          "https://malpedia.caad.fkie.fraunhofer.de/details/win.rozena",
+          "https://www.gdatasoftware.com/blog/2018/06/30862-fileless-malware-rozena"
+        ],
+        "synonyms": [],
+        "type": []
+      },
+      "uuid": "106d00a7-2044-46b6-9c08-35eb775764df",
+      "value": "rozena"
+    },
+    {
       "description": "FAM:rufraud", 
       "meta": {
         "refs": [], 
@@ -7176,6 +7950,31 @@
       "uuid": "1b7e36bf-e9dd-33c8-a9af-ad56c3c07f2b", 
       "value": "rusms"
     }, 
+    {
+      "description": "FAM:ryuk",
+      "meta": {
+        "refs": [
+          "https://malpedia.caad.fkie.fraunhofer.de/details/win.ryuk",
+          "https://www.cybereason.com/blog/triple-threat-emotet-deploys-trickbot-to-steal-data-spread-ryuk-ransomware",
+          "https://research.checkpoint.com/ryuk-ransomware-targeted-campaign-break/",
+          "https://www.latimes.com/local/lanow/la-me-ln-times-delivery-disruption-20181229-story.html",
+          "https://www.crowdstrike.com/blog/big-game-hunting-with-ryuk-another-lucrative-targeted-ransomware/",
+          "https://www.fireeye.com/blog/threat-research/2019/01/a-nasty-trick-from-credential-theft-malware-to-business-disruption.html",
+          "https://www.fireeye.com/blog/threat-research/2019/04/pick-six-intercepting-a-fin6-intrusion.html",
+          "https://securingtomorrow.mcafee.com/other-blogs/mcafee-labs/ryuk-ransomware-attack-rush-to-attribution-misses-the-point/"
+        ],
+        "synonyms": [],
+        "type": []
+      },
+      "related": [
+        {
+          "dest-uuid": "a8f4f4fa-1558-3f16-ac56-bce903a83b22",
+          "type": "variant-of"
+        }
+      ],
+      "uuid": "abf8f3dc-4dbf-47b3-95fd-b35ac2ed3f46",
+      "value": "ryuk"
+    },
     {
       "description": "FAM:sacti", 
       "meta": {
@@ -7266,6 +8065,26 @@
       "value": "sality"
     }, 
     {
+      "description": "FAM:samsam",
+      "meta": {
+        "refs": [
+          "https://malpedia.caad.fkie.fraunhofer.de/details/win.samsam",
+          "http://blog.talosintel.com/2016/03/samsam-ransomware.html",
+          "https://www.sophos.com/en-us/medialibrary/pdfs/technical-papers/samsam-ransomware-chooses-its-targets-carefully-wpna.aspx",
+          "https://www.crowdstrike.com/blog/an-in-depth-analysis-of-samsam-ransomware-and-boss-spider/",
+          "https://www.justice.gov/opa/pr/two-iranian-men-indicted-deploying-ransomware-extort-hospitals-municipalities-and-public",
+          "https://nakedsecurity.sophos.com/2018/05/01/samsam-ransomware-a-mean-old-dog-with-a-nasty-new-trick-report/",
+          "http://blog.talosintelligence.com/2018/01/samsam-evolution-continues-netting-over.html"
+        ],
+        "synonyms": [
+          "samas"
+        ],
+        "type": []
+      },
+      "uuid": "d00e9064-f1e9-4696-87dc-13031aa4553d",
+      "value": "samsam"
+    },
+    {
       "description": "FAM:sanctionedmedia", 
       "meta": {
         "refs": [], 
@@ -7309,6 +8128,20 @@
       }, 
       "uuid": "b568a5b2-1008-33cb-85ba-c461018fc2c8", 
       "value": "scam"
+    }, 
+    {
+      "description": "FAM:schwarzesonne", 
+      "meta": {
+        "refs": [
+          "https://www.microsoft.com/en-us/wdsi/threats/malware-encyclopedia-description?Name=Trojan:Win32/SchwarzeSonne!MSR",
+          "https://www.fortiguard.com/encyclopedia/virus/7488534",
+          "https://www.virusradar.com/en/Win32_SchwarzeSonne.BL/description"
+        ], 
+        "synonyms": [], 
+        "type": []
+      }, 
+      "uuid": "a4c164cc-a4a1-4b7f-a9a2-c664f6b461d4", 
+      "value": "schwarzesonne"
     }, 
     {
       "description": "FAM:sckeylog", 
@@ -7431,6 +8264,27 @@
       "uuid": "ad21874f-d8c7-33d7-9527-c9d666171aa8", 
       "value": "shedun"
     }, 
+    {
+      "description": "FAM:shelma",
+      "meta": {
+        "refs": [
+          "https://malpedia.caad.fkie.fraunhofer.de/details/win.doghousepower",
+          "http://www1.paladion.net/hubfs/Newsletter/DogHousePower-%20Newly%20Identified%20Python-Based%20Ransomware.pdf"
+        ],
+        "synonyms": [
+          "doghousepower"
+        ],
+        "type": []
+      },
+      "related": [
+        {
+          "dest-uuid": "a8f4f4fa-1558-3f16-ac56-bce903a83b22",
+          "type": "variant-of"
+        }
+      ],
+      "uuid": "47ff7101-61d2-464f-8210-6fe26cac2772",
+      "value": "shelma"
+    },
     {
       "description": "FAM:sheridroid", 
       "meta": {
@@ -8239,6 +9093,7 @@
         "refs": [], 
         "synonyms": [
           "encoder", 
+          "diskcoder",
           "filecoder", 
           "ransomcrypt", 
           "trojanransom"
@@ -8309,11 +9164,14 @@
         "refs": [], 
         "synonyms": [
           "banker", 
-          "datasetaler", 
+          "bitstealer",
+          "datastealer", 
+          "discostealer",
           "delfsnif", 
           "delpbanc", 
           "infostealer", 
           "monitor", 
+          "passwordstealera",
           "pswtool", 
           "pwsteal", 
           "pwstealer", 
@@ -8327,6 +9185,22 @@
       "value": "infosteal"
     }, 
     {
+      "description": "BEH:infosteal:coinstealer", 
+      "meta": {
+        "refs": [], 
+        "synonyms": [], 
+        "type": []
+      }, 
+      "related": [
+        {
+          "dest-uuid": "c65071d8-2bad-302b-8646-d309f7705fdb",
+          "type": "subtechnique-of"
+        }
+      ],
+      "uuid": "e8e60d44-4950-4671-b56e-707d6ce0b2f6", 
+      "value": "coinstealer"
+    }, 
+    {
       "description": "BEH:infosteal:gamethief", 
       "meta": {
         "refs": [], 
@@ -8335,6 +9209,12 @@
         ], 
         "type": []
       }, 
+      "related": [
+        {
+          "dest-uuid": "c65071d8-2bad-302b-8646-d309f7705fdb",
+          "type": "subtechnique-of"
+        }
+      ],
       "uuid": "b87b252e-b364-3cbb-92cf-939b2343b0bc", 
       "value": "gamethief"
     }, 
@@ -8416,6 +9296,12 @@
         ], 
         "type": []
       }, 
+      "related": [
+        {
+          "dest-uuid": "aecd212a-8701-3527-bbde-8cd36b405f93",
+          "type": "subtechnique-of"
+        }
+      ],
       "uuid": "1b4d1d8e-9cbf-3f9b-8308-23e6de3456fd", 
       "value": "killsectool"
     }, 
@@ -8852,6 +9738,12 @@
         ], 
         "type": []
       }, 
+      "related": [
+        {
+          "dest-uuid": "0fa687bd-caa9-32b1-a77e-13b98dc83685",
+          "type": "variant-of"
+        }
+      ],
       "uuid": "590eeb1a-2742-3301-94bf-9fa0856e959c", 
       "value": "adware"
     }, 
@@ -8864,6 +9756,12 @@
         ], 
         "type": []
       }, 
+      "related": [
+        {
+          "dest-uuid": "0fa687bd-caa9-32b1-a77e-13b98dc83685",
+          "type": "variant-of"
+        }
+      ],
       "uuid": "3ce6bd72-2133-35f8-b5a9-3d22c5e55a93", 
       "value": "casino"
     }, 
@@ -8883,6 +9781,12 @@
         ], 
         "type": []
       }, 
+      "related": [
+        {
+          "dest-uuid": "590eeb1a-2742-3301-94bf-9fa0856e959c",
+          "type": "subtechnique-of"
+        }
+      ],
       "uuid": "636db272-61ce-3e0f-ad64-d77048b05066", 
       "value": "multiplug"
     }, 
@@ -8904,8 +9808,30 @@
         ], 
         "type": []
       }, 
+      "related": [
+        {
+          "dest-uuid": "0fa687bd-caa9-32b1-a77e-13b98dc83685",
+          "type": "variant-of"
+        }
+      ],
       "uuid": "b6d3ea56-83b3-3524-a2f5-c87ce2ed0aab", 
       "value": "tool"
+    }, 
+    {
+      "description": "CLASS:grayware:tool:remoteadmin", 
+      "meta": {
+        "refs": [], 
+        "synonyms": [], 
+        "type": []
+      }, 
+      "related": [
+        {
+          "dest-uuid": "b6d3ea56-83b3-3524-a2f5-c87ce2ed0aab",
+          "type": "variant-of"
+        }
+      ],
+      "uuid": "e43ecd9a-2734-34d6-b24f-77be13f4b9cd", 
+      "value": "remoteadmin"
     }, 
     {
       "description": "CLASS:hoax", 
@@ -8918,16 +9844,6 @@
       }, 
       "uuid": "e7bd337d-700c-376b-ac75-61c85dd8a246", 
       "value": "hoax"
-    }, 
-    {
-      "description": "CLASS:grayware:tool:remoteadmin", 
-      "meta": {
-        "refs": [], 
-        "synonyms": [], 
-        "type": []
-      }, 
-      "uuid": "e43ecd9a-2734-34d6-b24f-77be13f4b9cd", 
-      "value": "remoteadmin"
     }, 
     {
       "description": "CLASS:hoax:smshoax", 
@@ -8993,6 +9909,12 @@
         ], 
         "type": []
       }, 
+      "related": [
+        {
+          "dest-uuid": "64376dc5-0640-33a5-ba0e-1a4b71922c06",
+          "type": "variant-of"
+        }
+      ],
       "uuid": "3265ee34-384e-3dc8-9652-19d88d4374cb", 
       "value": "bitcoinminer"
     }, 
@@ -9096,6 +10018,12 @@
         "synonyms": [], 
         "type": []
       }, 
+      "related": [
+        {
+          "dest-uuid": "973cc9e5-32ab-3403-9ead-eb941690fc23",
+          "type": "subtechnique-of"
+        }
+      ],
       "uuid": "b7be1d66-ac27-3b2c-8361-a652564ec2e3", 
       "value": "prepender"
     }, 
@@ -9109,6 +10037,12 @@
         ], 
         "type": []
       }, 
+      "related": [
+        {
+          "dest-uuid": "90bb8141-d467-3376-8c85-4e0ec9a2be05",
+          "type": "uses"
+        }
+      ],
       "uuid": "f0b15f66-0eae-37d8-bf08-eeca70557795", 
       "value": "worm"
     }, 
@@ -9119,6 +10053,12 @@
         "synonyms": [], 
         "type": []
       }, 
+      "related": [
+        {
+          "dest-uuid": "f0b15f66-0eae-37d8-bf08-eeca70557795",
+          "type": "subtechnique-of"
+        }
+      ],
       "uuid": "980f8421-cccd-3c17-b998-1ab1b7c7bdb9", 
       "value": "emailworm"
     }, 
@@ -9378,6 +10318,32 @@
       "value": "adviator"
     }, 
     {
+      "description": "FAM:adwind",
+      "meta": {
+        "refs": [
+          "https://malpedia.caad.fkie.fraunhofer.de/details/jar.adwind",
+          "https://blogs.seqrite.com/evolution-of-jrat-java-malware/",
+          "https://www.fortinet.com/blog/threat-research/new-jrat-adwind-variant-being-spread-with-package-delivery-scam.html",
+          "http://blog.trendmicro.com/trendlabs-security-intelligence/spam-remote-access-trojan-adwind-jrat",
+          "http://malware-traffic-analysis.net/2017/07/04/index.html",
+          "https://codemetrix.net/decrypting-adwind-jrat-jbifrost-trojan/",
+          "https://gist.github.com/herrcore/8336975475e88f9bc539d94000412885",
+          "https://blog.talosintelligence.com/2018/09/adwind-dodgesav-dde.html"
+        ],
+        "synonyms": [
+          "AlienSpy",
+          "Frutas",
+          "JBifrost",
+          "JSocket",
+          "Sockrat",
+          "UNRECOM"
+        ],
+        "type": []
+      },
+      "uuid": "04e324c1-a981-4bf7-aab4-d64d0dacae51",
+      "value": "adwind"
+    },
+    {
       "description": "FAM:adwk", 
       "meta": {
         "refs": [], 
@@ -9409,6 +10375,25 @@
       "uuid": "1bcf8191-2d6d-3f3e-a114-7df87b8aafcd", 
       "value": "aesads"
     }, 
+    {
+      "description": "FAM:agenttesla",
+      "meta": {
+        "refs": [
+          "https://malpedia.caad.fkie.fraunhofer.de/details/win.agent_tesla",
+          "https://researchcenter.paloaltonetworks.com/2017/09/unit42-analyzing-various-layers-agentteslas-packing/",
+          "https://malwarebreakdown.com/2018/01/11/malspam-entitled-invoice-attched-for-your-reference-delivers-agent-tesla-keylogger/",
+          "https://www.zscaler.com/blogs/research/agent-tesla-keylogger-delivered-using-cybersquatting",
+          "https://blog.fortinet.com/2017/06/28/in-depth-analysis-of-net-malware-javaupdtr",
+          "https://www.fortinet.com/blog/threat-research/analysis-of-new-agent-tesla-spyware-variant.html",
+          "https://thisissecurity.stormshield.com/2018/01/12/agent-tesla-campaign/",
+          "https://blogs.forcepoint.com/security-labs/part-two-camouflage-netting"
+        ],
+        "synonyms": [],
+        "type": []
+      },
+      "uuid": "bd4238f7-fbfc-4ad8-b42e-247013c6df3d",
+      "value": "agenttesla"
+    },
     {
       "description": "FAM:agobot", 
       "meta": {
@@ -9804,6 +10789,21 @@
       "value": "autosus"
     }, 
     {
+      "description": "FAM:avemaria",
+      "meta": {
+        "refs": [
+          "https://malpedia.caad.fkie.fraunhofer.de/details/win.ave_maria",
+          "https://blog.yoroi.company/research/the-ave_maria-malware/"
+        ],
+        "synonyms": [
+          "AVE_MARIA"
+        ],
+        "type": []
+      },
+      "uuid": "a006993a-6e83-4fb5-a6a6-d67a7dc71c23",
+      "value": "avemaria"
+    },
+    {
       "description": "FAM:axespy", 
       "meta": {
         "refs": [], 
@@ -9813,6 +10813,31 @@
       "uuid": "7bce3d09-df0c-3593-8353-7812dd205844", 
       "value": "axespy"
     }, 
+    {
+      "description": "FAM:azorult",
+      "meta": {
+        "refs": [
+          "https://malpedia.caad.fkie.fraunhofer.de/details/win.azorult",
+          "https://www.bleepingcomputer.com/news/security/azorult-trojan-serving-aurora-ransomware-by-malactor-oktropys/",
+          "https://blog.minerva-labs.com/puffstealer-evasion-in-a-cloak-of-multiple-layers",
+          "https://malwarebreakdown.com/2017/07/24/the-seamless-campaign-drops-ramnit-follow-up-malware-azorult-stealer-smoke-loader-etc/",
+          "https://www.proofpoint.com/us/threat-insight/post/threat-actors-using-legitimate-paypal-accounts-to-distribute-chthonic-banking-trojan",
+          "http://www.vkremez.com/2017/07/lets-learn-reversing-credential-and.html",
+          "https://blog.minerva-labs.com/azorult-now-as-a-signed-google-update",
+          "https://www.proofpoint.com/us/threat-insight/post/new-version-azorult-stealer-improves-loading-features-spreads-alongside",
+          "https://malwarebreakdown.com/2017/11/12/seamless-campaign-delivers-ramnit-via-rig-ek-at-188-225-82-158-follow-up-malware-is-azorult-stealer/",
+          "https://www.blueliv.com/blog-news/research/azorult-crydbrox-stops-sells-malware-credential-stealer/",
+          "https://research.checkpoint.com/the-emergence-of-the-new-azorult-3-3/"
+        ],
+        "synonyms": [
+          "puffstealer",
+          "rultazo"
+        ],
+        "type": []
+      },
+      "uuid": "fc17c756-528b-416e-907d-9d1ef7403df1",
+      "value": "azorult"
+    },
     {
       "description": "FAM:badda", 
       "meta": {
@@ -9967,6 +10992,27 @@
       "uuid": "40f45119-a4ce-335c-be07-c46ff67f3dcf", 
       "value": "bauts"
     }, 
+    {
+      "description": "FAM:bazar",
+      "meta": {
+        "refs": [
+          "https://malpedia.caad.fkie.fraunhofer.de/details/win.bazarbackdoor",
+          "https://www.advanced-intel.com/post/anatomy-of-attack-inside-bazarbackdoor-to-ryuk-ransomware-one-group-via-cobalt-strike",
+          "https://www.pandasecurity.com/en/mediacenter/business/bazarbackdoor-trickbot-backdoor/"
+        ],
+        "synonyms": [
+          "bazarbackdoor",
+          "beerbot",
+          "bazarcall",
+          "kegtap",
+          "team9backdoor",
+          "bazaloader"
+        ],
+        "type": []
+      },
+      "uuid": "2f6e812e-16a6-4fbc-9273-1aebc12b7d3d",
+      "value": "bazar"
+    },
     {
       "description": "FAM:bebeg", 
       "meta": {
@@ -10185,7 +11231,11 @@
       "description": "FAM:bladabindi", 
       "meta": {
         "refs": "https://malpedia.caad.fkie.fraunhofer.de/details/win.njrat", 
-        "synonyms": [], 
+        "synonyms": [
+          "bladabi",
+          "bladabindinet",
+          "njrat"
+        ], 
         "type": []
       }, 
       "uuid": "470bf5fe-81e2-3da1-a4da-6a1680119a0f", 
@@ -10520,6 +11570,20 @@
       "value": "centim"
     }, 
     {
+      "description": "FAM:cerberus", 
+      "meta": {
+        "refs": [
+          "https://malpedia.caad.fkie.fraunhofer.de/details/apk.cerberus",
+          "https://attack.mitre.org/software/S0480",
+          "https://www.threatfabric.com/blogs/cerberus-a-new-banking-trojan-from-the-underworld.html"
+        ],
+        "synonyms": [], 
+        "type": []
+      }, 
+      "uuid": "bfd0098a-822d-436b-b751-1c61ff661cfe", 
+      "value": "cerberus"
+    }, 
+    {
       "description": "FAM:cerekv", 
       "meta": {
         "refs": [], 
@@ -10621,6 +11685,22 @@
       "value": "clinator"
     }, 
     {
+      "description": "FAM:clipbanker", 
+      "meta": {
+        "refs": "https://malpedia.caad.fkie.fraunhofer.de/details/win.clipbanker", 
+        "synonyms": [], 
+        "type": []
+      }, 
+      "related": [
+        {
+          "dest-uuid": "c65071d8-2bad-302b-8646-d309f7705fdb",
+          "type": "variant-of"
+        }
+      ],
+      "uuid": "21529e81-1aea-4435-a407-c5016653d63d", 
+      "value": "clipbanker"
+    }, 
+    {
       "description": "FAM:cmccwm", 
       "meta": {
         "refs": [], 
@@ -10650,6 +11730,31 @@
       "uuid": "5c5aa6ae-b94a-31df-bea0-4e672b746664", 
       "value": "cnzz"
     }, 
+    {
+      "description": "FAM:cobaltstrike",
+      "meta": {
+        "refs": [
+          "https://malpedia.caad.fkie.fraunhofer.de/details/win.cobalt_strike",
+          "https://www.fireeye.com/blog/threat-research/2017/06/phished-at-the-request-of-counsel.html",
+          "https://www.symantec.com/connect/blogs/odinaff-new-trojan-used-high-level-financial-attacks",
+          "https://github.com/JPCERTCC/aa-tools/blob/master/cobaltstrikescan.py",
+          "https://blogs.jpcert.or.jp/en/2018/08/volatility-plugin-for-detecting-cobalt-strike-beacon.html",
+          "https://blog.cobaltstrike.com/",
+          "https://www.cobaltstrike.com/support",
+          "https://www.fireeye.com/blog/threat-research/2018/11/not-so-cozy-an-uncomfortable-examination-of-a-suspected-apt29-phishing-campaign.html",
+          "http://blog.morphisec.com/new-global-attack-on-point-of-sale-systems",
+          "https://www.lac.co.jp/lacwatch/people/20180521_001638.html",
+          "https://401trg.com/burning-umbrella/ ",
+          "https://www.pentestpartners.com/security-blog/cobalt-strike-walkthrough-for-red-teamers/",
+          "https://pylos.co/2018/11/18/cozybear-in-from-the-cold/",
+          "http://cyberforensicator.com/2018/12/23/dissecting-cozy-bears-malicious-lnk-file/"
+        ],
+        "synonyms": [],
+        "type": []
+      },
+      "uuid": "008947a7-9634-4f83-851b-f65e1a0f2f0c",
+      "value": "cobaltstrike"
+    },
     {
       "description": "FAM:coinhive", 
       "meta": {
@@ -10712,6 +11817,25 @@
       "uuid": "875a27b7-cc81-3b09-8c23-d2c7b1bd6ac4", 
       "value": "contactscollector"
     }, 
+    {
+      "description": "FAM:conti",
+      "meta": {
+        "refs": [
+          "https://malpedia.caad.fkie.fraunhofer.de/details/win.conti",
+          "https://www.carbonblack.com/blog/tau-threat-discovery-conti-ransomware/"
+        ],
+        "synonyms": [],
+        "type": []
+      },
+      "related": [
+        {
+          "dest-uuid": "a8f4f4fa-1558-3f16-ac56-bce903a83b22",
+          "type": "variant-of"
+        }
+      ],
+      "uuid": "7d7da922-9df0-4184-944c-215b74c8095b",
+      "value": "conti"
+    },
     {
       "description": "FAM:cooee", 
       "meta": {
@@ -11066,6 +12190,24 @@
       "value": "dbtes"
     }, 
     {
+      "description": "FAM:deathransom", 
+      "meta": {
+        "refs": "https://malpedia.caad.fkie.fraunhofer.de/details/win.deathransom", 
+        "synonyms": [
+          "wacatac"
+        ], 
+        "type": []
+      }, 
+      "related": [
+        {
+          "dest-uuid": "a8f4f4fa-1558-3f16-ac56-bce903a83b22",
+          "type": "variant-of"
+        }
+      ],
+      "uuid": "bc154e88-a6ae-4f5d-b029-bbd3b8acf587", 
+      "value": "deathransom"
+    }, 
+    {
       "description": "FAM:deblio", 
       "meta": {
         "refs": [], 
@@ -11123,6 +12265,33 @@
       }, 
       "uuid": "9b9eaf63-3447-3349-b955-6b62a9809d85", 
       "value": "detroie"
+    }, 
+    {
+      "description": "FAM:crysis", 
+      "meta": {
+        "refs": [
+          "https://malpedia.caad.fkie.fraunhofer.de/details/win.dharma",
+          "https://www.carbonblack.com/2018/07/10/carbon-black-tau-threat-analysis-recent-dharma-ransomware-highlights-attackers-continued-use-open-source-tools/",
+          "https://www.bleepingcomputer.com/news/security/new-arena-crysis-ransomware-variant-released/"
+        ],
+        "synonyms": [
+          "crusis", 
+          "dharma",
+          "phobos",
+          "arena",
+          "wadhrama",
+          "ncov"
+        ], 
+        "type": []
+      }, 
+      "related": [
+        {
+          "dest-uuid": "a8f4f4fa-1558-3f16-ac56-bce903a83b22",
+          "type": "variant-of"
+        }
+      ],
+      "uuid": "689e26c6-8cf6-4ce0-ba87-cad1377996ae", 
+      "value": "crysis"
     }, 
     {
       "description": "FAM:dianjin", 
@@ -11329,6 +12498,19 @@
       "uuid": "3eb5f701-637e-3b03-ac32-47f59641c718", 
       "value": "dowgin"
     }, 
+    {
+      "description": "FAM:downeks",
+      "meta": {
+        "refs": [
+          "https://malpedia.caad.fkie.fraunhofer.de/details/win.downeks",
+          "http://researchcenter.paloaltonetworks.com/2017/01/unit42-downeks-and-quasar-rat-used-in-recent-targeted-attacks-against-governments/?adbsc=social69739136&adbid=826218465723756545&adbpl=tw&adbpr=4487645412"
+        ],
+        "synonyms": [],
+        "type": []
+      },
+      "uuid": "c8149b45-7d28-421e-bc6f-25c4b8698b92",
+      "value": "downeks"
+    },
     {
       "description": "FAM:downloadadmin", 
       "meta": {
@@ -11583,6 +12765,32 @@
       "value": "egame"
     }, 
     {
+      "description": "FAM:egregor",
+      "meta": {
+        "ransomnotes-filenames": [
+          "RECOVER-FILES.txt"
+        ],
+        "ransomnotes-refs": [
+          "https://www.bleepstatic.com/images/news/columns/week-in-ransomware/2020/september/25/egregor.jpg"
+        ],
+        "refs": [
+          "https://www.appgate.com/news-press/appgate-labs-analyzes-new-family-of-ransomware-egregor",
+          "https://www.bleepingcomputer.com/news/security/crytek-hit-by-egregor-ransomware-ubisoft-data-leaked/",
+          "https://cybersecuritynews.com/egregor-ransomware/"
+        ],
+        "synonyms": [], 
+        "type": []
+      },
+      "related": [
+        {
+          "dest-uuid": "a8f4f4fa-1558-3f16-ac56-bce903a83b22",
+          "type": "variant-of"
+        }
+      ],
+      "uuid": "75c5da38-3097-4e81-9c34-188cfbec1596",
+      "value": "egregor"
+    },
+    {
       "description": "FAM:egroupdial", 
       "meta": {
         "refs": [], 
@@ -11622,6 +12830,54 @@
       "uuid": "d43481d8-9186-33cc-8974-75fb3f7a357d", 
       "value": "elite"
     }, 
+    {
+      "description": "FAM:emotet",
+      "meta": {
+        "refs": [
+          "https://malpedia.caad.fkie.fraunhofer.de/details/win.emotet",
+          "https://blog.trendmicro.com/trendlabs-security-intelligence/ursnif-emotet-dridex-and-bitpaymer-gangs-linked-by-a-similar-loader/",
+          "http://blog.trendmicro.com/trendlabs-security-intelligence/emotet-returns-starts-spreading-via-spam-botnet/",
+          "https://www.fortinet.com/blog/threat-research/deep-analysis-of-new-emotet-variant-part-2.html",
+          "https://www.spamhaus.org/news/article/783/emotet-adds-a-further-layer-of-camouflage",
+          "https://isc.sans.edu/forums/diary/Emotet+infections+and+followup+malware/24532/",
+          "https://www.welivesecurity.com/2018/11/09/emotet-launches-major-new-spam-campaign/",
+          "https://github.com/d00rt/emotet_research",
+          "https://blog.kryptoslogic.com/malware/2018/08/01/emotet.html",
+          "https://www.us-cert.gov/ncas/alerts/TA18-201A",
+          "https://portswigger.net/daily-swig/emotet-trojan-implicated-in-wolverine-solutions-ransomware-attack",
+          "https://blog.trendmicro.com/trendlabs-security-intelligence/new-emotet-hijacks-windows-api-evades-sandbox-analysis/",
+          "https://blog.kryptoslogic.com/malware/2018/10/31/emotet-email-theft.html",
+          "http://blog.fortinet.com/2017/05/03/deep-analysis-of-new-emotet-variant-part-1",
+          "https://www.intezer.com/mitigating-emotet-the-most-common-banking-trojan/",
+          "https://maxkersten.nl/binary-analysis-course/malware-analysis/emotet-droppers/",
+          "https://research.checkpoint.com/emotet-tricky-trojan-git-clones/",
+          "https://www.cert.pl/en/news/single/analysis-of-emotet-v4/",
+          "https://www.symantec.com/blogs/threat-intelligence/evolution-emotet-trojan-distributor",
+          "https://www.crowdstrike.com/blog/meet-crowdstrikes-adversary-of-the-month-for-february-mummy-spider/",
+          "https://www.melani.admin.ch/melani/de/home/dokumentation/newsletter/Trojaner_Emotet_greift_Unternehmensnetzwerke_an.html",
+          "https://persianov.net/emotet-malware-analysis-part-1",
+          "https://persianov.net/emotet-malware-analysis-part-2",
+          "https://int0xcc.svbtle.com/dissecting-emotet-s-network-communication-protocol",
+          "https://blog.trendmicro.com/trendlabs-security-intelligence/exploring-emotet-examining-emotets-activities-infrastructure/",
+          "https://paste.cryptolaemus.com",
+          "https://cloudblogs.microsoft.com/microsoftsecure/2017/11/06/mitigating-and-eliminating-info-stealing-qakbot-and-emotet-in-corporate-networks/?source=mmpc",
+          "https://www.spamtitan.com/blog/emotet-malware-revives-old-email-conversations-threads-to-increase-infection-rates/",
+          "https://www.fidelissecurity.com/threatgeek/2017/07/emotet-takes-wing-spreader",
+          "https://securelist.com/analysis/publications/69560/the-banking-trojan-emotet-detailed-analysis/",
+          "https://feodotracker.abuse.ch/?filter=version_e",
+          "https://www.gdata.de/blog/2017/10/30110-emotet-beutet-outlook-aus",
+          "https://malfind.com/index.php/2018/07/23/deobfuscating-emotets-powershell-payload/",
+          "https://medium.com/@0xd0cf11e/analyzing-emotet-with-ghidra-part-1-4da71a5c8d69"
+        ],
+        "synonyms": [
+          "geodo",
+          "heodo"
+        ],
+        "type": []
+      },
+      "uuid": "054e50ca-aeec-428e-91a5-f45e4029a073",
+      "value": "emotet"
+    },
     {
       "description": "FAM:emudbot", 
       "meta": {

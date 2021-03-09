@@ -32,6 +32,11 @@ suffix_removal_av_set = {
     "GData",
     "Avast",
     "Sophos",
+    "BitDefenderTheta",
+    "Alibaba",
+    "Tencent",
+    "Cyren",
+    "Arcabit",
     "TrendMicro-HouseCall",
     "TrendMicro",
     "NANO-Antivirus",
@@ -606,8 +611,8 @@ class AvLabels:
         :param record: The JSON record
         :return: An instance of SampleInfo
         """
-        if 'data' in record:
-            record = record['data']
+        if "data" in record:
+            record = record["data"]
         try:
             scans = record["attributes"]["last_analysis_results"]
             md5 = record["attributes"]["md5"]
