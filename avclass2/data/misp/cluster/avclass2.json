@@ -5413,6 +5413,19 @@
       "value": "loic"
     }, 
     {
+      "description": "FAM:lokibot",
+      "meta": {
+        "refs": [
+          "https://malpedia.caad.fkie.fraunhofer.de/details/apk.lokibot",
+          "https://www.threatfabric.com/blogs/lokibot_the_first_hybrid_android_malware.html"
+        ],
+        "synonyms": [],
+        "type": []
+      },
+      "uuid": "14b91559-69a4-4f1c-aeac-346be227d08d",
+      "value": "lokibot"
+    }, 
+    {
       "description": "FAM:lolbot", 
       "meta": {
         "refs": [], 
@@ -11006,7 +11019,8 @@
           "bazarcall",
           "kegtap",
           "team9backdoor",
-          "bazaloader"
+          "bazaloader",
+          "bazarloader"
         ],
         "type": []
       },
@@ -11412,6 +11426,26 @@
       "uuid": "cd7498b7-68c7-34ba-bdfd-9381aa879adb", 
       "value": "bublik"
     }, 
+    {
+      "description": "FAM:buhtrap",
+      "meta": {
+        "refs": [
+          "https://malpedia.caad.fkie.fraunhofer.de/details/win.buhtrap",
+          "https://malware-research.org/carbanak-source-code-leaked/",
+          "https://www.symantec.com/connect/blogs/russian-bank-employees-received-fake-job-offers-targeted-email-attack",
+          "https://www.welivesecurity.com/2015/04/09/operation-buhtrap/",
+          "https://www.group-ib.com/brochures/gib-buhtrap-report.pdf",
+          "https://www.arbornetworks.com/blog/asert/diving-buhtrap-banking-trojan-activity/",
+          "https://blog.dcso.de/pegasus-buhtrap-analysis-of-the-malware-stage-based-on-the-leaked-source-code/"
+        ],
+        "synonyms": [
+          "ratopak"
+        ],
+        "type": []
+      },
+      "uuid": "71e031ee-50e8-46a8-bda8-c4ae9c0012de",
+      "value": "buhtrap"
+    },
     {
       "description": "FAM:bundlore", 
       "meta": {
@@ -13854,5 +13888,5 @@
       "value": "geinimi"
     }
   ], 
-  "version": 0.1
+  "version": 0.2
 }
