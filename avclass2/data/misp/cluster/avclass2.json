@@ -2730,6 +2730,7 @@
           "malob", 
           "malpack", 
           "msilobfuscator", 
+          "msilkrypt",
           "nsanti", 
           "obfus", 
           "obfusc", 
@@ -2737,6 +2738,7 @@
           "obfuscated", 
           "obfuscator", 
           "pakes", 
+          "packer",
           "suspiciouspacker", 
           "susppack", 
           "vbinder",
@@ -3453,7 +3455,9 @@
       "description": "FILE:proglang:autoit", 
       "meta": {
         "refs": [], 
-        "synonyms": [], 
+        "synonyms": [
+          "autoitscript"
+        ], 
         "type": []
       }, 
       "uuid": "e16e2760-e497-3e39-9ca2-68a23ccd2b4f", 
@@ -8831,6 +8835,26 @@
       "value": "socks"
     }, 
     {
+      "description": "FAM:sodinokibi",
+      "meta": {
+        "refs": [
+          "https://malpedia.caad.fkie.fraunhofer.de/details/win.revil",
+          "https://blog.talosintelligence.com/2019/04/sodinokibi-ransomware-exploits-weblogic.html"
+        ],
+        "synonyms": [
+          "revil"
+        ]
+      },
+      "related": [
+        {
+          "dest-uuid": "a8f4f4fa-1558-3f16-ac56-bce903a83b22",
+          "type": "variant-of"
+        }
+      ],
+      "uuid": "a3d6c162-a51c-4b25-a0cd-7d89037140a3",
+      "value": "sodinokibi"
+    },
+    {
       "description": "FAM:soft32downloader", 
       "meta": {
         "refs": [], 
@@ -9178,6 +9202,7 @@
         "synonyms": [
           "banker", 
           "bitstealer",
+          "cookiesstealer",
           "datastealer", 
           "discostealer",
           "delfsnif", 
@@ -9185,6 +9210,7 @@
           "infostealer", 
           "monitor", 
           "passwordstealera",
+          "poscardstealer",
           "pswtool", 
           "pwsteal", 
           "pwstealer", 
@@ -11020,7 +11046,8 @@
           "kegtap",
           "team9backdoor",
           "bazaloader",
-          "bazarloader"
+          "bazarloader",
+          "bazloader"
         ],
         "type": []
       },
@@ -13161,6 +13188,7 @@
           "fakebrows", 
           "fakeicq", 
           "fakeinstall", 
+          "fakeinstaller",
           "fakeinsthw", 
           "fakeinstsms", 
           "fodeg", 
