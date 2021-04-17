@@ -1,6 +1,6 @@
 {
   "description": "A malware galaxy based on AvClass", 
-  "icon": "", 
+  "icon": "optin-monster", 
   "name": "AvClass", 
   "namespace": "misp", 
   "type": "avclass", 

@@ -15,6 +15,7 @@ BEH:filemodify
 BEH:files
 BEH:hostsmodify
 BEH:infosteal
+BEH:infosteal:coinstealer
 BEH:infosteal:gamethief
 BEH:inject
 BEH:irc
@@ -98,9 +99,11 @@ FAM:adrotator
 FAM:adrotoob
 FAM:adultbrowser
 FAM:adviator
+FAM:adwind
 FAM:adwk
 FAM:adwo
 FAM:aesads
+FAM:agenttesla
 FAM:agobot
 FAM:agvd
 FAM:ahmyth
@@ -136,7 +139,9 @@ FAM:asacub
 FAM:asprox
 FAM:autoins
 FAM:autosus
+FAM:avemaria
 FAM:axespy
+FAM:azorult
 FAM:badda
 FAM:badnews
 FAM:badpac
@@ -150,6 +155,7 @@ FAM:basbanke
 FAM:basebridge
 FAM:basepay
 FAM:bauts
+FAM:bazar
 FAM:bebeg
 FAM:becou
 FAM:beebone
@@ -184,6 +190,7 @@ FAM:brontok
 FAM:browsefox
 FAM:bruad
 FAM:bublik
+FAM:buhtrap
 FAM:bundlore
 FAM:buterat
 FAM:buzus
@@ -198,6 +205,7 @@ FAM:cardserv
 FAM:cashon
 FAM:cellshark
 FAM:centim
+FAM:cerberus
 FAM:cerekv
 FAM:cheica
 FAM:chir
@@ -207,15 +215,18 @@ FAM:cleaman
 FAM:clevernet
 FAM:clientor
 FAM:clinator
+FAM:clipbanker
 FAM:cmccwm
 FAM:cnbtech
 FAM:cnzz
+FAM:cobaltstrike
 FAM:coinhive
 FAM:coldfusion
 FAM:commplat
 FAM:conduit
 FAM:conficker
 FAM:contactscollector
+FAM:conti
 FAM:cooee
 FAM:coogos
 FAM:coolmirage
@@ -247,6 +258,7 @@ FAM:dasu
 FAM:datacollector
 FAM:daws
 FAM:dbtes
+FAM:deathransom
 FAM:deblio
 FAM:defmid
 FAM:delbar
@@ -269,6 +281,7 @@ FAM:dorifel
 FAM:dorkbot
 FAM:dougalek
 FAM:dowgin
+FAM:downeks
 FAM:downloadadmin
 FAM:downloadassistant
 FAM:downloadguide
@@ -290,9 +303,11 @@ FAM:dusvext
 FAM:dynamer
 FAM:easyroot
 FAM:egame
+FAM:egregor
 FAM:egroupdial
 FAM:ejik
 FAM:elite
+FAM:emotet
 FAM:emudbot
 FAM:eorezo
 FAM:equationdrug
@@ -385,6 +400,7 @@ FAM:ginamster
 FAM:ginko
 FAM:ginmaster
 FAM:gizmo
+FAM:glupteba
 FAM:gobot
 FAM:golddream
 FAM:goldentouch
@@ -392,7 +408,10 @@ FAM:gomanag
 FAM:gomunc
 FAM:gonesixty
 FAM:goodnews
+FAM:goodor
+FAM:gootkit
 FAM:gorillaprice
+FAM:gozi
 FAM:gpspy
 FAM:grabos
 FAM:graybird
@@ -418,6 +437,7 @@ FAM:hipposms
 FAM:honli
 FAM:hotbar
 FAM:hotclip
+FAM:houdini
 FAM:hoverwatch
 FAM:hqowdo
 FAM:hqwar
@@ -498,6 +518,7 @@ FAM:kyview
 FAM:laconic
 FAM:lardlond
 FAM:laroux
+FAM:lazagne
 FAM:ldpinch
 FAM:leadbolt
 FAM:leapp
@@ -506,6 +527,7 @@ FAM:lemon
 FAM:lethic
 FAM:letv
 FAM:lien
+FAM:limerat
 FAM:linkular
 FAM:lirose
 FAM:lmir
@@ -515,6 +537,7 @@ FAM:loapi
 FAM:lockactivity
 FAM:locmg
 FAM:loic
+FAM:lokibot
 FAM:lolbot
 FAM:lollipop
 FAM:loodos
@@ -600,10 +623,12 @@ FAM:myteam
 FAM:mytrackp
 FAM:mywebsearch
 FAM:nandrobox
+FAM:nanocore
 FAM:navbar
 FAM:nawiaiad
 FAM:necro
 FAM:necurs
+FAM:neoreklami
 FAM:neospy
 FAM:neshta
 FAM:netbox
@@ -631,6 +656,7 @@ FAM:opencandy
 FAM:openinstall
 FAM:opfake
 FAM:optix
+FAM:orcusrat
 FAM:outbrowse
 FAM:oveead
 FAM:paccy
@@ -645,6 +671,7 @@ FAM:penguin
 FAM:perflogger
 FAM:perkel
 FAM:petrolin
+FAM:petya
 FAM:phonespy
 FAM:picsys
 FAM:piom
@@ -675,6 +702,7 @@ FAM:pushad
 FAM:pushe
 FAM:puxis
 FAM:pykspa
+FAM:quasar
 FAM:qbot
 FAM:qexma
 FAM:qplus
@@ -682,11 +710,13 @@ FAM:qqrob
 FAM:qumi
 FAM:quozha
 FAM:qushu
+FAM:raccoon
 FAM:raden
 FAM:ramnit
 FAM:ranky
 FAM:rasteal
 FAM:razam
+FAM:razy
 FAM:rbot
 FAM:rebhip
 FAM:recmads
@@ -698,12 +728,14 @@ FAM:reflod
 FAM:refog
 FAM:regon
 FAM:relevantknowledge
+FAM:remcos
 FAM:renocide
 FAM:renos
 FAM:reporo
 FAM:reptilicus
 FAM:resharer
 FAM:reveton
+FAM:revetrat
 FAM:revmob
 FAM:riltok
 FAM:rimod
@@ -716,11 +748,13 @@ FAM:rootmaster
 FAM:rootnik
 FAM:rootsmart
 FAM:rotexy
+FAM:rozena
 FAM:rufraud
 FAM:rukometa
 FAM:rungbu
 FAM:ruskill
 FAM:rusms
+FAM:ryuk
 FAM:sacti
 FAM:sacto
 FAM:sadenav
@@ -728,10 +762,12 @@ FAM:sadpor
 FAM:sahat
 FAM:sakezon
 FAM:sality
+FAM:samsam
 FAM:sanctionedmedia
 FAM:sandr
 FAM:savemy
 FAM:scam
+FAM:schwarzesonne
 FAM:sckeylog
 FAM:sdbot
 FAM:seaweth
@@ -742,6 +778,7 @@ FAM:severs
 FAM:sfone
 FAM:shastrosms
 FAM:shedun
+FAM:shelma
 FAM:sheridroid
 FAM:shixot
 FAM:shiz
@@ -786,6 +823,7 @@ FAM:smsthief
 FAM:smszombie
 FAM:snowfox
 FAM:socks
+FAM:sodinokibi
 FAM:soft32downloader
 FAM:softcnapp
 FAM:softobase
@@ -809,6 +847,7 @@ FAM:spyapp
 FAM:spybubble
 FAM:spydealer
 FAM:spyeye
+FAM:spygate
 FAM:spyhasb
 FAM:spynote
 FAM:spyoo
@@ -827,6 +866,7 @@ FAM:suaban
 FAM:suggestor
 FAM:supking
 FAM:svpeng
+FAM:swrort
 FAM:swisyn
 FAM:swizzor
 FAM:systemmonitor
@@ -873,6 +913,7 @@ FAM:tracer
 FAM:tracker
 FAM:trackerfree
 FAM:trackplus
+FAM:trickbot
 FAM:trclick
 FAM:tridrongo
 FAM:troom
@@ -896,6 +937,7 @@ FAM:usteal
 FAM:utchi
 FAM:uupay
 FAM:uuserv
+FAM:valyria
 FAM:vapsup
 FAM:vdloader
 FAM:verti
@@ -908,6 +950,7 @@ FAM:virusdoctor
 FAM:virut
 FAM:viser
 FAM:vittalia
+FAM:vjworm
 FAM:vkemag
 FAM:vktihs
 FAM:vmvol
@@ -1023,6 +1066,7 @@ FILE:packed:aspack
 FILE:packed:asprotect
 FILE:packed:beroexepacker
 FILE:packed:bobsoft
+FILE:packed:confuser
 FILE:packed:decrypter
 FILE:packed:encryptpe
 FILE:packed:enigma
@@ -1034,6 +1078,7 @@ FILE:packed:krunchy
 FILE:packed:maskpe
 FILE:packed:molebox
 FILE:packed:morphine
+FILE:packed:multipacked
 FILE:packed:nakedpack
 FILE:packed:niceprotect
 FILE:packed:npack
@@ -1058,6 +1103,7 @@ FILE:packed:upack
 FILE:packed:upx
 FILE:packed:vmprotect
 FILE:packed:yoda
+FILE:proglang:autohk
 FILE:proglang:autoit
 FILE:proglang:delphi
 FILE:proglang:java
