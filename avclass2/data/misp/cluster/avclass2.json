@@ -8811,6 +8811,23 @@
       "value": "smszombie"
     }, 
     {
+      "description": "FAM:snatch",
+      "meta": {
+        "refs": [
+          "https://malpedia.caad.fkie.fraunhofer.de/details/win.snatch"
+        ],
+        "synonyms": []
+      },
+      "related": [
+        {
+          "dest-uuid": "a8f4f4fa-1558-3f16-ac56-bce903a83b22",
+          "type": "variant-of"
+        }
+      ],
+      "uuid": "5a5cdf0a-ead8-4399-848a-44a9a48cb237",
+      "value": "snatch"
+    },
+    {
       "description": "FAM:snowfox", 
       "meta": {
         "refs": [], 
@@ -8842,7 +8859,9 @@
           "https://blog.talosintelligence.com/2019/04/sodinokibi-ransomware-exploits-weblogic.html"
         ],
         "synonyms": [
-          "revil"
+          "revil",
+          "sodin",
+          "sodinoransom"
         ]
       },
       "related": [
@@ -9005,6 +9024,7 @@
       "meta": {
         "refs": [], 
         "synonyms": [
+          "autoruns",
           "autoruner", 
           "autorunerent"
         ], 
@@ -10580,6 +10600,19 @@
       }, 
       "uuid": "5e9086ac-ea73-306b-8faf-fd96bd20e8a2", 
       "value": "amonetize"
+    }, 
+    {
+      "description": "FAM:ammyy", 
+      "meta": {
+        "refs": [], 
+        "synonyms": [
+          "fakeammyy", 
+          "ammyyadmin"
+        ], 
+        "type": []
+      }, 
+      "uuid": "4dc7b45d-cff8-447a-97a6-2181f7b7773d", 
+      "value": "ammyy"
     }, 
     {
       "description": "FAM:androidarmour", 
