@@ -27,20 +27,11 @@ nanocore  nancrat nanocore  nanobot
 sasfis  oficla
 quasar  cinarat quasarrat yggdrasil
 bifrost adwind  alienspy  jsocket frutas  unrecom jbifrost  sockrat
-355 jenxcus # alias Hworm, Jenxcus, Kognito, Njw0rm, WSHRAT, dinihou, dunihi, Houdini, houdini
-352 revetrat # alias Revenge RAT, revengerat
-330 avemaria # alias AVE_MARIA, AveMariaRAT, Warzone RAT, avemaria
-205 blackshades
-195 lokibot # alias Loki, LokiPWS, LokiBot
-189 swrort # powershell - Swrort Stager
-154 cybergate #alias Rebhip
-153 agensla # alias AgenTesla, AgentTesla, Negasteal, agent_tesla
-136 rozena #fileless malware
-127 azorult
-119 windef
-119 nemim # alias Nemain, APT 
-119 gorgon # Gorgon Group, Subaat APT
-93 gamaredon # apt group Primitive Bear
-88 bezigate
-81 valyria # apt group muddywater powershell
-74 winlock # alias ransomlock
+jenxcus hworm kognito njw0rm  wshrat  dinihou dunihi  houdini
+revetrat  revenge_rat revengerat
+avemaria  ave_maria avemariarat warzone_rat warzone warzonerat
+lokibot loki  lokipws lokibot
+cybergate rebhip
+agensla agentesla negasteal agent_tesla
+nemim nemain
+winlock  ransomlock
