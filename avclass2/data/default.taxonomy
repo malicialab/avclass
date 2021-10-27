@@ -42,6 +42,7 @@ BEH:spam
 BEH:tor
 BEH:vmdetect
 BEH:whatsapp
+BEH:windef
 CLASS:apt
 CLASS:backdoor
 CLASS:bot
@@ -98,9 +99,11 @@ FAM:adrotator
 FAM:adrotoob
 FAM:adultbrowser
 FAM:adviator
+FAM:adwind
 FAM:adwk
 FAM:adwo
 FAM:aesads
+FAM:agenttesla
 FAM:agobot
 FAM:agvd
 FAM:ahmyth
@@ -136,7 +139,9 @@ FAM:asacub
 FAM:asprox
 FAM:autoins
 FAM:autosus
+FAM:avemaria
 FAM:axespy
+FAM:azorult
 FAM:badda
 FAM:badnews
 FAM:badpac
@@ -160,15 +165,18 @@ FAM:berbew
 FAM:bertle
 FAM:betterad
 FAM:bettersurf
+FAM:bezigate
 FAM:bgserv
 FAM:bicololo
 FAM:bifrose
+FAM:bifrost
 FAM:biige
 FAM:binka
 FAM:bips
 FAM:birele
 FAM:bitrep
 FAM:blacklister
+FAM:blackshades
 FAM:bladabindi
 FAM:blohi
 FAM:blueguard
@@ -359,6 +367,7 @@ FAM:fujacks
 FAM:gabas
 FAM:gabpath
 FAM:gamania
+FAM:gamaredon
 FAM:gamarue
 FAM:gambler
 FAM:gamclk
@@ -392,6 +401,7 @@ FAM:gomanag
 FAM:gomunc
 FAM:gonesixty
 FAM:goodnews
+FAM:gorgon
 FAM:gorillaprice
 FAM:gpspy
 FAM:grabos
@@ -457,6 +467,7 @@ FAM:irtard
 FAM:itracker
 FAM:jayqa
 FAM:jeefo
+FAM:jenxcus
 FAM:jfpush
 FAM:jiead
 FAM:jifake
@@ -476,6 +487,7 @@ FAM:kasidet
 FAM:katrep
 FAM:kelihos
 FAM:kgbspy
+FAM:khalesi
 FAM:kidlogger
 FAM:kimia
 FAM:kingroot
@@ -488,6 +500,7 @@ FAM:koobface
 FAM:korgo
 FAM:koutodoor
 FAM:kovter
+FAM:kpot
 FAM:krefel
 FAM:kronos
 FAM:ksapp
@@ -515,6 +528,7 @@ FAM:loapi
 FAM:lockactivity
 FAM:locmg
 FAM:loic
+FAM:lokibot
 FAM:lolbot
 FAM:lollipop
 FAM:loodos
@@ -543,6 +557,7 @@ FAM:masplot
 FAM:masspr
 FAM:maxapp
 FAM:mazarbot
+FAM:mbrlock
 FAM:mecor
 FAM:medfos
 FAM:mediafinder
@@ -600,10 +615,12 @@ FAM:myteam
 FAM:mytrackp
 FAM:mywebsearch
 FAM:nandrobox
+FAM:nanocore
 FAM:navbar
 FAM:nawiaiad
 FAM:necro
 FAM:necurs
+FAM:nemim
 FAM:neospy
 FAM:neshta
 FAM:netbox
@@ -617,9 +634,11 @@ FAM:nocoma
 FAM:notifyer
 FAM:nqshield
 FAM:nymaim
+FAM:nymeria
 FAM:obtes
 FAM:ocikq
 FAM:odpa
+FAM:oficla
 FAM:oimobi
 FAM:oivim
 FAM:oixal
@@ -679,6 +698,7 @@ FAM:qbot
 FAM:qexma
 FAM:qplus
 FAM:qqrob
+FAM:quasar
 FAM:qumi
 FAM:quozha
 FAM:qushu
@@ -687,6 +707,7 @@ FAM:ramnit
 FAM:ranky
 FAM:rasteal
 FAM:razam
+FAM:razy
 FAM:rbot
 FAM:rebhip
 FAM:recmads
@@ -698,12 +719,14 @@ FAM:reflod
 FAM:refog
 FAM:regon
 FAM:relevantknowledge
+FAM:remcos
 FAM:renocide
 FAM:renos
 FAM:reporo
 FAM:reptilicus
 FAM:resharer
 FAM:reveton
+FAM:revetrat
 FAM:revmob
 FAM:riltok
 FAM:rimod
@@ -716,6 +739,7 @@ FAM:rootmaster
 FAM:rootnik
 FAM:rootsmart
 FAM:rotexy
+FAM:rozena
 FAM:rufraud
 FAM:rukometa
 FAM:rungbu
@@ -896,6 +920,7 @@ FAM:usteal
 FAM:utchi
 FAM:uupay
 FAM:uuserv
+FAM:valyria
 FAM:vapsup
 FAM:vdloader
 FAM:verti
