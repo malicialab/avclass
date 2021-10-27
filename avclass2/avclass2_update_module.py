@@ -415,18 +415,17 @@ if __name__ == '__main__':
         generates updates for the taxonomy, tagging, and expansion files.''')
 
     argparser.add_argument('-alias',
-        help='file to parse with alias from labeler'
-             'Labeler will run if -alias not present')
+        help='input file with alias from labeler. Mandatory.')
 
     argparser.add_argument('-n',
-        help='Minimum number of times that a pair of tokes have been seen.'
+        help='Minimum number of times that a pair of tokens have been seen.'
              'Default: 20',
         type=int,
         default=20)
 
     argparser.add_argument('-t',
         help='Minimum percentage of times two tokens appear together.'
-             'Default: 1.94',
+             'Default: 0.94',
         type=float,
         default=0.94)
 
@@ -467,9 +466,9 @@ if __name__ == '__main__':
 
     # Set output prefix
     if args.o:
-      out_prefix = args.o
+        out_prefix = args.o
     else:
-      out_prefix = os.path.splitext(args.alias)[0]
+        out_prefix = os.path.splitext(args.alias)[0]
 
     # Read taxonomy
     taxonomy = Taxonomy(args.tax)
@@ -487,11 +486,7 @@ if __name__ == '__main__':
                         len(expansion), args.exp))
 
     # Build update object
-    if not args.alias:
-        alias_fname = os.path.basename(os.path.splitext(ifile)[0]) + '.alias'
-    else:
-        alias_fname = args.alias
-    update = Update(alias_fname, taxonomy, tagging, expansion, args.n, args.t)
+    update = Update(args.alias, taxonomy, tagging, expansion, args.n, args.t)
 
     log.info('[-] Processing %d relations satisfying t>=%.2f n>=%d' % (
                         update.num_rules(), args.t, args.n))
