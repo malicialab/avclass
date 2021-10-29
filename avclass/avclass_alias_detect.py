@@ -22,7 +22,7 @@ def main(args):
     sys.stderr.write('[-] Running avclass_labeler on %s\n' % (ifile))
     FNULL = open(os.devnull, 'w')
     labeler = subprocess.Popen(\
-       "python avclass_labeler.py %s %s %s -alias /dev/null -aliasdetect" %
+       "python3 avclass_labeler.py %s %s %s -alias /dev/null -aliasdetect" %
        (itype, ifile, gen_switch), shell=True, stdout=FNULL)
     labeler.wait()
 

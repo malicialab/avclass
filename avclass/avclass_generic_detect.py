@@ -18,7 +18,7 @@ def main(args):
     sys.stderr.write('[-] Running avclass_labeler on %s\n' % (ifile))
     FNULL = open(os.devnull, 'w')
     labeler = subprocess.Popen(\
-       "python avclass_labeler.py %s %s -alias /dev/null"\
+       "python3 avclass_labeler.py %s %s -alias /dev/null"\
        " -gen /dev/null -gendetect -gt %s" % 
        (itype, ifile, args.gt), shell=True, stdout=FNULL)
     labeler.wait()
