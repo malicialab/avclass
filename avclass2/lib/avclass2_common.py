@@ -25,7 +25,7 @@ SampleInfo = namedtuple('SampleInfo',
 # AVs to use in suffix removal
 suffix_removal_av_set = {'Norman', 'Avast', 'Avira', 'Kaspersky',
                           'ESET-NOD32', 'Fortinet', 'Jiangmin', 'Comodo',
-                          'GData', 'Avast', 'Sophos',
+                          'GData', 'Sophos',
                           'TrendMicro-HouseCall', 'TrendMicro',
                           'NANO-Antivirus', 'Microsoft'}
 
