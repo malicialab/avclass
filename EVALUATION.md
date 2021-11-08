@@ -65,14 +65,14 @@ Thus, the quality of the tags assigned to samples should be evaluated.
 
 Some common mistakes in malware family labeling are ignoring generic tags 
 and assigning class/behavior/file tags as if they are families. 
-For example, if a paper was to use a ``trojandownloader'' family 
+For example, if a paper was to use a *trojandownloader* family 
 that would inspire little confidence in their results. 
 
 There are several design decisions in AVClass/AVClass2 that purposefully 
 reduce the number of tagged samples in order to minimize incorrect tags. 
 Some worth mentioning are: 
 avoiding to consider CLASS/BEH/FILE tags as family names, 
-removing generic tags such as ``malicious'' that do not provide real info, 
+removing generic tags such as *malicious* that do not provide real info, 
 taking into account groups of AV engines that copy their labels 
 (e.g., different engines from the same vendor), and
 requiring at least two AV engines to assign the same tag to the sample. 
@@ -101,7 +101,7 @@ Please read the above entry on ground truth.
 
 ## Should I evaluate scalability as well?
 
-Definitely. AVClass/AVClass2 are designed for ``massive'' labeling/tagging, 
+Definitely. AVClass/AVClass2 are designed for massive labeling/tagging, 
 i.e., to label/tag millions of samples. 
 If you only evaluate the accuracy/precision/recall of the tools 
 without considering their scalability (i.e., runtime and memory consumption) 
