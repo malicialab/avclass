@@ -47,7 +47,7 @@ Of course, there are more options for both tools,
 which you can read about in their corresponding README files. 
 
 
-## Which one should I use?
+## Which tool should I use?
 
 You should use AVClass2. It is the newer tool, extracts more information 
 from the input AV labels, and has a compatibility mode to be used for 
@@ -69,6 +69,23 @@ It is unlikely that the lower runtime makes a significant difference
 for most users, but worth mentioning it in case you process many 
 millions of samples and do not require the extra info AVClass2 provides. 
 
+## Evaluating and comparing with AVClass/AVClass2
+
+Other researchers may want to independently evaluate AVClass/AVClass2 and
+to compare it with their own approaches.
+We encourage such evaluation, feedback on limitations, and proposals for
+improvement.
+However, we have observed a number of common errors in such evaluations that 
+should be avoided. Below is the quick summary. 
+A more detailed explanation is in the [evaluation page](EVALUATION.md)
+
+1. Evaluate AVClass2. AVClass2 has superseeded AVClass so your evaluation should include AVClass2, not only the original AVClass. 
+2. For malware labeling, please Use AVClass2 compatibility mode (-c command line option)
+3. Tagging more samples is not an evaluation goal by itself, the tags need to be accurate
+4. You need ground truth to evaluate the accuracy/precision/recall of AVClass/AVClass2 tagging.
+5. You should evaluate scalability as well, since that is a major design goal of AVClass/AVClass2
+6. Note that AVClass2 and AVClass may not provide the same family tag for all samples when run on the same AV labels.
+7. AVClass2/AVClass are not malware detection tools, please do not try to evaluate them for that scenario. 
 
 ## References
 
