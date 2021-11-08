@@ -80,10 +80,10 @@ should be avoided. Below is the quick summary.
 A more detailed explanation is in the [evaluation page](EVALUATION.md)
 
 1. AVClass2 has superseeded AVClass, so your evaluation should include AVClass2, not only the original AVClass. 
-2. For malware labeling, please Use AVClass2 compatibility mode (-c command line option).
+2. For malware labeling, please use AVClass2 compatibility mode (-c command line option).
 3. Tagging more samples is not an evaluation goal by itself, the tags need to be accurate. For example, it is known that allowing tags from a single AV engine or ignoring generic tags will enable tagging more samples, but it will introduce incorrect tags. 
-4. You need ground truth to evaluate the accuracy/precision/recall of AVClass/AVClass2 tagging.
-5. You should evaluate scalability (runtime and memory usage) as well, since that is a major design goal of AVClass/AVClass2
+4. You need ground truth to evaluate the accuracy/precision/recall of AVClass/AVClass2.
+5. You should also evaluate scalability (runtime and memory usage) since that is a major design goal of AVClass/AVClass2
 6. Note that AVClass2 and AVClass may not provide the same family tag for all samples when run on the same AV labels.
 7. AVClass2/AVClass are not malware detection tools, please do not try to evaluate them for that scenario. 
 
