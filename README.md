@@ -49,18 +49,26 @@ which you can read about in their corresponding README files.
 
 ## Which one should I use?
 
-AVClass2 is the newer tool and it extracts more information 
-from the input AV labels.
-So, if you are new to AVClass and AVClass2, we recommend trying it out first.
+You should use AVClass2. It is the newer tool, extracts more information 
+from the input AV labels, and has a compatibility mode to be used for 
+family labeling in the same way that the original AVClass. 
 
-However, there are several reasons to keep AVClass around. 
-First, it is more mature and used by many analysts, 
-so we want to preserve backwards compatibility.
-Second, for some applications only family names are needed and 
-for that AVClass is enough.
-Third, AVClass is faster than AVClass2 since it extracts less info. 
-The lower runtime is nice when processing millions of samples and 
-not requiring the extra tags AVClass2 provides. 
+AVClass is no longer updated and may be deprecated in the near future. 
+For example, we add family aliases and generic terms from time to time 
+for AVClass2, but we are not currently adding them for AVClass.
+
+The main reason to keep the original AVClass around is because in research, 
+reproducibility can be important. 
+Other researchers may have their own reasons to compare against an older tool. 
+However, as a researcher, if you compare against the original AVClass, 
+you should also include AVClass2 in the comparison.
+
+The only benefit of the original AVClass is that it is slightly 
+faster than AVClass2 since it extracts less info. 
+It is unlikely that the lower runtime makes a significant difference 
+for most users, but worth mentioning it in case you process many 
+millions of samples and do not require the extra info AVClass2 provides. 
+
 
 ## References
 
@@ -78,7 +86,8 @@ The design and evaluation of AVClass2 is detailed in our
 
 > Silvia Sebastián, Juan Caballero. 
 AVClass2: Massive Malware Tag Extraction from AV Labels. 
-In proceedings of the Annual Computer Security Applications Conference, December 2020.
+In proceedings of the Annual Computer Security Applications Conference, 
+December 2020.
 
 ## Why are AVClass and AVClass2 useful?
 
