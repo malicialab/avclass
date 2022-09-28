@@ -152,6 +152,35 @@ $./avclass2_labeler.py -vt <file1> -lb <file2>
 At this point you have read the most important information on how to use AVClass2. 
 The following sections describe steps that most users will not need.
 
+## Labeling: Using only Selected AV Engines
+
+By default, AVClass2 will use the labels of all AV engines that appear in
+the input reports.
+If you want to limit AVClass2 to use only the labels of certain AV engines,
+you can use the -av option to pass it a file where each line has the name of
+an AV engine (case-sensitive).
+
+For example, you could create a file engines.txt with three lines:  
+Agnitum  
+Symantec  
+TotalDefense  
+
+```shell
+$./avclass2_labeler.py -av engines.txt -vt ../examples/vtv2_sample.json > example.labels
+```
+
+would output into example.labels:
+```
+602695c8f2ad76564bddcaf47b76edff  2
+f117cc1477513cb181cc2e9fcaab39b2  3 winwebsec|2
+```
+
+where only the labels of Agnitum, Symantec, and TotalDefense have been used
+to extract tags.
+Note that the number of detections is with respect to the provided engines,
+i.e., even if the first sample has 52 detections,
+only 2 of the 3 selected engines detected it.
+
 ## Labeling: Ground Truth Evaluation
 
 If you have family ground truth for some malware samples, i.e., 
