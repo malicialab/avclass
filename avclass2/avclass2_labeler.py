@@ -169,8 +169,8 @@ def main(args):
                 # sys.stderr.flush()
                 continue
 
-            # Compute VT_Count
-            vt_count = len(sample_info.labels)
+            # Compute VT_Count (using list of AV engines if provided)
+            vt_count = av_labels.get_sample_vt_count(sample_info)
 
             # Get the distinct tokens from all the av labels in the report
             # And print them. 

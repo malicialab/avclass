@@ -400,6 +400,8 @@ class AvLabels:
         '''Read AV engine set from given file'''
         with open(avs_file) as fd:
             avs = set(map(str.strip, fd.readlines()))
+        sys.stderr.write("[-] Using %d AV engines in %s\n" % (len(avs),
+                                                              avs_file))
         return avs
 
     @staticmethod
@@ -668,4 +670,16 @@ class AvLabels:
         pairs = ((t, len(avs)) for (t,avs) in av_dict.items() 
                     if len(avs) > threshold)
         return sorted(pairs, key=itemgetter(1,0), reverse=True)
+
+    def get_sample_vt_count(self, sample_info):
+        ''' Return number of detections for sample
+            in the provided AV whitelist (if any) '''
+        if self.avs is None:
+            return len(sample_info.labels)
+        else:
+            cnt = 0
+            for (av_name, label) in sample_info.labels:
+                if av_name in self.avs:
+                    cnt += 1
+            return cnt
 
