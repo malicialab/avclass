@@ -1,4 +1,3 @@
-#!/usr/bin/env python
 '''
 Main AVClass class
 '''
@@ -11,6 +10,23 @@ from operator import itemgetter, attrgetter
 
 SampleInfo = namedtuple('SampleInfo', 
                         ['md5', 'sha1', 'sha256', 'labels'])
+
+# AVs to use in is_pup method
+pup_av_set = {'Malwarebytes', 'K7AntiVirus', 'Avast',
+              'AhnLab-V3', 'Kaspersky', 'K7GW', 'Ikarus',
+              'Fortinet', 'Antiy-AVL', 'Agnitum', 'ESET-NOD32'}
+
+# Tokens that indicate PUP used by is_pup method
+pup_tokens = {'PUA', 'Adware', 'PUP', 'Unwanted', 'Riskware', 'grayware',
+              'Unwnt', 'Adknowledge', 'toolbar', 'casino', 'casonline',
+              'AdLoad', 'not-a-virus'}
+
+# AVs to use in suffix removal
+suffix_removal_av_set = {'Norman', 'Avast', 'Avira', 'Kaspersky',
+                          'ESET-NOD32', 'Fortinet', 'Jiangmin', 'Comodo',
+                          'GData', 'Sophos',
+                          'TrendMicro-HouseCall', 'TrendMicro',
+                          'NANO-Antivirus', 'Microsoft'}
 
 class AvLabels:
     '''
@@ -62,27 +78,62 @@ class AvLabels:
         return avs
 
     @staticmethod
-    def get_sample_info(vt_rep, from_vt):
+    def get_sample_info_lb(vt_rep):
         '''Parse and extract sample information from JSON line
-           Returns a SampleInfo named tuple: md5, sha1, sha256, label_pairs 
+           Returns a SampleInfo named tuple
+        '''
+        return SampleInfo(vt_rep['md5'], vt_rep['sha1'], vt_rep['sha256'],
+                          vt_rep['av_labels'])
+
+    @staticmethod
+    def get_sample_info_vt_v2(vt_rep):
+        '''Parse and extract sample information from JSON line
+           Returns a SampleInfo named tuple
         '''
         label_pairs = []
-        if from_vt:
-            try:
-                scans = vt_rep['scans']
-            except KeyError:
-                return None
-            for av, res in scans.items():
-                if res['detected']:
-                    label = res['result']
-                    clean_label = filter(lambda x: x in string.printable, 
-                                      label).strip().encode('utf-8').strip()
-                    label_pairs.append((av, clean_label))
-        else:
-            label_pairs = vt_rep['av_labels']
+        # Obtain scan results, if available
+        try:
+            scans = vt_rep['scans']
+            md5 = vt_rep['md5']
+            sha1 = vt_rep['sha1']
+            sha256 = vt_rep['sha256']
+        except KeyError:
+            return None
+        # Obtain labels from scan results
+        for av, res in scans.items():
+            if res['detected']:
+                label = res['result']
+                clean_label = ''.join(filter(
+                                  lambda x: x in string.printable,
+                                    label)).strip()
+                label_pairs.append((av, clean_label))
 
-        return SampleInfo(vt_rep['md5'], vt_rep['sha1'], vt_rep['sha256'],
-                          label_pairs) 
+        return SampleInfo(md5, sha1, sha256, label_pairs)
+
+    @staticmethod
+    def get_sample_info_vt_v3(vt_rep):
+        '''Parse and extract sample information from JSON line
+           Returns a SampleInfo named tuple
+        '''
+        label_pairs = []
+        # Obtain scan results, if available
+        try:
+            scans = vt_rep['data']['attributes']['last_analysis_results']
+            md5 = vt_rep['data']['attributes']['md5']
+            sha1 = vt_rep['data']['attributes']['sha1']
+            sha256 = vt_rep['data']['attributes']['sha256']
+        except KeyError:
+            return None
+        # Obtain labels from scan results
+        for av, res in scans.items():
+            label = res['result']
+            if label is not None:
+                clean_label = ''.join(filter(
+                                  lambda x: x in string.printable,
+                                    label)).strip()
+                label_pairs.append((av, clean_label))
+
+        return SampleInfo(md5, sha1, sha256, label_pairs)
 
     @staticmethod
     def is_pup(av_label_pairs):
@@ -101,26 +152,18 @@ class AvLabels:
         # Initialize
         pup = False
         threshold = 0.5
-        # AVs to use
-        av_set = set(['Malwarebytes', 'K7AntiVirus', 'Avast',
-                  'AhnLab-V3', 'Kaspersky', 'K7GW', 'Ikarus',
-                  'Fortinet', 'Antiy-AVL', 'Agnitum', 'ESET-NOD32'])
-        # Tags that indicate PUP
-        tags = set(['PUA', 'Adware', 'PUP', 'Unwanted', 'Riskware', 'grayware',
-                    'Unwnt', 'Adknowledge', 'toolbar', 'casino', 'casonline',
-                    'AdLoad', 'not-a-virus'])
-
-        # Set with (AV name, Flagged/not flagged as PUP), for AVs in av_set
-        bool_set = set([(pair[0], t.lower() in pair[1].lower()) for t in tags
+        # Set with (AV name, Flagged/not flagged as PUP), for AVs in pup_av_set
+        bool_set = set([(pair[0], t.lower() in pair[1].lower()) 
+                        for t in pup_tokens
                         for pair in av_label_pairs
-                        if pair[0] in av_set])
+                        if pair[0] in pup_av_set])
 
         # Number of AVs that had a label for the sample
         av_detected = len([p[0] for p in av_label_pairs
-                           if p[0] in av_set])
+                           if p[0] in pup_av_set])
 
         # Number of AVs that flagged the sample as PUP
-        av_pup = map(lambda x: x[1], bool_set).count(True)
+        av_pup = list(map(lambda x: x[1], bool_set)).count(True)
 
         # Flag as PUP according to a threshold
         if (float(av_pup) >= float(av_detected)*threshold) and av_pup != 0:
@@ -129,16 +172,12 @@ class AvLabels:
 
 
     @staticmethod
-    def __remove_suffixes(av_name, label):
+    def _remove_suffixes(av_name, label):
         '''Remove AV specific suffixes from given label
            Returns updated label'''
 
         # Truncate after last '.'
-        if av_name in set(['Norman', 'Avast', 'Avira', 'Kaspersky',
-                          'ESET-NOD32', 'Fortinet', 'Jiangmin', 'Comodo',
-                          'GData', 'Avast', 'Sophos',
-                          'TrendMicro-HouseCall', 'TrendMicro',
-                          'NANO-Antivirus', 'Microsoft']):
+        if av_name in suffix_removal_av_set:
             label = label.rsplit('.', 1)[0]
 
         # Truncate after last '.' 
@@ -165,7 +204,7 @@ class AvLabels:
         return label
 
 
-    def __normalize(self, label, hashes):
+    def _normalize(self, label, hashes):
         '''Tokenize label, filter tokens, and replace aliases'''
 
         # If empty label, nothing to do
@@ -243,11 +282,23 @@ class AvLabels:
             # Duplicate removal #
             #####################
 
-            # If label ends in ' (B)', remove it
+            # Emsisoft uses same label as 
+            # GData/ESET-NOD32/BitDefender/Ad-Aware/MicroWorld-eScan,
+            # but suffixes ' (B)' to their label. Remove the suffix.
             if label.endswith(' (B)'):
                 label = label[:-4]
 
-            # If we have seen the label before, skip
+            # F-Secure uses Avira's engine since Nov. 2018
+            # but prefixes 'Malware.' to Avira's label. Remove the prefix.
+            if label.startswith('Malware.'):
+                label = label[8:]
+
+            # Other engines often use exactly the same label, e.g.,
+            #   AVG/Avast
+            #   K7Antivirus/K7GW
+            #   Kaspersky/ZoneAlarm
+
+            # If we have seen the exact same label before, skip
             if label in labels_seen:
                 continue
             # If not, we add it to the set of labels seen
@@ -257,12 +308,12 @@ class AvLabels:
             ##################
             # Suffix removal #
             ##################
-            label = self.__remove_suffixes(av_name, label)
+            label = self._remove_suffixes(av_name, label)
 
             ########################################################
             # Tokenization, token filtering, and alias replacement #
             ########################################################
-            tokens = self.__normalize(label, hashes)
+            tokens = self._normalize(label, hashes)
 
             # Increase token count in map
             for t in tokens:
@@ -272,7 +323,7 @@ class AvLabels:
         ##################################################################
         # Token ranking: sorts tokens by decreasing count and then token #
         ##################################################################
-        sorted_tokens = sorted(token_map.iteritems(), 
+        sorted_tokens = sorted(token_map.items(), 
                                 key=itemgetter(1,0), 
                                 reverse=True)
 

@@ -43,7 +43,7 @@ def eval_precision_recall_fmeasure(GROUNDTRUTH_DICT, ESTIMATED_DICT):
     rev_est_dict = {}
     for k, v in ESTIMATED_DICT.items():
         if v not in rev_est_dict:
-            rev_est_dict[v] = set([k])
+            rev_est_dict[v] = { k }
         else:
             rev_est_dict[v].add(k)
 
@@ -51,7 +51,7 @@ def eval_precision_recall_fmeasure(GROUNDTRUTH_DICT, ESTIMATED_DICT):
     gt_rev_dict = {}
     for k, v in GROUNDTRUTH_DICT.items():
         if v not in gt_rev_dict:
-            gt_rev_dict[v] = set([k])
+            gt_rev_dict[v] = { k }
         else:
             gt_rev_dict[v].add(k)
 
@@ -125,18 +125,16 @@ if __name__ == "__main__":
     }
 
     # a sample where estimated != ground truth
-    print "Ground truth"
-    print "%8s --> %10s" % ("Element", "Cluster_ID")
-    for k, v in diz_grth.iteritems():
-        print "%8s --> %10s" % (k, v)
-    print
-    print "Estimated clustering"
-    print "%8s --> %10s" % ("Element", "Cluster_ID")
-    for k, v in diz_estim.iteritems():
-        print "%8s --> %10s" % (k, v)
-    print
+    sys.stdout.write("Ground truth\n")
+    sys.stdout.write("%8s --> %10s\n" % ("Element", "Cluster_ID"))
+    for k, v in diz_grth.items():
+        sys.stdout.write("%8s --> %10s\n" % (k, v))
+    sys.stdout.write("\nEstimated clustering\n")
+    sys.stdout.write("%8s --> %10s\n" % ("Element", "Cluster_ID"))
+    for k, v in diz_estim.items():
+        sys.stdout.write("%8s --> %10s\n" % (k, v))
     # precision, recall, f-measure
     p, r, f = eval_precision_recall_fmeasure(diz_grth, diz_estim)
-    print "Precison: %s%%" % p
-    print "Recall: %s%%" % r
-    print "F-Measure: %s%%" % f
+    sys.stdout.write("\nPrecison: %s%%\n" % p)
+    sys.stdout.write("Recall: %s%%\n" % r)
+    sys.stdout.write("F-Measure: %s%%\n" % f)

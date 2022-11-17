@@ -41,13 +41,16 @@ generic
 genericgb
 generik
 gen
+agen
 genmalicious
 generickd
 tsgeneric
+genericr
 heuristic
 heur
 siggen
 genetic
+genome
 kcloud
 cloud
 memscan
@@ -104,6 +107,19 @@ genericgba
 genericrxgl
 genericrxaa
 genericrxen
+high
+score
+attribute
+advml
+bloodhound
+sape
+maltrec
+symvt
+igeneric
+eheur
+posible
+undefined
+static
 
 # malware classes
 trojan
@@ -124,6 +140,7 @@ hllw
 virus
 fileinfector
 filelocker
+infector
 prepender
 hllp
 rootkit
@@ -136,6 +153,7 @@ bkdr
 keylog
 keylogger
 keylgr
+datastealer
 stealer
 datastealer
 infostealer
@@ -148,8 +166,15 @@ emailworm
 massmailer
 smtp
 stmp
+spam
 spammer
 spambot
+ransom
+ransomlock
+ransomcrypt
+ransomware
+filecoder
+filecryptor
 rogue
 faker
 fakealert
@@ -159,6 +184,13 @@ adclicker
 addisplay
 adlock
 click
+miner
+coinmine
+coinminer
+bitcoinminer
+bitcoin
+btcmine
+bitminer
 trojansms
 searcher
 diskcoder
@@ -188,6 +220,7 @@ trojanransom
 ransomheur
 obfusransom
 ransominject
+phishing
 
 #stealer for steam credentials
 stimilik
@@ -257,6 +290,8 @@ mdrop
 ddedownloader
 donoff
 bsdownloader
+downloadware
+dloadware
 
 # pup
 pup
@@ -269,6 +304,7 @@ riskware
 risk
 grayware
 unwnt
+addisplay
 adknowledge
 applicunwnt
 adplugin
@@ -297,6 +333,7 @@ outbrowse
 convertad
 roguesecurity
 wapron
+securityrisk
 
 # suspicious
 suspected
@@ -325,6 +362,7 @@ undef
 injector
 delphinjector
 inject
+injecter
 vbinject
 injcrypt
 injected
@@ -367,6 +405,23 @@ servstart
 autorun
 autoruner
 autoruns
+# Behavior: autorun
+autorun
+autoruner
+starter
+
+# Behavior: network
+netfilter
+redirector
+sniffer
+portscan
+
+# Behavior: files
+killfiles
+renamer
+
+# Behavior: services
+servstart
 server
 static
 engine
@@ -395,6 +450,11 @@ shell
 exescript
 
 # packer
+# Behavior: VM detect
+vmdetect
+vmdetector
+
+# Packer
 packer
 cryptor
 crypter
@@ -431,9 +491,11 @@ msilkrypt
 obfuscated
 obfus
 obfusc
+obfuscate
 malcrypt
 vbcrypt
 vbkrypt
+vbpack
 xpack
 susppack
 vbpack
@@ -442,6 +504,7 @@ multipacked
 packedent
 vbpacked
 malwarecrypter
+suspiciouspacker
 
 # packed (specific packers)
 asprotect
@@ -488,11 +551,18 @@ dde
 ddeauto
 ddeexec
 pe
+powershell
+perl
+python
+flash
+jpeg
+autoit
 
 # patch
 pepatch
 patchfile
 patched
+patcher
 
 # exploit
 exploit
@@ -503,6 +573,8 @@ expkit
 damaged
 corrupt
 malformed
+pemalform
+malpe
 
 # tools
 tool
@@ -512,12 +584,14 @@ fraudtool
 virtool
 keygen
 kgen
+hack
 hacktool
 hktl
 spamtool
 crack
 wificrack
 
+cracktool
 
 # small
 small
@@ -585,7 +659,6 @@ mult
 normal
 other
 optional
-hack
 access
 sitehijack
 
@@ -4897,3 +4970,5 @@ fffg
 fabf
 e2bb4tal0fj
 fbah
+onion
+ 

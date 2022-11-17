@@ -1,4 +1,4 @@
-#!/usr/bin/env python2
+#!/usr/bin/env python3
 '''
 AVClass labeler
 '''
@@ -8,6 +8,8 @@ import sys
 path = os.path.dirname(os.path.abspath(__file__))
 libpath = os.path.join(path, 'lib/')
 sys.path.insert(0, libpath)
+sharedpath = os.path.join(path, '../shared/')
+sys.path.insert(1, sharedpath)
 import argparse
 from avclass_common import AvLabels
 from operator import itemgetter
@@ -45,7 +47,7 @@ def main(args):
                 gt_dict[gt_hash] = family
 
         # Guess type of hash in ground truth file
-        hash_type = guess_hash(gt_dict.keys()[0])
+        hash_type = guess_hash(list(gt_dict.keys())[0])
 
     # Create AvLabels object
     av_labels = AvLabels(args.gen, args.alias, args.av)
@@ -65,6 +67,14 @@ def main(args):
     if (args.lbdir):
         ifile_l += [os.path.join(args.lbdir, f) for f in os.listdir(args.lbdir)]
         ifile_are_vt = False
+
+    # Select correct sample info extraction function
+    if not ifile_are_vt:
+        get_sample_info = av_labels.get_sample_info_lb
+    elif args.vt3:
+        get_sample_info = av_labels.get_sample_info_vt_v3
+    else:
+        get_sample_info = av_labels.get_sample_info_vt_v2
 
     # Select output prefix
     out_prefix = os.path.basename(os.path.splitext(ifile_l[0])[0])
@@ -107,7 +117,7 @@ def main(args):
 
             # Read JSON line and extract sample info (i.e., hashes and labels)
             vt_rep = json.loads(line)
-            sample_info = av_labels.get_sample_info(vt_rep, ifile_are_vt)
+            sample_info = get_sample_info(vt_rep)
             if sample_info is None:
                 try:
                     name = vt_rep['md5']
@@ -133,11 +143,11 @@ def main(args):
             # If verbose, print the whole list
             try:
                 # Get distinct tokens from AV labels
-                tokens = av_labels.get_family_ranking(sample_info).items()
+                tokens = list(av_labels.get_family_ranking(sample_info).items())
 
                 # If alias detection, populate maps
                 if args.aliasdetect:
-                    prev_tokens = set([])
+                    prev_tokens = set()
                     for entry in tokens:
                         curr_tok = entry[0]
                         curr_count = token_count_map.get(curr_tok)
@@ -198,7 +208,8 @@ def main(args):
                     gt_family = ""
 
                 # Print family (and ground truth if available) to stdout
-                print '%s\t%s%s%s' % (name, family, gt_family, is_pup_str)
+                sys.stdout.write('%s\t%s%s%s\n' % (name, family, gt_family, 
+                                                    is_pup_str))
 
                 # If verbose, print tokens (and ground truth if available) 
                 # to log file
@@ -261,7 +272,7 @@ def main(args):
         gen_fd = open(gen_filename, 'w+')
         # Output header line
         gen_fd.write("Token\t#Families\n")
-        sorted_pairs = sorted(token_family_map.iteritems(), 
+        sorted_pairs = sorted(token_family_map.items(), 
                               key=lambda x: len(x[1]) if x[1] else 0, 
                               reverse=True)
         for (t,fset) in sorted_pairs:
@@ -399,6 +410,9 @@ if __name__=='__main__':
     argparser.add_argument('-fam',
         action='store_true',
         help='if used produce families file with PUP/malware counts per family')
+
+    argparser.add_argument('-vt3', action='store_true',
+        help='input are VT v3 files')
 
     args = argparser.parse_args()
 

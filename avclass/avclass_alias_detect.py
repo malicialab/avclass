@@ -1,4 +1,4 @@
-#!/usr/bin/env python2
+#!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 '''
 AVClass Alias detect
@@ -22,7 +22,7 @@ def main(args):
     sys.stderr.write('[-] Running avclass_labeler on %s\n' % (ifile))
     FNULL = open(os.devnull, 'w')
     labeler = subprocess.Popen(\
-       "python avclass_labeler.py %s %s %s -alias /dev/null -aliasdetect" %
+       "python3 avclass_labeler.py %s %s %s -alias /dev/null -aliasdetect" %
        (itype, ifile, gen_switch), shell=True, stdout=FNULL)
     labeler.wait()
 
@@ -34,12 +34,12 @@ def main(args):
             cline = line.strip('\n')
             # Print headers
             if not pos:
-                print cline
+                sys.stdout.write("%s\n" % cline)
                 continue
             t1, t2, t1_num, t2_num, nalias_num, talias_num = cline.split('\t')
             if int(nalias_num) > args.nalias and\
               float(talias_num) > args.talias:
-                print cline
+                sys.stdout.write("%s\n" % cline)
 
     # Done
     sys.stderr.write('[-] Done.\n')

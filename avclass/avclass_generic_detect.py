@@ -1,4 +1,4 @@
-#!/usr/bin/env python2
+#!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 '''
 AVClass Generic detect
@@ -18,7 +18,7 @@ def main(args):
     sys.stderr.write('[-] Running avclass_labeler on %s\n' % (ifile))
     FNULL = open(os.devnull, 'w')
     labeler = subprocess.Popen(\
-       "python avclass_labeler.py %s %s -alias /dev/null"\
+       "python3 avclass_labeler.py %s %s -alias /dev/null"\
        " -gen /dev/null -gendetect -gt %s" % 
        (itype, ifile, args.gt), shell=True, stdout=FNULL)
     labeler.wait()
@@ -31,11 +31,11 @@ def main(args):
             cline = line.strip('\n')
             # Print headers
             if not pos:
-                print cline
+                sys.stdout.write("%s\n" % cline)
                 continue
             token, fam_num = cline.split('\t')
             if int(fam_num) > args.tgen:
-                print cline
+                sys.stdout.write("%s\n" % cline)
 
     # Done
     sys.stderr.write('[-] Done.\n')

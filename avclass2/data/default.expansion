@@ -1,0 +1,17 @@
+backdoor	server
+bitcoinminer	bitcoinmining
+clicker	clicks
+ddoser	ddos
+dialer	dials
+downloader	execdownload
+gamania	gamethief
+keylogger	keylogging
+miner	mining
+onlinegames	gamethief
+ransomware	filecrypt
+rogueware	alertuser
+rootkit	osmodify
+searcher	search
+smshoax	sendssms
+virus	filemodify
+worm	selfpropagate
