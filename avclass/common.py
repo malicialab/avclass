@@ -30,7 +30,6 @@ suffix_removal_av_set = {
     "Jiangmin",
     "Comodo",
     "GData",
-    "Avast",
     "Sophos",
     "BitDefenderTheta",
     "Alibaba",
@@ -115,6 +114,12 @@ class Taxonomy:
     def __iter__(self):
         """ Iterator over the alphabetically sorted tags in the taxonomy """
         return (t for t in sorted(self._tags))
+
+    def is_hex(self, tag: AnyStr) -> bool:
+        # exclude generic hex tags like 004bc24a
+        return bool(re.search(r"\d", tag)) and bool(
+                re.fullmatch(r"[0-9a-fA-F]+", tag)
+            )
 
     def is_generic(self, tag: AnyStr) -> bool:
         """
@@ -748,6 +753,10 @@ class AvLabels:
             if self.taxonomy.is_generic(token):
                 continue
 
+            # Ignore hex tokens
+            if self.taxonomy.is_hex(token):
+                continue
+
             # Apply tagging rule
             dst_l = self.translations.get_dst(token)
             if dst_l:
@@ -828,6 +837,18 @@ class AvLabels:
                 av_dict[t].append(av_name)
 
         return av_dict
+
+    def get_sample_vt_count(self, sample_info):
+        ''' Return number of detections for sample
+            in the provided AV whitelist (if any) '''
+        if self.avs is None:
+            return len(sample_info.labels)
+        else:
+            cnt = 0
+            for (av_name, label) in sample_info.labels:
+                if av_name in self.avs:
+                    cnt += 1
+            return cnt
 
     @staticmethod
     def rank_tags(

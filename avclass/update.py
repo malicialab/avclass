@@ -437,12 +437,12 @@ def main():
     parser = argparse.ArgumentParser(description='Given a .alias file from the labeler, generates updates for the '
                                                  'taxonomy, tagging, and expansion files.')
 
-    parser.add_argument('-alias', help='file to parse with alias from labeler which runs if -alias not present')
+    parser.add_argument('-alias', help='input file with alias from labeler. Mandatory.')
 
-    parser.add_argument('-n', help='Minimum number of times that a pair of tokes have been seen. Default: 20',
+    parser.add_argument('-n', help='Minimum number of times that a pair of tokens have been seen. Default: 20',
                         type=int, default=20)
 
-    parser.add_argument('-t', help='Minimum percentage of times two tokens appear together. Default: 1.94',
+    parser.add_argument('-t', help='Minimum percentage of times two tokens appear together. Default: 0.94',
                         type=float, default=0.94)
 
     parser.add_argument('-o', help='output prefix for files')

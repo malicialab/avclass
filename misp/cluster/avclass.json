@@ -2730,6 +2730,7 @@
           "malob", 
           "malpack", 
           "msilobfuscator", 
+          "msilkrypt",
           "nsanti", 
           "obfus", 
           "obfusc", 
@@ -2737,6 +2738,7 @@
           "obfuscated", 
           "obfuscator", 
           "pakes", 
+          "packer",
           "suspiciouspacker", 
           "susppack", 
           "vbinder",
@@ -3453,7 +3455,9 @@
       "description": "FILE:proglang:autoit", 
       "meta": {
         "refs": [], 
-        "synonyms": [], 
+        "synonyms": [
+          "autoitscript"
+        ], 
         "type": []
       }, 
       "uuid": "e16e2760-e497-3e39-9ca2-68a23ccd2b4f", 
@@ -5411,6 +5415,19 @@
       }, 
       "uuid": "0c6ba93f-a1bc-3e31-bf0e-ffab207c80f8", 
       "value": "loic"
+    }, 
+    {
+      "description": "FAM:lokibot",
+      "meta": {
+        "refs": [
+          "https://malpedia.caad.fkie.fraunhofer.de/details/apk.lokibot",
+          "https://www.threatfabric.com/blogs/lokibot_the_first_hybrid_android_malware.html"
+        ],
+        "synonyms": [],
+        "type": []
+      },
+      "uuid": "14b91559-69a4-4f1c-aeac-346be227d08d",
+      "value": "lokibot"
     }, 
     {
       "description": "FAM:lolbot", 
@@ -8794,6 +8811,23 @@
       "value": "smszombie"
     }, 
     {
+      "description": "FAM:snatch",
+      "meta": {
+        "refs": [
+          "https://malpedia.caad.fkie.fraunhofer.de/details/win.snatch"
+        ],
+        "synonyms": []
+      },
+      "related": [
+        {
+          "dest-uuid": "a8f4f4fa-1558-3f16-ac56-bce903a83b22",
+          "type": "variant-of"
+        }
+      ],
+      "uuid": "5a5cdf0a-ead8-4399-848a-44a9a48cb237",
+      "value": "snatch"
+    },
+    {
       "description": "FAM:snowfox", 
       "meta": {
         "refs": [], 
@@ -8817,6 +8851,28 @@
       "uuid": "ab23cc7e-2a93-36e8-a0b7-91bf87e0a142", 
       "value": "socks"
     }, 
+    {
+      "description": "FAM:revil",
+      "meta": {
+        "refs": [
+          "https://malpedia.caad.fkie.fraunhofer.de/details/win.revil",
+          "https://blog.talosintelligence.com/2019/04/sodinokibi-ransomware-exploits-weblogic.html"
+        ],
+        "synonyms": [
+          "sodinokibi",
+          "sodin",
+          "sodinoransom"
+        ]
+      },
+      "related": [
+        {
+          "dest-uuid": "a8f4f4fa-1558-3f16-ac56-bce903a83b22",
+          "type": "variant-of"
+        }
+      ],
+      "uuid": "a3d6c162-a51c-4b25-a0cd-7d89037140a3",
+      "value": "revil"
+    },
     {
       "description": "FAM:soft32downloader", 
       "meta": {
@@ -8968,6 +9024,7 @@
       "meta": {
         "refs": [], 
         "synonyms": [
+          "autoruns",
           "autoruner", 
           "autorunerent"
         ], 
@@ -9165,6 +9222,7 @@
         "synonyms": [
           "banker", 
           "bitstealer",
+          "cookiesstealer",
           "datastealer", 
           "discostealer",
           "delfsnif", 
@@ -9172,6 +9230,7 @@
           "infostealer", 
           "monitor", 
           "passwordstealera",
+          "poscardstealer",
           "pswtool", 
           "pwsteal", 
           "pwstealer", 
@@ -10543,6 +10602,19 @@
       "value": "amonetize"
     }, 
     {
+      "description": "FAM:ammyy", 
+      "meta": {
+        "refs": [], 
+        "synonyms": [
+          "fakeammyy", 
+          "ammyyadmin"
+        ], 
+        "type": []
+      }, 
+      "uuid": "4dc7b45d-cff8-447a-97a6-2181f7b7773d", 
+      "value": "ammyy"
+    }, 
+    {
       "description": "FAM:androidarmour", 
       "meta": {
         "refs": [], 
@@ -11006,7 +11078,9 @@
           "bazarcall",
           "kegtap",
           "team9backdoor",
-          "bazaloader"
+          "bazaloader",
+          "bazarloader",
+          "bazloader"
         ],
         "type": []
       },
@@ -11412,6 +11486,26 @@
       "uuid": "cd7498b7-68c7-34ba-bdfd-9381aa879adb", 
       "value": "bublik"
     }, 
+    {
+      "description": "FAM:buhtrap",
+      "meta": {
+        "refs": [
+          "https://malpedia.caad.fkie.fraunhofer.de/details/win.buhtrap",
+          "https://malware-research.org/carbanak-source-code-leaked/",
+          "https://www.symantec.com/connect/blogs/russian-bank-employees-received-fake-job-offers-targeted-email-attack",
+          "https://www.welivesecurity.com/2015/04/09/operation-buhtrap/",
+          "https://www.group-ib.com/brochures/gib-buhtrap-report.pdf",
+          "https://www.arbornetworks.com/blog/asert/diving-buhtrap-banking-trojan-activity/",
+          "https://blog.dcso.de/pegasus-buhtrap-analysis-of-the-malware-stage-based-on-the-leaked-source-code/"
+        ],
+        "synonyms": [
+          "ratopak"
+        ],
+        "type": []
+      },
+      "uuid": "71e031ee-50e8-46a8-bda8-c4ae9c0012de",
+      "value": "buhtrap"
+    },
     {
       "description": "FAM:bundlore", 
       "meta": {
@@ -13127,6 +13221,7 @@
           "fakebrows", 
           "fakeicq", 
           "fakeinstall", 
+          "fakeinstaller",
           "fakeinsthw", 
           "fakeinstsms", 
           "fodeg", 
@@ -13854,5 +13949,5 @@
       "value": "geinimi"
     }
   ], 
-  "version": 0.1
+  "version": 0.2
 }

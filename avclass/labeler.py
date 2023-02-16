@@ -213,8 +213,8 @@ class AVClassLabeler:
         if self.av_labels.alias_detect:
             self.av_vender_tokens(tags)
 
-        # Compute VT_Count
-        vt_count = len(sample_info.labels)
+        # Compute VT_Count (using list of AV engines if provided)
+        vt_count = self.av_labels.get_sample_vt_count(sample_info)
 
         # Collect stats
         # TODO: should iterate once over tags,

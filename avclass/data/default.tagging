@@ -13,6 +13,7 @@ addisplay	adware
 addrop	adware
 adfltnet	amonetize
 adgazele	adgazelle
+adhubllka	deathransom
 adiwky	airpush
 adknowledge	adware
 adload	adware
@@ -26,14 +27,18 @@ adtrafficanalysis	winkad
 adwareeorezo	eorezo
 afoynq	ksapp
 agemt	domob
+agensla	agenttesla
+agentesla	agenttesla
 agewap	opfake
 agile	biige
 agilebinary	biige
 agnsmit	infectionads
+ainslot	blackshades
 airad	airinstaller
 airadinstaller	airinstaller
 airinstall	airinstaller
 akan	winwebsec
+alienspy	adwind
 allad	airpush
 almanahe	alman
 alureon	tdss
@@ -96,8 +101,14 @@ banloader	rimod
 basebrid	basebridge
 batteryd	fakedoc
 batterydoctor	fakedoc
+bazaloader	bazar
+bazarldr	bazar
+bazarloader	bazar
+bazdor	bazar
+bazzarldr	bazar
 bbridge	basebridge
 bckdr	backdoor
+beacon	cobaltstrike
 bean	nandrobox
 bearshare	bandoo
 beita	beitaad
@@ -113,6 +124,8 @@ bitminer	bitcoinminer
 bjlog	zegost
 bkdr	backdoor
 blackice	whiteice
+bladabi	bladabindi
+blanajog	spygate
 blic	whiteice
 blocal	vmvol
 blocker	killsectool
@@ -121,9 +134,11 @@ botnet	gidix
 bototer	wapomi
 boxer	fakeinst
 boxersms	fakeinst
+bozok	bezigate
 braininst	installbrain
 brantall	installbrain
 brappware	multiplug
+breu	darkkomet
 browsepulse	browsefox
 browsermodifier	multiplug
 browserplugin	multiplug
@@ -144,7 +159,9 @@ c2lop	swizzor
 cabby	dalexis
 caphaw	shylock
 casonline	casino
+cassiopeia	blackshades
 cawitt	smsbot
+cebruser	cerberus
 ceeinject	inject
 cellphonetrack	mytrackp
 cellspy	mobilespy
@@ -158,6 +175,7 @@ chinky	vobfus
 chydo	pykspa
 cidox	vundo
 cimag	hiloti
+cinarat	quasar
 cinmeng	cinmus
 citirevo	vundo
 clemag	cleaman
@@ -170,7 +188,10 @@ clickspring	purityscan
 clientconnect	opencandy
 climap	androrat
 clkpotato	hotbar
+cloudatlas	neoreklami
 clspring	purityscan
+cobalt	cobaltstrike
+cobaltstr	cobaltstrike
 cobbler	focobers
 cobblerone	focobers
 cobbleronea	focobers
@@ -183,6 +204,7 @@ coinminer	miner
 coldfuson	coldfusion
 collector	autoins
 comet	darkkomet
+cometer	cobaltstrike
 cometsys	darkkomet
 cometsystems	darkkomet
 condestil	firseria
@@ -198,6 +220,7 @@ cracktool	tool
 crisis	morcut
 crori	crossrider
 crosate	svpeng
+crusis	crysis
 crwind	crusewind
 cryp	packed
 crypt	packed
@@ -209,16 +232,19 @@ cryptinno	installcore
 cryptodefense	cryptodef
 cryptominer	miner
 cryptor	packed
+cryptz	rozena
 cson	simbot
 ctblocker	dalexis
 cudos	fosniw
 cupi	smssend
+cybergate	rebhip
 cybota	cycbot
 cycler	unruy
 dadmin	downloadadmin
 dailer	dialer
 dalamodo	cossta
 damaged	corrupted
+darkcomet	darkkomet
 darksnow	whiteice
 datasetaler	infosteal
 daytre	upatre
@@ -236,11 +262,14 @@ derdroi	simbad
 desktoplightning	cashon
 detroi	detroie
 detroia	detroie
+dexcrypt	mbrlock
+dharma	crysis
 dial	dialer
 dialers	dialer
 dialpass	egroupdial
 dialplatform	dialer
 didat	dabom
+dinihou	jenxcus
 diple	vobfus
 directdown	directdownloader
 dizhi	lecna
@@ -309,13 +338,16 @@ droppr	downloader
 dropr	downloader
 duel	loveletter
 dumobove	hiddad
+dunihi	jenxcus
 duptwux	lolbot
+dwnld	downloader
 dwnldr	downloader
 dwonk	pykspa
 easydl	amonetize
 echiui	invis
 ecsys	mailcab
 egbii	biige
+egregorransom	egregor
 egroup	egroupdial
 eicar	testvirus
 electron	sytro
@@ -327,6 +359,7 @@ emagsoftware	smsreg
 email	spam
 emailspy	maistealer
 emerleox	fujacks
+emotetcrypt	emotet
 emud	emudbot
 encoder	filecrypt	ransomware
 encpk	packed
@@ -335,6 +368,7 @@ epicgames	gamevance
 epicplay	gamevance
 eqdrug	equationdrug
 equation	equationdrug
+eregorcrypt	egregor
 erop	smssend
 escape	laroux
 escop	laroux
@@ -382,6 +416,7 @@ fakeupdates	gamex
 fakmod	fakeapp
 fakromup	soft32downloader
 faktvx	fakeangry
+fareitvb	fareit
 farex	fearso
 fastsave	megasearch
 fastsaveapp	megasearch
@@ -427,6 +462,7 @@ freeandspy	freespy
 freepds	hotclip
 frogonal	ginmaster
 fujack	fujacks
+fullscreen	lockscreen
 funclub	smssend
 funweb	mywebsearch
 fynloski	darkkomet
@@ -478,6 +514,7 @@ gmeil	gamex
 gnurbulf	rungbu
 goidu	oveead
 goldclick	hiddad
+goldeneye	petya
 gonca	gonesixty
 gone	gonesixty
 gonfu	droidkungfu
@@ -503,6 +540,7 @@ hacyayu	winwebsec
 hamob	fakeflash
 hdusafe	wapron
 helldoor	hilldoor
+hellokitty	deathransom
 hellospy	spyoo
 hiddenad	hiddad
 hiddeninstall	jsmshider
@@ -518,8 +556,10 @@ homepage	browsermodify
 hongtoutou	adrd
 horse	trojan
 hosts-modifier	hostsmodify
+houdini	jenxcus
 hublo	crytex
 huigezi	hupigon
+hworm	jenxcus
 hype	loadmoney
 hyteod	kovter
 iadpush	dowgin
@@ -579,6 +619,7 @@ jedan	kuguo
 jelbrus	techsnab
 joke	hoax
 joleee	tedroo
+jrat	adwind
 juched	griptolo
 kaka	telman
 kanav	alyak
@@ -596,6 +637,8 @@ kibi	ksapp
 kichhoat	smsreg
 killav	killsectool
 killfiles	files
+kitty	deathransom
+kittycrypt	deathransom
 kituri	placms
 kkrunchy	krunchy
 klevate	webprefix
@@ -607,6 +650,8 @@ kometa	rukometa
 kongfu	droidkungfu
 kouto	koutodoor
 koyotelab	bandoo
+kpotsteal	kpot
+kpotstealer	kpot
 krademok	darkkomet
 kranxpay	mmarketpay
 krypt	packed
@@ -644,6 +689,8 @@ llond	lardlond
 loadmoneyent	loadmoney
 locker	lockscreen
 locm	locmg
+loda	nymeria
+lodarat	nymeria
 lohmys	midia
 looked	viking
 loorp	wapomi
@@ -673,6 +720,7 @@ malpe	corrupted
 manalo	laroux
 mandaph	socks
 marketpay	mmarketpay
+maskit	khalesi
 massmailer	spam
 master	masterkey
 maxplus	zeroaccess
@@ -724,7 +772,9 @@ morstar	firseria
 morstars	firseria
 mosky	skymobi
 mostofate	softomate
+mozaakai	bazar
 mplug	multiplug
+mrophine	morphine
 msilobfuscator	msil	packed
 mspyonline	mspy
 msteal	maistealer
@@ -735,6 +785,7 @@ muldrop	downloader
 multibardown	multibar
 multibardownloader	multibar
 multiinstall	vilsel
+multipacked	packed
 multipluggen	multiplug
 musictoolbar	bandoo
 mutibar	multibar
@@ -744,13 +795,19 @@ mw97	macro
 mytrack	mytrackp
 nabucur	virlock
 najin	feejar
+nancrat	nanocore
 nandrob	nandrobox
+nanobot	nanocore
+negasteal	agenttesla
 nemucod	smsreg
+neobar	neoreklami
 neshuta	neshta
 netboxserver	netbox
 neteyes	ipamor
 netfilter	network
 netweird	netwiredrc
+netwire	netwiredrc
+netwired	netwiredrc
 networm	worm
 newyearl	plankton
 nextup	verti
@@ -764,6 +821,8 @@ nimnul	wapomi
 ninebox	kuguo
 nioserv	nocoma
 nisev	nocoma
+njrat	bladabindi
+noancooe	nanocore
 nofear	fearso
 nofer	fearso
 noico	zdtad
@@ -808,6 +867,8 @@ optinstall	ibryte
 optiuminstaller	ibryte
 optixp	optix
 optixpro	optix
+orcusrat	orcus
+orcusrot	orcus
 osx	mac
 osx32	mac
 otran	vobfus
@@ -843,7 +904,9 @@ perfectkeylogger	perflogger
 perfkey	perflogger
 perfloger	perflogger
 perkele	perkel
+petr	petya
 petrolan	petrolin
+petrwrap	petya
 philis	viking
 pigeon	hupigon
 pigetrl	lockscreen
@@ -871,6 +934,7 @@ polipos	cardserv
 polycryptt	polycrypt
 polyransom	virlock
 pony	fareit
+ponystealer	fareit
 popeler	firseria
 popov	fakeinst
 popuppers	soft32downloader
@@ -915,6 +979,7 @@ qakbot	qbot
 qhost	hostsmodify
 qhosts	hostsmodify
 qqrobber	qqrob
+quasarrat	quasar
 qukart	berbew
 qvod	wapomi
 rabbhome	fjcon
@@ -932,6 +997,7 @@ ratab	mamianune
 razel	rasteal
 raziel	rasteal
 recal	mogap
+recam	netwiredrc
 recordpage	browsefox
 redirector	network
 reefwal	kalfere
@@ -941,7 +1007,12 @@ relevant	relevantknowledge
 relik	updtkiller
 remtasu	xtrat
 renamer	files
+reposfxg	trickbot
 reptilic	reptilicus
+rescoms	remcos
+revenge	revetrat
+revengerat	revetrat
+revet	revetrat
 revtcp	metasploit
 rimecud	palevo
 risk	grayware
@@ -967,6 +1038,7 @@ rugo	hotbar
 runitslf	looper
 runonce	chir
 runouce	chir
+ruyk	ryuk
 safekidzone	sakezon
 sahagent	sahat
 saho	wroba
@@ -978,9 +1050,11 @@ salitystub	sality
 salload	sality
 salpack	sality
 salrenmetie	sality
+samas	samsam
 sambamedia	softpulse
 sancmed	sanctionedmedia
 sandrorat	sandr
+sasfis	oficla
 saveshare	megasearch
 scareware	rogueware
 scavir	fakeinst
@@ -999,6 +1073,7 @@ securitydefender	defmid
 securitytool	tool
 secxplod	securityxploded
 secxploded	securityxploded
+sekhmet	egregor
 selfdel	beebone
 sendpay	shastrosms
 sensode	zxshell
@@ -1007,6 +1082,8 @@ serpip	morto
 sethom	hiddad
 sexxoo	redmobile
 sexyclip	smssend
+shadebot	blackshades
+shakblades	blackshades
 sharestar	gappusin
 shell	shellcode
 shellkode	shellcode
@@ -1023,6 +1100,7 @@ sinodo	sinowal
 sintal	plankton
 sirefef	zeroaccess
 skanik	smssend
+skeeeyah	avemaria
 skywiper	flame
 slybdb	blohi
 smabo	adialer
@@ -1055,6 +1133,9 @@ sndapps	typstu
 sneakytrail	installerex
 sniffer	network
 sobot	clientor
+sodin	revil
+sodinokib	revil
+sodinokibi	revil
 soft32down	soft32downloader
 soft32download	soft32downloader
 softbase	softobase
@@ -1113,6 +1194,7 @@ suspiciouspacker	packed
 susppack	packed
 sventore	firseria
 swiftbrowse	browsefox
+swrort	rozena
 system	droidkungfu
 systemfix	fakesysdef
 systemsecurity	winwebsec
@@ -1146,12 +1228,16 @@ tinbelog	nandrobox
 tiny	small
 tklocker	lockscreen
 tonclank	plankton
+toobpug	neoreklami
 toorch	rootnik
 tophos	stegvob
 torchmedia	bandoo
 torpump	winpump
 tovkater	installmonster
 towelexploit	towel
+trick	trickbot
+trickbotcrypt	trickbot
+trickpak	trickbot
 trj	trojan
 trjdown	downloader	trojan
 trjndwnlder	downloader	trojan
@@ -1229,6 +1315,7 @@ w2km	macro
 w32	windows
 w64	windows
 w97m	macro
+wadhrama	crysis
 wakeful	cardserv
 wali	wapomi
 walkfree	kalfere
@@ -1253,6 +1340,7 @@ websearch	search
 webtoolbar	toolbar
 wedownload	soft32downloader
 weecnaw	netwiredrc
+weenloc	lockscreen
 weiyi	smforw
 whboy	fujacks
 whistle	whistlesoftware
@@ -1262,6 +1350,7 @@ win	windows
 win32	windows
 win64	windows
 winge	cardserv
+winlock	lockscreen
 winnt	windows
 winsoft	fosniw
 winsxsbot	sfone

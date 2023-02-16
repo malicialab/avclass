@@ -43,6 +43,7 @@ BEH:spam
 BEH:tor
 BEH:vmdetect
 BEH:whatsapp
+BEH:windef
 CLASS:apt
 CLASS:backdoor
 CLASS:bot
@@ -116,6 +117,7 @@ FAM:allaple
 FAM:alman
 FAM:alyak
 FAM:amonetize
+FAM:amphitryon
 FAM:androidarmour
 FAM:androidlost
 FAM:androrat
@@ -166,15 +168,18 @@ FAM:berbew
 FAM:bertle
 FAM:betterad
 FAM:bettersurf
+FAM:bezigate
 FAM:bgserv
 FAM:bicololo
 FAM:bifrose
+FAM:bifrost
 FAM:biige
 FAM:binka
 FAM:bips
 FAM:birele
 FAM:bitrep
 FAM:blacklister
+FAM:blackshades
 FAM:bladabindi
 FAM:blohi
 FAM:blueguard
@@ -190,6 +195,7 @@ FAM:brontok
 FAM:browsefox
 FAM:bruad
 FAM:bublik
+FAM:buhtrap
 FAM:bundlore
 FAM:buterat
 FAM:buzus
@@ -275,6 +281,7 @@ FAM:dofoil
 FAM:dogowar
 FAM:domaiq
 FAM:domob
+FAM:donoff
 FAM:dorfdo
 FAM:dorifel
 FAM:dorkbot
@@ -373,6 +380,7 @@ FAM:fujacks
 FAM:gabas
 FAM:gabpath
 FAM:gamania
+FAM:gamaredon
 FAM:gamarue
 FAM:gambler
 FAM:gamclk
@@ -409,6 +417,7 @@ FAM:gonesixty
 FAM:goodnews
 FAM:goodor
 FAM:gootkit
+FAM:gorgon
 FAM:gorillaprice
 FAM:gozi
 FAM:gpspy
@@ -476,6 +485,7 @@ FAM:irtard
 FAM:itracker
 FAM:jayqa
 FAM:jeefo
+FAM:jenxcus
 FAM:jfpush
 FAM:jiead
 FAM:jifake
@@ -495,6 +505,7 @@ FAM:kasidet
 FAM:katrep
 FAM:kelihos
 FAM:kgbspy
+FAM:khalesi
 FAM:kidlogger
 FAM:kimia
 FAM:kingroot
@@ -507,6 +518,7 @@ FAM:koobface
 FAM:korgo
 FAM:koutodoor
 FAM:kovter
+FAM:kpot
 FAM:krefel
 FAM:kronos
 FAM:ksapp
@@ -536,6 +548,7 @@ FAM:loapi
 FAM:lockactivity
 FAM:locmg
 FAM:loic
+FAM:lokibot
 FAM:lolbot
 FAM:lollipop
 FAM:loodos
@@ -550,6 +563,7 @@ FAM:lucky
 FAM:lxasj
 FAM:lynep
 FAM:mabezat
+FAM:macrobe
 FAM:magiccasino
 FAM:mailcab
 FAM:maistealer
@@ -564,6 +578,7 @@ FAM:masplot
 FAM:masspr
 FAM:maxapp
 FAM:mazarbot
+FAM:mbrlock
 FAM:mecor
 FAM:medfos
 FAM:mediafinder
@@ -626,6 +641,7 @@ FAM:navbar
 FAM:nawiaiad
 FAM:necro
 FAM:necurs
+FAM:nemim
 FAM:neoreklami
 FAM:neospy
 FAM:neshta
@@ -640,9 +656,11 @@ FAM:nocoma
 FAM:notifyer
 FAM:nqshield
 FAM:nymaim
+FAM:nymeria
 FAM:obtes
 FAM:ocikq
 FAM:odpa
+FAM:oficla
 FAM:oimobi
 FAM:oivim
 FAM:oixal
@@ -654,7 +672,7 @@ FAM:opencandy
 FAM:openinstall
 FAM:opfake
 FAM:optix
-FAM:orcusrat
+FAM:orcus
 FAM:outbrowse
 FAM:oveead
 FAM:paccy
@@ -700,11 +718,11 @@ FAM:pushad
 FAM:pushe
 FAM:puxis
 FAM:pykspa
-FAM:quasar
 FAM:qbot
 FAM:qexma
 FAM:qplus
 FAM:qqrob
+FAM:quasar
 FAM:qumi
 FAM:quozha
 FAM:qushu
@@ -734,6 +752,7 @@ FAM:reptilicus
 FAM:resharer
 FAM:reveton
 FAM:revetrat
+FAM:revil
 FAM:revmob
 FAM:riltok
 FAM:rimod
@@ -910,8 +929,8 @@ FAM:tracer
 FAM:tracker
 FAM:trackerfree
 FAM:trackplus
-FAM:trickbot
 FAM:trclick
+FAM:trickbot
 FAM:tridrongo
 FAM:troom
 FAM:truedownloader
