@@ -43,6 +43,7 @@ allad	airpush
 almanahe	alman
 alureon	tdss
 amab	mobidash
+ammyyadmin	ammyy
 amorba	ipamor
 andef	fkdefend
 andr	android
@@ -77,14 +78,19 @@ arcadeparlor	gamevance
 arcadeweb	gamevance
 archsms	smshoax
 arcparlor	gamevance
+arena	crysis
 armour	androidarmour
 arto	renos
 artro	renos
 aservicea	kuguo
+autohotkey	autohk
+autoitscript	autoit
 autokms	winactivator
-autoruner	autorun	vobfus
-autorunerent	autorun	palevo
+autoruner	autorun
+autorunerent	autorun
+autoruns	autorun
 avalod	sinowal
+ave_maria	avemaria
 aveasms	smskey
 avkill	killsectool
 bacteraloh	sality
@@ -102,15 +108,19 @@ basebrid	basebridge
 batteryd	fakedoc
 batterydoctor	fakedoc
 bazaloader	bazar
+bazarbackdoor	bazar
+bazarcall	bazar
 bazarldr	bazar
 bazarloader	bazar
 bazdor	bazar
+bazloader	bazar
 bazzarldr	bazar
 bbridge	basebridge
 bckdr	backdoor
 beacon	cobaltstrike
 bean	nandrobox
 bearshare	bandoo
+beerbot	bazar
 beita	beitaad
 bergat	xtrat
 bertlea	bertle
@@ -119,12 +129,15 @@ betterinstaller	somoto
 bflient	palevo
 bibean	faketimer
 biez	loadmoney
+binder	packed
 bitcoin	bitcoinminer
 bitminer	bitcoinminer
+bitstealer	infosteal
 bjlog	zegost
 bkdr	backdoor
 blackice	whiteice
 bladabi	bladabindi
+bladabindinet	bladabindi
 blanajog	spygate
 blic	whiteice
 blocal	vmvol
@@ -190,6 +203,7 @@ climap	androrat
 clkpotato	hotbar
 cloudatlas	neoreklami
 clspring	purityscan
+cmkfkw	5wfo
 cobalt	cobaltstrike
 cobaltstr	cobaltstrike
 cobbler	focobers
@@ -208,14 +222,17 @@ cometer	cobaltstrike
 cometsys	darkkomet
 cometsystems	darkkomet
 condestil	firseria
+confuserex	confuser
 contrand	sckeylog
 controlrandom	sckeylog
+cookiesstealer	infosteal
 coolpaperleak	coolwall
 copycat	airpush
 corrupt	corrupted
 cosha	lovetrap
 counterclank	plankton
 crack	tool
+cracks	wzteam
 cracktool	tool
 crisis	morcut
 crori	crossrider
@@ -231,6 +248,7 @@ cryptic	packed
 cryptinno	installcore
 cryptodefense	cryptodef
 cryptominer	miner
+cryptoobfuscator	packed
 cryptor	packed
 cryptz	rozena
 cson	simbot
@@ -247,17 +265,18 @@ damaged	corrupted
 darkcomet	darkkomet
 darksnow	whiteice
 datasetaler	infosteal
+datastealer	infosteal
 daytre	upatre
 ddlight	droiddreamlight
 dealcabby	adpeak
 debris	gamarue
 delf	delphi
 delfiles	filedelete
-delfinject	delphi	inject
-delfloader	delphi	downloader
-delfsnif	delphi	infosteal
-delpbanc	delphi	infosteal
-delpdldr	delphi	downloader
+delfinject	delphi
+delfloader	delphi
+delfsnif	delphi
+delpbanc	delphi
+delpdldr	delphi
 derdroi	simbad
 desktoplightning	cashon
 detroi	detroie
@@ -269,9 +288,11 @@ dialers	dialer
 dialpass	egroupdial
 dialplatform	dialer
 didat	dabom
-dinihou	jenxcus
+dinihou	houdini
 diple	vobfus
 directdown	directdownloader
+discostealer	infosteal
+diskcoder	filecrypt
 dizhi	lecna
 dldr	downloader
 dldrop	downloader
@@ -281,10 +302,11 @@ dloader	downloader
 dloadr	downloader
 dloadware	adware
 dnschanger	dnsmodify
-docdl	downloader	msoffice
-docdrop	downloader	msoffice
-docdrp	downloader	msoffice
+docdl	downloader
+docdrop	downloader
+docdrp	downloader
 dogbite	dogowar
+doghousepower	shelma
 dogwar	dogowar
 doidroot	rooter
 domainiq	domaiq
@@ -338,7 +360,7 @@ droppr	downloader
 dropr	downloader
 duel	loveletter
 dumobove	hiddad
-dunihi	jenxcus
+dunihi	houdini
 duptwux	lolbot
 dwnld	downloader
 dwnldr	downloader
@@ -361,9 +383,10 @@ emailspy	maistealer
 emerleox	fujacks
 emotetcrypt	emotet
 emud	emudbot
-encoder	filecrypt	ransomware
+encoder	filecrypt
 encpk	packed
 engwings	cardserv
+enigmaprotector	enigma
 epicgames	gamevance
 epicplay	gamevance
 eqdrug	equationdrug
@@ -386,6 +409,7 @@ extrat	xtrat
 eydrop	dinwod
 fakapp	styricka
 fakealert	rogueware
+fakeammyy	ammyy
 fakeav	rogueware
 fakebattscar	fakedoc
 fakebrows	fakeinst
@@ -395,6 +419,7 @@ fakedefender	fkdefend
 fakefldr	fakefolder
 fakeicq	fakeinst
 fakeinstall	fakeinst
+fakeinstaller	fakeinst
 fakeinsthw	fakeinst
 fakeinstsms	fakeinst
 fakejoboffer	fakejob
@@ -402,7 +427,7 @@ fakelogosms	fakelogo
 fakelt	elite
 fakemini	opfake
 fakemms	fakeplayer
-fakems	fakepublisher	signed
+fakems	fakepublisher
 fakengry	fakeangry
 fakenotify	opfake
 fakeplay	fakeplayer
@@ -426,7 +451,7 @@ fenomen	fenomengame
 fenomengamet	fenomengame
 fenservice	fengvi
 fidgo	opfake
-filecoder	filecrypt	ransomware
+filecoder	filecrypt
 filehunter	winpump
 fileinfector	infector
 filesearch	amonetize
@@ -455,12 +480,14 @@ fokonge	droidkungfu
 foncysms	foncy
 foran	anforen
 fraud	rogueware
-fraudload	downloader	rogueware
+fraudload	downloader
 fraudtool	tool
 freeandroidspy	freespy
 freeandspy	freespy
 freepds	hotclip
 frogonal	ginmaster
+frutas	adwind
+fuerboos	goodor
 fujack	fujacks
 fullscreen	lockscreen
 funclub	smssend
@@ -476,6 +503,7 @@ gamevancecs	gamevance
 gampass	gamethief
 ganelp	griptolo
 gaobot	agobot
+gaslome	loosemaque
 gasms	gambler
 gastab	gabas
 gavir	viking
@@ -489,8 +517,10 @@ geksone	crytex
 gemest	smishing
 genericab	wroba
 genericgb	basebridge
+genkryptik	packed
 genpack	packed
 gentroj	trojan
+geodo	emotet
 gepat	airpush
 getextension	eorezo
 getfaster	4shared
@@ -542,6 +572,7 @@ hdusafe	wapron
 helldoor	hilldoor
 hellokitty	deathransom
 hellospy	spyoo
+heodo	emotet
 hiddenad	hiddad
 hiddeninstall	jsmshider
 hidrag	jeefo
@@ -556,10 +587,9 @@ homepage	browsermodify
 hongtoutou	adrd
 horse	trojan
 hosts-modifier	hostsmodify
-houdini	jenxcus
 hublo	crytex
 huigezi	hupigon
-hworm	jenxcus
+hworm	houdini
 hype	loadmoney
 hyteod	kovter
 iadpush	dowgin
@@ -609,17 +639,20 @@ intex	intexdial
 intexus	intexdial
 invader	daws
 ipatre	upatre
-ircbot	bot	irc
+ircbot	bot
 ispyoo	spyoo
 j2me	java
 jackpos	jinupd
 jadtre	wapomi
 javak	suggestor
+jbifrost	adwind
 jedan	kuguo
 jelbrus	techsnab
+jenxcus	houdini
 joke	hoax
 joleee	tedroo
 jrat	adwind
+jsocket	adwind
 juched	griptolo
 kaka	telman
 kanav	alyak
@@ -627,6 +660,7 @@ kasandra	sandr
 kashu	sality
 kazaa	benjamin
 keepmusic	hiddad
+kegtap	bazar
 keji	basebridge
 kelvin	smssend
 kernelpatch	geral
@@ -689,8 +723,7 @@ llond	lardlond
 loadmoneyent	loadmoney
 locker	lockscreen
 locm	locmg
-loda	nymeria
-lodarat	nymeria
+lodarat	loda
 lohmys	midia
 looked	viking
 loorp	wapomi
@@ -700,7 +733,7 @@ lotuseed	lotusid
 lower	airpush
 lozfoon	loozfon
 macosx	mac
-macrodown	downloader	macro
+macrodown	downloader
 madanf	virut
 madang	virut
 madangel	virut
@@ -760,6 +793,7 @@ mobkong	smssend
 mobspy	trackplus
 mobsqueeze	fakedoc
 mofksys	swisyn
+mohazo	raccoon
 monad	damon
 monderb	vundo
 monitor	infosteal
@@ -775,7 +809,8 @@ mostofate	softomate
 mozaakai	bazar
 mplug	multiplug
 mrophine	morphine
-msilobfuscator	msil	packed
+msilkrypt	packed
+msilobfuscator	msil
 mspyonline	mspy
 msteal	maistealer
 mswdm	ipamor
@@ -798,6 +833,7 @@ najin	feejar
 nancrat	nanocore
 nandrob	nandrobox
 nanobot	nanocore
+ncov	crysis
 negasteal	agenttesla
 nemucod	smsreg
 neobar	neoreklami
@@ -836,6 +872,7 @@ nsanti	packed
 nuwar	tibs
 nyearleaker	airpush
 nyleaker	airpush
+nymeria	loda
 o97m	macro
 obfus	packed
 obfusc	packed
@@ -867,8 +904,8 @@ optinstall	ibryte
 optiuminstaller	ibryte
 optixp	optix
 optixpro	optix
-orcusrat	orcus
-orcusrot	orcus
+orcus	orcusrat
+orcusrot	orcusrat
 osx	mac
 osx32	mac
 otran	vobfus
@@ -878,13 +915,16 @@ overt	sadenav
 overtls	sadenav
 ozotshielder	kmin
 pace	socks
+packer	packed
 padobot	korgo
 padodor	berbew
 pakes	packed
 panda	zbot
 pandaent	zbot
 pandora	nandrobox
+papras	gozi
 parnian	smssend
+passwordstealera	infosteal
 patch	filemodify
 patched	filemodify
 patcher	filemodify
@@ -908,6 +948,7 @@ petr	petya
 petrolan	petrolin
 petrwrap	petya
 philis	viking
+phobos	crysis
 pigeon	hupigon
 pigetrl	lockscreen
 pikor	wapomi
@@ -942,12 +983,14 @@ porn	porndialer
 porndial	porndialer
 pornlocker	lockscreen
 portscan	network
+poscardstealer	infosteal
 positivefinds	browsefox
 positmob	fakeinst
 potentially	grayware
 poweliks	wowlik
 powerliks	wowlik
 powerpack	linkular
+powerstats	valyria
 powessere	wowlik
 pp97m	macro
 preloader	megasearch
@@ -962,6 +1005,7 @@ protil	wapomi
 provar	fakeinst
 pswtool	infosteal
 pua	grayware
+puffstealer	azorult
 pup	grayware
 pupil	plemood
 purity	purityscan
@@ -979,23 +1023,29 @@ qakbot	qbot
 qhost	hostsmodify
 qhosts	hostsmodify
 qqrobber	qqrob
+quasar_rat	quasar
 quasarrat	quasar
 qukart	berbew
 qvod	wapomi
 rabbhome	fjcon
 rabidog	dogowar
+racealer	raccoon
+racoon	raccoon
 rahack	allaple
 rahiwi	brontok
 raideloz	vobfus
 ramdo	redyms
 ranck	ranky
+randaev	exrand
 ransom	ransomware
-ransomcrypt	filecrypt	ransomware
-ransomlock	lockscreen	ransomware
+ransomcrypt	filecrypt
+ransomlock	lockscreen
 rapiddown	firseria
 ratab	mamianune
+ratopak	buhtrap
 razel	rasteal
 raziel	rasteal
+rdpdos	rdpkill
 recal	mogap
 recam	netwiredrc
 recordpage	browsefox
@@ -1005,7 +1055,9 @@ refogkeylogger	refog
 regie	fosniw
 relevant	relevantknowledge
 relik	updtkiller
+remcosrat	remcos
 remtasu	xtrat
+remvio	remcos
 renamer	files
 reposfxg	trickbot
 reptilic	reptilicus
@@ -1016,7 +1068,7 @@ revet	revetrat
 revtcp	metasploit
 rimecud	palevo
 risk	grayware
-risktool	grayware	tool
+risktool	grayware
 riskware	grayware
 rivalgame	gamevance
 rkdoor	koutodoor
@@ -1035,6 +1087,7 @@ ropin	leadbolt
 rorpian	zeroaccess
 ruftar	usteal
 rugo	hotbar
+rultazo	azorult
 runitslf	looper
 runonce	chir
 runouce	chir
@@ -1132,10 +1185,14 @@ snadapps	typstu
 sndapps	typstu
 sneakytrail	installerex
 sniffer	network
+snifula	gozi
 sobot	clientor
+sockrat	adwind
+socmer	remcos
 sodin	revil
 sodinokib	revil
 sodinokibi	revil
+sodinoransom	revil
 soft32down	soft32downloader
 soft32download	soft32downloader
 softbase	softobase
@@ -1155,7 +1212,7 @@ spacer	unruy
 spakrab	vidro
 spambot	spam
 spammer	spam
-spamtool	spam	tool
+spamtool	spam
 spatet	rebhip
 spdupmypc	speedingupmypc
 speedupmypc	uniblue
@@ -1201,6 +1258,7 @@ systemsecurity	winwebsec
 systex	daws
 systro	sytro
 sysvenfak	loadmoney
+talalpek	gootkit
 talklog	talkw
 taojin	taojinstar
 tapsnake	gpspy
@@ -1209,11 +1267,13 @@ tatus	tetus
 tazebama	mabezat
 tdownloader	installerex
 tdssrt	tdss
+team9backdoor	bazar
 tedro	tedroo
 temai	ksapp
 tepfer	fareit
 test	testvirus
 testfile	testvirus
+thetrick	trickbot
 tibspak	tibs
 tibspk	tibs
 tibsys	tibser
@@ -1237,26 +1297,29 @@ tovkater	installmonster
 towelexploit	towel
 trick	trickbot
 trickbotcrypt	trickbot
+trickloader	trickbot
 trickpak	trickbot
+trickster	trickbot
 trj	trojan
-trjdown	downloader	trojan
-trjndwnlder	downloader	trojan
+trjdown	downloader
+trjndwnlder	downloader
 troj	trojan
-trojanapt	apt	trojan
-trojanbanker	infosteal	trojan
-trojanclicker	adware	clicker	trojan
-trojandldr	downloader	trojan
-trojandownloader	downloader	trojan
-trojandropper	downloader	trojan
-trojandwnldr	downloader	trojan
-trojanfakeav	alertuser	rogueware	trojan
+trojanapt	apt
+trojanbanker	infosteal
+trojanclicker	adware
+trojandldr	downloader
+trojandownloader	downloader
+trojandropper	downloader
+trojandwnldr	downloader
+trojanfakeav	alertuser
 trojanhorse	trojan
-trojanproxy	proxy	trojan
-trojanpsw	infosteal	trojan
-trojanransom	filecrypt	ransomware	trojan
-trojansms	sms	trojan
-trojanspy	spyware	trojan
+trojanproxy	proxy
+trojanpsw	infosteal
+trojanransom	filecrypt
+trojansms	sms
+trojanspy	spyware
 trojware	trojan
+trollster	kefamad
 truedown	truedownloader
 tsuploader	installerex
 tufei	tufik
@@ -1274,24 +1337,27 @@ ultradownload	vilsel
 ultradownloads	vilsel
 umeng	gumen
 unix	linux
+unrecom	adwind
 unsafe	grayware
 unwanted	grayware
 unwnt	grayware
 updatekiller	updtkiller
 updtkill	updtkiller
 uracto	maistealer
+ursnif	gozi
 uuser	uuserv
 uxipp	yzhc
 valhalla	xorala
 valla	xorala
 vbccrypt	vobfus
-vbcrypt	packed	visualbasic
-vbinject	inject	visualbasic
-vbkrypt	packed	visualbasic
+vbcrypt	packed
+vbinder	packed
+vbinject	inject
+vbkrypt	packed
 vbna	vobfus
 vbobf	vobfus
 vbobfus	vobfus
-vbpack	packed	visualbasic
+vbpack	packed
 vernet	dusvext
 vertex	dusvext
 vertexb	dusvext
@@ -1305,6 +1371,7 @@ virtob	virut
 virtool	tool
 vitallia	vittalia
 vjadtre	wapomi
+vjw0rm	vjworm
 vmdetector	vmdetect
 vmpbad	vmprotect
 vnfraye	dusvext
@@ -1315,8 +1382,10 @@ w2km	macro
 w32	windows
 w64	windows
 w97m	macro
+wacatac	deathransom
 wadhrama	crysis
 wakeful	cardserv
+waldek	gootkit
 wali	wapomi
 walkfree	kalfere
 walksteal	walkinwat
@@ -1371,6 +1440,7 @@ xloader	wroba
 xpack	packed
 xpiro	expiro
 xsider	jsmshider
+xswkit	gootkit
 xtoober	karagany
 xtreme	xtrat
 xworm	loveletter

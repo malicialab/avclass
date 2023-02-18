@@ -78,6 +78,7 @@ CLASS:worm
 CLASS:worm:emailworm
 FAM:1clickdownload
 FAM:4shared
+FAM:5wfo
 FAM:abeciv
 FAM:accutrack
 FAM:acecard
@@ -116,6 +117,7 @@ FAM:aliyuncs
 FAM:allaple
 FAM:alman
 FAM:alyak
+FAM:ammyy
 FAM:amonetize
 FAM:amphitryon
 FAM:androidarmour
@@ -323,6 +325,7 @@ FAM:etumbot
 FAM:ewind
 FAM:expiro
 FAM:expressdownloader
+FAM:exrand
 FAM:faceniff
 FAM:fakeangry
 FAM:fakeapp
@@ -437,6 +440,7 @@ FAM:haynu
 FAM:hero
 FAM:hiddad
 FAM:hiddenapp
+FAM:hiddentear
 FAM:hiddnad
 FAM:highster
 FAM:hilldoor
@@ -503,6 +507,7 @@ FAM:kapratect
 FAM:karagany
 FAM:kasidet
 FAM:katrep
+FAM:kefamad
 FAM:kelihos
 FAM:kgbspy
 FAM:khalesi
@@ -547,12 +552,14 @@ FAM:loadmoney
 FAM:loapi
 FAM:lockactivity
 FAM:locmg
+FAM:loda
 FAM:loic
 FAM:lokibot
 FAM:lolbot
 FAM:lollipop
 FAM:loodos
 FAM:looper
+FAM:loosemaque
 FAM:loozfon
 FAM:lotusid
 FAM:lovefraud
@@ -673,6 +680,7 @@ FAM:openinstall
 FAM:opfake
 FAM:optix
 FAM:orcus
+FAM:orcusrat
 FAM:outbrowse
 FAM:oveead
 FAM:paccy
@@ -734,6 +742,7 @@ FAM:rasteal
 FAM:razam
 FAM:razy
 FAM:rbot
+FAM:rdpkill
 FAM:rebhip
 FAM:recmads
 FAM:redalert
@@ -838,6 +847,7 @@ FAM:smssend
 FAM:smsspy
 FAM:smsthief
 FAM:smszombie
+FAM:snatch
 FAM:snowfox
 FAM:socks
 FAM:soft32downloader
@@ -882,9 +892,9 @@ FAM:suaban
 FAM:suggestor
 FAM:supking
 FAM:svpeng
-FAM:swrort
 FAM:swisyn
 FAM:swizzor
+FAM:swrort
 FAM:systemmonitor
 FAM:systush
 FAM:sytro
@@ -1006,6 +1016,7 @@ FAM:wowlik
 FAM:wqmobile
 FAM:wroba
 FAM:wtaspin
+FAM:wzteam
 FAM:xavierad
 FAM:xinhua
 FAM:xolco
