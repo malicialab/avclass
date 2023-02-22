@@ -1,34 +1,32 @@
 #!/usr/bin/env python3
-'''
-AVClass2 input checker
-'''
 
+import argparse
 import os
 import sys
-import argparse
-script_dir = os.path.dirname(os.path.abspath(__file__))
-sys.path.insert(1, os.path.join(script_dir, 'lib/'))
-from avclass2_common import Taxonomy, Tagging, Expansion
 
-default_tag_file = "data/default.tagging"
-default_tax_file = "data/default.taxonomy"
-default_exp_file = "data/default.expansion"
+try:
+    from avclass import DEFAULT_TAX_PATH, DEFAULT_TAG_PATH, DEFAULT_EXP_PATH
+    from avclass.common import Taxonomy, Tagging, Expansion
+except ModuleNotFoundError:
+    sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
+    from avclass import DEFAULT_TAX_PATH, DEFAULT_TAG_PATH, DEFAULT_EXP_PATH
+    from avclass.common import Taxonomy, Tagging, Expansion
 
-if __name__ == '__main__':
+def main():
     argparser = argparse.ArgumentParser(prog='input_checker',
         description='Checks format of files Tagging, Expansion and Taxonomy.')
 
     argparser.add_argument('-tag',
         help='tagging file',
-        default=default_tag_file)
+        default=DEFAULT_TAG_PATH)
 
     argparser.add_argument('-tax',
         help='taxonomy file',
-        default=default_tax_file)
+        default=DEFAULT_TAX_PATH)
 
     argparser.add_argument('-exp',
         help='expansion file',
-        default=default_exp_file)
+        default=DEFAULT_EXP_PATH)
 
     # Parse arguments
     args = argparser.parse_args()
@@ -53,4 +51,7 @@ if __name__ == '__main__':
     expansion.to_file(args.exp)
     sys.stdout.write('[-] Normalized %d expansion rules in %s\n' % (
                         len(expansion), args.exp))
+
+if __name__ == "__main__":
+    main()
 

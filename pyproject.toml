@@ -1,0 +1,28 @@
+[build-system]
+requires      = ["setuptools>=61.0.0", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "avclass-malicialab"
+version = "2.5.0"
+description = "AVClass is a Python package and command line tool to tag / label malware samples."
+readme = "README.md"
+authors = [{ name = "MaliciaLab" }]
+license = { file = "LICENSE" }
+classifiers = [
+    "License :: OSI Approved :: MIT License",
+    "Programming Language :: Python",
+    "Programming Language :: Python :: 3",
+		"Topic :: Security",
+]
+keywords = ["malware", "malware family", "tag", "AV label"]
+dependencies = [
+]
+
+[project.urls]
+Homepage = "https://github.com/malicialab/avclass"
+
+[project.scripts]
+avclass = "avclass.labeler:main"
+avclass-update = "avclass.update:main"
+avclass-normalize = "avclass.normalize:main"

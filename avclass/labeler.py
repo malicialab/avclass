@@ -1,27 +1,24 @@
 #!/usr/bin/env python3
-'''
-AVClass2 labeler
-'''
 
+import argparse
+import gzip
+import json
 import os
 import sys
-script_dir = os.path.dirname(os.path.abspath(__file__))
-sys.path.insert(1, os.path.join(script_dir, 'lib/'))
-sys.path.insert(1, os.path.join(script_dir, '../shared/'))
-import argparse
-from avclass2_common import AvLabels
-from operator import itemgetter
-import evaluate_clustering as ec
-import json
 import traceback
-import gzip
 
-# Default tagging file
-default_tag_file = os.path.join(script_dir, "data/default.tagging")
-# Default expansion file
-default_exp_file = os.path.join(script_dir, "data/default.expansion")
-# Default taxonomy file
-default_tax_file = os.path.join(script_dir, "data/default.taxonomy")
+from operator import itemgetter
+
+try:
+    from avclass import DEFAULT_TAX_PATH, DEFAULT_TAG_PATH, DEFAULT_EXP_PATH
+    from avclass.common import AvLabels, Taxonomy
+    from avclass import evaluate as ec
+except ModuleNotFoundError:
+    # Helps find the avclasses when run from console
+    sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
+    from avclass import DEFAULT_TAX_PATH, DEFAULT_TAG_PATH, DEFAULT_EXP_PATH
+    from avclass.common import AvLabels, Taxonomy
+    from avclass import evaluate as ec
 
 def guess_hash(h):
     ''' Given a hash string, guess the hash type based on the string length '''
@@ -61,7 +58,10 @@ def list_str(l, sep=", ", prefix=""):
         out = out + sep + s
     return out
 
-def main(args):
+def main():
+    # Parse arguments
+    args = parse_args()
+
     # Select hash used to identify sample, by default MD5
     hash_type = args.hash if args.hash else 'md5'
 
@@ -362,8 +362,8 @@ def main(args):
         sys.stderr.write('[-] Alias data in %s\n' % (alias_filename))
 
 
-if __name__=='__main__':
-    argparser = argparse.ArgumentParser(prog='avclass2_labeler',
+def parse_args():
+    argparser = argparse.ArgumentParser(prog='avclass',
         description='''Extracts tags for a set of samples.
             Also calculates precision and recall if ground truth available''')
 
@@ -400,15 +400,15 @@ if __name__=='__main__':
 
     argparser.add_argument('-tag',
         help='file with tagging rules.',
-        default = default_tag_file)
+        default = DEFAULT_TAG_PATH)
 
     argparser.add_argument('-tax',
         help='file with taxonomy.',
-        default = default_tax_file)
+        default = DEFAULT_TAX_PATH)
 
     argparser.add_argument('-exp',
         help='file with expansion rules.',
-        default = default_exp_file)
+        default = DEFAULT_EXP_PATH)
 
     argparser.add_argument('-av',
         help='file with list of AVs to use')
@@ -464,7 +464,7 @@ if __name__=='__main__':
                               args.tag))
     else:
         sys.stderr.write('[-] Using default tagging rules in %s\n' % (
-                          default_tag_file))
+                          DEFAULT_TAG_PATH))
 
     if args.tax:
         if args.tax == '/dev/null':
@@ -474,7 +474,7 @@ if __name__=='__main__':
                               args.tax))
     else:
         sys.stderr.write('[-] Using default taxonomy in %s\n' % (
-                          default_tax_file))
+                          DEFAULT_TAX_PATH))
 
     if args.exp:
         if args.exp == '/dev/null':
@@ -484,6 +484,9 @@ if __name__=='__main__':
                               args.exp))
     else:
         sys.stderr.write('[-] Using default expansion tags in %s\n' % (
-                          default_exp_file))
+                          DEFAULT_EXP_PATH))
 
-    main(args)
+    return args
+
+if __name__ == "__main__":
+    main()

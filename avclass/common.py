@@ -1,11 +1,8 @@
-'''
-Main AVClass class
-'''
-
-import sys
+import logging
 import re
 import string
-import logging
+import sys
+
 from collections import OrderedDict as OrdDict
 from collections import namedtuple
 from operator import itemgetter, attrgetter
@@ -23,11 +20,22 @@ SampleInfo = namedtuple('SampleInfo',
                         ['md5', 'sha1', 'sha256', 'labels', 'vt_tags'])
 
 # AVs to use in suffix removal
-suffix_removal_av_set = {'Norman', 'Avast', 'Avira', 'Kaspersky',
-                          'ESET-NOD32', 'Fortinet', 'Jiangmin', 'Comodo',
-                          'GData', 'Sophos',
-                          'TrendMicro-HouseCall', 'TrendMicro',
-                          'NANO-Antivirus', 'Microsoft'}
+suffix_removal_av_set = {
+    'Norman',
+    'Avast',
+    'Avira',
+    'Kaspersky',
+    'ESET-NOD32',
+    'Fortinet',
+    'Jiangmin',
+    'Comodo',
+    'GData',
+    'Sophos',
+    'TrendMicro-HouseCall',
+    'TrendMicro',
+    'NANO-Antivirus',
+    'Microsoft'
+}
 
 class Tag:
     ''' A Tag in the taxonomy '''

@@ -1,19 +1,22 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
-'''
-AVClass2 Update module
-'''
-import sys
-import os
+
 import argparse
 import logging
-# Make sure paths are relative to execution path
-script_dir = os.path.dirname(os.path.abspath(__file__))
-sys.path.insert(0, os.path.join(script_dir, 'lib/'))
-from operator import itemgetter
+import os
+import sys
+
 from collections import namedtuple
-from avclass2_common import Taxonomy, Expansion, Tagging
+from operator import itemgetter
 # from Levenshtein import ratio as levenshtein_ratio
+
+try:
+    from avclass import DEFAULT_TAX_PATH, DEFAULT_TAG_PATH, DEFAULT_EXP_PATH
+    from avclass.common import Taxonomy, Tagging, Expansion
+except ModuleNotFoundError:
+    sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
+    from avclass import DEFAULT_TAX_PATH, DEFAULT_TAG_PATH, DEFAULT_EXP_PATH
+    from avclass.common import Taxonomy, Tagging, Expansion
 
 # Set logging
 log = logging.getLogger(__name__)
@@ -26,14 +29,6 @@ handler_stderr.setFormatter(formatter)
 root = logging.getLogger()
 root.setLevel(logging.DEBUG)
 root.addHandler(handler_stderr)
-
-
-# Default tagging file
-default_tagging_file = os.path.join(script_dir, "data/default.tagging")
-# Default expansion file
-default_expansion_file = os.path.join(script_dir, "data/default.expansion")
-# Default taxonomy file
-default_taxonomy_file = os.path.join(script_dir, "data/default.taxonomy")
 
 # Threshold for string similarity
 # sim_threshold = 0.6
@@ -198,7 +193,7 @@ class Update:
         log.debug("Processing %s\t%s" % (p1, p2))
 
         # If both directions strong, then equivalent, i.e., alias
-        if (float(rel.tinv_alias_num) >= args.t):
+        if (float(rel.tinv_alias_num) >= self._t):
             if (c1 != "UNK") and (c2 == "UNK"):
                 prefix = p1[0:p1.rfind(':')]
             elif (c1 == "UNK") and (c2 != "UNK"):
@@ -390,26 +385,26 @@ class Update:
 
     def output(self, out_prefix):
         if (not out_prefix):
-            tax_filepath = default_taxonomy_file
-            tag_filepath = default_tagging_file
-            exp_filepath = default_expansion_file
+            tax_filepath = DEFAULT_TAX_PATH
+            tag_filepath = DEFAULT_TAG_PATH
+            exp_filepath = DEFAULT_EXP_PATH
         else:
             tax_filepath = out_prefix + ".taxonomy"
             tag_filepath = out_prefix + ".tagging"
             exp_filepath = out_prefix + ".expansion"
-        taxonomy.to_file(tax_filepath)
+        self._out_taxonomy.to_file(tax_filepath)
         log.info('[-] Output %d taxonomy tags to %s' % (
-                        len(taxonomy), tax_filepath))
-        tagging.expand_all_destinations()
-        tagging.to_file(tag_filepath)
+                        len(self._out_taxonomy), tax_filepath))
+        self._out_tagging.expand_all_destinations()
+        self._out_tagging.to_file(tag_filepath)
         log.info('[-] Output %d tagging rules to %s' % (
-                        len(tagging), tag_filepath))
-        expansion.to_file(exp_filepath)
+                        len(self._out_tagging), tag_filepath))
+        self._out_expansion.to_file(exp_filepath)
         log.info('[-] Output %d expansion rules to %s' % (
-                        len(expansion), exp_filepath))
+                        len(self._out_expansion), exp_filepath))
 
 
-if __name__ == '__main__':
+def main():
     argparser = argparse.ArgumentParser(
         description='''Given a .alias file from the labeler, 
         generates updates for the taxonomy, tagging, and expansion files.''')
@@ -438,15 +433,15 @@ if __name__ == '__main__':
 
     argparser.add_argument('-tag',
         help='file with tagging rules.',
-        default = default_tagging_file)
+        default = DEFAULT_TAG_PATH)
 
     argparser.add_argument('-tax',
         help='file with taxonomy.',
-        default = default_taxonomy_file)
+        default = DEFAULT_TAX_PATH)
 
     argparser.add_argument('-exp',
         help='file with expansion rules.',
-        default = default_expansion_file)
+        default = DEFAULT_EXP_PATH)
 
     argparser.add_argument('-v', '--verbose',
         action='store_true',
@@ -508,4 +503,7 @@ if __name__ == '__main__':
 
     # Output final rules
     update.output_relations(out_prefix + ".final.rules")
+
+if __name__ == "__main__":
+    main()
 
