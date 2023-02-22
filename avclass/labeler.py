@@ -12,17 +12,17 @@ from pathlib import Path
 from typing import AnyStr, Dict, List, NamedTuple, Optional, Tuple, Union
 
 try:
-    from avclass.common import AvLabels, Taxonomy
+    from avclass.common import AVLabels, Taxonomy
     from avclass import clustering as ec, util
 except ModuleNotFoundError:
     # Helps find the avclasses when run from console
     sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
-    from avclass.common import AvLabels, Taxonomy
+    from avclass.common import AVLabels, Taxonomy
     from avclass import clustering as ec, util
 
 
 class AVClassLabeler:
-    def __init__(self, av_labels: AvLabels = AvLabels()):
+    def __init__(self, av_labels: AVLabels = AVLabels()):
         self.av_labels = av_labels
         self.output = {"labels": []}
         self.hash_type = None
@@ -645,8 +645,8 @@ class AVClassLabeler:
 
 def main():
     args = parse_args()
-    # Create AvLabels object
-    av_labels = AvLabels(
+    # Create AVLabels object
+    av_labels = AVLabels(
         tag_file=args.tag,
         tax_file=args.tax,
         exp_file=args.exp,

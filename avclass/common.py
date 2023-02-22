@@ -4,7 +4,6 @@ import re
 import string
 import sys
 
-from avclass import util
 from collections import defaultdict, namedtuple
 from typing import AnyStr, Callable, Collection, Dict, List, Optional, Set, Tuple, Union
 
@@ -44,7 +43,7 @@ suffix_removal_av_set = {
 
 
 class Tag:
-    """ A Tag in the taxonomy """
+    """A Tag in the taxonomy"""
 
     def __init__(self, s):
         word_list = s.strip().split(":")
@@ -63,27 +62,27 @@ class Tag:
             self._path = self._name
 
     def __hash__(self):
-        """ Return hash """
+        """Return hash"""
         return hash((self._path))
 
     @property
     def name(self):
-        """ Return tag name """
+        """Return tag name"""
         return self._name
 
     @property
     def cat(self):
-        """ Return tag category """
+        """Return tag category"""
         return self._cat
 
     @property
     def path(self):
-        """ Return tag path """
+        """Return tag path"""
         return self._path
 
     @property
     def prefix_l(self):
-        """ Return tag prefix list """
+        """Return tag prefix list"""
         return self._prefix_l
 
 
@@ -112,14 +111,18 @@ class Taxonomy:
         return len(self._tags)
 
     def __iter__(self):
-        """ Iterator over the alphabetically sorted tags in the taxonomy """
+        """Iterator over the alphabetically sorted tags in the taxonomy"""
         return (t for t in sorted(self._tags))
 
     def is_hex(self, tag: AnyStr) -> bool:
-        # exclude generic hex tags like 004bc24a
-        return bool(re.search(r"\d", tag)) and bool(
-                re.fullmatch(r"[0-9a-fA-F]+", tag)
-            )
+        """
+        Whether or not the input ``tag`` is hex
+        Exclude generic hex tags like 004bc24a
+
+        :param tag: The tag
+        :return: Boolean
+        """
+        return bool(re.search(r"\d", tag)) and bool(re.fullmatch(r"[0-9a-fA-F]+", tag))
 
     def is_generic(self, tag: AnyStr) -> bool:
         """
@@ -512,22 +515,31 @@ class Expansion(Rules):
                     # TODO - raise or return False?
 
 
-class AvLabels:
+class AVLabels:
     """
     Primary class used to interpret AV Labels
     """
 
     def __init__(
         self,
-        tag_file: AnyStr = util.DEFAULT_TAG_PATH,
-        exp_file: AnyStr = util.DEFAULT_EXP_PATH,
-        tax_file: AnyStr = util.DEFAULT_TAX_PATH,
+        translations: Union[AnyStr, Translation] = None,
+        expansions: Union[AnyStr, Expansion] = None,
+        taxonomy: Union[AnyStr, Taxonomy] = None,
         av_file: AnyStr = None,
         alias_detect: bool = False,
     ):
-        self.taxonomy = Taxonomy(tax_file)
-        self.translations = Translation(tag_file)
-        self.expansions = Expansion(exp_file)
+        if isinstance(taxonomy, Taxonomy):
+            self.taxonomy = taxonomy
+        else:
+            self.taxonomy = Taxonomy(taxonomy)
+        if isinstance(translations, Translation):
+            self.translations = translations
+        else:
+            self.translations = Translation(translations)
+        if isinstance(expansions, Expansion):
+            self.expansions = expansions
+        else:
+            self.expansions = Expansion(expansions)
         self.avs = self.read_avs(av_file) if av_file else None
         # Alias statistics initialization
         self.alias_detect = alias_detect
@@ -839,8 +851,8 @@ class AvLabels:
         return av_dict
 
     def get_sample_vt_count(self, sample_info):
-        ''' Return number of detections for sample
-            in the provided AV whitelist (if any) '''
+        """Return number of detections for sample
+        in the provided AV whitelist (if any)"""
         if self.avs is None:
             return len(sample_info.labels)
         else:
