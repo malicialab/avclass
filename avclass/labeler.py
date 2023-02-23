@@ -60,7 +60,7 @@ def list_str(l, sep=", ", prefix=""):
 
 def main():
     # Parse arguments
-    args = parse_args()
+    args, ifile_l, itype = parse_args()
 
     # Select hash used to identify sample, by default MD5
     hash_type = args.hash if args.hash else 'md5'
@@ -80,31 +80,13 @@ def main():
     av_labels = AvLabels(args.tag, args.exp, args.tax,
                          args.av, args.aliasdetect)
 
-    # Build list of input files
-    # NOTE: duplicate input files are not removed
-    ifile_l = []
-    if (args.vt):
-        ifile_l += args.vt
-        ifile_are_vt = True
-    if (args.lb):
-        ifile_l += args.lb
-        ifile_are_vt = False
-    if (args.vtdir):
-        ifile_l += [os.path.join(args.vtdir, 
-                                  f) for f in os.listdir(args.vtdir)]
-        ifile_are_vt = True
-    if (args.lbdir):
-        ifile_l += [os.path.join(args.lbdir, 
-                                  f) for f in os.listdir(args.lbdir)]
-        ifile_are_vt = False
-
     # Select correct sample info extraction function
-    if not ifile_are_vt:
+    if itype == 'lb':
         get_sample_info = av_labels.get_sample_info_lb
-    elif args.vt3:
-        get_sample_info = av_labels.get_sample_info_vt_v3
-    else:
+    elif itype == 'vt2':
         get_sample_info = av_labels.get_sample_info_vt_v2
+    else:
+        get_sample_info = av_labels.get_sample_info_vt_v3
 
     # Select output prefix
     out_prefix = os.path.basename(os.path.splitext(ifile_l[0])[0])
@@ -363,27 +345,17 @@ def main():
 
 
 def parse_args():
-    argparser = argparse.ArgumentParser(prog='avclass',
-        description='''Extracts tags for a set of samples.
-            Also calculates precision and recall if ground truth available''')
+    argparser = argparse.ArgumentParser(prog='avclass')
 
-    argparser.add_argument('-vt', action='append',
-        help='file with VT reports '
-             '(Can be provided multiple times)')
+    argparser.add_argument('-f', '--file', action='append',
+       help = 'Input JSONL file with AV labels.')
 
-    argparser.add_argument('-lb', action='append',
-        help='file with simplified JSON reports'
-             '{md5,sha1,sha256,scan_date,av_labels} '
-             '(Can be provided multiple times)')
+    argparser.add_argument('-d', '--dir', action='append',
+       help = 'Input directory. Process all files in this directory.')
 
-    argparser.add_argument('-vtdir',
-        help='existing directory with VT reports')
-
-    argparser.add_argument('-lbdir',
-        help='existing directory with simplified JSON reports')
-
-    argparser.add_argument('-vt3', action='store_true',
-        help='input are VT v3 files')
+    argparser.add_argument(
+        "-t", "--type", help="the type of report file (vt3, vt2, lb)" ,
+        default="vt3")
 
     argparser.add_argument('-gz', '--gzip',
         help='file with JSON reports is gzipped',
@@ -446,15 +418,10 @@ def parse_args():
 
     args = argparser.parse_args()
 
-    if not args.vt and not args.lb and not args.vtdir and not args.lbdir:
-        sys.stderr.write('One of the following 4 arguments is required: '
-                          '-vt,-lb,-vtdir,-lbdir\n')
-        exit(1)
-
-    if (args.vt or args.vtdir) and (args.lb or args.lbdir):
-        sys.stderr.write('Use either -vt/-vtdir or -lb/-lbdir. '
-                          'Both types of input files cannot be combined.\n')
-        exit(1)
+    # Check we have some input option
+    if (not args.file) and (not args.dir):
+        sys.stderr.write('No input files to process. Use -f or -d options\n')
+        sys.exit(1)
 
     if args.tag:
         if args.tag == '/dev/null':
@@ -486,7 +453,37 @@ def parse_args():
         sys.stderr.write('[-] Using default expansion tags in %s\n' % (
                           DEFAULT_EXP_PATH))
 
-    return args
+    # Validate filetype
+    if not args.type:
+        sys.stderr.write("[-] No type defined, assuming vt3\n")
+        itype = 'vt3'
+    else:
+        if args.type in ['vt3', 'vt2', 'lb']:
+            itype = args.type
+        else:
+            sys.stderr.write("[-] Unknown type: %s\n" % args.type)
+            sys.exit(1)
+
+    # Build list of input files
+    files = set(args.file) if args.file is not None else {}
+    if args.dir:
+        for d in args.dir:
+            if os.path.isdir:
+                for f in os.listdir(d):
+                    filepath = os.path.join(d, f)
+                    if os.path.isfile(filepath):
+                        files.add(filepath)
+            else:
+                sys.stderr.write('Not a valid directory: %s\n' % d)
+                sys.exit(1)
+    ifile_l = sorted(files)
+
+    # Check we have some file to process
+    if (not ifile_l):
+        sys.stderr.write('No input files to process.\n')
+        sys.exit(1)
+
+    return args, ifile_l, itype
 
 if __name__ == "__main__":
     main()
