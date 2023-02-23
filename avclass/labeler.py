@@ -140,8 +140,8 @@ def main():
                 continue
 
             # Debug info
-            if vt_all % 100 == 0:
-                sys.stderr.write('\r[-] %d JSON read' % vt_all)
+            if (vt_all > 0) and (vt_all % 100 == 0):
+                sys.stderr.write('\r[-] %d reports read' % vt_all)
                 sys.stderr.flush()
             vt_all += 1
 
@@ -267,7 +267,7 @@ def main():
                 continue
 
         # Debug info
-        sys.stderr.write('\r[-] %d JSON read' % vt_all)
+        sys.stderr.write('\r[-] %d reports read' % vt_all)
         sys.stderr.flush()
         sys.stderr.write('\n')
 
