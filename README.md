@@ -15,13 +15,14 @@ behaviors (e.g., *spam*, *ddos*), and
 file properties (e.g., *packed*, *themida*, *bundle*, *nsis*).
 
 If you are wondering if this is AVClass or AVClass2, 
-the answer is this is the right repository in both cases. 
-The old AVClass code was deprecated and AVClass2 was renamed as AVClass.
+the answer is this is the right place for both. 
+The old AVClass code has been deprecated and 
+AVClass2 has been renamed as AVClass.
 A longer explanation is below.
 
 ## Installation
 ```shell
-pip install avclass2
+pip install avclass-malicialab
 ```
 
 ## Examples
