@@ -232,16 +232,13 @@ def main():
                 else:
                     is_pup_str =  ""
 
-                # Select family for sample if needed,
-                # i.e., for compatibility mode or for ground truth
-                if args.c or args.gt:
-                    fam = "SINGLETON:" + name
-                    # fam = ''
-                    for (t,s) in tags:
-                        cat = av_labels.taxonomy.get_category(t)
-                        if (cat == "UNK") or (cat == "FAM"):
-                            fam = t
-                            break
+                # Select family for sample
+                fam = "SINGLETON:" + name
+                for (t,s) in tags:
+                    cat = av_labels.taxonomy.get_category(t)
+                    if (cat == "UNK") or (cat == "FAM"):
+                        fam = t
+                        break
 
                 # Get ground truth family, if available
                 if args.gt:
@@ -256,12 +253,9 @@ def main():
                 else:
                     vtt = ""
 
-                # Print family (and ground truth if available) to stdout
-                if not args.c:
-                    if args.path:
-                        tag_str = format_tag_pairs(tags, av_labels.taxonomy)
-                    else:
-                        tag_str = format_tag_pairs(tags)
+                # Print family (and ground truth if available) or tags
+                if args.t:
+                    tag_str = format_tag_pairs(tags, av_labels.taxonomy)
                     sys.stdout.write('%s\t%d\t%s%s%s%s\n' %
                                      (name, vt_count, tag_str, gt_family,
                                       is_pup_str, vtt))
@@ -368,70 +362,66 @@ def main():
 def parse_args():
     argparser = argparse.ArgumentParser(prog='avclass')
 
-    argparser.add_argument('-f', '--file', action='append',
-       help = 'Input JSONL file with AV labels.')
+    argparser.add_argument('-f',
+        action='append',
+        help = 'Input JSONL file with AV labels.')
 
-    argparser.add_argument('-d', '--dir', action='append',
-       help = 'Input directory. Process all files in this directory.')
+    argparser.add_argument('-d',
+        action='append',
+        help = 'Input directory. Process all files in this directory.')
+
+    argparser.add_argument('-t',
+        action='store_true',
+        help='Output all tags, not only the family.')
 
     argparser.add_argument('-gt',
         help='file with ground truth. '
              'If provided it evaluates clustering accuracy. '
              'Prints precision, recall, F1-measure.')
 
-    argparser.add_argument('-vtt',
-        help='Include VT tags in the output.',
-        action='store_true')
-
-    argparser.add_argument('-tag',
-        help='file with tagging rules.',
-        default = DEFAULT_TAG_PATH)
-
-    argparser.add_argument('-tax',
-        help='file with taxonomy.',
-        default = DEFAULT_TAX_PATH)
-
-    argparser.add_argument('-exp',
-        help='file with expansion rules.',
-        default = DEFAULT_EXP_PATH)
-
-    argparser.add_argument('-av',
-        help='file with list of AVs to use')
-
-    argparser.add_argument('-avtags',
-        help='extracts tags per av vendor',
-        action='store_true')
-
     argparser.add_argument('-pup',
         action='store_true',
         help='if used each sample is classified as PUP or not')
 
-    argparser.add_argument('-p', '--path',
-        help='output.full path for tags',
-        action='store_true')
+    argparser.add_argument('-tag',
+        default = DEFAULT_TAG_PATH,
+        help='file with tagging rules.')
 
-    argparser.add_argument('-hash',
-        help='hash used to name samples. Should match ground truth',
-        choices=['md5', 'sha1', 'sha256'])
+    argparser.add_argument('-tax',
+        default = DEFAULT_TAX_PATH,
+        help='file with taxonomy.')
 
-    argparser.add_argument('-c',
-        help='Compatibility mode. Outputs results in AVClass format.',
-        action='store_true')
+    argparser.add_argument('-exp',
+        default = DEFAULT_EXP_PATH,
+        help='file with expansion rules.')
 
     argparser.add_argument('-aliasdetect',
         action='store_true',
         help='if used produce aliases file at end')
 
+    argparser.add_argument('-av',
+        help='file with list of AVs to use')
+
+    argparser.add_argument('-avtags',
+        action='store_true',
+        help='extracts tags per av vendor')
+
+    argparser.add_argument('-hash',
+        choices=['md5', 'sha1', 'sha256'],
+        help='hash used to name samples. Should match ground truth')
+
+    argparser.add_argument('-vtt',
+        action='store_true',
+        help='Include VT tags in the output.')
+
     argparser.add_argument('-stats',
-                           action='store_true',
-                           help='if used produce 1 file '
-                                'with stats per category '
-                                '(File, Class, '
-                                'Behavior, Family, Unclassified)')
+        action='store_true',
+        help='if used produce 1 file with stats per category '
+            '(File, Class, Behavior, Family, Unclassified)')
 
     args = argparser.parse_args()
 
-    if (not args.file) and (not args.dir):
+    if (not args.f) and (not args.d):
         sys.stderr.write('No input files to process. Use -f or -d options\n')
         sys.exit(1)
 
@@ -466,9 +456,9 @@ def parse_args():
                           DEFAULT_EXP_PATH))
 
     # Build list of input files
-    files = set(args.file) if args.file is not None else {}
-    if args.dir:
-        for d in args.dir:
+    files = set(args.f) if args.f is not None else {}
+    if args.d:
+        for d in args.d:
             if os.path.isdir:
                 for f in os.listdir(d):
                     filepath = os.path.join(d, f)
