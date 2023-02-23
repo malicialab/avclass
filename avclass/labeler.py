@@ -58,9 +58,41 @@ def list_str(l, sep=", ", prefix=""):
         out = out + sep + s
     return out
 
+def open_file(filepath, av_labels):
+    """Guess filetype and return file descriptor to file"""
+    # Check if file is gzipped by opening it as raw data
+    with open(filepath, "rb") as test_fd:
+        is_gzipped = test_fd.read(2) == b"\x1f\x8b"
+    # Open file correctly
+    if is_gzipped:
+        fd = gzip.open(filepath, "rt")
+    else:
+        fd = open(filepath, "r")
+    # Read first line
+    first_line = fd.readline().strip('\n')
+    # Parse line
+    report = json.loads(first_line)
+    # Check type by parsing the first line
+    sample_info = av_labels.get_sample_info_vt_v3(report)
+    if sample_info is not None:
+        itype = "vt3"
+        get_sample_info_fun = av_labels.get_sample_info_vt_v3
+    else:
+        sample_info = av_labels.get_sample_info_vt_v2(report)
+        if sample_info is not None:
+            itype = "vt2"
+            get_sample_info_fun = av_labels.get_sample_info_vt_v2
+        else:
+            itype = "lb" 
+            get_sample_info_fun = av_labels.get_sample_info_lb
+    # Set file pointer to beginning again
+    fd.seek(0, 0)
+    # Return file descriptor and type
+    return fd, itype, get_sample_info_fun
+
 def main():
     # Parse arguments
-    args, ifile_l, itype = parse_args()
+    args, ifile_l = parse_args()
 
     # Select hash used to identify sample, by default MD5
     hash_type = args.hash if args.hash else 'md5'
@@ -80,14 +112,6 @@ def main():
     av_labels = AvLabels(args.tag, args.exp, args.tax,
                          args.av, args.aliasdetect)
 
-    # Select correct sample info extraction function
-    if itype == 'lb':
-        get_sample_info = av_labels.get_sample_info_lb
-    elif itype == 'vt2':
-        get_sample_info = av_labels.get_sample_info_vt_v2
-    else:
-        get_sample_info = av_labels.get_sample_info_vt_v3
-
     # Select output prefix
     out_prefix = os.path.basename(os.path.splitext(ifile_l[0])[0])
 
@@ -103,13 +127,10 @@ def main():
     # Process each input file
     for ifile in ifile_l:
         # Open file
-        if args.gzip:
-            fd = gzip.open(ifile, 'rt')
-        else:
-            fd = open(ifile, 'r')
+        fd, itype, get_sample_info = open_file(ifile, av_labels)
 
         # Debug info, file processed
-        sys.stderr.write('[-] Processing input file %s\n' % ifile)
+        sys.stderr.write('[-] Processing input file %s (%s)\n' % (ifile, itype))
 
         # Process all lines in file
         for line in fd:
@@ -353,14 +374,6 @@ def parse_args():
     argparser.add_argument('-d', '--dir', action='append',
        help = 'Input directory. Process all files in this directory.')
 
-    argparser.add_argument(
-        "-t", "--type", help="the type of report file (vt3, vt2, lb)" ,
-        default="vt3")
-
-    argparser.add_argument('-gz', '--gzip',
-        help='file with JSON reports is gzipped',
-        action='store_true')
-
     argparser.add_argument('-gt',
         help='file with ground truth. '
              'If provided it evaluates clustering accuracy. '
@@ -418,7 +431,6 @@ def parse_args():
 
     args = argparser.parse_args()
 
-    # Check we have some input option
     if (not args.file) and (not args.dir):
         sys.stderr.write('No input files to process. Use -f or -d options\n')
         sys.exit(1)
@@ -453,17 +465,6 @@ def parse_args():
         sys.stderr.write('[-] Using default expansion tags in %s\n' % (
                           DEFAULT_EXP_PATH))
 
-    # Validate filetype
-    if not args.type:
-        sys.stderr.write("[-] No type defined, assuming vt3\n")
-        itype = 'vt3'
-    else:
-        if args.type in ['vt3', 'vt2', 'lb']:
-            itype = args.type
-        else:
-            sys.stderr.write("[-] Unknown type: %s\n" % args.type)
-            sys.exit(1)
-
     # Build list of input files
     files = set(args.file) if args.file is not None else {}
     if args.dir:
@@ -483,7 +484,7 @@ def parse_args():
         sys.stderr.write('No input files to process.\n')
         sys.exit(1)
 
-    return args, ifile_l, itype
+    return args, ifile_l
 
 if __name__ == "__main__":
     main()
