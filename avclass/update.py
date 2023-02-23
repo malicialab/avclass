@@ -38,7 +38,7 @@ Rel = namedtuple('Rel', ['t1', 't2', 't1_num', 't2_num',
                          'nalias_num', 'talias_num', 'tinv_alias_num'])
 
 class Update:
-    ''' Update Module '''
+    """Update Module"""
     def __init__(self, rel_filepath, in_taxonomy, in_tagging, in_expansion, 
                     n, t):
         # Initialize inputs
@@ -55,20 +55,20 @@ class Update:
         self.rel_set = self.read_relations(rel_filepath)
 
     def num_rules(self):
+        """Number of relations"""
         return len(self.rel_set)
 
     def is_weak_rel(self, rel):
-        ''' Return true if relationship is weak, 
-            i.e., does not meet thresholds '''
+        """Whether input relationship is weak""" 
         return ((int(rel.nalias_num) < self._n) or
                 (float(rel.talias_num) < self._t))
 
     def is_blacklisted_rel(self, rel):
-        ''' Return true if relationship is blacklisted '''
+        """Whether input relationship is blacklisted"""
         return (rel.t1 in self.blist) or (rel.t2 in self.blist)
 
     def is_known_rel(self, rel):
-        ''' Return true if relationship is known '''
+        """Whether input relationship is known"""
         t1 = rel.t1
         t2 = rel.t2
         # Known taxonomy relation
@@ -90,13 +90,13 @@ class Update:
         return False
 
     def add_tag(self, name, path):
-        ''' Add tag to taxonomy if not in tagging '''
+        """Add tag to taxonomy if not in tagging"""
         l = self._out_tagging.get_dst(name)
         if (not l):
             self._out_taxonomy.add_tag(path)
 
     def add_expansion(self, src, dst_l):
-        ''' Add expansion rule fixing destination if src in tagging '''
+        """Add expansion rule fixing destination if src in tagging"""
         # Select source handling aliases
         l = self._out_tagging.get_dst(src)
         if l:
@@ -113,7 +113,7 @@ class Update:
             self._out_expansion.add_rule(new_src, dst_l, True)
 
     def add_alias(self, src, dst, dst_prefix):
-        ''' Add alias relation to taxonomy, tagging '''
+        """Add alias relation to taxonomy, tagging"""
         # If src in tagging, use most popular target
         l = self._out_tagging.get_dst(src)
         target = dst
@@ -137,7 +137,7 @@ class Update:
         self._out_tagging.add_rule(src, target_l, True)
 
     def is_expansion_rel(self, rel):
-        ''' Return true if relation implies expansion rule '''
+        """Whether input relation implies expansion rule"""
         c1 = self._out_taxonomy.get_category(rel.t1)
         c2 = self._out_taxonomy.get_category(rel.t2)
         return (((c1 == "FAM") and (c2 != c1) and (c2 != "UNK")) or
@@ -145,7 +145,7 @@ class Update:
                 ((c1 == "UNK") and ((c2 == "BEH") or (c2 == "CLASS"))))
 
     def find_expansions(self):
-        ''' Find expansions among relations '''
+        """Find expansions among relations"""
         acc = []
         for rel in self.rel_set:
             p1 = self._out_taxonomy.get_path(rel.t1)
@@ -163,7 +163,7 @@ class Update:
             self.rel_set.remove(rel)
 
     #def is_alias_rel(self, rel):
-    #    ''' Return true if relation implies alias rule '''
+    #    """Whether input relation implies alias rule"""
     #    c1 = self._out_taxonomy.get_category(rel.t1)
     #    c2 = self._out_taxonomy.get_category(rel.t2)
     #    return (((c1 == "UNK") and (c2 == "FAM")) or
@@ -171,7 +171,7 @@ class Update:
 
 
     #def find_aliases(self):
-    #    ''' Find aliases among relations '''
+    #    """Find aliases among relations"""
     #    for rel in self.rel_set:
     #        c1 = self._out_taxonomy.get_category(rel.t1)
     #        c2 = self._out_taxonomy.get_category(rel.t2)
@@ -182,8 +182,7 @@ class Update:
     #    self.output_components("comp")
 
     def process_relation(self, rel):
-        ''' Process relation and update taxonomy/tagging correspondingly '''
-
+        """Process relation and update taxonomy/tagging correspondingly"""
         # Obtain tag info
         t1 = rel.t1
         t2 = rel.t2
@@ -272,6 +271,7 @@ class Update:
 
 
     def run(self):
+        """Identify updates"""
         num_iter = 0
         while self.rel_set:
             # Do a pass in remaining relations
@@ -310,8 +310,10 @@ class Update:
 
 
     def read_relations(self, filepath):
-        ''' Returns relations in file as a set 
-            Filters weak and blacklisted relations '''
+        """Returns relations in file as a set
+
+           Filters weak and blacklisted relations
+        """
         rel_set = set()
         with open(filepath, 'r') as fd:
             for line in fd:
@@ -344,6 +346,7 @@ class Update:
         return rel_set
 
     def output_relations(self, filepath):
+        """Output relations to given file"""
         fd = open(filepath, 'w')
         fd.write("# t1\tt2\t|t1|\t|t2|\t|t1^t2|\t|t1^t2|/|t1|\t"
                   "|t1^t2|/|t2|\n")
@@ -361,6 +364,7 @@ class Update:
         fd.close()
 
     def output_rule_stats(self, fd):
+        """Output rule statistics to given file descriptor"""
         # Initialize maps for statistics
         self.dst_map = {}
         self.cat_pairs_map = {}
@@ -384,6 +388,7 @@ class Update:
             fd.write("%s\t%03d\n" % (taxonomy.get_path(dst), cnt))
 
     def output(self, out_prefix):
+        """Output updated taxonomy/tagging/expansions files"""
         if (not out_prefix):
             tax_filepath = DEFAULT_TAX_PATH
             tag_filepath = DEFAULT_TAG_PATH
@@ -406,8 +411,8 @@ class Update:
 
 def main():
     argparser = argparse.ArgumentParser(
-        description='''Given a .alias file from the labeler, 
-        generates updates for the taxonomy, tagging, and expansion files.''')
+        description='Given a .alias file from the labeler, 
+        generates updates for the taxonomy, tagging, and expansion files.')
 
     argparser.add_argument('-alias',
         help='input file with alias from labeler. Mandatory.')

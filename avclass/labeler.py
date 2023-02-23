@@ -21,7 +21,7 @@ except ModuleNotFoundError:
     from avclass import evaluate as ec
 
 def guess_hash(h):
-    ''' Given a hash string, guess the hash type based on the string length '''
+    """Guess the hash type of input string"""
     hlen = len(h)
     if hlen == 32:
         return 'md5'
@@ -33,7 +33,7 @@ def guess_hash(h):
         return None
 
 def format_tag_pairs(l, taxonomy=None):
-    ''' Return ranked tags as string '''
+    """Return ranked tags as string"""
     if not l:
         return ""
     if taxonomy is not None:
@@ -50,7 +50,7 @@ def format_tag_pairs(l, taxonomy=None):
     return out
 
 def list_str(l, sep=", ", prefix=""):
-    ''' Return list as a string '''
+    """Return list as a string"""
     if not l:
         return ""
     out = prefix + l[0]
@@ -364,8 +364,8 @@ def main():
 
 def parse_args():
     argparser = argparse.ArgumentParser(prog='avclass',
-        description='''Extracts tags for a set of samples.
-            Also calculates precision and recall if ground truth available''')
+        description='Extracts tags for a set of samples.
+            Also calculates precision and recall if ground truth available')
 
     argparser.add_argument('-vt', action='append',
         help='file with VT reports '
