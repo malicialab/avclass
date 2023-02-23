@@ -14,9 +14,9 @@ the malware class (e.g., *worm*, *ransomware*, *grayware*),
 behaviors (e.g., *spam*, *ddos*), and
 file properties (e.g., *packed*, *themida*, *bundle*, *nsis*).
 
-If you are wondering if this is AVClass or AVClass2, 
-the answer is this is the right place for both. 
-The old AVClass code has been deprecated and 
+If you are wondering if this is AVClass or AVClass2,
+the answer is this is the right place for both.
+The old AVClass code has been deprecated and
 AVClass2 has been renamed as AVClass.
 A longer explanation is below.
 
@@ -42,14 +42,14 @@ f117cc1477513cb181cc2e9fcaab39b2  39  CLASS:rogueware|15,BEH:alertuser|15,FILE:o
 which means sample *602695c8f2ad76564bddcaf47b76edff*
 was flagged by 52 AV engines and that
 19 of them agree is is from the *zeroaccess* family,
-16 that runs on *windows*, 
-8 that it is a *backdoor*, and 
+16 that runs on *windows*,
+8 that it is a *backdoor*, and
 7 that it is a *packed* file.
 Sample *f117cc1477513cb181cc2e9fcaab39b2* is flagged by 39 AV engines and
-15 of them mention its class to be *rogueware*, 
-15 mention that it has the *alertuser* behvior, 
-11 that it runs on *windows*, 
-4 that it belongs to the *winwebsec* family, 
+15 of them mention its class to be *rogueware*,
+15 mention that it has the *alertuser* behvior,
+11 that it runs on *windows*,
+4 that it belongs to the *winwebsec* family,
 and so on.
 
 Most users will be interested in obtaining the most likely family name
@@ -127,25 +127,25 @@ We recommend you to read the RAID 2016 and ACSAC 2020 papers for more details.
 
 ## Is this AVClass or AVClass2?
 
-The short answer is that the current code in this repo is 
-based on the code of AVClass2. 
+The short answer is that the current code in this repo is
+based on the code of AVClass2.
 The original AVClass code has been deprecated.
 Below, we detail this process.
 
-We originally published AVClass in RAID 2016 and made its code 
+We originally published AVClass in RAID 2016 and made its code
 available in this repository in July 2016.
 AVClass extracted only the family names from the input samples.
 
-We published AVClass2 in ACSAC 2020 and made its code 
+We published AVClass2 in ACSAC 2020 and made its code
 available in this repository in September 2020.
-AVClass2 extracted all tags from the input samples and included a 
-compatibility _-c_ option to provide only the family names in the 
+AVClass2 extracted all tags from the input samples and included a
+compatibility _-c_ option to provide only the family names in the
 same format as the original AVClass.
 
-For 2.5 years, both tools were available in this repository in 
+For 2.5 years, both tools were available in this repository in
 separate directories.
-In February 2023, we decided to deprecate the original AVClass code, 
-rename AVClass2 as AVClass, and 
+In February 2023, we decided to deprecate the original AVClass code,
+rename AVClass2 as AVClass, and
 release a PyPI package to ease installation.
 
 ## Input JSON format
@@ -245,9 +245,9 @@ you can use the -av option to pass it a file where each line has the name of
 an AV engine (case-sensitive).
 
 For example, you could create a file engines.txt with three lines:
-Agnitum
-Symantec
-TotalDefense
+BitDefender
+F-Secure
+Sophos
 
 ```shell
 avclass -av engines.txt -vt ../examples/vtv2_sample.json > example.labels
@@ -255,16 +255,19 @@ avclass -av engines.txt -vt ../examples/vtv2_sample.json > example.labels
 
 would output into example.labels:
 ```
-602695c8f2ad76564bddcaf47b76edff  2
-f117cc1477513cb181cc2e9fcaab39b2  3 winwebsec|2
+602695c8f2ad76564bddcaf47b76edff  3 zeroaccess|2
+f117cc1477513cb181cc2e9fcaab39b2  3
 ```
 
-where only the labels of Agnitum, Symantec, and TotalDefense have been used
+where only the labels of BitDefender, F-Secure, and Sophos have been used
 to extract tags.
+The output states all three selected engines flag both samples as malicious.
 Note that the number of detections is with respect to the provided engines,
 i.e., even if the first sample has 52 detections,
-only 2 of the 3 selected engines detected it.
-
+the number of detections is a maximum of 3 in this case.
+For the first sample, two AV engines identify the family as *zeroaccess* but
+for the second sample no tags are identified in the labels
+of the three selected AV engines.
 
 ## Labeling: Ground Truth Evaluation
 
@@ -318,7 +321,7 @@ The update module can be used to suggest additions and changes to the input
 taxonomy, tagging rules, and expansion rules.
 By default, AVClass uses the default taxonomy, tagging, and expansion files
 included in the repository.
-Thus, we expect that most users will not need to run the update module. 
+Thus, we expect that most users will not need to run the update module.
 But, below we explain how to run in case you need to.
 
 Using the update module comprises of two steps.
@@ -389,8 +392,8 @@ to compare it with their own approaches.
 We encourage such evaluation, feedback on limitations, and proposals for
 improvement.
 However, we have observed a number of common errors in such evaluations that
-should be avoided. 
-Thus, if you need to compare your approach with AVClass/AVClass2, 
+should be avoided.
+Thus, if you need to compare your approach with AVClass/AVClass2,
 please read the [evaluation page](EVALUATION.md)
 
 ## Dependencies
