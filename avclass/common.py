@@ -81,7 +81,7 @@ class Tag:
 
 
 class Taxonomy:
-   """A taxonomy of tags and generic tokens read from file"""
+    """A taxonomy of tags and generic tokens read from file"""
     def __init__(self, filepath):
         """Initialize and populate _tag_map from input file"""
         self._tags = set() # Map tag.name | tag.path -> Tag
@@ -227,7 +227,7 @@ class Taxonomy:
         return out_l
 
     def read_taxonomy(self, filepath):
-       """Read taxonomy from given file"""
+        """Read taxonomy from given file"""
         with open(filepath, 'r') as fd:
             for line in fd:
                 if line.startswith('#') or line == '\n':
@@ -252,7 +252,7 @@ class Taxonomy:
         fd.close()
 
 class Rules:
-   """A relation from one source to one or more destinations"""
+    """A relation from one source to one or more destinations"""
     def __init__(self, filepath):
         """Initialize rule map and read rules from input file"""
         self._src_map = {} # src -> set(dst)
@@ -303,7 +303,7 @@ class Rules:
         return list(self._src_map.get(src, []))
 
     def read_rules(self, filepath):
-       """Read rules from given file"""
+        """Read rules from given file"""
         with open(filepath, 'r') as fd:
             for line in fd:
                 if line.startswith('#') or line == '\n':
@@ -357,7 +357,7 @@ class Rules:
             self._src_map[src] = dst_l
 
 class Tagging(Rules):
-   """A rule with an unknown source and a destination in the taxonomy"""
+    """A rule with an unknown source and a destination in the taxonomy"""
     def __init__(self, filepath):
         """Initialize rules from input file"""
         Rules.__init__(self, filepath)
@@ -372,7 +372,7 @@ class Tagging(Rules):
                     sys.stdout.write("[Tagging] %s not in taxonomy\n" % t)
 
 class Expansion(Rules):
-   """A rule where source different than destination and both in taxonomy"""
+    """A rule where source different than destination and both in taxonomy"""
     def __init__(self, filepath):
         Rules.__init__(self, filepath)
 
@@ -386,7 +386,7 @@ class Expansion(Rules):
                     sys.stdout.write("[Expansion] %s not in taxonomy\n" % dst)
 
 class AvLabels:
-   """Primary class to process AV labels"""
+    """Primary class to process AV labels"""
     def __init__(self, tag_file, exp_file = None, tax_file = None,
                  av_file = None, aliasdetect=False):
         """Initialize using given files and options"""
@@ -403,7 +403,7 @@ class AvLabels:
 
     @staticmethod
     def read_avs(avs_file):
-       """Read AV engine set from given file"""
+        """Read AV engine set from given file"""
         with open(avs_file) as fd:
             avs = set(map(str.strip, fd.readlines()))
         sys.stderr.write("[-] Using %d AV engines in %s\n" % (len(avs),
@@ -412,13 +412,13 @@ class AvLabels:
 
     @staticmethod
     def get_sample_info_lb(vt_rep):
-       """Parse sample information from basic report"""
+        """Parse sample information from basic report"""
         return SampleInfo(vt_rep['md5'], vt_rep['sha1'], vt_rep['sha256'],
                           vt_rep['av_labels'], [])
 
     @staticmethod
     def get_sample_info_vt_v2(vt_rep):
-       """Parse sample information from VT v2 report"""
+        """Parse sample information from VT v2 report"""
         label_pairs = []
         # Obtain scan results, if available
         try:
@@ -443,7 +443,7 @@ class AvLabels:
 
     @staticmethod
     def get_sample_info_vt_v3(vt_rep):
-       """Parse sample information from VT v3 report"""
+        """Parse sample information from VT v3 report"""
         # VT file reports in APIv3 contain all info under 'data'
         # but reports from VT file feed (also APIv3) don't have it
         # Handle both cases silently here
@@ -473,13 +473,13 @@ class AvLabels:
 
     @staticmethod
     def is_pup(tag_pairs, taxonomy):
-       """Whether the sample is PUP
+        """Whether the sample is PUP
  
-          Checks if highest ranked CLASS tag contains "grayware"
-          and is above a predefined threshold
-          Return:
+           Checks if highest ranked CLASS tag contains "grayware"
+           and is above a predefined threshold
+           Return:
             True/False/None
-       """
+        """
         threshold = 0.5
         # If no tags, return false
         if len(tag_pairs) < 1:
@@ -496,7 +496,7 @@ class AvLabels:
 
     @staticmethod
     def _remove_suffixes(av_name, label):
-       """Returns input label without AV specific suffixes""" 
+        """Returns input label without AV specific suffixes""" 
         # Truncate after last '.'
         if av_name in suffix_removal_av_set:
             label = label.rsplit('.', 1)[0]

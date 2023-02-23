@@ -411,8 +411,8 @@ class Update:
 
 def main():
     argparser = argparse.ArgumentParser(
-        description='Given a .alias file from the labeler, 
-        generates updates for the taxonomy, tagging, and expansion files.')
+        description='''Given a .alias file from the labeler, 
+        generates updates for the taxonomy, tagging, and expansion files.''')
 
     argparser.add_argument('-alias',
         help='input file with alias from labeler. Mandatory.')

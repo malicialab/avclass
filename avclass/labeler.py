@@ -364,8 +364,8 @@ def main():
 
 def parse_args():
     argparser = argparse.ArgumentParser(prog='avclass',
-        description='Extracts tags for a set of samples.
-            Also calculates precision and recall if ground truth available')
+        description='''Extracts tags for a set of samples.
+            Also calculates precision and recall if ground truth available''')
 
     argparser.add_argument('-vt', action='append',
         help='file with VT reports '
