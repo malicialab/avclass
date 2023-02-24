@@ -60,6 +60,12 @@ class Tag:
         """Return hash"""
         return hash((self._path))
 
+    def __eq__(self, other):
+        return self.name == other.name
+
+    def __lt__(self, other):
+        return self.name < other.name
+
     @property
     def name(self):
         """Return tag name"""
@@ -584,8 +590,6 @@ class AvLabels:
     def get_sample_tags(self, sample_info, expand=True):
         """Returns dictionary tag -> AV list of tags for the given sample"""
 
-        # Whitelist the AVs to filter the ones with meaningful labels
-        av_whitelist = self.avs
         # Initialize auxiliary data structures
         duplicates = set()
         av_dict = {}
@@ -599,7 +603,7 @@ class AvLabels:
             ################
             # AV selection #
             ################
-            if av_whitelist and av_name not in av_whitelist:
+            if self.avs and av_name not in self.avs:
                 continue
 
             #####################
