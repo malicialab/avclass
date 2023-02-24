@@ -6,6 +6,7 @@ import sys
 from collections import OrderedDict as OrdDict
 from collections import namedtuple
 from operator import itemgetter, attrgetter
+from avclass import DEFAULT_TAX_PATH, DEFAULT_TAG_PATH, DEFAULT_EXP_PATH
 
 # Set logging
 log = logging.getLogger(__name__)
@@ -387,8 +388,13 @@ class Expansion(Rules):
 
 class AvLabels:
     """Primary class to process AV labels"""
-    def __init__(self, tag_file, exp_file = None, tax_file = None,
-                 av_l = None):
+    def __init__(
+        self,
+        tag_file=DEFAULT_TAG_PATH,
+        exp_file = DEFAULT_EXP_PATH,
+        tax_file = DEFAULT_TAX_PATH,
+        av_l = None
+    ):
         """Initialize using given files and options"""
         # Read taxonomy
         self.taxonomy = Taxonomy(tax_file)
