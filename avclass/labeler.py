@@ -58,6 +58,12 @@ def list_str(l, sep=", ", prefix=""):
         out = out + sep + s
     return out
 
+def read_avs(avs_file):
+    """Read AV engine set from given file"""
+    with open(avs_file) as fd:
+        avs = set(map(str.strip, fd.readlines()))
+    return avs
+
 def open_file(filepath, av_labels):
     """Guess filetype and return file descriptor to file"""
     # Check if file is gzipped by opening it as raw data
@@ -97,6 +103,9 @@ def main():
     # Select hash used to identify sample, by default MD5
     hash_type = args.hash if args.hash else 'md5'
 
+    # Read AV engines to be used if provided
+    engine_l = read_avs(args.av) if args.av else None
+
     # If ground truth provided, read it from file
     gt_dict = {}
     if args.gt:
@@ -109,7 +118,7 @@ def main():
         hash_type = guess_hash(list(gt_dict.keys())[0])
 
     # Create AvLabels object
-    av_labels = AvLabels(args.tag, args.exp, args.tax, args.av)
+    av_labels = AvLabels(args.tag, args.exp, args.tax, av_l=engine_l)
 
     # Select output prefix
     out_prefix = os.path.basename(os.path.splitext(ifile_l[0])[0])
@@ -455,7 +464,7 @@ def parse_args():
                           DEFAULT_EXP_PATH))
 
     if args.av:
-        sys.stderr.write("[-] Using AV engines in %s\n" % avs_file)
+        sys.stderr.write("[-] Using AV engines in %s\n" % args.av)
 
     # Build list of input files
     files = set(args.f) if args.f is not None else {}

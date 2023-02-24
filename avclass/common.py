@@ -388,7 +388,7 @@ class Expansion(Rules):
 class AvLabels:
     """Primary class to process AV labels"""
     def __init__(self, tag_file, exp_file = None, tax_file = None,
-                 av_file = None):
+                 av_l = None):
         """Initialize using given files and options"""
         # Read taxonomy
         self.taxonomy = Taxonomy(tax_file)
@@ -396,15 +396,8 @@ class AvLabels:
         self.tagging = Tagging(tag_file)
         # Read expansion rules
         self.expansions = Expansion(exp_file)
-        # Read AV engines
-        self.avs = self.read_avs(av_file) if av_file else None
-
-    @staticmethod
-    def read_avs(avs_file):
-        """Read AV engine set from given file"""
-        with open(avs_file) as fd:
-            avs = set(map(str.strip, fd.readlines()))
-        return avs
+        # List of AV engines to use
+        self.avs = av_l
 
     @staticmethod
     def get_sample_info_lb(vt_rep):
