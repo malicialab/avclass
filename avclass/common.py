@@ -388,7 +388,7 @@ class Expansion(Rules):
 class AvLabels:
     """Primary class to process AV labels"""
     def __init__(self, tag_file, exp_file = None, tax_file = None,
-                 av_file = None, aliasdetect=False):
+                 av_file = None):
         """Initialize using given files and options"""
         # Read taxonomy
         self.taxonomy = Taxonomy(tax_file)
@@ -398,8 +398,6 @@ class AvLabels:
         self.expansions = Expansion(exp_file)
         # Read AV engines
         self.avs = self.read_avs(av_file) if av_file else None
-        # Alias statistics initialization
-        self.aliasdetect = aliasdetect
 
     @staticmethod
     def read_avs(avs_file):
@@ -584,7 +582,7 @@ class AvLabels:
         # Return a list for backwards compatibility 
         return ret
 
-    def get_sample_tags(self, sample_info):
+    def get_sample_tags(self, sample_info, expand=True):
         """Returns dictionary tag -> AV list of tags for the given sample"""
 
         # Whitelist the AVs to filter the ones with meaningful labels
@@ -646,11 +644,10 @@ class AvLabels:
             ########################################################
             # Expansions                                           #
             ########################################################
-            # NOTE: Avoiding to do expansion when aliases
-            if self.aliasdetect:
-                expanded_tags = tags
-            else:
+            if expand:
                 expanded_tags = self._expand(tags)
+            else:
+                expanded_tags = tags
 
             ########################################################
             # Stores information that relates AV vendors with tags #

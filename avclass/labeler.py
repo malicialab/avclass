@@ -109,8 +109,7 @@ def main():
         hash_type = guess_hash(list(gt_dict.keys())[0])
 
     # Create AvLabels object
-    av_labels = AvLabels(args.tag, args.exp, args.tax,
-                         args.av, args.aliasdetect)
+    av_labels = AvLabels(args.tag, args.exp, args.tax, args.av)
 
     # Select output prefix
     out_prefix = os.path.basename(os.path.splitext(ifile_l[0])[0])
@@ -178,7 +177,8 @@ def main():
             # Get the distinct tokens from all the av labels in the report
             # And print them. 
             try:
-                av_tmp = av_labels.get_sample_tags(sample_info)
+                av_tmp = av_labels.get_sample_tags(sample_info,
+                                                   expand=args.aliasdetect)
                 tags = av_labels.rank_tags(av_tmp)
 
                 # AV VENDORS PER TOKEN
@@ -453,6 +453,9 @@ def parse_args():
     else:
         sys.stderr.write('[-] Using default expansion tags in %s\n' % (
                           DEFAULT_EXP_PATH))
+
+    if args.av:
+        sys.stderr.write("[-] Using AV engines in %s\n" % avs_file)
 
     # Build list of input files
     files = set(args.f) if args.f is not None else {}
