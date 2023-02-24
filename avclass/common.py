@@ -406,8 +406,6 @@ class AvLabels:
         """Read AV engine set from given file"""
         with open(avs_file) as fd:
             avs = set(map(str.strip, fd.readlines()))
-        sys.stderr.write("[-] Using %d AV engines in %s\n" % (len(avs),
-                                                              avs_file))
         return avs
 
     @staticmethod
