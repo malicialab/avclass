@@ -53,15 +53,6 @@ def format_tag_pairs(l, taxonomy=None):
         out += ",%s|%d" % (p, s)
     return out
 
-def list_str(l, sep=", ", prefix=""):
-    """Return list as a string"""
-    if not l:
-        return ""
-    out = prefix + l[0]
-    for s in l[1:]:
-        out = out + sep + s
-    return out
-
 def read_avs(filepath):
     """Read AV engine set from given file"""
     with open(filepath) as fd:
@@ -80,6 +71,7 @@ def read_gt(filepath):
 class FileLabeler:
     """Class to extract tags from files"""
     def __init__(self,
+        out_fd,
         tag_file = DEFAULT_TAG_PATH,
         exp_file = DEFAULT_EXP_PATH,
         tax_file = DEFAULT_TAX_PATH,
@@ -97,6 +89,7 @@ class FileLabeler:
         # Create AvLabels object
         self.av_labels = AvLabels(tag_file, exp_file, tax_file, av_l=av_l)
         # Store inputs
+        self.out_fd = out_fd
         self.gt_dict = gt_dict
         self.hash_type = hash_type
         self.collect_relations = collect_relations
@@ -309,12 +302,9 @@ class FileLabeler:
 
             # Check if sample is PUP, if requested
             if self.output_pup_flag:
-                if self.av_labels.is_pup(tags, self.av_labels.taxonomy):
-                    is_pup_str = "\t1"
-                else:
-                    is_pup_str = "\t0"
+                is_pup = self.av_labels.is_pup(tags, self.av_labels.taxonomy)
             else:
-                is_pup_str =  ""
+                is_pup = None
 
             # Select family for sample
             fam = "SINGLETON:" + name
@@ -327,25 +317,22 @@ class FileLabeler:
             # Get ground truth family, if available
             if self.gt_dict is not None:
                 self.first_token_dict[name] = fam
-                gt_family = '\t' + self.gt_dict.get(name, "")
+                gt_family = self.gt_dict.get(name, "")
             else:
-                gt_family = ""
+                gt_family = None
 
-            # Get VT tags as string
+            # Get VT tags, if requested
             if self.output_vt_tags:
-                vtt = list_str(sample_info.vt_tags, prefix="\t")
+                vt_tags = sample_info.vt_tags
             else:
-                vtt = ""
+                vt_tags = None
 
-            # Print family (and ground truth if available) or tags
+            # Output sample information
             if self.output_all_tags:
-                tag_str = format_tag_pairs(tags, self.av_labels.taxonomy)
-                sys.stdout.write('%s\t%d\t%s%s%s%s\n' %
-                                 (name, vt_count, tag_str, gt_family,
-                                  is_pup_str, vtt))
+                self.output_with_tags_format(name, vt_count, tags)
             else:
-                sys.stdout.write('%s\t%s%s%s\n' %
-                                 (name, fam, gt_family, is_pup_str))
+                self.output_with_family_format(name, fam, gt_family, 
+                                                is_pup, vt_tags)
         except:
             traceback.print_exc(file=sys.stderr)
             return
@@ -378,10 +365,36 @@ class FileLabeler:
                     len(self.gt_dict) if self.gt_dict else 0)
         )
 
-
     def compute_accuracy(self):
+        """Compute accuracy statistics using ground truth"""
         return ec.eval_precision_recall_fmeasure(self.gt_dict,
                                                  self.first_token_dict)
+
+    def output_with_family_format(self, name, family, gt_family, 
+                                  is_pup, vt_tags):
+        """Output sample family results"""
+        # Prepare is_pup_str
+        if is_pup is not None:
+            is_pup_str = "\t1" if is_pup else "\t0"
+        else:
+            is_pup_str = ""
+        # Prepare ground truth family
+        if gt_family is not None:
+            gt_family = '\t' + gt_family
+        else:
+            gt_family = ""
+        # Prepare vt tags
+        vtt = '\t' + ','.join(vt_tags)
+        # Write info
+        self.out_fd.write('%s\t%s%s%s%s\n' % 
+                            (name, family, gt_family, is_pup_str, vtt))
+
+    def output_with_tags_format(self, name, vt_count, tags):
+        """Output sample tags"""
+        # Prepare tags
+        tag_str = format_tag_pairs(tags, self.av_labels.taxonomy)
+        # Write info
+        self.out_fd.write('%s\t%d\t%s\n' % (name, vt_count, tag_str))
 
     def output_relations(self, filepath):
         """Output collected relations to given file"""
@@ -466,6 +479,7 @@ def main():
 
     # Create file labeler
     labeler = FileLabeler(
+        sys.stdout,
         tag_file = args.tag,
         exp_file = args.exp,
         tax_file = args.tax,
