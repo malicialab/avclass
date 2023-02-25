@@ -1,6 +1,5 @@
 import logging
 import re
-import string
 import sys
 
 from collections import OrderedDict as OrdDict
@@ -410,67 +409,6 @@ class AvLabels:
         self.expansions = Expansion(exp_file)
         # List of AV engines to use
         self.avs = av_l
-
-    @staticmethod
-    def get_sample_info_lb(vt_rep):
-        """Parse sample information from basic report"""
-        return SampleInfo(vt_rep['md5'], vt_rep['sha1'], vt_rep['sha256'],
-                          vt_rep['av_labels'], [])
-
-    @staticmethod
-    def get_sample_info_vt_v2(vt_rep):
-        """Parse sample information from VT v2 report"""
-        label_pairs = []
-        # Obtain scan results, if available
-        try:
-            scans = vt_rep['scans']
-            md5 = vt_rep['md5']
-            sha1 = vt_rep['sha1']
-            sha256 = vt_rep['sha256']
-        except KeyError:
-            return None
-        # Obtain labels from scan results
-        for av, res in scans.items():
-            if res['detected']:
-                label = res['result']
-                clean_label = ''.join(filter(
-                                  lambda x: x in string.printable,
-                                    label)).strip()
-                label_pairs.append((av, clean_label))
-        # Obtain VT tags, if available
-        vt_tags = vt_rep.get('tags', [])
-
-        return SampleInfo(md5, sha1, sha256, label_pairs, vt_tags)
-
-    @staticmethod
-    def get_sample_info_vt_v3(vt_rep):
-        """Parse sample information from VT v3 report"""
-        # VT file reports in APIv3 contain all info under 'data'
-        # but reports from VT file feed (also APIv3) don't have it
-        # Handle both cases silently here
-        if 'data' in vt_rep:
-            vt_rep = vt_rep['data']
-        label_pairs = []
-        # Obtain scan results, if available
-        try:
-            scans = vt_rep['attributes']['last_analysis_results']
-            md5 = vt_rep['attributes']['md5']
-            sha1 = vt_rep['attributes']['sha1']
-            sha256 = vt_rep['attributes']['sha256']
-        except KeyError:
-            return None
-        # Obtain labels from scan results
-        for av, res in scans.items():
-            label = res['result']
-            if label is not None:
-                clean_label = ''.join(filter(
-                                  lambda x: x in string.printable,
-                                    label)).strip()
-                label_pairs.append((av, clean_label))
-        # Obtain VT tags, if available
-        vt_tags = vt_rep['attributes'].get('tags', [])
-
-        return SampleInfo(md5, sha1, sha256, label_pairs, vt_tags)
 
     @staticmethod
     def is_pup(tag_pairs, taxonomy):
