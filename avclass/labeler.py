@@ -487,9 +487,15 @@ def main():
     else:
         hash_type = default_hash_type
 
+    # Set output descriptor
+    if args.o:
+        out_fd = open(args.o, 'w', encoding='utf-8')
+    else:
+        out_fd = sys.stdout
+
     # Create file labeler
     labeler = FileLabeler(
-        sys.stdout,
+        out_fd,
         tag_file = args.tag,
         exp_file = args.exp,
         tax_file = args.tax,
@@ -536,6 +542,9 @@ def main():
         labeler.output_relations(alias_filepath)
         log.info('[-] Alias data in %s' % (alias_filepath))
 
+    # Close output file
+    if args.o:
+        out_fd.close()
 
 def parse_args():
     argparser = argparse.ArgumentParser(prog='avclass')
@@ -551,6 +560,9 @@ def parse_args():
     argparser.add_argument('-t',
         action='store_true',
         help='Output all tags, not only the family.')
+
+    argparser.add_argument('-o',
+        help='Output results to this file instead of stdout.')
 
     argparser.add_argument('-gt',
         help='file with ground truth. '
