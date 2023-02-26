@@ -34,7 +34,7 @@ def main():
     # Normalize taxonomy
     taxonomy = Taxonomy(args.tax)
     taxonomy.to_file(args.tax)
-    sys.stdout.write('[-] Normalized %d tags in taxonomy %s\n' % (
+    print('[-] Normalized %d tags in taxonomy %s' % (
                         len(taxonomy), args.tax))
 
     # Normalize tagging rules
@@ -42,14 +42,14 @@ def main():
     tagging.validate(taxonomy)
     # tagging.expand_all_destinations()
     tagging.to_file(args.tag)
-    sys.stdout.write('[-] Normalized %d tagging rules in %s\n' % (
+    print('[-] Normalized %d tagging rules in %s' % (
                         len(tagging), args.tag))
 
     # Normalize expansion rules
     expansion = Expansion(args.exp)
     expansion.validate(taxonomy)
     expansion.to_file(args.exp)
-    sys.stdout.write('[-] Normalized %d expansion rules in %s\n' % (
+    print('[-] Normalized %d expansion rules in %s' % (
                         len(expansion), args.exp))
 
 if __name__ == "__main__":

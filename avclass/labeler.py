@@ -226,7 +226,7 @@ class FileLabeler:
 
         # If the VT report has no AV labels, output and continue
         if not sample_info.labels:
-            sys.stdout.write('%s\t-\t[]\n' % (name))
+            self.out_fd.write('%s\t-\t[]\n' % (name))
             # sys.stderr.write('\nNo AV labels for %s\n' % name)
             # sys.stderr.flush()
             return

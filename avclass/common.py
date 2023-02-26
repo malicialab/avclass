@@ -370,12 +370,12 @@ class Tagging(Rules):
 
     def validate(self, taxonomy):
         """Check that tags in tagging rules are in given taxonomy"""
-        for tok,tag_l in self._src_map.items():
-            if taxonomy.is_tag(tok):
-                sys.stdout.write("[Tagging] SRC %s in taxonomy\n" % tok)
-            for t in tag_l:
+        for src,dst_l in self._src_map.items():
+            if taxonomy.is_tag(src):
+                log.warning("[Tagging] SRC %s in taxonomy" % src)
+            for t in dst_l:
                 if (not taxonomy.is_tag(t)):
-                    sys.stdout.write("[Tagging] %s not in taxonomy\n" % t)
+                    log.warning("[Tagging] %s not in taxonomy" % t)
 
 class Expansion(Rules):
     """A rule where source different than destination and both in taxonomy"""
@@ -386,10 +386,10 @@ class Expansion(Rules):
         """Check that tags in expansion rules are in given taxonomy"""
         for src,dst_set in self._src_map.items():
             if (not taxonomy.is_tag(src)):
-                sys.stdout.write("[Expansion] %s not in taxonomy\n" % src)
+                log.warning("[Expansion] %s not in taxonomy" % src)
             for dst in dst_set:
                 if (not taxonomy.is_tag(dst)):
-                    sys.stdout.write("[Expansion] %s not in taxonomy\n" % dst)
+                    log.warning("[Expansion] %s not in taxonomy" % dst)
 
 class AvLabels:
     """Primary class to process AV labels"""
