@@ -36,23 +36,6 @@ def guess_hash(h):
     else:
         return None
 
-def format_tag_pairs(l, taxonomy=None):
-    """Return ranked tags as string"""
-    if not l:
-        return ""
-    if taxonomy is not None:
-        p = taxonomy.get_path(l[0][0])
-    else:
-        p = l[0][0]
-    out = "%s|%d" % (p, l[0][1])
-    for (t,s) in l[1:]:
-        if taxonomy is not None:
-            p = taxonomy.get_path(t) 
-        else:
-            p = t
-        out += ",%s|%d" % (p, s)
-    return out
-
 def read_avs(filepath):
     """Read AV engine set from given file"""
     with open(filepath) as fd:
@@ -370,6 +353,23 @@ class FileLabeler:
         return ec.eval_precision_recall_fmeasure(self.gt_dict,
                                                  self.first_token_dict)
 
+    def format_tag_pairs(self, tag_l):
+        """Return ranked tags as string"""
+        if not tag_l:
+            return ""
+        if self.av_labels.taxonomy is not None:
+            p = self.av_labels.taxonomy.get_path(tag_l[0][0])
+        else:
+            p = tag_l[0][0]
+        out = "%s|%d" % (p, tag_l[0][1])
+        for (t,s) in tag_l[1:]:
+            if self.av_labels.taxonomy is not None:
+                p = self.av_labels.taxonomy.get_path(t)
+            else:
+                p = t
+            out += ",%s|%d" % (p, s)
+        return out
+
     def output_with_family_format(self, name, family, gt_family, 
                                   is_pup, vt_tags):
         """Output sample family results"""
@@ -392,7 +392,7 @@ class FileLabeler:
     def output_with_tags_format(self, name, vt_count, tags):
         """Output sample tags"""
         # Prepare tags
-        tag_str = format_tag_pairs(tags, self.av_labels.taxonomy)
+        tag_str = self.format_tag_pairs(tags)
         # Write info
         self.out_fd.write('%s\t%d\t%s\n' % (name, vt_count, tag_str))
 
