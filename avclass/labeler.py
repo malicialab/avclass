@@ -3,6 +3,7 @@
 import argparse
 import gzip
 import json
+import logging
 import os
 import string
 import sys
@@ -20,6 +21,18 @@ except ModuleNotFoundError:
     from avclass import DEFAULT_TAX_PATH, DEFAULT_TAG_PATH, DEFAULT_EXP_PATH
     from avclass.common import AvLabels, Taxonomy, SampleInfo
     from avclass import evaluate as ec
+
+# Set logging
+log = logging.getLogger(__name__)
+
+# Log warn and above to stderr
+formatter = logging.Formatter(u'%(message)s')
+handler_stderr = logging.StreamHandler(sys.stderr)
+handler_stderr.setLevel(logging.INFO)
+handler_stderr.setFormatter(formatter)
+root = logging.getLogger()
+root.setLevel(logging.DEBUG)
+root.addHandler(handler_stderr)
 
 # Default hash to name samples
 default_hash_type = "md5"
@@ -214,10 +227,9 @@ class FileLabeler:
         if sample_info is None:
             try:
                 name = vt_rep['md5']
-                sys.stderr.write('\nNo scans for %s\n' % name)
+                log.warning('\nNo scans for %s' % name)
             except KeyError:
-                sys.stderr.write('\nCould not process: %s\n' % line)
-            sys.stderr.flush()
+                log.warning('\nCould not process: %s' % line)
             self.stats['noscans'] += 1
             return
 
@@ -227,8 +239,6 @@ class FileLabeler:
         # If the VT report has no AV labels, output and continue
         if not sample_info.labels:
             self.out_fd.write('%s\t-\t[]\n' % (name))
-            # sys.stderr.write('\nNo AV labels for %s\n' % name)
-            # sys.stderr.flush()
             return
 
         # Compute VT_Count (using list of AV engines if provided)
@@ -325,7 +335,7 @@ class FileLabeler:
         fd, itype, get_sample_info = self.open_file(ifile)
 
         # Debug info, file processed
-        sys.stderr.write('[-] Processing input file %s (%s)\n' % (ifile, itype))
+        log.info('[-] Processing input file %s (%s)' % (ifile, itype))
 
         # Process all lines in file
         for line in fd:
@@ -340,8 +350,8 @@ class FileLabeler:
         fd.close()
 
         # Print statistics
-        sys.stderr.write(
-                "[-] Samples: %d NoScans: %d NoTags: %d GroundTruth: %d\n" % (
+        log.info(
+                "[-] Samples: %d NoScans: %d NoTags: %d GroundTruth: %d" % (
                     self.vt_all,
                     self.stats['noscans'],
                     self.vt_all - self.stats['tagged'], 
@@ -501,7 +511,7 @@ def main():
     # If ground truth, print precision, recall, and F1-measure
     if args.gt:
         precision, recall, fmeasure = labeler.compute_accuracy()
-        sys.stderr.write(
+        log.info(
             "Precision: %.2f\tRecall: %.2f\tF1-Measure: %.2f\n" % \
                           (precision, recall, fmeasure))
 
@@ -512,19 +522,19 @@ def main():
     if args.stats:
         stats_filepath = "%s.stats" % out_prefix
         labeler.output_stats(stats_filepath)
-        sys.stderr.write('[-] Stats in %s\n' % (stats_filepath))
+        log.info('[-] Stats in %s' % (stats_filepath))
 
     # Output vendor info
     if args.avtags:
         vendor_filepath = "%s.avtags" % out_prefix
         labeler.output_vendor_info(vendor_filepath)
-        sys.stderr.write('[-] Vendor info in %s\n' % (vendor_filepath))
+        log.info('[-] Vendor info in %s' % (vendor_filepath))
 
     # If alias detection, print map
     if args.aliasdetect:
         alias_filepath = "%s.alias" % out_prefix
         labeler.output_relations(alias_filepath)
-        sys.stderr.write('[-] Alias data in %s\n' % (alias_filepath))
+        log.info('[-] Alias data in %s' % (alias_filepath))
 
 
 def parse_args():
@@ -590,41 +600,35 @@ def parse_args():
     args = argparser.parse_args()
 
     if (not args.f) and (not args.d):
-        sys.stderr.write('No input files to process. Use -f or -d options\n')
+        log.warning('No input files to process. Use -f or -d options')
         sys.exit(1)
 
     if args.tag:
         if args.tag == '/dev/null':
-            sys.stderr.write('[-] Using no tagging rules\n')
+            log.info('[-] Using no tagging rules')
         else:
-            sys.stderr.write('[-] Using tagging rules in %s\n' % (
-                              args.tag))
+            log.info('[-] Using tagging rules in %s' % args.tag)
     else:
-        sys.stderr.write('[-] Using default tagging rules in %s\n' % (
-                          DEFAULT_TAG_PATH))
+        log.info('[-] Using default tagging rules in %s' % DEFAULT_TAG_PATH)
 
     if args.tax:
         if args.tax == '/dev/null':
-            sys.stderr.write('[-] Using no taxonomy\n')
+            log.info('[-] Using no taxonomy')
         else:
-            sys.stderr.write('[-] Using taxonomy in %s\n' % (
-                              args.tax))
+            log.info('[-] Using taxonomy in %s' % args.tax)
     else:
-        sys.stderr.write('[-] Using default taxonomy in %s\n' % (
-                          DEFAULT_TAX_PATH))
+        log.info('[-] Using default taxonomy in %s' % DEFAULT_TAX_PATH)
 
     if args.exp:
         if args.exp == '/dev/null':
-            sys.stderr.write('[-] Using no expansion tags\n')
+            log.info('[-] Using no expansion tags')
         else:
-            sys.stderr.write('[-] Using expansion tags in %s\n' % (
-                              args.exp))
+            log.info('[-] Using expansion tags in %s' % args.exp)
     else:
-        sys.stderr.write('[-] Using default expansion tags in %s\n' % (
-                          DEFAULT_EXP_PATH))
+        log.info('[-] Using default expansion tags in %s' % DEFAULT_EXP_PATH)
 
     if args.av:
-        sys.stderr.write("[-] Using AV engines in %s\n" % args.av)
+        log.info("[-] Using AV engines in %s" % args.av)
 
     # Build list of input files
     files = set(args.f) if args.f is not None else {}
@@ -636,13 +640,13 @@ def parse_args():
                     if os.path.isfile(filepath):
                         files.add(filepath)
             else:
-                sys.stderr.write('Not a valid directory: %s\n' % d)
+                log.warning('Not a valid directory: %s' % d)
                 sys.exit(1)
     ifile_l = sorted(files)
 
     # Check we have some file to process
     if (not ifile_l):
-        sys.stderr.write('No input files to process.\n')
+        log.warning('No input files to process.')
         sys.exit(1)
 
     return args, ifile_l
