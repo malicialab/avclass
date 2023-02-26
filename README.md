@@ -79,6 +79,12 @@ Sample *f117cc1477513cb181cc2e9fcaab39b2* is flagged by 39 AV engines and
 4 that it belongs to the *winwebsec* family,
 and so on.
 
+You can also place the output in a file of your choosing with the _-o_ option:
+
+```shell
+avclass -f examples/vtv2_sample.json -o output.txt
+```
+
 ## Why is AVClass useful?
 
 Because a lot of times security researchers want to extract family and other
@@ -157,7 +163,7 @@ e.g., obtained by querying https://www.virustotal.com/vtapi/v2/file/report?apike
 There is an example VirusTotal v2 input file in examples/vtv2_sample.json
 
 ```shell
-avclass -f examples/vtv2_sample.json > output.txt
+avclass -f examples/vtv2_sample.json -o output.txt
 ```
 
 2. VirusTotal v3 API reports,
@@ -167,7 +173,7 @@ e.g., obtained by querying https://www.virustotal.com/api/v3/files/{hash}
 There is an example VirusTotal v3 input file in examples/vtv3_sample.json
 
 ```shell
-avclass -f examples/vtv3_sample.json > output.txt
+avclass -f examples/vtv3_sample.json -o output.txt
 ```
 
 3. Simplified format,
@@ -179,7 +185,7 @@ If you are obtaining AV labels from sources other than VirusTotal you
 may want to convert them to this format.
 
 ```shell
-avclass -f examples/malheurReference_lb.json > output.txt
+avclass -f examples/malheurReference_lb.json -o output.txt
 ```
 
 **Multiple input files and different formats**
@@ -232,7 +238,7 @@ F-Secure
 Sophos
 
 ```shell
-avclass -av engines.txt -f examples/vtv2_sample.json -t > output.txt
+avclass -av engines.txt -f examples/vtv2_sample.json -t -o output.txt
 ```
 
 would output into output.txt:
@@ -264,7 +270,7 @@ Note that the ground truth evaluation does not apply to non-family tags,
 i.e., it only evaluates family labeling.
 
 ```shell
-avclass -f examples/malheurReference_lb.json -gt examples/malheurReference_gt.tsv > malheurReference.labels
+avclass -f examples/malheurReference_lb.json -gt examples/malheurReference_gt.tsv -o malheurReference.labels
 ```
 
 The output includes these lines:
@@ -311,7 +317,7 @@ Using the update module comprises of two steps.
 The first step is obtaining an alias file:
 
 ```shell
-avclass -f examples/malheurReference_lb.json -aliasdetect
+avclass -f examples/malheurReference_lb.json -aliasdetect -o /dev/null
 ```
 
 The above command will create a file named \<file\>.alias,
