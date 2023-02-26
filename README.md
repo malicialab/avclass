@@ -200,7 +200,7 @@ For example, you can provide as input the three test files
 (each of a different format) in the examples directory:
 
 ```shell
-avclass -f examples/vtv3_sample.json -f examples/vtv2_sample.json -f examples/malheurReference_lb.json > output.txt
+avclass -f examples/vtv3_sample.json -f examples/vtv2_sample.json -f examples/malheurReference_lb.json -o output.txt
 ```
 
 output.txt will have 3134 lines: 3130 samples from malheurReference_lb.json, 
