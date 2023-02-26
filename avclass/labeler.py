@@ -384,7 +384,7 @@ class FileLabeler:
         else:
             gt_family = ""
         # Prepare vt tags
-        vtt = '\t' + ','.join(vt_tags)
+        vtt = '\t' + ','.join(vt_tags) if vt_tags else ""
         # Write info
         self.out_fd.write('%s\t%s%s%s%s\n' % 
                             (name, family, gt_family, is_pup_str, vtt))
