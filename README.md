@@ -153,20 +153,10 @@ clean the command line options.
 
 ## Input formats
 
-AVClass supports three input JSONL formats
+AVClass supports four input JSONL formats
 (i.e., one JSON object per line).
 
-1. VirusTotal v2 API reports,
-where each line in the input *file* should be the full JSON of a
-VirusTotal v2 API response to the */file/report* endpoint,
-e.g., obtained by querying https://www.virustotal.com/vtapi/v2/file/report?apikey={apikey}&resource={hash}
-There is an example VirusTotal v2 input file in examples/vtv2_sample.json
-
-```shell
-avclass -f examples/vtv2_sample.json -o output.txt
-```
-
-2. VirusTotal v3 API reports,
+1. VirusTotal v3 API reports,
 where each line in the input *file* should be the full JSON of a
 VirusTotal API version 3 response with a *File* object report,
 e.g., obtained by querying https://www.virustotal.com/api/v3/files/{hash}
@@ -176,7 +166,27 @@ There is an example VirusTotal v3 input file in examples/vtv3_sample.json
 avclass -f examples/vtv3_sample.json -o output.txt
 ```
 
-3. Simplified format,
+2. VirusTotal v2 API reports,
+where each line in the input *file* should be the full JSON of a
+VirusTotal v2 API response to the */file/report* endpoint,
+e.g., obtained by querying https://www.virustotal.com/vtapi/v2/file/report?apikey={apikey}&resource={hash}
+There is an example VirusTotal v2 input file in examples/vtv2_sample.json
+
+```shell
+avclass -f examples/vtv2_sample.json -o output.txt
+```
+
+3. OPSWAT MetaDefender reports,
+where each line in the input *file* should be the full JSON
+obtained from OPSWAT MetaDefender.
+There is an example OPSWAT MetaDefender input file in
+examples/opswat_md_sample.json
+
+```shell
+avclass -f examples/opswat_md_sample.json -o output.txt
+```
+
+4. Simplified format,
 where each line in the input *file* should be a JSON
 with (at least) these fields:
 {md5, sha1, sha256, av_labels}.
@@ -200,11 +210,12 @@ For example, you can provide as input the three test files
 (each of a different format) in the examples directory:
 
 ```shell
-avclass -f examples/vtv3_sample.json -f examples/vtv2_sample.json -f examples/malheurReference_lb.json -o output.txt
+avclass -f examples/vtv3_sample.json -f examples/vtv2_sample.json -f examples/malheurReference_lb.json -f examples/opswat_md_sample.json -o output.txt
 ```
 
-output.txt will have 3134 lines: 3130 samples from malheurReference_lb.json, 
-3 samples from vtv2_sample.json and one from vtv3_sample.json. 
+output.txt will have 3135 lines: 3130 samples from malheurReference_lb.json,
+3 samples from vtv2_sample.json, 1 sample from vtv3_sample.json, and
+1 sample from opswat_md_sample.json.
 
 You can also provide as input a directory with the -d option and 
 AVClass will process all files in that directory. 

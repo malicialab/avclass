@@ -173,6 +173,28 @@ class FileLabeler:
 
         return SampleInfo(md5, sha1, sha256, label_pairs, vt_tags)
 
+    @staticmethod
+    def get_sample_info_opswat_md(vt_rep):
+        """Parse sample information from OPSWAT MetaDefender report"""
+        try:
+            scans = vt_rep["scan_results"]["scan_details"]
+            md5 = vt_rep["file_info"]["md5"]
+            sha1 = vt_rep["file_info"]["sha1"]
+            sha256 = vt_rep["file_info"]["sha256"]
+        except KeyError:
+            return None
+        # Obtain labels from scan results
+        label_pairs = []
+        for av, res in scans.items():
+            label = res["threat_found"]
+            if label is not None and res["scan_result_i"] == 1:
+                clean_label = "".join(
+                    filter(lambda x: x in string.printable, label)
+                ).strip()
+                label_pairs.append((av, clean_label))
+
+        return SampleInfo(md5, sha1, sha256, label_pairs, [])
+
     def open_file(self, filepath):
         """Guess filetype and return file descriptor to file"""
         # Check if file is gzipped by opening it as raw data
@@ -198,8 +220,13 @@ class FileLabeler:
                 itype = "vt2"
                 get_sample_info_fun = self.get_sample_info_vt_v2
             else:
-                itype = "lb" 
-                get_sample_info_fun = self.get_sample_info_lb
+                sample_info = self.get_sample_info_opswat_md(report)
+                if sample_info is not None:
+                    itype = "md"
+                    get_sample_info_fun = self.get_sample_info_opswat_md
+                else:
+                    itype = "lb"
+                    get_sample_info_fun = self.get_sample_info_lb
         # Set file pointer to beginning again
         fd.seek(0, 0)
         # Return file descriptor and type
