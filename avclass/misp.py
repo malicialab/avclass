@@ -22,14 +22,6 @@ class Misp:
         self.taxonomy = Taxonomy(tax_filepath)
         self.tagging = Tagging(tag_filepath)
 
-    def build_synonymn_map(self):
-        """Build a map from dst to src set from Tagging"""
-        dst_map = {}
-        for src, dst_set in self.tagging._src_map.items():
-            for dst in dst_set:
-                dst_map.setdefault(dst, set()).add(src)
-        return dst_map
-
     def uuid_gen(self, tag, prefix='avclass:'):
         """Generate a UUID for given tag"""
         return str(uuid.uuid3(uuid.NAMESPACE_DNS, prefix + tag))
@@ -51,7 +43,7 @@ class Misp:
     def output_cluster_file(self, filepath, version):
         """Output MSIP cluster to given file"""
         entries = []
-        dst_map = self.build_synonymn_map()
+        dst_map = self.tagging.build_synonymn_map()
         for tag in self.taxonomy:
             # Ignore generics
             if tag.cat == 'GEN':

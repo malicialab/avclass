@@ -377,6 +377,14 @@ class Tagging(Rules):
                 if (not taxonomy.is_tag(t)):
                     log.warning("[Tagging] %s not in taxonomy" % t)
 
+    def build_synonymn_map(self):
+        """Build a map from dst to src set from Tagging"""
+        dst_map = {}
+        for src, dst_set in self._src_map.items():
+            for dst in dst_set:
+                dst_map.setdefault(dst, set()).add(src)
+        return dst_map
+
 class Expansion(Rules):
     """A rule where source different than destination and both in taxonomy"""
     def __init__(self, filepath):
