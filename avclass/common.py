@@ -424,13 +424,12 @@ class AvLabels:
  
            Checks if highest ranked CLASS tag contains "grayware"
            and is above a predefined threshold
-           Return:
-            True/False/None
+           It returns False unless it can determine it is PUP
         """
         threshold = 0.5
         # If no tags, return false
         if len(tag_pairs) < 1:
-            return None
+            return False
         max_ctr = tag_pairs[0][1]
         for (tag,ctr) in tag_pairs:
             (path, cat) = taxonomy.get_info(tag)
