@@ -437,7 +437,7 @@ Several members of the MaliciaLab at the
 [IMDEA Software Institute](http://software.imdea.org)
 have contributed to AVClass:
 Marcos Sebastián, Richard Rivera, Platon Kotzias, Srdjan Matic,
-Silvia Sebastián, and Juan Caballero.
+Silvia Sebastián, Kevin van Liebergen, and Juan Caballero.
 
 GitHub users with significant contributions to AVClass include
 (let us know if you believe you should be listed here):
