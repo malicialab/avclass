@@ -626,3 +626,14 @@ class AvLabels:
                     cnt += 1
             return cnt
 
+    def get_family_from_label(self, label):
+        """Return family from given label, or None if no family found"""
+        fam = None
+        tags = self.get_label_tags(label, [])
+        for t in tags:
+            cat = self.taxonomy.get_category(t)
+            if (cat == "UNK") or (cat == "FAM"):
+                fam = t
+                break
+        return fam
+
