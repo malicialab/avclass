@@ -632,8 +632,9 @@ class AvLabels:
         tags = self.get_label_tags(label, [])
         for t in tags:
             cat = self.taxonomy.get_category(t)
-            if (cat == "UNK") or (cat == "FAM"):
+            if (cat == "FAM"):
+                return t
+            elif (cat == "UNK"):
                 fam = t
-                break
         return fam
 
