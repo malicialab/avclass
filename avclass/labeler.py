@@ -670,7 +670,7 @@ def parse_args():
         log.info("[-] Using AV engines in %s" % args.av)
 
     # Build list of input files
-    files = set(args.f) if args.f is not None else {}
+    files = set(args.f) if args.f is not None else set()
     if args.d:
         for d in args.d:
             if os.path.isdir:
