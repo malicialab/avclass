@@ -3078,12 +3078,15 @@ GEN:bloodhound
 GEN:bscope
 GEN:cloud
 GEN:confidence
+GEN:content
 GEN:copiet
 GEN:dangerousobject
 GEN:dangeroussig
 GEN:deepscan
+GEN:detection
 GEN:eheur
 GEN:encodefeature
+GEN:error
 GEN:file
 GEN:filerepmalware
 GEN:gen
@@ -3133,6 +3136,7 @@ GEN:igeneric
 GEN:kcloud
 GEN:lookslike
 GEN:malagent
+GEN:malcode
 GEN:maldroid
 GEN:malicious
 GEN:maltrec
@@ -3143,6 +3147,7 @@ GEN:moderate
 GEN:multi
 GEN:multiple
 GEN:normal
+GEN:notsuspicious
 GEN:onion
 GEN:optional
 GEN:other
@@ -3159,6 +3164,7 @@ GEN:securityrisk
 GEN:siggen
 GEN:singleton
 GEN:software
+GEN:sonar
 GEN:static
 GEN:susp
 GEN:suspect
