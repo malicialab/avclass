@@ -1153,6 +1153,7 @@ FAM:gudex
 FAM:guerrilla
 FAM:gugi
 FAM:guildma
+FAM:guloader
 FAM:gumen
 FAM:gupay
 FAM:gustuff
@@ -1270,6 +1271,7 @@ FAM:inservice
 FAM:installbrain
 FAM:installcore
 FAM:installerex
+FAM:installermonetizer
 FAM:installiq
 FAM:installmetrix
 FAM:installmiez
@@ -1882,6 +1884,7 @@ FAM:passma
 FAM:passview
 FAM:pasur
 FAM:patacore
+FAM:patchupplus
 FAM:pay2key
 FAM:paycall
 FAM:pbot
@@ -1903,6 +1906,7 @@ FAM:perfectoptimizer
 FAM:perflogger
 FAM:perion
 FAM:perkel
+FAM:perkiler
 FAM:persirai
 FAM:petrolin
 FAM:petya
@@ -2328,6 +2332,7 @@ FAM:skyrat
 FAM:slenfbot
 FAM:slic
 FAM:slickshoes
+FAM:slimdrivers
 FAM:slimware
 FAM:slingshot
 FAM:slisp
@@ -3102,6 +3107,7 @@ GEN:encodefeature
 GEN:error
 GEN:file
 GEN:filerepmalware
+GEN:found
 GEN:gen
 GEN:gena
 GEN:generic
@@ -3147,6 +3153,7 @@ GEN:high
 GEN:highconfidence
 GEN:igeneric
 GEN:kcloud
+GEN:load
 GEN:lookslike
 GEN:malagent
 GEN:malcode
@@ -3171,7 +3178,10 @@ GEN:possiblemalware
 GEN:possiblethreat
 GEN:probably
 GEN:program
+GEN:protect
+GEN:remote
 GEN:reputation
+GEN:sample
 GEN:sape
 GEN:score
 GEN:securityrisk
@@ -3192,6 +3202,7 @@ GEN:threat
 GEN:trojan
 GEN:tscope
 GEN:tsgeneric
+GEN:unavailable
 GEN:unclassified
 GEN:unclassifiedmalware
 GEN:undef
