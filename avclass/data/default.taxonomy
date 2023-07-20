@@ -448,6 +448,7 @@ FAM:bugbear
 FAM:buhtrap
 FAM:bulilit
 FAM:bulta
+FAM:bulz
 FAM:bundlore
 FAM:bunitu
 FAM:buran
@@ -744,6 +745,7 @@ FAM:dionisduke
 FAM:diplugem
 FAM:dircrypt
 FAM:directdownloader
+FAM:dirtymoe
 FAM:disttrack
 FAM:ditertag
 FAM:divergent
@@ -841,6 +843,7 @@ FAM:dyre
 FAM:dyzap
 FAM:easyfileopener
 FAM:easyroot
+FAM:eati
 FAM:ebury
 FAM:econnect
 FAM:egame
@@ -1067,6 +1070,7 @@ FAM:gendows
 FAM:general
 FAM:genieo
 FAM:gepew
+FAM:gepys
 FAM:geral
 FAM:getnow
 FAM:gexin
@@ -1294,6 +1298,7 @@ FAM:isearch
 FAM:ismagent
 FAM:ismdoor
 FAM:isminject
+FAM:ispy
 FAM:istartsurf
 FAM:istbar
 FAM:itaduke
@@ -1352,6 +1357,7 @@ FAM:kasperagent
 FAM:kates
 FAM:katrep
 FAM:kazuar
+FAM:kedebe
 FAM:keenm
 FAM:kelihos
 FAM:kelly
@@ -1515,10 +1521,12 @@ FAM:luder
 FAM:lukitos
 FAM:lulusoftware
 FAM:luminati
+FAM:luminositylink
 FAM:lunam
 FAM:lunastorm
 FAM:lurk
 FAM:lxasj
+FAM:lydra
 FAM:lynep
 FAM:lyposit
 FAM:mabezat
@@ -1820,6 +1828,7 @@ FAM:oivim
 FAM:oixal
 FAM:okrum
 FAM:olympicdestroyer
+FAM:olyx
 FAM:omaneat
 FAM:omnirat
 FAM:omsysd
@@ -1854,6 +1863,7 @@ FAM:oxypumper
 FAM:ozonerat
 FAM:paccy
 FAM:padcrypt
+FAM:pahador
 FAM:pajetbin
 FAM:palevo
 FAM:pameseg
@@ -1926,6 +1936,7 @@ FAM:playmp3z
 FAM:playtech
 FAM:plead
 FAM:plemood
+FAM:pliskal
 FAM:pluginaccess
 FAM:plugx
 FAM:plurox
@@ -2028,7 +2039,6 @@ FAM:qrat
 FAM:qsnatch
 FAM:quackbot
 FAM:quakbot
-FAM:quantloader
 FAM:quarkbandit
 FAM:quasar
 FAM:quchispy
@@ -2051,6 +2061,7 @@ FAM:rakhni
 FAM:rakos
 FAM:ramnit
 FAM:ramsay
+FAM:ranapama
 FAM:ranbyus
 FAM:rancor
 FAM:randex
@@ -2932,6 +2943,7 @@ FILE:exploit:enoket
 FILE:exploit:esteemaudit
 FILE:exploit:etchcore
 FILE:exploit:etebcore
+FILE:exploit:eternalblue
 FILE:exploit:eternalchampion
 FILE:exploit:exploid
 FILE:exploit:exynos
@@ -3006,6 +3018,7 @@ FILE:packed:moleboxultra
 FILE:packed:moleboxvs
 FILE:packed:morphine
 FILE:packed:mpress
+FILE:packed:mupx
 FILE:packed:nakedpack
 FILE:packed:niceprotect
 FILE:packed:noobyprotect
@@ -3155,6 +3168,7 @@ GEN:password
 GEN:posible
 GEN:possible
 GEN:possiblemalware
+GEN:possiblethreat
 GEN:probably
 GEN:program
 GEN:reputation
@@ -3178,6 +3192,7 @@ GEN:threat
 GEN:trojan
 GEN:tscope
 GEN:tsgeneric
+GEN:unclassified
 GEN:unclassifiedmalware
 GEN:undef
 GEN:undefined
