@@ -2368,7 +2368,7 @@ FAM:smsspy
 FAM:smsthief
 FAM:smszombie
 FAM:snake
-FAM:snakekeylogger
+FAM:snakelogger
 FAM:snaptube
 FAM:snarasite
 FAM:snatch
@@ -2782,6 +2782,7 @@ FAM:westbyte
 FAM:westeal
 FAM:wfpdisabler
 FAM:whenu
+FAM:whispergate
 FAM:whistlesoftware
 FAM:whiteice
 FAM:whitesmoke
@@ -3031,6 +3032,7 @@ FILE:packed:npack
 FILE:packed:nspack
 FILE:packed:obfuscapk
 FILE:packed:obsidium
+FILE:packed:opack
 FILE:packed:orien
 FILE:packed:packman
 FILE:packed:packz
@@ -3080,7 +3082,6 @@ FILE:signed:fakepublisher
 FILE:signed:invalidcert
 FILE:small
 FILE:testvirus
-FILE:webpage
 GEN:abuse
 GEN:access
 GEN:advml
@@ -3152,13 +3153,17 @@ GEN:heuristic
 GEN:high
 GEN:highconfidence
 GEN:igeneric
+GEN:infected
+GEN:insight
 GEN:kcloud
 GEN:load
 GEN:lookslike
+GEN:lowprevalence
 GEN:malagent
 GEN:malcode
 GEN:maldroid
 GEN:malicious
+GEN:maltraffic
 GEN:maltrec
 GEN:malware
 GEN:memscan
@@ -3166,6 +3171,7 @@ GEN:mlwr
 GEN:moderate
 GEN:multi
 GEN:multiple
+GEN:name
 GEN:normal
 GEN:notsuspicious
 GEN:onion
@@ -3191,6 +3197,7 @@ GEN:software
 GEN:sonar
 GEN:static
 GEN:susp
+GEN:suspbeh
 GEN:suspect
 GEN:suspectcrc
 GEN:suspected
@@ -3199,6 +3206,7 @@ GEN:suspicious
 GEN:symvt
 GEN:systemhijack
 GEN:threat
+GEN:trafic
 GEN:trojan
 GEN:tscope
 GEN:tsgeneric
@@ -3208,5 +3216,6 @@ GEN:unclassifiedmalware
 GEN:undef
 GEN:undefined
 GEN:unknown
+GEN:unproven
 GEN:variant
 GEN:website

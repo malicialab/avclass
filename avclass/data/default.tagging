@@ -1677,6 +1677,7 @@ malcrypt	packed
 malhome	updtkiller
 maliciousmacro	macro
 maligarnet	tpyn
+maljava	exploit	java
 mallocker	lockscreen
 malob	packed
 malpack	packed
@@ -2573,7 +2574,9 @@ smtp	spam
 snadapps	typstu
 snafes	synack
 snail	winemmem
+snakekeylogger	snakelogger
 snakeransom	snake
+snakestealer	snakelogger
 snapdo	linkury
 snara	snarasite
 snare	snarasite
@@ -3039,6 +3042,7 @@ webget	browsefox
 webhook	fasong
 webnav	webnavigator
 webnavigatorbrowser	webnavigator
+webpage	html
 webpick	installerex
 websearch	search
 webtoolbar	toolbar
