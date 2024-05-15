@@ -479,8 +479,11 @@ class FileLabeler:
         fd.write('Tagged (VT>3): %d (%.01f%%)\n' % (num_maltagged, frac))
         for c in ['FILE','CLASS','BEH','FAM','UNK']:
             count = self.stats[c]
-            frac = float(count) / float(num_maltagged) * 100
-            fd.write('%s: %d (%.01f%%)\n' % (c, self.stats[c], frac))
+            if num_maltagged > 0:
+                frac = float(count) / float(num_maltagged) * 100
+                fd.write('%s: %d (%.01f%%)\n' % (c, count, frac))
+            else:
+                fd.write('%s: %d (-)\n' % (c, count))
         fd.close()
 
     def output_vendor_info(self, filepath):
