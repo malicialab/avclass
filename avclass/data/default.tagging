@@ -2028,6 +2028,7 @@ oxypump	oxypumper
 ozotshielder	kmin
 p2pworm	p2p	worm
 pace	socks
+pack	packed
 packedent	packed
 packer	packed
 packetsender	nettool
@@ -2776,6 +2777,7 @@ testsample	testvirus
 texel	luder
 thancrypt	thanatos
 themas	careto
+themidapacked	themida
 thiefquest	evilquest
 thifqseut	evilquest
 thriplogger	catchamas

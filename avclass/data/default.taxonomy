@@ -3109,6 +3109,7 @@ GEN:copiet
 GEN:dangerousobject
 GEN:dangeroussig
 GEN:deepscan
+GEN:detected
 GEN:detection
 GEN:eheur
 GEN:encodefeature
