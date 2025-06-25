@@ -2296,10 +2296,11 @@ rebonum	umbreon
 recal	mogap
 recam	netwiredrc
 recordpage	browsefox
+recordstealer	redline
 redirector	network
-redline	reline
-redlinesteal	reline
-redlinestealer	reline
+reline redline
+redlinesteal	redline
+redlinestealer	redline
 redolf	redlof
 reefwal	kalfere
 refogkeylogger	refog
